@@ -252,7 +252,7 @@
         }
     }
 
-    // Navbar Toggle
+    // Navbar Toggle (hanya untuk mobile)
     if (navToggle) {
         navToggle.addEventListener('click', (e) => {
             e.stopPropagation();
@@ -262,11 +262,13 @@
         });
     }
 
-    // Close menu when clicking outside
+    // Close menu when clicking outside (hanya untuk mobile)
     document.addEventListener('click', (e) => {
-        if (navMenu && navToggle && !navToggle.contains(e.target) && !navMenu.contains(e.target)) {
-            navMenu.classList.remove('active');
-            navToggle.innerHTML = '<i class="fas fa-bars"></i>';
+        if (window.innerWidth <= 768) {
+            if (navMenu && navToggle && !navToggle.contains(e.target) && !navMenu.contains(e.target)) {
+                navMenu.classList.remove('active');
+                navToggle.innerHTML = '<i class="fas fa-bars"></i>';
+            }
         }
     });
 
@@ -278,7 +280,8 @@
             const targetId = link.dataset.target;
             const navbarHeight = getNavbarHeight();
             
-            if (navMenu) {
+            // Tutup menu mobile jika terbuka
+            if (window.innerWidth <= 768 && navMenu) {
                 navMenu.classList.remove('active');
                 if (navToggle) navToggle.innerHTML = '<i class="fas fa-bars"></i>';
             }
@@ -335,6 +338,12 @@
         resizeTimeout = setTimeout(() => {
             updateScrollPadding();
             checkActiveSection();
+            
+            // Reset menu mobile saat resize ke desktop
+            if (window.innerWidth > 768 && navMenu) {
+                navMenu.classList.remove('active');
+                if (navToggle) navToggle.innerHTML = '<i class="fas fa-bars"></i>';
+            }
         }, 100);
     });
 
