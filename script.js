@@ -1,153 +1,48 @@
 (function() {
-    // Data anggota
+    // Data members, admins, contacts
     const members = [
-        { 
-            name: 'Gery', 
-            username: '@gerysenwith_lapiskeju', 
-            tiktok: 'https://www.tiktok.com/@gerysenwith_lapiskeju', 
-            photo: 'images/member1.jpg', 
-            quote: 'Kamu rimuru bukan?'
-        },
-        { 
-            name: 'Rora', 
-            username: '@roraxml', 
-            tiktok: 'https://www.tiktok.com/@kasugano_sora87', 
-            photo: 'images/member2.jpeg', 
-            quote: 'Aku mah raja' 
-        },
-        { 
-            name: 'Izabella', 
-            username: '@queen.izabellaz', 
-            tiktok: 'https://www.tiktok.com/@queen.izabellaz', 
-            photo: 'images/member3.jpeg', 
-            quote: 'Mending turu' 
-        },
-        { 
-            name: 'Erie', 
-            username: '@kasugano_erie', 
-            tiktok: 'https://www.tiktok.com/@kasugano_erie', 
-            photo: 'images/member4.jpg', 
-            quote: 'Gw butuh uang!!!' 
-        },
-        { 
-            name: 'Fuyi', 
-            username: '@fuyii_npc', 
-            tiktok: 'https://www.tiktok.com/@fuyii_npc', 
-            photo: 'images/member5.png', 
-            quote: 'Belajar untuk memahami diri kita sendiri, terkadang kita tidak harus memahami seseorang, bahkan juga orang belum bisa memahami kita sepenuhnya, maka belajar lah untuk menerima kenyataan' 
-        },
-        { 
-            name: 'Ezan', 
-            username: '@ezan_xd', 
-            tiktok: 'https://www.tiktok.com/@ezan_xd', 
-            photo: 'images/member6.png', 
-            quote: 'Sederhana tapi berarti, itulah keluarga.' 
-        },
-        { 
-            name: 'V3iin', 
-            username: '@iyainirhmd', 
-            tiktok: 'https://www.tiktok.com/@iyainirhmd', 
-            photo: 'images/member7.jpg', 
-            quote: 'bntr' 
-        },
-        { 
-            name: 'Shaglen', 
-            username: '@xmj.shaglen', 
-            tiktok: 'https://www.tiktok.com/@xmj.shaglen', 
-            photo: 'images/member8.jpg', 
-            quote: 'Id have' 
-        },
-        { 
-            name: 'Valen', 
-            username: '@naineyuko', 
-            tiktok: 'https://www.tiktok.com/@naineyuko', 
-            photo: 'images/member9.jpg', 
-            quote: 'Aduh kok aku jadi cewek siehh' 
-        },
-        { 
-            name: 'Yuuta', 
-            username: '@yuutaxml_', 
-            tiktok: 'https://www.tiktok.com/@yuutaxml_', 
-            photo: 'images/member10.jpg', 
-            quote: 'You never know until you try' 
-        },
-        { 
-            name: 'Jarzz', 
-            username: '@jarzz.dw.skuy', 
-            tiktok: 'https://www.tiktok.com/@jarzz.dw.skuy', 
-            photo: 'images/member11.jpg', 
-            quote: 'Laparr' 
-        },
-        { 
-            name: 'Qwentty', 
-            username: '@qwentty.ft', 
-            tiktok: 'https://www.tiktok.com/@qwenty.ft', 
-            photo: 'images/member12.jpg', 
-            quote: 'Semua manusia hanyalah alat' 
-        },
-        { 
-            name: 'Akira', 
-            username: '@akira.imut', 
-            tiktok: 'https://www.tiktok.com/@akiraa.imut', 
-            photo: 'images/member13.jpg', 
-            quote: 'Imut gini kalo bantai lu sabi kali' 
-        },
-        { 
-            name: 'Dree', 
-            username: '@daktau_256', 
-            tiktok: 'https://www.tiktok.com/@daktau_256', 
-            photo: 'images/member14.jpg', 
-            quote: 'Jangan takut salah, karena dari salah kita belajar.' 
-        },
-        { 
-            name: 'Zunda', 
-            username: '@shaglenv02y', 
-            tiktok: 'https://www.tiktok.com/@shaglenv02y', 
-            photo: 'images/member15.jpg', 
-            quote: 'Emel yok' 
-        },
-        { 
-            name: 'Yushaa Von Khaslana', 
-            username: '@kachusyaa', 
-            tiktok: 'https://www.tiktok.com/@kachusyaa?_r=1&_t=ZS-943UkIGrPbZ', 
-            photo: 'images/member16.jpeg', 
-            quote: 'Jangan lupa makan' 
-        }
+        { name: 'Gery', username: '@gerysenwith_lapiskeju', tiktok: 'https://www.tiktok.com/@gerysenwith_lapiskeju', initial: 'G', photo: 'images/member1.jpg', quote: 'Kamu rimuru bukan?' },
+        { name: 'Rora', username: '@roraxml', tiktok: 'https://www.tiktok.com/@kasugano_sora87', initial: 'S', photo: 'images/member2.jpeg', quote: 'Aku mah raja' },
+        { name: 'Izabella', username: '@queen.izabellaz', tiktok: 'https://www.tiktok.com/@queen.izabellaz', initial: 'Q', photo: 'images/member3.jpeg', quote: 'Mending turu' },
+        { name: 'Erie', username: '@kasugano_erie', tiktok: 'https://www.tiktok.com/@kasugano_erie', initial: 'E', photo: 'images/member4.jpg', quote: 'Gw butuh uang!!!' },
+        { name: 'Fuyi', username: '@fuyii_npc', tiktok: 'https://www.tiktok.com/@fuyii_npc', initial: 'F', photo: 'images/member5.png', quote: 'Belajar untuk memahami diri kita sendiri, terkadang kita tidak harus memahami seseorang, bahkan juga orang belum bisa memahami kita sepenuhnya, maka belajar lah untuk menerima kenyataan. Ini adalah quote yang sangat panjang untuk menguji fitur scroll pada modal. Semoga dengan adanya scroll, konten yang panjang bisa tetap terbaca dengan baik tanpa membuat modal terlalu besar.' },
+        { name: 'Ezan', username: '@ezan_xd', tiktok: 'https://www.tiktok.com/@ezan_xd', initial: 'E', photo: 'images/member6.png', quote: 'Sederhana tapi berarti, itulah keluarga.' },
+        { name: 'V3iin', username: '@iyainirhmd', tiktok: 'https://www.tiktok.com/@iyainirhmd', initial: 'I', photo: 'images/member7.jpg', quote: 'bntr' },
+        { name: 'Shaglen', username: '@xmj.shaglen', tiktok: 'https://www.tiktok.com/@xmj.shaglen', initial: 'X', photo: 'images/member8.jpg', quote: 'Id have' },
+        { name: 'Valen', username: '@naineyuko', tiktok: 'https://www.tiktok.com/@naineyuko', initial: 'N', photo: 'images/member9.jpg', quote: 'Aduh kok aku jadi cewek siehh' },
+        { name: 'Yuuta', username: '@yuutaxml_', tiktok: 'https://www.tiktok.com/@yuutaxml_', initial: 'Y', photo: 'images/member10.jpg', quote: 'You never know until you try' },
+        { name: 'Jarzz', username: '@jarzz.dw.skuy', tiktok: 'https://www.tiktok.com/@jarzz.dw.skuy', initial: 'J', photo: 'images/member11.jpg', quote: 'Laparr' },
+        { name: 'Qwentty', username: '@qwentty.ft', tiktok: 'https://www.tiktok.com/@qwenty.ft', initial: 'Q', photo: 'images/member12.jpg', quote: 'Semua manusia hanyalah alat' },
+        { name: 'Akira', username: '@akira.imut', tiktok: 'https://www.tiktok.com/@akiraa.imut', initial: 'A', photo: 'images/member13.jpg', quote: 'Imut gini kalo bantai lu sabi kali' },
+        { name: 'Dree', username: '@daktau_256', tiktok: 'https://www.tiktok.com/@daktau_256', initial: 'D', photo: 'images/member14.jpg', quote: 'Jangan takut salah, karena dari salah kita belajar.' },
+        { name: 'Zunda', username: '@shaglenv02y', tiktok: 'https://www.tiktok.com/@shaglenv02y', initial: 'S', photo: 'images/member15.jpg', quote: 'Emel yok' },
+        { name: 'Yushaa Von Khaslana', username: '@kachusyaa', tiktok: 'https://www.tiktok.com/@kachusyaa?_r=1&_t=ZS-943UkIGrPbZ', initial: 'S', photo: 'images/member16.jpeg', quote: 'Jangan lupa makan' }
     ];
 
-    // Data admin
     const admins = [
-        { name: 'Shora', username: '@codename_shora.v02', role: 'Admin', tiktok: 'https://www.tiktok.com/@codename_shora.v02', photo: 'images/admin1.webp' },
-        { name: 'Sora', username: '@kasugano_sora52', role: 'Pemilik & Pendiri', tiktok: 'https://www.tiktok.com/@kasugano.rora', photo: 'images/admin2.jpg' },
-        { name: 'Haruka', username: '@kasugano_harukaa', role: 'Pemilik', tiktok: 'https://www.tiktok.com/@kasugano.harukaa', photo: 'images/admin3.jpg' },
-        { name: 'Zero', username: '@zero.znzx', role: 'Admin', tiktok: 'https://www.tiktok.com/@zero.znzx', photo: 'images/admin4.jfif' },
-        { name: 'Serlina', username: '@diiputraa28_', role: 'Admin', tiktok: 'https://www.tiktok.com/@diiputraa28_?_r=1&_t=ZS-943fWknNM6m', photo: 'images/admin5.jpeg' },
-        { name: '???', username: '@???', role: '???', tiktok: 'https://www.tiktok.com', photo: 'images/admin6.png' }
+        { name: 'Shora', username: '@codename_shora.v02', role: 'Admin', tiktok: 'https://www.tiktok.com/@codename_shora.v02', initial: 'S', photo: 'images/admin1.webp' },
+        { name: 'Sora', username: '@kasugano_sora52', role: 'Pemilik & Pendiri', tiktok: 'https://www.tiktok.com/@kasugano.rora', initial: 'S', photo: 'images/admin2.jpg' },
+        { name: 'Haruka', username: '@kasugano_harukaa', role: 'Pemilik', tiktok: 'https://www.tiktok.com/@kasugano.harukaa', initial: 'H', photo: 'images/admin3.jpg' },
+        { name: 'Zero', username: '@zero.znzx', role: 'Admin', tiktok: 'https://www.tiktok.com/@zero.znzx', initial: 'Z', photo: 'images/admin4.jfif' },
+        { name: 'Serlina', username: '@diiputraa28_', role: 'Admin', tiktok: 'https://www.tiktok.com/@diiputraa28_?_r=1&_t=ZS-943fWknNM6m', initial: 'S', photo: 'images/admin5.jpeg' },
+        { name: '???', username: '@???', role: '???', tiktok: 'https://www.tiktok.com', initial: '?', photo: 'images/admin6.png' }
     ];
 
-    // Data kontak
     const contacts = [
         { platform: 'TikTok', username: '@kasugano.official', link: 'https://www.tiktok.com/@kasugano.official', icon: 'fab fa-tiktok' },
         { platform: 'TikTok', username: '@kasugano.store', link: 'https://www.tiktok.com/@kasugano.store', icon: 'fab fa-tiktok' },
         { platform: 'Instagram', username: '@kasugano.family', link: 'https://www.instagram.com/kasugano.family', icon: 'fab fa-instagram' },
         { platform: 'Instagram', username: '@kasuganostore', link: 'https://www.instagram.com/kasuganostore', icon: 'fab fa-instagram' },
         { platform: 'WhatsApp', username: '+62 852-3240-6495', link: 'https://wa.me/6285232406495', icon: 'fab fa-whatsapp' },
-        { platform: 'Email', username: 'kasuganofamilyy@gmail.com', link: 'mailto:kasuganofamilyy@gmail.com', icon: 'far fa-envelope' }
+        { platform: 'Email', username: 'kasuganofamilyy@gmail.com', link: 'kasuganofamilyy@gmail.com', icon: 'far fa-envelope' }
     ];
 
-    // Ambil elemen DOM
+    // DOM Elements
     const navbar = document.getElementById('navbar');
     const navItems = document.querySelectorAll('.nav-item');
     const navLinks = document.querySelectorAll('.nav-link');
     const navToggle = document.getElementById('navToggle');
     const navMenu = document.getElementById('navMenu');
-    const memberContainer = document.getElementById('memberContainer');
-    const adminTrack = document.getElementById('adminTrack');
-    const contactGrid = document.getElementById('contactGrid');
-    const contactTrack = document.getElementById('contactTrack');
-    const searchInput = document.getElementById('searchMember');
-    const modal = document.getElementById('memberModal');
-    const closeModal = document.getElementById('closeModal');
     
     const sections = {
         home: document.getElementById('home'),
@@ -157,66 +52,14 @@
         contact: document.getElementById('contact')
     };
 
-    // Cek elemen penting
-    if (!memberContainer || !adminTrack || !contactGrid || !contactTrack || !modal || !closeModal) {
-        console.error('Elemen tidak ditemukan!');
-        return;
-    }
-
-    // ===== FUNGSI MODAL DENGAN SCROLL =====
-    function openModal(member) {
-        // Set konten modal
-        document.getElementById('modalAvatar').innerHTML = `<img src="${member.photo}" alt="${member.name}" onerror="this.style.display='none';">`;
-        document.getElementById('modalName').textContent = member.name;
-        document.getElementById('modalUsername').textContent = member.username;
-        document.getElementById('quoteText').textContent = member.quote || 'Bersama Kasugano, kita bersinar';
-        document.getElementById('modalTiktokLink').href = member.tiktok;
-        document.getElementById('modalTiktokText').textContent = member.username;
-        
-        // Tampilkan modal dan lock scroll
-        modal.classList.add('active');
-        document.body.classList.add('modal-open');
-        
-        // Reset scroll modal body ke atas
-        const modalBody = document.querySelector('.modal-body');
-        if (modalBody) {
-            modalBody.scrollTop = 0;
-        }
-    }
-
-    function closeModalHandler() {
-        modal.classList.remove('active');
-        document.body.classList.remove('modal-open');
-    }
-
-    closeModal.addEventListener('click', closeModalHandler);
+    const memberContainer = document.getElementById('memberContainer');
     
-    window.addEventListener('click', (e) => {
-        if (e.target === modal) {
-            closeModalHandler();
-        }
-    });
-
-    // Prevent modal dari closing saat klik di dalam modal content
-    const modalContent = document.querySelector('.modal-content');
-    if (modalContent) {
-        modalContent.addEventListener('click', (e) => {
-            e.stopPropagation();
-        });
-    }
-
-    // Handle tombol ESC
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && modal.classList.contains('active')) {
-            closeModalHandler();
-        }
-    });
-
-    // ===== SKELETON LOADING =====
+    // Render Members with Skeleton Loading
     memberContainer.classList.add('skeleton');
     for (let i = 0; i < 9; i++) {
         const skeletonCard = document.createElement('div');
         skeletonCard.className = 'member-card skeleton';
+        skeletonCard.style.height = '180px';
         memberContainer.appendChild(skeletonCard);
     }
 
@@ -226,7 +69,6 @@
         renderMembers(members);
     }, 800);
 
-    // ===== RENDER MEMBERS =====
     function renderMembers(filteredMembers = members) {
         memberContainer.innerHTML = '';
         
@@ -240,7 +82,7 @@
             card.className = 'member-card';
             card.innerHTML = `
                 <div class="member-avatar">
-                    <img src="${member.photo}" alt="${member.name}" onerror="this.style.display='none';">
+                    <img src="${member.photo}" alt="${member.name}" onerror="this.style.display='none'; this.innerHTML='${member.initial}';">
                 </div>
                 <div class="member-info">
                     <h4>${member.name}</h4>
@@ -248,19 +90,36 @@
                 </div>
             `;
             
-            card.addEventListener('click', () => openModal(member));
+            card.addEventListener('click', () => {
+                document.getElementById('modalAvatar').innerHTML = `<img src="${member.photo}" alt="${member.name}" onerror="this.style.display='none';">`;
+                document.getElementById('modalName').textContent = member.name;
+                document.getElementById('modalUsername').textContent = member.username;
+                document.getElementById('quoteText').textContent = member.quote || 'Bersama Kasugano, kita bersinar';
+                document.getElementById('modalTiktokLink').href = member.tiktok;
+                document.getElementById('modalTiktokText').textContent = member.username;
+                document.getElementById('memberModal').classList.add('active');
+                
+                // Reset scroll position modal ke atas
+                const modalContent = document.querySelector('.modal-content');
+                if (modalContent) {
+                    modalContent.scrollTop = 0;
+                }
+            });
+            
             memberContainer.appendChild(card);
         });
     }
 
-    // ===== RENDER ADMINS =====
+    // Render Admins
+    const adminTrack = document.getElementById('adminTrack');
     adminTrack.innerHTML = '';
+    
     admins.forEach(admin => {
         const card = document.createElement('div');
         card.className = 'admin-card';
         card.innerHTML = `
             <div class="admin-avatar">
-                <img src="${admin.photo}" alt="${admin.name}" onerror="this.style.display='none';">
+                <img src="${admin.photo}" alt="${admin.name}" onerror="this.style.display='none'; this.innerHTML='${admin.initial}';">
             </div>
             <div class="admin-info">
                 <h4>${admin.name}</h4>
@@ -272,132 +131,85 @@
         adminTrack.appendChild(card);
     });
 
-    // ===== RENDER CONTACTS =====
-    contactGrid.innerHTML = '';
-    contactTrack.innerHTML = '';
+    // Render Contacts
+    const contactGrid = document.getElementById('contactGrid');
+    const contactTrack = document.getElementById('contactTrack');
     
+    contactGrid.innerHTML = '';
     contacts.forEach(contact => {
-        // Desktop
-        const cardDesktop = document.createElement('a');
-        cardDesktop.href = contact.link;
-        cardDesktop.target = '_blank';
-        cardDesktop.rel = 'noopener noreferrer';
-        cardDesktop.className = 'contact-card';
-        cardDesktop.innerHTML = `
+        const card = document.createElement('a');
+        card.href = contact.link;
+        card.target = '_blank';
+        card.className = 'contact-card';
+        card.innerHTML = `
             <i class="${contact.icon}"></i>
             <h3>${contact.platform}</h3>
             <span>${contact.username}</span>
         `;
-        contactGrid.appendChild(cardDesktop);
-
-        // Mobile
-        const cardMobile = document.createElement('a');
-        cardMobile.href = contact.link;
-        cardMobile.target = '_blank';
-        cardMobile.rel = 'noopener noreferrer';
-        cardMobile.className = 'contact-card';
-        cardMobile.innerHTML = `
-            <i class="${contact.icon}"></i>
-            <h3>${contact.platform}</h3>
-            <span>${contact.username}</span>
-        `;
-        contactTrack.appendChild(cardMobile);
+        contactGrid.appendChild(card);
     });
 
-    // ===== CAROUSEL NAVIGATION =====
-    const adminCarousel = document.getElementById('adminCarousel');
-    const carouselPrev = document.getElementById('carouselPrev');
-    const carouselNext = document.getElementById('carouselNext');
+    contactTrack.innerHTML = '';
+    contacts.forEach(contact => {
+        const card = document.createElement('a');
+        card.href = contact.link;
+        card.target = '_blank';
+        card.className = 'contact-card';
+        card.innerHTML = `
+            <i class="${contact.icon}"></i>
+            <h3>${contact.platform}</h3>
+            <span>${contact.username}</span>
+        `;
+        contactTrack.appendChild(card);
+    });
 
-    if (carouselPrev && adminCarousel) {
-        carouselPrev.addEventListener('click', () => {
-            adminCarousel.scrollBy({ left: -250, behavior: 'smooth' });
-        });
-    }
-    
-    if (carouselNext && adminCarousel) {
-        carouselNext.addEventListener('click', () => {
-            adminCarousel.scrollBy({ left: 250, behavior: 'smooth' });
-        });
-    }
+    // Carousel Navigation
+    const adminCarousel = document.getElementById('adminCarousel');
+    document.getElementById('carouselPrev').addEventListener('click', () => {
+        adminCarousel.scrollBy({ left: -300, behavior: 'smooth' });
+    });
+    document.getElementById('carouselNext').addEventListener('click', () => {
+        adminCarousel.scrollBy({ left: 300, behavior: 'smooth' });
+    });
 
     const contactCarousel = document.getElementById('contactCarousel');
-    const contactPrev = document.getElementById('contactPrev');
-    const contactNext = document.getElementById('contactNext');
-
-    if (contactPrev && contactCarousel) {
-        contactPrev.addEventListener('click', () => {
-            contactCarousel.scrollBy({ left: -250, behavior: 'smooth' });
-        });
-    }
-    
-    if (contactNext && contactCarousel) {
-        contactNext.addEventListener('click', () => {
-            contactCarousel.scrollBy({ left: 250, behavior: 'smooth' });
-        });
-    }
-
-    // ===== SEARCH =====
-    if (searchInput) {
-        searchInput.addEventListener('input', (e) => {
-            const keyword = e.target.value.toLowerCase().trim();
-            if (keyword === '') {
-                renderMembers(members);
-            } else {
-                const filtered = members.filter(m => 
-                    m.name.toLowerCase().includes(keyword) || 
-                    m.username.toLowerCase().includes(keyword)
-                );
-                renderMembers(filtered);
-            }
-        });
-    }
-
-    // ===== NAVBAR TOGGLE =====
-    if (navToggle && navMenu) {
-        navToggle.addEventListener('click', (e) => {
-            e.stopPropagation();
-            navMenu.classList.toggle('active');
-            navToggle.innerHTML = navMenu.classList.contains('active') ? 
-                '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
-        });
-
-        document.addEventListener('click', (e) => {
-            if (!navToggle.contains(e.target) && !navMenu.contains(e.target)) {
-                navMenu.classList.remove('active');
-                navToggle.innerHTML = '<i class="fas fa-bars"></i>';
-            }
-        });
-    }
-
-    // ===== NAVIGATION LINKS =====
-    navLinks.forEach(link => {
-        link.addEventListener('click', (e) => {
-            e.preventDefault();
-            
-            const targetId = link.dataset.target;
-            
-            if (navMenu && navToggle) {
-                navMenu.classList.remove('active');
-                navToggle.innerHTML = '<i class="fas fa-bars"></i>';
-            }
-            
-            if (targetId === 'home') {
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            } else {
-                const targetElement = sections[targetId];
-                if (targetElement) {
-                    const navbarHeight = navbar ? navbar.offsetHeight : 80;
-                    const targetPosition = targetElement.offsetTop - navbarHeight - 15;
-                    window.scrollTo({ top: targetPosition, behavior: 'smooth' });
-                }
-            }
-        });
+    document.getElementById('contactPrev').addEventListener('click', () => {
+        contactCarousel.scrollBy({ left: -300, behavior: 'smooth' });
+    });
+    document.getElementById('contactNext').addEventListener('click', () => {
+        contactCarousel.scrollBy({ left: 300, behavior: 'smooth' });
     });
 
-    // ===== ACTIVE SECTION =====
+    // Search Member
+    document.getElementById('searchMember').addEventListener('input', (e) => {
+        const keyword = e.target.value.toLowerCase().trim();
+        if (keyword === '') {
+            renderMembers(members);
+        } else {
+            const filtered = members.filter(m => 
+                m.name.toLowerCase().includes(keyword) || 
+                m.username.toLowerCase().includes(keyword)
+            );
+            renderMembers(filtered);
+        }
+    });
+
+    // Modal
+    const modal = document.getElementById('memberModal');
+    document.getElementById('closeModal').addEventListener('click', () => {
+        modal.classList.remove('active');
+    });
+    window.addEventListener('click', (e) => {
+        if (e.target === modal) modal.classList.remove('active');
+    });
+
+    // Navbar Functions
     function getNavbarHeight() {
         return navbar ? navbar.offsetHeight : 80;
+    }
+
+    function updateScrollPadding() {
+        document.documentElement.style.scrollPaddingTop = (getNavbarHeight() + 20) + 'px';
     }
 
     function setActiveSection(sectionId) {
@@ -411,46 +223,88 @@
         });
     }
 
-    function checkActiveSection() {
-        // Skip jika modal terbuka
-        if (modal.classList.contains('active')) {
-            return;
-        }
-        
-        const scrollY = window.scrollY;
+    function getSectionBoundaries() {
         const navbarHeight = getNavbarHeight();
         
-        document.querySelectorAll('section').forEach(section => {
-            const sectionTop = section.offsetTop - navbarHeight - 15;
-            const sectionBottom = sectionTop + section.offsetHeight;
-            const sectionId = section.getAttribute('id');
-            
-            if (scrollY >= sectionTop && scrollY < sectionBottom) {
-                navItems.forEach(item => {
-                    const link = item.querySelector('.nav-link');
-                    if (link && link.dataset.target === sectionId) {
-                        item.classList.add('active');
-                    } else {
-                        item.classList.remove('active');
-                    }
-                });
-            }
+        return {
+            home: { start: 0, end: sections.about.offsetTop - navbarHeight - 20 },
+            about: { start: sections.about.offsetTop - navbarHeight - 20, end: sections.member.offsetTop - navbarHeight - 20 },
+            member: { start: sections.member.offsetTop - navbarHeight - 20, end: sections.admin.offsetTop - navbarHeight - 20 },
+            admin: { start: sections.admin.offsetTop - navbarHeight - 20, end: sections.contact.offsetTop - navbarHeight - 20 },
+            contact: { start: sections.contact.offsetTop - navbarHeight - 20, end: Infinity }
+        };
+    }
+
+    function checkActiveSection() {
+        const scrollY = window.scrollY;
+        const boundaries = getSectionBoundaries();
+        
+        if (scrollY < boundaries.about.start) {
+            setActiveSection('home');
+        } else if (scrollY < boundaries.member.start) {
+            setActiveSection('about');
+        } else if (scrollY < boundaries.admin.start) {
+            setActiveSection('member');
+        } else if (scrollY < boundaries.contact.start) {
+            setActiveSection('admin');
+        } else {
+            setActiveSection('contact');
+        }
+    }
+
+    // Navbar Toggle
+    if (navToggle) {
+        navToggle.addEventListener('click', (e) => {
+            e.stopPropagation();
+            navMenu.classList.toggle('active');
+            navToggle.innerHTML = navMenu.classList.contains('active') ? 
+                '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
         });
     }
 
-    // ===== PARALLAX EFFECT =====
+    // Close menu when clicking outside
+    document.addEventListener('click', (e) => {
+        if (navMenu && navToggle && !navToggle.contains(e.target) && !navMenu.contains(e.target)) {
+            navMenu.classList.remove('active');
+            navToggle.innerHTML = '<i class="fas fa-bars"></i>';
+        }
+    });
+
+    // Navbar Links Click
+    navLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            
+            const targetId = link.dataset.target;
+            const navbarHeight = getNavbarHeight();
+            
+            if (navMenu) {
+                navMenu.classList.remove('active');
+                if (navToggle) navToggle.innerHTML = '<i class="fas fa-bars"></i>';
+            }
+            
+            if (targetId === 'home') {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            } else {
+                const targetElement = sections[targetId];
+                if (targetElement) {
+                    const targetPosition = targetElement.offsetTop - navbarHeight - 20;
+                    window.scrollTo({ top: targetPosition, behavior: 'smooth' });
+                }
+            }
+        });
+    });
+
+    // Parallax Effect
     const heroImg = document.getElementById('heroImg');
     if (heroImg) {
         window.addEventListener('scroll', () => {
-            if (modal.classList.contains('active')) {
-                return;
-            }
             const scrollY = window.scrollY;
             heroImg.style.transform = `translateY(${scrollY * 0.2}px)`;
         });
     }
 
-    // ===== SCROLL REVEAL =====
+    // Scroll Reveal Animation
     const revealSections = document.querySelectorAll('section');
     
     const revealObserver = new IntersectionObserver((entries) => {
@@ -467,34 +321,32 @@
         revealObserver.observe(section);
     });
 
-    // ===== SCROLL EVENT =====
+    // Scroll Event for Active Section
     let scrollTimeout;
     window.addEventListener('scroll', () => {
-        if (modal.classList.contains('active')) {
-            return;
-        }
-        
         if (scrollTimeout) cancelAnimationFrame(scrollTimeout);
         scrollTimeout = requestAnimationFrame(checkActiveSection);
     });
 
-    // ===== RESIZE EVENT =====
+    // Resize Event
     let resizeTimeout;
     window.addEventListener('resize', () => {
         if (resizeTimeout) clearTimeout(resizeTimeout);
         resizeTimeout = setTimeout(() => {
+            updateScrollPadding();
             checkActiveSection();
         }, 100);
     });
 
-    // ===== INITIAL SETUP =====
+    // Initialize
     window.scrollTo(0, 0);
+    updateScrollPadding();
     
     window.addEventListener('load', () => {
         setTimeout(() => {
+            updateScrollPadding();
             checkActiveSection();
             setActiveSection('home');
         }, 200);
     });
-
 })();
