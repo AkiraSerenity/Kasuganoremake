@@ -94,7 +94,7 @@ body::after {
 ::-webkit-scrollbar-track { background: #1c1326; }
 ::-webkit-scrollbar-thumb { background: #c47af0; border-radius: 10px; }
 
-/* ===== NAVBAR - TOMBOL HAMBURGER UNTUK SEMUA UKURAN ===== */
+/* ===== NAVBAR - HORIZONTAL DI DESKTOP, HAMBURGER DI MOBILE ===== */
 .navbar-modern {
     position: fixed;
     top: 2%;
@@ -148,32 +148,15 @@ body::after {
     color: transparent;
 }
 
+/* Desktop Navigation - Horizontal */
 .nav-menu {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    right: 0;
-    background: rgba(20, 10, 35, 0.95);
-    backdrop-filter: blur(20px);
-    border: 1px solid rgba(255, 105, 194, 0.3);
-    border-radius: 30px;
-    margin-top: 10px;
-    padding: 1rem;
-    opacity: 0;
-    visibility: hidden;
-    transform: translateY(-20px);
-    transition: all 0.3s ease;
-}
-
-.nav-menu.active {
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0);
+    flex: 1;
+    display: flex;
+    justify-content: center;
 }
 
 .nav-list {
     display: flex;
-    flex-direction: column;
     gap: 0.3rem;
     list-style: none;
 }
@@ -209,8 +192,9 @@ body::after {
     background: transparent;
 }
 
+/* Tombol Hamburger - Hanya muncul di mobile */
 .nav-toggle {
-    display: flex;
+    display: none;
     width: 40px;
     height: 40px;
     background: rgba(255, 105, 194, 0.2);
@@ -1016,21 +1000,63 @@ section:not(.revealed) {
 }
 
 /* ===== MEDIA QUERIES - RESPONSIVE DESIGN ===== */
-@media (max-width: 1024px) {
-    .about-grid {
-        grid-template-columns: repeat(3, 1fr);
+@media (min-width: 769px) {
+    /* Desktop styles untuk navbar */
+    .nav-menu {
+        display: flex !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+        transform: none !important;
+        position: static;
+        background: none;
+        backdrop-filter: none;
+        border: none;
+        padding: 0;
+        margin: 0;
     }
     
-    .activity-grid {
-        grid-template-columns: repeat(4, 1fr);
+    .nav-list {
+        flex-direction: row;
     }
     
-    .member-card {
-        width: calc(25% - 0.7rem);
+    .nav-toggle {
+        display: none !important;
     }
 }
 
 @media (max-width: 768px) {
+    /* Mobile styles untuk navbar */
+    .nav-menu {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: rgba(20, 10, 35, 0.95);
+        backdrop-filter: blur(20px);
+        border: 1px solid rgba(255, 105, 194, 0.3);
+        border-radius: 30px;
+        margin-top: 10px;
+        padding: 1rem;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-20px);
+        transition: all 0.3s ease;
+    }
+    
+    .nav-menu.active {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+    }
+    
+    .nav-list {
+        flex-direction: column;
+    }
+    
+    .nav-toggle {
+        display: flex;
+    }
+    
     .about-grid {
         grid-template-columns: repeat(2, 1fr);
         gap: 1rem;
