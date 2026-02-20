@@ -2,7 +2,7 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
     <title>Kasugano Family · official</title>
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -15,8 +15,8 @@
     <!-- CSS External -->
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
-    <!-- NAVBAR MODERN - HORIZONTAL DI DESKTOP, HAMBURGER DI MOBILE -->
+<body class="invisible-scrollbar">  <!-- Tambahkan class ini -->
+    <!-- NAVBAR -->
     <nav class="navbar-modern" id="navbar">
         <div class="nav-container">
             <div class="nav-logo">
@@ -77,7 +77,7 @@
                     <img src="images/hero-profile.jpg" alt="Kasugano Family" onerror="this.src='https://via.placeholder.com/220/ff69c2/ffffff?text=KF'">
                 </div>
                 <h1>Kasugano Family</h1>
-                <p>Kami adalah komunitas yang bergerak di tikTok dalam bidang Anime, Donghua, Game, Preset, GFX, dan lainnya.</p>
+                <p>Kami adalah komunitas yang bergerak di TikTok dalam bidang Anime, Donghua, Game, Preset, GFX, dan lainnya.</p>
             </div>
         </div>
     </section>
@@ -117,22 +117,22 @@
                     <div class="activity-card">
                         <div class="activity-icon"><i class="fas fa-film"></i></div>
                         <h3>Editing</h3>
-                        <p>Mengedit video anime, donghua, preset, gfx. (Pokoknya ngedit malas gw nji*g)</p>
+                        <p>Mengedit video anime, donghua, preset, gfx. (Pokoknya ngedit)</p>
                     </div>
                     <div class="activity-card">
                         <div class="activity-icon"><i class="fas fa-tv"></i></div>
                         <h3>Nonton</h3>
-                        <p>Nonton pokok nya nonton apa aja terserah lu.</p>
+                        <p>Nonton pokoknya nonton apa aja.</p>
                     </div>
                     <div class="activity-card">
                         <div class="activity-icon"><i class="fas fa-gamepad"></i></div>
                         <h3>Main Game</h3>
-                        <p>Mabar bareng kita coyyyy.</p>
+                        <p>Mabar bareng kita.</p>
                     </div>
                     <div class="activity-card">
                         <div class="activity-icon"><i class="fas fa-users"></i></div>
                         <h3>Sosialisasi</h3>
-                        <p>Ngobrol discord</p>
+                        <p>Ngobrol di Discord.</p>
                     </div>
                 </div>
             </div>
@@ -154,13 +154,13 @@
         <section id="admin">
             <h2 class="section-title">Admin</h2>
             <div class="carousel-container">
-                <button class="carousel-nav carousel-prev" id="carouselPrev">
+                <button class="carousel-nav carousel-prev" id="carouselPrev" aria-label="Previous">
                     <i class="fas fa-chevron-left"></i>
                 </button>
                 <div class="carousel-wrapper" id="adminCarousel">
                     <div class="carousel-track" id="adminTrack"></div>
                 </div>
-                <button class="carousel-nav carousel-next" id="carouselNext">
+                <button class="carousel-nav carousel-next" id="carouselNext" aria-label="Next">
                     <i class="fas fa-chevron-right"></i>
                 </button>
             </div>
@@ -174,22 +174,22 @@
             </div>
         </div>
 
-        <!-- CONTACT SECTION - GRID DI DESKTOP, CAROUSEL DI HP -->
+        <!-- CONTACT SECTION -->
         <section id="contact">
             <h2 class="section-title">Contact</h2>
             
-            <!-- Desktop Grid (muncul di layar >768px) -->
+            <!-- Desktop Grid -->
             <div class="contact-grid-desktop" id="contactGrid"></div>
             
-            <!-- Mobile Carousel (muncul di layar ≤768px) -->
+            <!-- Mobile Carousel -->
             <div class="carousel-container contact-carousel-mobile" id="contactCarouselMobile">
-                <button class="carousel-nav carousel-prev" id="contactPrev">
+                <button class="carousel-nav carousel-prev" id="contactPrev" aria-label="Previous">
                     <i class="fas fa-chevron-left"></i>
                 </button>
                 <div class="carousel-wrapper" id="contactCarousel">
                     <div class="carousel-track" id="contactTrack"></div>
                 </div>
-                <button class="carousel-nav carousel-next" id="contactNext">
+                <button class="carousel-nav carousel-next" id="contactNext" aria-label="Next">
                     <i class="fas fa-chevron-right"></i>
                 </button>
             </div>
@@ -200,7 +200,7 @@
         </footer>
     </div>
 
-    <!-- MODAL dengan QUOTES menyatu background dan fitur SCROLL -->
+    <!-- MODAL -->
     <div class="modal" id="memberModal">
         <div class="modal-content">
             <span class="close-modal" id="closeModal">&times;</span>
@@ -208,7 +208,6 @@
             <h2 id="modalName"></h2>
             <div class="modal-username" id="modalUsername"></div>
             
-            <!-- QUOTES langsung menyatu tanpa card -->
             <div class="modal-quote" id="modalQuote">
                 <i class="fas fa-quote-left"></i>
                 <span id="quoteText">Bersama kita bersinar</span>
