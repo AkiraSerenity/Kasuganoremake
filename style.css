@@ -865,7 +865,7 @@ section:not(.revealed) {
     max-width: 100%;
 }
 
-/* ===== MODAL ===== */
+/* ===== MODAL DENGAN SCROLL ===== */
 .modal {
     display: none;
     position: fixed;
@@ -878,6 +878,8 @@ section:not(.revealed) {
     z-index: 2000;
     align-items: center;
     justify-content: center;
+    overflow-y: auto; /* Tambahkan scroll untuk modal */
+    padding: 20px; /* Padding agar tidak menempel tepi */
 }
 
 .modal.active { 
@@ -894,16 +896,44 @@ section:not(.revealed) {
     text-align: center;
     position: relative;
     box-shadow: 0 25px 40px -10px #b57aed;
+    margin: auto; /* Pusat vertikal */
+    max-height: 90vh; /* Batasi tinggi modal */
+    overflow-y: auto; /* Scroll internal jika konten panjang */
+    scrollbar-width: thin; /* Scroll tipis */
+    scrollbar-color: #c47af0 #1c1326;
+}
+
+.modal-content::-webkit-scrollbar {
+    width: 4px;
+}
+
+.modal-content::-webkit-scrollbar-track {
+    background: #1c1326;
+    border-radius: 10px;
+}
+
+.modal-content::-webkit-scrollbar-thumb {
+    background: #c47af0;
+    border-radius: 10px;
 }
 
 .close-modal {
-    position: absolute;
-    top: 15px;
-    right: 20px;
+    position: sticky; /* Ubah dari absolute ke sticky */
+    top: 0;
+    float: right;
     font-size: 1.8rem;
     color: #ffb0e6;
     cursor: pointer;
     transition: all 0.2s;
+    z-index: 10;
+    background: #1e1230; /* Background agar tidak transparan saat scroll */
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    margin-bottom: 10px;
 }
 
 .close-modal:hover {
@@ -920,6 +950,7 @@ section:not(.revealed) {
     overflow: hidden;
     box-shadow: var(--shadow-avatar);
     transition: all 0.2s;
+    flex-shrink: 0; /* Mencegah avatar mengecil */
 }
 
 .modal-avatar:hover {
@@ -937,12 +968,14 @@ section:not(.revealed) {
     color: white;
     margin-bottom: 0.5rem;
     font-size: 1.8rem;
+    word-break: break-word;
 }
 
 .modal-username {
     color: #ffb0e6;
     margin-bottom: 1rem;
     font-size: 1rem;
+    word-break: break-word;
 }
 
 .modal-quote {
@@ -956,6 +989,13 @@ section:not(.revealed) {
     background: transparent;
     border: none;
     text-shadow: 0 0 10px rgba(255, 105, 194, 0.3);
+    max-height: 200px; /* Batasi tinggi quote */
+    overflow-y: auto; /* Scroll untuk quote panjang */
+    scrollbar-width: thin;
+}
+
+.modal-quote::-webkit-scrollbar {
+    width: 3px;
 }
 
 .modal-quote i {
@@ -963,11 +1003,13 @@ section:not(.revealed) {
     font-size: 1rem;
     margin: 0 0.5rem;
     opacity: 0.8;
+    vertical-align: middle;
 }
 
 .modal-quote span {
     display: inline-block;
     max-width: 90%;
+    vertical-align: middle;
 }
 
 .modal-tiktok {
@@ -981,6 +1023,8 @@ section:not(.revealed) {
     text-decoration: none;
     border: 1px solid #ff8ad0;
     transition: all 0.2s;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
 }
 
 .modal-tiktok:hover {
@@ -1206,3 +1250,4 @@ section:not(.revealed) {
         max-height: 400px;
     }
 }
+
