@@ -80,12 +80,15 @@
             `;
             
             card.addEventListener('click', () => {
+                // Isi konten modal
                 document.getElementById('modalAvatar').innerHTML = `<img src="${member.photo}" alt="${member.name}" onerror="this.style.display='none';">`;
                 document.getElementById('modalName').textContent = member.name;
                 document.getElementById('modalUsername').textContent = member.username;
                 document.getElementById('quoteText').textContent = member.quote || 'Bersama Kasugano, kita bersinar';
                 document.getElementById('modalTiktokLink').href = member.tiktok;
                 document.getElementById('modalTiktokText').textContent = member.username;
+                
+                // Tampilkan modal
                 modal.classList.add('active');
                 
                 // Nonaktifkan scroll pada body saat modal aktif
@@ -215,6 +218,14 @@
         }
     });
 
+    // Tutup modal dengan tombol Escape
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modal.classList.contains('active')) {
+            modal.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+    });
+
     // ========== NAVBAR (SCROLL SPY & TOGGLE) ==========
     function getNavbarHeight() {
         return navbar ? navbar.offsetHeight : 80;
@@ -248,6 +259,9 @@
     }
 
     function checkActiveSection() {
+        // Jangan update active section jika modal sedang aktif
+        if (modal.classList.contains('active')) return;
+        
         const scrollY = window.scrollY;
         const boundaries = getSectionBoundaries();
         
