@@ -143,16 +143,17 @@
     const searchInput = document.getElementById('searchMember');
     const modal = document.getElementById('memberModal');
     const closeModal = document.getElementById('closeModal');
+    const navToggle = document.getElementById('navToggle');
+    const navMenu = document.getElementById('navMenu');
 
-    // Cek apakah elemen ada sebelum diproses
+    // Cek elemen penting
     if (!memberContainer || !adminTrack || !contactGrid || !contactTrack || !modal || !closeModal) {
-        console.error('Elemen penting tidak ditemukan!');
+        console.error('Elemen tidak ditemukan!');
         return;
     }
 
     // ===== FUNGSI MODAL =====
     function openModal(member) {
-        // Set konten modal
         document.getElementById('modalAvatar').innerHTML = `<img src="${member.photo}" alt="${member.name}" onerror="this.style.display='none';">`;
         document.getElementById('modalName').textContent = member.name;
         document.getElementById('modalUsername').textContent = member.username;
@@ -160,7 +161,6 @@
         document.getElementById('modalTiktokLink').href = member.tiktok;
         document.getElementById('modalTiktokText').textContent = member.username;
         
-        // Tampilkan modal dan lock scroll
         modal.classList.add('active');
         document.body.classList.add('modal-open');
     }
@@ -170,7 +170,6 @@
         document.body.classList.remove('modal-open');
     }
 
-    // Event listener untuk modal
     closeModal.addEventListener('click', closeModalHandler);
     
     window.addEventListener('click', (e) => {
@@ -206,7 +205,6 @@
         });
     }
 
-    // Tampilkan member
     renderMembers(members);
 
     // ===== RENDER ADMINS =====
@@ -233,7 +231,6 @@
     contactTrack.innerHTML = '';
     
     contacts.forEach(contact => {
-        // Untuk desktop
         const cardDesktop = document.createElement('a');
         cardDesktop.href = contact.link;
         cardDesktop.target = '_blank';
@@ -245,7 +242,6 @@
         `;
         contactGrid.appendChild(cardDesktop);
 
-        // Untuk mobile
         const cardMobile = document.createElement('a');
         cardMobile.href = contact.link;
         cardMobile.target = '_blank';
@@ -265,13 +261,13 @@
 
     if (carouselPrev && adminCarousel) {
         carouselPrev.addEventListener('click', () => {
-            adminCarousel.scrollBy({ left: -300, behavior: 'smooth' });
+            adminCarousel.scrollBy({ left: -250, behavior: 'smooth' });
         });
     }
     
     if (carouselNext && adminCarousel) {
         carouselNext.addEventListener('click', () => {
-            adminCarousel.scrollBy({ left: 300, behavior: 'smooth' });
+            adminCarousel.scrollBy({ left: 250, behavior: 'smooth' });
         });
     }
 
@@ -281,17 +277,17 @@
 
     if (contactPrev && contactCarousel) {
         contactPrev.addEventListener('click', () => {
-            contactCarousel.scrollBy({ left: -300, behavior: 'smooth' });
+            contactCarousel.scrollBy({ left: -250, behavior: 'smooth' });
         });
     }
     
     if (contactNext && contactCarousel) {
         contactNext.addEventListener('click', () => {
-            contactCarousel.scrollBy({ left: 300, behavior: 'smooth' });
+            contactCarousel.scrollBy({ left: 250, behavior: 'smooth' });
         });
     }
 
-    // ===== SEARCH FUNCTION =====
+    // ===== SEARCH =====
     if (searchInput) {
         searchInput.addEventListener('input', (e) => {
             const keyword = e.target.value.toLowerCase().trim();
@@ -308,9 +304,6 @@
     }
 
     // ===== NAVBAR TOGGLE =====
-    const navToggle = document.getElementById('navToggle');
-    const navMenu = document.getElementById('navMenu');
-
     if (navToggle && navMenu) {
         navToggle.addEventListener('click', (e) => {
             e.stopPropagation();
@@ -319,7 +312,6 @@
                 '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
         });
 
-        // Close menu saat klik di luar
         document.addEventListener('click', (e) => {
             if (!navToggle.contains(e.target) && !navMenu.contains(e.target)) {
                 navMenu.classList.remove('active');
@@ -337,17 +329,15 @@
             
             const targetId = link.dataset.target;
             
-            // Tutup menu mobile
             if (navMenu && navToggle) {
                 navMenu.classList.remove('active');
                 navToggle.innerHTML = '<i class="fas fa-bars"></i>';
             }
             
-            // Scroll ke section
             const targetElement = document.getElementById(targetId);
             if (targetElement) {
                 const navbarHeight = document.querySelector('.navbar-modern').offsetHeight;
-                const targetPosition = targetElement.offsetTop - navbarHeight - 20;
+                const targetPosition = targetElement.offsetTop - navbarHeight - 15;
                 
                 window.scrollTo({ 
                     top: targetId === 'home' ? 0 : targetPosition, 
@@ -363,7 +353,7 @@
         const navbarHeight = document.querySelector('.navbar-modern').offsetHeight;
         
         document.querySelectorAll('section').forEach(section => {
-            const sectionTop = section.offsetTop - navbarHeight - 20;
+            const sectionTop = section.offsetTop - navbarHeight - 15;
             const sectionBottom = sectionTop + section.offsetHeight;
             const sectionId = section.getAttribute('id');
             
@@ -382,5 +372,4 @@
 
     window.addEventListener('scroll', setActiveSection);
     window.addEventListener('load', setActiveSection);
-
 })();
