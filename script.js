@@ -34,7 +34,7 @@
             username: '@fuyii_npc', 
             tiktok: 'https://www.tiktok.com/@fuyii_npc', 
             photo: 'images/member5.png', 
-            quote: 'Belajar untuk memahami diri kita sendiri' 
+            quote: 'Belajar untuk memahami diri kira sendiri, terkadang kita tidak harus memahami seseorang, bahkan juga orang belum bisa memahami kita sepenuhnya,maka belajar lah untuk menerima kenyataan' 
         },
         { 
             name: 'Ezan', 
@@ -373,3 +373,4 @@
     window.addEventListener('scroll', setActiveSection);
     window.addEventListener('load', setActiveSection);
 })();
+
