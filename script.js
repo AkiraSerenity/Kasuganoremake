@@ -1,11 +1,13 @@
 (function() {
+    'use strict';
+
     // ===== DATA =====
     const members = [
         { name: 'Gery', username: '@gerysenwith_lapiskeju', tiktok: 'https://www.tiktok.com/@gerysenwith_lapiskeju', initial: 'G', photo: 'images/member1.jpg', quote: 'Kamu rimuru bukan?' },
         { name: 'Rora', username: '@roraxml', tiktok: 'https://www.tiktok.com/@kasugano_sora87', initial: 'S', photo: 'images/member2.jpeg', quote: 'Aku mah raja' },
         { name: 'Izabella', username: '@queen.izabellaz', tiktok: 'https://www.tiktok.com/@queen.izabellaz', initial: 'Q', photo: 'images/member3.jpeg', quote: 'Mending turu' },
         { name: 'Erie', username: '@kasugano_erie', tiktok: 'https://www.tiktok.com/@kasugano_erie', initial: 'E', photo: 'images/member4.jpg', quote: 'Gw butuh uang!!!' },
-        { name: 'Fuyi', username: '@fuyii_npc', tiktok: 'https://www.tiktok.com/@fuyii_npc', initial: 'F', photo: 'images/member5.png', quote: 'Belajar untuk memahami diri kira sendiri, terkadang kita tidak harus memahami seseorang, bahkan juga orang belum bisa memahami kita sepenuhnya,maka belajar lah untuk menerima kenyataan' },
+        { name: 'Fuyi', username: '@fuyii_npc', tiktok: 'https://www.tiktok.com/@fuyii_npc', initial: 'F', photo: 'images/member5.png', quote: 'Belajar untuk memahami diri kita sendiri, terkadang kita tidak harus memahami seseorang, bahkan juga orang belum bisa memahami kita sepenuhnya, maka belajarlah untuk menerima kenyataan' },
         { name: 'Ezan', username: '@ezan_xd', tiktok: 'https://www.tiktok.com/@ezan_xd', initial: 'E', photo: 'images/member6.png', quote: 'Sederhana tapi berarti, itulah keluarga.' },
         { name: 'V3iin', username: '@iyainirhmd', tiktok: 'https://www.tiktok.com/@iyainirhmd', initial: 'I', photo: 'images/member7.jpg', quote: 'bntr' },
         { name: 'Shaglen', username: '@xmj.shaglen', tiktok: 'https://www.tiktok.com/@xmj.shaglen', initial: 'X', photo: 'images/member8.jpg', quote: 'Id have' },
@@ -37,7 +39,7 @@
         { platform: 'Email', username: 'kasuganofamilyy@gmail.com', link: 'mailto:kasuganofamilyy@gmail.com', icon: 'far fa-envelope' }
     ];
 
-    // ===== ELEMENTS =====
+    // ===== DOM ELEMENTS =====
     const navbar = document.getElementById('navbar');
     const navItems = document.querySelectorAll('.nav-item');
     const navLinks = document.querySelectorAll('.nav-link');
@@ -53,174 +55,24 @@
     };
 
     const memberContainer = document.getElementById('memberContainer');
-    
-    // ===== SKELETON LOADING =====
-    memberContainer.classList.add('skeleton');
-    for (let i = 0; i < 9; i++) {
-        const skeletonCard = document.createElement('div');
-        skeletonCard.className = 'member-card skeleton';
-        skeletonCard.style.height = '180px';
-        memberContainer.appendChild(skeletonCard);
-    }
-
-    setTimeout(() => {
-        memberContainer.classList.remove('skeleton');
-        memberContainer.innerHTML = '';
-        renderMembers(members);
-    }, 800);
-
-    // ===== RENDER FUNCTIONS =====
-    function renderMembers(filteredMembers = members) {
-        memberContainer.innerHTML = '';
-        
-        if (filteredMembers.length === 0) {
-            memberContainer.innerHTML = '<div class="member-not-found"><i class="fas fa-user-slash"></i><p>Anggota tidak ditemukan</p></div>';
-            return;
-        }
-        
-        filteredMembers.forEach(member => {
-            const card = document.createElement('div');
-            card.className = 'member-card';
-            card.innerHTML = `
-                <div class="member-avatar">
-                    <img src="${member.photo}" alt="${member.name}" onerror="this.style.display='none'; this.innerHTML='${member.initial}';">
-                </div>
-                <div class="member-info">
-                    <h4>${member.name}</h4>
-                    <div class="username">${member.username}</div>
-                </div>
-            `;
-            
-            card.addEventListener('click', () => {
-                document.getElementById('modalAvatar').innerHTML = `<img src="${member.photo}" alt="${member.name}" onerror="this.style.display='none';">`;
-                document.getElementById('modalName').textContent = member.name;
-                document.getElementById('modalUsername').textContent = member.username;
-                document.getElementById('quoteText').textContent = member.quote || 'Bersama Kasugano, kita bersinar';
-                document.getElementById('modalTiktokLink').href = member.tiktok;
-                document.getElementById('modalTiktokText').textContent = member.username;
-                
-                const modal = document.getElementById('memberModal');
-                modal.classList.add('active');
-                document.body.style.overflow = 'hidden';
-            });
-            
-            memberContainer.appendChild(card);
-        });
-    }
-
-    // Render Admin
-    const adminTrack = document.getElementById('adminTrack');
-    adminTrack.innerHTML = '';
-    
-    admins.forEach(admin => {
-        const card = document.createElement('div');
-        card.className = 'admin-card';
-        card.innerHTML = `
-            <div class="admin-avatar">
-                <img src="${admin.photo}" alt="${admin.name}" onerror="this.style.display='none'; this.innerHTML='${admin.initial}';">
-            </div>
-            <div class="admin-info">
-                <h4>${admin.name}</h4>
-                <div class="admin-username">${admin.username}</div>
-                <div class="admin-role">${admin.role}</div>
-                <a href="${admin.tiktok}" target="_blank" class="admin-tiktok-link"><i class="fab fa-tiktok"></i> TikTok</a>
-            </div>
-        `;
-        adminTrack.appendChild(card);
-    });
-
-    // Render Contact
-    const contactGrid = document.getElementById('contactGrid');
-    const contactTrack = document.getElementById('contactTrack');
-    
-    contactGrid.innerHTML = '';
-    contacts.forEach(contact => {
-        const card = document.createElement('a');
-        card.href = contact.link;
-        card.target = '_blank';
-        card.className = 'contact-card';
-        card.innerHTML = `
-            <i class="${contact.icon}"></i>
-            <h3>${contact.platform}</h3>
-            <span>${contact.username}</span>
-        `;
-        contactGrid.appendChild(card);
-    });
-
-    contactTrack.innerHTML = '';
-    contacts.forEach(contact => {
-        const card = document.createElement('a');
-        card.href = contact.link;
-        card.target = '_blank';
-        card.className = 'contact-card';
-        card.innerHTML = `
-            <i class="${contact.icon}"></i>
-            <h3>${contact.platform}</h3>
-            <span>${contact.username}</span>
-        `;
-        contactTrack.appendChild(card);
-    });
-
-    // ===== CAROUSEL NAVIGATION =====
-    const adminCarousel = document.getElementById('adminCarousel');
-    document.getElementById('carouselPrev').addEventListener('click', () => {
-        adminCarousel.scrollBy({ left: -300, behavior: 'smooth' });
-    });
-    document.getElementById('carouselNext').addEventListener('click', () => {
-        adminCarousel.scrollBy({ left: 300, behavior: 'smooth' });
-    });
-
-    const contactCarousel = document.getElementById('contactCarousel');
-    document.getElementById('contactPrev').addEventListener('click', () => {
-        contactCarousel.scrollBy({ left: -300, behavior: 'smooth' });
-    });
-    document.getElementById('contactNext').addEventListener('click', () => {
-        contactCarousel.scrollBy({ left: 300, behavior: 'smooth' });
-    });
-
-    // ===== SEARCH MEMBER =====
-    document.getElementById('searchMember').addEventListener('input', (e) => {
-        const keyword = e.target.value.toLowerCase().trim();
-        if (keyword === '') {
-            renderMembers(members);
-        } else {
-            const filtered = members.filter(m => 
-                m.name.toLowerCase().includes(keyword) || 
-                m.username.toLowerCase().includes(keyword)
-            );
-            renderMembers(filtered);
-        }
-    });
-
-    // ===== MODAL =====
+    const searchInput = document.getElementById('searchMember');
     const modal = document.getElementById('memberModal');
     const closeModal = document.getElementById('closeModal');
-    
-    function closeModalHandler() {
-        modal.classList.remove('active');
-        document.body.style.overflow = '';
-    }
-    
-    closeModal.addEventListener('click', closeModalHandler);
-    
-    window.addEventListener('click', (e) => {
-        if (e.target === modal) closeModalHandler();
-    });
-    
-    modal.addEventListener('wheel', (e) => {
-        e.stopPropagation();
-    });
+    const modalAvatar = document.getElementById('modalAvatar');
+    const modalName = document.getElementById('modalName');
+    const modalUsername = document.getElementById('modalUsername');
+    const quoteText = document.getElementById('quoteText');
+    const modalTiktokLink = document.getElementById('modalTiktokLink');
+    const modalTiktokText = document.getElementById('modalTiktokText');
 
-    // ===== NAVBAR FUNCTIONS =====
-    function getNavbarHeight() {
-        return navbar ? navbar.offsetHeight : 80;
-    }
+    // ===== UTILITY FUNCTIONS =====
+    const getNavbarHeight = () => navbar ? navbar.offsetHeight : 80;
 
-    function updateScrollPadding() {
-        document.documentElement.style.scrollPaddingTop = (getNavbarHeight() + 20) + 'px';
-    }
+    const updateScrollPadding = () => {
+        document.documentElement.style.scrollPaddingTop = `${getNavbarHeight() + 20}px`;
+    };
 
-    function setActiveSection(sectionId) {
+    const setActiveSection = (sectionId) => {
         navItems.forEach(item => {
             const link = item.querySelector('.nav-link');
             if (link && link.dataset.target === sectionId) {
@@ -229,9 +81,9 @@
                 item.classList.remove('active');
             }
         });
-    }
+    };
 
-    function getSectionBoundaries() {
+    const getSectionBoundaries = () => {
         const navbarHeight = getNavbarHeight();
         
         return {
@@ -241,9 +93,9 @@
             admin: { start: sections.admin.offsetTop - navbarHeight - 20, end: sections.contact.offsetTop - navbarHeight - 20 },
             contact: { start: sections.contact.offsetTop - navbarHeight - 20, end: Infinity }
         };
-    }
+    };
 
-    function checkActiveSection() {
+    const checkActiveSection = () => {
         const scrollY = window.scrollY;
         const boundaries = getSectionBoundaries();
         
@@ -258,7 +110,175 @@
         } else {
             setActiveSection('contact');
         }
+    };
+
+    // ===== RENDER FUNCTIONS =====
+    const renderMembers = (filteredMembers = members) => {
+        memberContainer.innerHTML = '';
+        
+        if (filteredMembers.length === 0) {
+            memberContainer.innerHTML = '<div class="member-not-found"><i class="fas fa-user-slash"></i><p>Anggota tidak ditemukan</p></div>';
+            return;
+        }
+        
+        filteredMembers.forEach(member => {
+            const card = document.createElement('div');
+            card.className = 'member-card';
+            card.innerHTML = `
+                <div class="member-avatar">
+                    <img src="${member.photo}" alt="${member.name}" loading="lazy" onerror="this.style.display='none'; this.innerHTML='${member.initial}';">
+                </div>
+                <div class="member-info">
+                    <h4>${member.name}</h4>
+                    <div class="username">${member.username}</div>
+                </div>
+            `;
+            
+            card.addEventListener('click', () => {
+                modalAvatar.innerHTML = `<img src="${member.photo}" alt="${member.name}" loading="lazy" onerror="this.style.display='none';">`;
+                modalName.textContent = member.name;
+                modalUsername.textContent = member.username;
+                quoteText.textContent = member.quote || 'Bersama Kasugano, kita bersinar';
+                modalTiktokLink.href = member.tiktok;
+                modalTiktokText.textContent = member.username;
+                modal.classList.add('active');
+                document.body.style.overflow = 'hidden'; // Prevent background scroll
+            });
+            
+            memberContainer.appendChild(card);
+        });
+    };
+
+    // Skeleton loading
+    memberContainer.classList.add('skeleton');
+    for (let i = 0; i < 9; i++) {
+        const skeletonCard = document.createElement('div');
+        skeletonCard.className = 'member-card skeleton';
+        skeletonCard.style.height = '180px';
+        memberContainer.appendChild(skeletonCard);
     }
+
+    setTimeout(() => {
+        memberContainer.classList.remove('skeleton');
+        memberContainer.innerHTML = '';
+        renderMembers(members);
+    }, 800);
+
+    // Render Admin Carousel
+    const adminTrack = document.getElementById('adminTrack');
+    adminTrack.innerHTML = '';
+    
+    admins.forEach(admin => {
+        const card = document.createElement('div');
+        card.className = 'admin-card';
+        card.innerHTML = `
+            <div class="admin-avatar">
+                <img src="${admin.photo}" alt="${admin.name}" loading="lazy" onerror="this.style.display='none'; this.innerHTML='${admin.initial}';">
+            </div>
+            <div class="admin-info">
+                <h4>${admin.name}</h4>
+                <div class="admin-username">${admin.username}</div>
+                <div class="admin-role">${admin.role}</div>
+                <a href="${admin.tiktok}" target="_blank" rel="noopener noreferrer" class="admin-tiktok-link"><i class="fab fa-tiktok"></i> TikTok</a>
+            </div>
+        `;
+        adminTrack.appendChild(card);
+    });
+
+    // Render Contact Grid & Carousel
+    const contactGrid = document.getElementById('contactGrid');
+    const contactTrack = document.getElementById('contactTrack');
+    
+    contactGrid.innerHTML = '';
+    contacts.forEach(contact => {
+        const card = document.createElement('a');
+        card.href = contact.link;
+        card.target = '_blank';
+        card.rel = 'noopener noreferrer';
+        card.className = 'contact-card';
+        card.innerHTML = `
+            <i class="${contact.icon}"></i>
+            <h3>${contact.platform}</h3>
+            <span>${contact.username}</span>
+        `;
+        contactGrid.appendChild(card);
+    });
+
+    contactTrack.innerHTML = '';
+    contacts.forEach(contact => {
+        const card = document.createElement('a');
+        card.href = contact.link;
+        card.target = '_blank';
+        card.rel = 'noopener noreferrer';
+        card.className = 'contact-card';
+        card.innerHTML = `
+            <i class="${contact.icon}"></i>
+            <h3>${contact.platform}</h3>
+            <span>${contact.username}</span>
+        `;
+        contactTrack.appendChild(card);
+    });
+
+    // ===== CAROUSEL CONTROLS =====
+    const adminCarousel = document.getElementById('adminCarousel');
+    document.getElementById('carouselPrev').addEventListener('click', () => {
+        adminCarousel.scrollBy({ left: -300, behavior: 'smooth' });
+    });
+    document.getElementById('carouselNext').addEventListener('click', () => {
+        adminCarousel.scrollBy({ left: 300, behavior: 'smooth' });
+    });
+
+    const contactCarousel = document.getElementById('contactCarousel');
+    const contactPrev = document.getElementById('contactPrev');
+    const contactNext = document.getElementById('contactNext');
+    
+    if (contactPrev && contactNext) {
+        contactPrev.addEventListener('click', () => {
+            contactCarousel.scrollBy({ left: -300, behavior: 'smooth' });
+        });
+        contactNext.addEventListener('click', () => {
+            contactCarousel.scrollBy({ left: 300, behavior: 'smooth' });
+        });
+    }
+
+    // ===== SEARCH =====
+    if (searchInput) {
+        searchInput.addEventListener('input', (e) => {
+            const keyword = e.target.value.toLowerCase().trim();
+            if (keyword === '') {
+                renderMembers(members);
+            } else {
+                const filtered = members.filter(m => 
+                    m.name.toLowerCase().includes(keyword) || 
+                    m.username.toLowerCase().includes(keyword)
+                );
+                renderMembers(filtered);
+            }
+        });
+    }
+
+    // ===== MODAL =====
+    if (closeModal) {
+        closeModal.addEventListener('click', () => {
+            modal.classList.remove('active');
+            document.body.style.overflow = '';
+        });
+    }
+
+    window.addEventListener('click', (e) => {
+        if (e.target === modal) {
+            modal.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+    });
+
+    // Prevent background scroll when modal open
+    window.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modal.classList.contains('active')) {
+            modal.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+    });
 
     // ===== NAVBAR TOGGLE =====
     if (navToggle) {
@@ -270,12 +290,11 @@
         });
     }
 
+    // Close navbar when clicking outside
     document.addEventListener('click', (e) => {
-        if (window.innerWidth <= 768) {
-            if (navMenu && navToggle && !navToggle.contains(e.target) && !navMenu.contains(e.target)) {
-                navMenu.classList.remove('active');
-                navToggle.innerHTML = '<i class="fas fa-bars"></i>';
-            }
+        if (navMenu && navToggle && !navToggle.contains(e.target) && !navMenu.contains(e.target)) {
+            navMenu.classList.remove('active');
+            navToggle.innerHTML = '<i class="fas fa-bars"></i>';
         }
     });
 
@@ -287,7 +306,8 @@
             const targetId = link.dataset.target;
             const navbarHeight = getNavbarHeight();
             
-            if (window.innerWidth <= 768 && navMenu) {
+            // Close mobile menu
+            if (navMenu) {
                 navMenu.classList.remove('active');
                 if (navToggle) navToggle.innerHTML = '<i class="fas fa-bars"></i>';
             }
@@ -304,53 +324,57 @@
         });
     });
 
-    // ===== PARALLAX =====
+    // ===== PARALLAX EFFECT =====
     const heroImg = document.getElementById('heroImg');
     if (heroImg) {
+        let ticking = false;
         window.addEventListener('scroll', () => {
-            const scrollY = window.scrollY;
-            heroImg.style.transform = `translateY(${scrollY * 0.2}px)`;
+            if (!ticking) {
+                window.requestAnimationFrame(() => {
+                    const scrollY = window.scrollY;
+                    heroImg.style.transform = `translateY(${scrollY * 0.2}px)`;
+                    ticking = false;
+                });
+                ticking = true;
+            }
         });
     }
 
-    // ===== SCROLL REVEAL =====
+    // ===== SCROLL REVEAL OBSERVER =====
     const revealSections = document.querySelectorAll('section');
     
     const revealObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('revealed');
+            } else {
+                entry.target.classList.remove('revealed');
             }
         });
-    }, { threshold: 0.15 });
+    }, { threshold: 0.15, rootMargin: '0px' });
 
     revealSections.forEach(section => {
         revealObserver.observe(section);
     });
 
-    // ===== SCROLL EVENT =====
+    // ===== SCROLL ACTIVE SECTION =====
     let scrollTimeout;
     window.addEventListener('scroll', () => {
         if (scrollTimeout) cancelAnimationFrame(scrollTimeout);
         scrollTimeout = requestAnimationFrame(checkActiveSection);
     });
 
-    // ===== RESIZE EVENT =====
+    // ===== RESIZE HANDLER =====
     let resizeTimeout;
     window.addEventListener('resize', () => {
         if (resizeTimeout) clearTimeout(resizeTimeout);
         resizeTimeout = setTimeout(() => {
             updateScrollPadding();
             checkActiveSection();
-            
-            if (window.innerWidth > 768 && navMenu) {
-                navMenu.classList.remove('active');
-                if (navToggle) navToggle.innerHTML = '<i class="fas fa-bars"></i>';
-            }
         }, 100);
     });
 
-    // ===== INITIALIZATION =====
+    // ===== INITIAL SETUP =====
     window.scrollTo(0, 0);
     updateScrollPadding();
     
@@ -362,4 +386,16 @@
         }, 200);
     });
 
+    // ===== LAZY LOADING FALLBACK =====
+    if ('loading' in HTMLImageElement.prototype) {
+        const images = document.querySelectorAll('img[loading="lazy"]');
+        images.forEach(img => {
+            img.loading = 'lazy';
+        });
+    } else {
+        // Fallback untuk browser lama
+        const script = document.createElement('script');
+        script.src = 'https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.3.2/lazysizes.min.js';
+        document.body.appendChild(script);
+    }
 })();
