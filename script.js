@@ -1,4 +1,5 @@
 (function() {
+    // Data anggota, admin, dan kontak
     const members = [
         { name: 'Gery', username: '@gerysenwith_lapiskeju', tiktok: 'https://www.tiktok.com/@gerysenwith_lapiskeju', initial: 'G', photo: 'images/member1.jpg', quote: 'Kamu rimuru bukan?' },
         { name: 'Rora', username: '@roraxml', tiktok: 'https://www.tiktok.com/@kasugano_sora87', initial: 'S', photo: 'images/member2.jpeg', quote: 'Aku mah raja' },
@@ -36,6 +37,7 @@
         { platform: 'Email', username: 'kasuganofamilyy@gmail.com', link: 'kasuganofamilyy@gmail.com', icon: 'far fa-envelope' }
     ];
 
+    // ========== ELEMEN DOM ==========
     const navbar = document.getElementById('navbar');
     const navItems = document.querySelectorAll('.nav-item');
     const navLinks = document.querySelectorAll('.nav-link');
@@ -51,21 +53,11 @@
     };
 
     const memberContainer = document.getElementById('memberContainer');
-    
-    memberContainer.classList.add('skeleton');
-    for (let i = 0; i < 9; i++) {
-        const skeletonCard = document.createElement('div');
-        skeletonCard.className = 'member-card skeleton';
-        skeletonCard.style.height = '180px';
-        memberContainer.appendChild(skeletonCard);
-    }
+    const searchInput = document.getElementById('searchMember');
+    const modal = document.getElementById('memberModal');
+    const closeModalBtn = document.getElementById('closeModal');
 
-    setTimeout(() => {
-        memberContainer.classList.remove('skeleton');
-        memberContainer.innerHTML = '';
-        renderMembers(members);
-    }, 800);
-
+    // ========== FUNGSI RENDER MEMBER ==========
     function renderMembers(filteredMembers = members) {
         memberContainer.innerHTML = '';
         
@@ -94,13 +86,31 @@
                 document.getElementById('quoteText').textContent = member.quote || 'Bersama Kasugano, kita bersinar';
                 document.getElementById('modalTiktokLink').href = member.tiktok;
                 document.getElementById('modalTiktokText').textContent = member.username;
-                document.getElementById('memberModal').classList.add('active');
+                modal.classList.add('active');
+                
+                // Nonaktifkan scroll pada body saat modal aktif
+                document.body.style.overflow = 'hidden';
             });
             
             memberContainer.appendChild(card);
         });
     }
 
+    // ========== LOADING SKELETON & RENDER MEMBER ==========
+    memberContainer.classList.add('skeleton');
+    for (let i = 0; i < 9; i++) {
+        const skeletonCard = document.createElement('div');
+        skeletonCard.className = 'member-card skeleton';
+        skeletonCard.style.height = '180px';
+        memberContainer.appendChild(skeletonCard);
+    }
+
+    setTimeout(() => {
+        memberContainer.classList.remove('skeleton');
+        renderMembers(members);
+    }, 800);
+
+    // ========== RENDER ADMIN ==========
     const adminTrack = document.getElementById('adminTrack');
     adminTrack.innerHTML = '';
     
@@ -121,9 +131,11 @@
         adminTrack.appendChild(card);
     });
 
+    // ========== RENDER CONTACT ==========
     const contactGrid = document.getElementById('contactGrid');
     const contactTrack = document.getElementById('contactTrack');
     
+    // Desktop Grid
     contactGrid.innerHTML = '';
     contacts.forEach(contact => {
         const card = document.createElement('a');
@@ -138,6 +150,7 @@
         contactGrid.appendChild(card);
     });
 
+    // Mobile Carousel Track
     contactTrack.innerHTML = '';
     contacts.forEach(contact => {
         const card = document.createElement('a');
@@ -152,6 +165,8 @@
         contactTrack.appendChild(card);
     });
 
+    // ========== CAROUSEL NAVIGATION ==========
+    // Admin Carousel
     const adminCarousel = document.getElementById('adminCarousel');
     document.getElementById('carouselPrev').addEventListener('click', () => {
         adminCarousel.scrollBy({ left: -300, behavior: 'smooth' });
@@ -160,6 +175,7 @@
         adminCarousel.scrollBy({ left: 300, behavior: 'smooth' });
     });
 
+    // Contact Carousel (Mobile)
     const contactCarousel = document.getElementById('contactCarousel');
     document.getElementById('contactPrev').addEventListener('click', () => {
         contactCarousel.scrollBy({ left: -300, behavior: 'smooth' });
@@ -168,7 +184,8 @@
         contactCarousel.scrollBy({ left: 300, behavior: 'smooth' });
     });
 
-    document.getElementById('searchMember').addEventListener('input', (e) => {
+    // ========== SEARCH MEMBER ==========
+    searchInput.addEventListener('input', (e) => {
         const keyword = e.target.value.toLowerCase().trim();
         if (keyword === '') {
             renderMembers(members);
@@ -181,14 +198,24 @@
         }
     });
 
-    const modal = document.getElementById('memberModal');
-    document.getElementById('closeModal').addEventListener('click', () => {
+    // ========== MODAL ==========
+    // Tutup modal dengan tombol close
+    closeModalBtn.addEventListener('click', () => {
         modal.classList.remove('active');
-    });
-    window.addEventListener('click', (e) => {
-        if (e.target === modal) modal.classList.remove('active');
+        // Aktifkan kembali scroll pada body
+        document.body.style.overflow = '';
     });
 
+    // Tutup modal dengan klik di luar area modal
+    window.addEventListener('click', (e) => {
+        if (e.target === modal) {
+            modal.classList.remove('active');
+            // Aktifkan kembali scroll pada body
+            document.body.style.overflow = '';
+        }
+    });
+
+    // ========== NAVBAR (SCROLL SPY & TOGGLE) ==========
     function getNavbarHeight() {
         return navbar ? navbar.offsetHeight : 80;
     }
@@ -237,6 +264,7 @@
         }
     }
 
+    // Toggle Navbar Mobile
     if (navToggle) {
         navToggle.addEventListener('click', (e) => {
             e.stopPropagation();
@@ -246,6 +274,7 @@
         });
     }
 
+    // Tutup navbar jika klik di luar
     document.addEventListener('click', (e) => {
         if (navMenu && navToggle && !navToggle.contains(e.target) && !navMenu.contains(e.target)) {
             navMenu.classList.remove('active');
@@ -253,6 +282,7 @@
         }
     });
 
+    // Smooth scroll saat link navbar diklik
     navLinks.forEach(link => {
         link.addEventListener('click', (e) => {
             e.preventDefault();
@@ -277,6 +307,7 @@
         });
     });
 
+    // Efek parallax hero
     const heroImg = document.getElementById('heroImg');
     if (heroImg) {
         window.addEventListener('scroll', () => {
@@ -285,6 +316,7 @@
         });
     }
 
+    // ========== SCROLL REVEAL ANIMATION ==========
     const revealSections = document.querySelectorAll('section');
     
     const revealObserver = new IntersectionObserver((entries) => {
@@ -301,6 +333,7 @@
         revealObserver.observe(section);
     });
 
+    // ========== EVENT LISTENER UNTUK SCROLL & RESIZE ==========
     let scrollTimeout;
     window.addEventListener('scroll', () => {
         if (scrollTimeout) cancelAnimationFrame(scrollTimeout);
@@ -316,6 +349,7 @@
         }, 100);
     });
 
+    // Inisialisasi awal
     window.scrollTo(0, 0);
     updateScrollPadding();
     
