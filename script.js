@@ -1,1362 +1,372 @@
-/* ===== RESET & VARIABLES ===== */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-html {
-    scroll-behavior: smooth;
-}
-
-body {
-    font-family: 'Inter', sans-serif;
-    background: #0a0a1a;
-    color: #f2eaff;
-    line-height: 1.5;
-    position: relative;
-    min-height: 100vh;
-}
-
-/* Gradient Background + Pattern */
-body::before {
-    content: "";
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: radial-gradient(circle at 20% 30%, rgba(147, 51, 234, 0.7) 0%, transparent 40%),
-                radial-gradient(circle at 80% 70%, rgba(236, 72, 153, 0.6) 0%, transparent 45%),
-                linear-gradient(145deg, #0a0a1a 0%, #1e1035 70%, #231042 100%);
-    z-index: -2;
-}
-
-/* ===== PATTERN GRID YANG SESUAI LEBAR LAYAR ===== */
-body::after {
-    content: "";
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: 
-        linear-gradient(rgba(200, 130, 255, 0.05) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(200, 130, 255, 0.05) 1px, transparent 1px),
-        radial-gradient(2px 2px at 10% 20%, rgba(255, 255, 255, 0.5), transparent 3px),
-        radial-gradient(3px 3px at 30% 70%, #ffb0e6, transparent 4px),
-        radial-gradient(2px 2px at 50% 30%, #c47af0, transparent 3px),
-        radial-gradient(4px 4px at 80% 60%, #ff69c2, transparent 5px),
-        radial-gradient(2px 2px at 90% 15%, #b57aed, transparent 3px);
-    background-repeat: repeat, repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat;
-    background-size: 40px 40px, 40px 40px, auto, auto, auto, auto, auto;
-    pointer-events: none;
-    z-index: -1;
-}
-
-/* Tablet (lebih besar dari 600px) */
-@media (min-width: 601px) {
-    body::after {
-        background-size: 60px 60px, 60px 60px, auto, auto, auto, auto, auto;
-    }
-}
-
-/* Desktop kecil (lebih besar dari 900px) */
-@media (min-width: 901px) {
-    body::after {
-        background-size: 80px 80px, 80px 80px, auto, auto, auto, auto, auto;
-    }
-}
-
-/* Desktop besar (lebih besar dari 1200px) */
-@media (min-width: 1201px) {
-    body::after {
-        background-size: 100px 100px, 100px 100px, auto, auto, auto, auto, auto;
-    }
-}
-
-:root {
-    --purple-deep: #7b2da8;
-    --purple-soft: #b57aed;
-    --pink-vibrant: #ff69c2;
-    --pink-light: #ffb8f0;
-    --black-rich: #0a0a12;
-    --white-soft: #f7f0ff;
-    --glass-edge: rgba(255, 110, 210, 0.3);
-    --gradient-pink-purple: linear-gradient(135deg, #ff69c2, #b57aed);
-    --gradient-glow: linear-gradient(90deg, #ff69c2, #b57aed, #ff69c2);
-    --shadow-pink-soft: 0 15px 30px -5px rgba(255, 105, 194, 0.5);
-    --shadow-purple-soft: 0 15px 30px -5px rgba(156, 86, 255, 0.5);
-    --shadow-avatar: 0 10px 25px -3px rgba(255, 105, 194, 0.6);
-}
-
-::-webkit-scrollbar { width: 6px; }
-::-webkit-scrollbar-track { background: #1c1326; }
-::-webkit-scrollbar-thumb { background: #c47af0; border-radius: 10px; }
-
-/* ===== NAVBAR - TANPA INDICATOR AKTIF ===== */
-.navbar-modern {
-    position: fixed;
-    top: 2%;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 90%;
-    max-width: 1000px;
-    z-index: 1000;
-}
-
-.nav-container {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background: rgba(20, 10, 35, 0.8);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    border: 1px solid rgba(255, 105, 194, 0.25);
-    border-radius: 60px;
-    padding: 0.6rem 1.5rem;
-    box-shadow: 0 15px 40px -10px rgba(0, 0, 0, 0.6);
-}
-
-.nav-logo {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.logo-icon {
-    width: 38px;
-    height: 38px;
-    border-radius: 50%;
-    background: var(--gradient-pink-purple);
-    overflow: hidden;
-    box-shadow: var(--shadow-avatar);
-}
-
-.logo-icon img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.logo-text {
-    font-size: 1.5rem;
-    font-weight: 800;
-    background: linear-gradient(135deg, #ffffff, #ffb8f0, #c47af0);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-}
-
-.nav-menu {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-}
-
-.nav-list {
-    display: flex;
-    gap: 0.3rem;
-    list-style: none;
-}
-
-.nav-link {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    padding: 0.7rem 1.2rem;
-    color: rgba(255, 255, 255, 0.7);
-    text-decoration: none;
-    font-weight: 600;
-    font-size: 0.95rem;
-    border-radius: 40px;
-    transition: all 0.2s ease;
-}
-
-.nav-link i {
-    font-size: 1.1rem;
-    color: #ff9ad0;
-}
-
-.nav-link:hover {
-    transform: scale(1.08);
-    box-shadow: var(--shadow-pink-soft);
-    background: rgba(255, 105, 194, 0.15);
-    color: white;
-}
-
-/* ACTIVE STATE - HANYA WARNA TEKS, TANPA BACKGROUND/INDICATOR */
-.nav-item.active .nav-link {
-    color: white;
-    background: transparent;
-}
-
-.nav-toggle {
-    display: none;
-    width: 40px;
-    height: 40px;
-    background: rgba(255, 105, 194, 0.2);
-    border: 1px solid rgba(255, 105, 194, 0.3);
-    border-radius: 50%;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    font-size: 1.2rem;
-    cursor: pointer;
-    transition: all 0.2s;
-}
-
-.nav-toggle:hover {
-    transform: scale(1.1);
-    box-shadow: var(--shadow-pink-soft);
-}
-
-/* ===== HOME SECTION ===== */
-.home-section {
-    scroll-margin-top: 0;
-    position: relative;
-    overflow: hidden;
-}
-
-.hero-background {
-    position: relative;
-    width: 100%;
-    min-height: 500px;
-    overflow: hidden;
-    border-radius: 0 0 40px 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding-top: 30px;
-}
-
-.hero-bg-img {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    filter: blur(3px) brightness(0.5);
-    z-index: 1;
-    transition: transform 0.1s ease-out;
-}
-
-.hero-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(180deg, rgba(10,5,20,0.3) 0%, rgba(90,30,150,0.45) 40%, rgba(120,40,180,0.6) 70%, rgba(20,5,40,0.9) 100%);
-    z-index: 2;
-}
-
-.hero-content {
-    position: relative;
-    z-index: 3;
-    text-align: center;
-    color: white;
-    padding: 4rem 1rem 3rem;
-}
-
-.hero-profile-photo {
-    width: 220px;
-    height: 220px;
-    border-radius: 24px;
-    background: var(--gradient-pink-purple);
-    margin: 50px auto 2rem;
-    overflow: hidden;
-    box-shadow: var(--shadow-avatar);
-    transition: all 0.3s;
-}
-
-.hero-profile-photo:hover {
-    transform: scale(1.03);
-    box-shadow: 0 20px 35px -5px #ff69c2;
-}
-
-.hero-profile-photo img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.hero-content h1 {
-    font-size: 2.8rem;
-    font-weight: 800;
-    text-shadow: 0 0 20px #ff6ac2;
-    margin-bottom: 0.8rem;
-}
-
-.hero-content p {
-    font-size: 1.1rem;
-    max-width: 600px;
-    margin: 0 auto;
-    background: rgba(0,0,0,0.3);
-    backdrop-filter: blur(4px);
-    padding: 0.8rem 1.5rem;
-    border-radius: 50px;
-    border: 1px solid #ff9ad0;
-}
-
-/* ===== MAIN CONTAINER ===== */
-.main {
-    width: 90%;
-    max-width: 1000px;
-    margin: 0 auto;
-    padding: 2rem 0;
-}
-
-/* SCROLL REVEAL ANIMATION - BISA DIULANG */
-section {
-    margin-bottom: 5rem;
-    opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 0.7s cubic-bezier(0.2, 0.9, 0.3, 1), transform 0.7s cubic-bezier(0.2, 0.9, 0.3, 1);
-}
-
-section.revealed {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-section:not(.revealed) {
-    opacity: 0;
-    transform: translateY(30px);
-}
-
-.section-title {
-    font-size: 2rem;
-    font-weight: 700;
-    background: linear-gradient(145deg, #ffffff, #e9c8ff);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    text-align: center;
-    margin-bottom: 1.5rem;
-    padding-bottom: 0.8rem;
-    position: relative;
-}
-
-.section-title::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 150px;
-    height: 4px;
-    background: var(--gradient-glow);
-    border-radius: 4px;
-}
-
-/* ===== EL FAMILIA ===== */
-.el-familia-wrapper {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 1rem;
-}
-
-.el-familia-badge {
-    background: linear-gradient(125deg, #2f1b4b, #190f28);
-    padding: 0.5rem 2rem;
-    border-radius: 60px;
-    border: 2px solid #ff98dc;
-    box-shadow: 0 0 20px #ff69c280;
-    display: inline-block;
-    transition: all 0.2s;
-}
-
-.el-familia-badge:hover {
-    transform: scale(1.02);
-    box-shadow: 0 0 30px #ff69c2;
-}
-
-.el-familia-text {
-    font-size: 2.4rem;
-    font-weight: 800;
-    letter-spacing: 5px;
-    background: linear-gradient(145deg, #ffc8f0, #e09eff, #ffb3d9);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-}
-
-.el-familia-symbol {
-    color: #ffa7e6;
-    font-size: 2rem;
-    margin: 0 0.3rem;
-}
-
-/* ===== TOGETHER BANNER ===== */
-.together-banner {
-    display: flex;
-    justify-content: center;
-    margin: 3rem 0 2rem;
-}
-
-.together-badge {
-    background: linear-gradient(145deg, #281b44, #140e22);
-    padding: 0.8rem 2.8rem;
-    border-radius: 80px;
-    border: 1.5px solid #ffa2e4;
-    box-shadow: 0 0 25px #c47af0;
-    text-align: center;
-    backdrop-filter: blur(4px);
-    position: relative;
-    overflow: hidden;
-    transition: all 0.2s;
-}
-
-.together-badge:hover {
-    transform: scale(1.02);
-    box-shadow: 0 0 35px #ff69c2;
-}
-
-.together-badge::before {
-    content: '';
-    position: absolute;
-    top: -2px;
-    left: -2px;
-    right: -2px;
-    bottom: -2px;
-    background: linear-gradient(45deg, #ff69c2, #b57aed, #ff69c2);
-    border-radius: 80px;
-    z-index: -1;
-    opacity: 0.3;
-}
-
-.together-text {
-    font-size: 2rem;
-    font-weight: 700;
-    letter-spacing: 2px;
-    background: linear-gradient(135deg, #ffdbff, #d9b0ff, #ffb8f0);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    display: block;
-    line-height: 1.3;
-}
-
-.together-sub {
-    font-size: 1.3rem;
-    font-weight: 500;
-    color: #ffb0e6;
-    display: block;
-    letter-spacing: 3px;
-    margin-top: 6px;
-    text-shadow: 0 0 10px #ff69c2;
-}
-
-/* ===== FLUID GRIDS ===== */
-.about-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1rem;
-    margin: 1.5rem 0;
-}
-
-.about-card {
-    background: rgba(22, 12, 35, 0.7);
-    backdrop-filter: blur(8px);
-    border: 1px solid rgba(255, 130, 210, 0.3);
-    border-radius: 24px;
-    padding: 1.5rem 1rem;
-    text-align: center;
-    transition: all 0.2s ease;
-    width: 100%;
-}
-
-.about-card:hover {
-    transform: scale(1.05);
-    box-shadow: var(--shadow-purple-soft);
-}
-
-.about-card i {
-    font-size: 2.2rem;
-    background: linear-gradient(145deg, #ffa4e9, #c07aff);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    margin-bottom: 0.8rem;
-}
-
-.activity-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 1rem;
-    margin: 2rem 0;
-}
-
-.activity-card {
-    background: rgba(28, 16, 45, 0.8);
-    backdrop-filter: blur(8px);
-    border: 1.5px solid #ff98dc;
-    border-radius: 24px;
-    padding: 1.5rem 1rem;
-    text-align: center;
-    transition: all 0.2s ease;
-    width: 100%;
-}
-
-.activity-card:hover {
-    transform: scale(1.05);
-    box-shadow: var(--shadow-pink-soft);
-}
-
-.activity-icon {
-    width: 70px;
-    height: 70px;
-    margin: 0 auto 1rem;
-    background: linear-gradient(135deg, #ff69c2, #b57aed);
-    border-radius: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 2rem;
-    color: white;
-    box-shadow: var(--shadow-avatar);
-}
-
-.member-grid {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1rem;
-    justify-content: center;
-    margin: 1.5rem 0;
-}
-
-.member-card {
-    width: calc(33.333% - 0.7rem);
-    max-width: 160px;
-    min-width: 130px;
-    background: rgba(28, 16, 45, 0.8);
-    backdrop-filter: blur(4px);
-    border: 1.5px solid #b161ee;
-    border-radius: 24px;
-    padding: 1rem 0.5rem;
-    text-align: center;
-    transition: all 0.2s ease;
-    cursor: pointer;
-}
-
-.member-card:hover {
-    transform: scale(1.06);
-    box-shadow: 0 18px 25px -8px #d59dff;
-    border-color: #ffaddc;
-}
-
-.member-avatar {
-    width: 80px;
-    height: 80px;
-    margin: 0 auto 0.8rem;
-    background: var(--gradient-pink-purple);
-    border-radius: 16px;
-    overflow: hidden;
-    box-shadow: var(--shadow-avatar);
-    transition: all 0.2s;
-}
-
-.member-card:hover .member-avatar {
-    box-shadow: 0 15px 30px -5px #ff69c2;
-}
-
-.member-avatar img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.member-info h4 {
-    font-size: 1.2rem;
-    font-weight: 700;
-    color: white;
-}
-
-.member-info .username {
-    color: #ffb0e6;
-    font-size: 0.7rem;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-
-.search-wrapper {
-    display: flex;
-    justify-content: center;
-    margin: 1.5rem 0 2rem;
-}
-
-.search-bar {
-    background: rgba(20, 10, 32, 0.8);
-    backdrop-filter: blur(8px);
-    border: 1.5px solid #c97aff;
-    border-radius: 60px;
-    padding: 0.6rem 1.5rem;
-    display: flex;
-    align-items: center;
-    gap: 0.8rem;
-    width: 100%;
-    max-width: 450px;
-    transition: all 0.2s;
-}
-
-.search-bar:hover {
-    transform: scale(1.02);
-    box-shadow: var(--shadow-pink-soft);
-}
-
-.search-bar input {
-    background: transparent;
-    border: none;
-    width: 100%;
-    font-size: 1rem;
-    color: white;
-    outline: none;
-}
-
-/* ===== CAROUSEL STYLES (untuk admin) ===== */
-.carousel-container {
-    position: relative;
-    margin: 2rem 0;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-}
-
-.carousel-wrapper {
-    overflow-x: auto;
-    scroll-behavior: smooth;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
-    padding: 1rem 0.5rem;
-    flex: 1;
-}
-
-.carousel-wrapper::-webkit-scrollbar {
-    display: none;
-}
-
-.carousel-track {
-    display: flex;
-    gap: 1.5rem;
-    width: max-content;
-}
-
-.carousel-nav {
-    width: 45px;
-    height: 45px;
-    border-radius: 50%;
-    background: linear-gradient(145deg, #2f1b4b, #190f28);
-    border: 2px solid #ff98dc;
-    color: #ffb0e6;
-    font-size: 1.2rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    flex-shrink: 0;
-    transition: all 0.2s ease;
-}
-
-.carousel-nav:hover {
-    transform: scale(1.1);
-    box-shadow: var(--shadow-pink-soft);
-}
-
-/* Admin Cards */
-.admin-card {
-    background: rgba(32, 16, 50, 0.9);
-    border: 1.5px solid #c97aff;
-    border-radius: 20px;
-    padding: 1.5rem 1.2rem;
-    text-align: center;
-    width: 220px;
-    flex-shrink: 0;
-    transition: all 0.2s ease;
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-}
-
-.admin-card:hover {
-    transform: scale(1.05);
-    box-shadow: 0 18px 25px -8px #c47af0;
-}
-
-.admin-avatar {
-    width: 130px;
-    height: 130px;
-    margin: 0 auto;
-    background: var(--gradient-pink-purple);
-    border-radius: 16px;
-    overflow: hidden;
-    box-shadow: var(--shadow-avatar);
-}
-
-.admin-avatar img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.admin-info {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-}
-
-.admin-info h4 {
-    font-size: 1.3rem;
-    color: white;
-    margin: 0;
-}
-
-.admin-username {
-    color: #ffb0e6;
-    font-size: 0.85rem;
-}
-
-.admin-role {
-    background: #2d1b42;
-    padding: 0.3rem 0.8rem;
-    border-radius: 30px;
-    font-size: 0.8rem;
-    color: #ffb8f0;
-    display: inline-block;
-    border: 1px solid #ff8ad0;
-    margin: 0 auto;
-}
-
-.admin-tiktok-link {
-    color: #ffb0e6;
-    text-decoration: none;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.3rem;
-    font-size: 0.85rem;
-    background: #2a153d;
-    padding: 0.3rem 1rem;
-    border-radius: 30px;
-    border: 1px solid #ff8ad0;
-    margin-top: 0.3rem;
-    transition: all 0.2s;
-}
-
-.admin-tiktok-link:hover {
-    transform: scale(1.05);
-    box-shadow: var(--shadow-pink-soft);
-}
-
-/* ===== CONTACT SECTION ===== */
-/* Desktop Grid (muncul di layar >768px) */
-.contact-grid-desktop {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1.5rem;
-    margin: 2rem 0;
-}
-
-/* Mobile Carousel (muncul di layar ≤768px) */
-.contact-carousel-mobile {
-    display: none;
-}
-
-/* Contact Cards (style yang sama untuk desktop & mobile) */
-.contact-card {
-    width: 100%;
-    text-align: center;
-    color: white;
-    text-decoration: none;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 1rem 0.5rem;
-    transition: all 0.2s ease;
-    background: transparent;
-    border: none;
-    border-radius: 0;
-}
-
-.contact-card:hover {
-    transform: scale(1.1);
-    text-shadow: 0 0 15px #ff69c2;
-}
-
-.contact-card i {
-    font-size: 2.5rem;
-    background: linear-gradient(145deg, #ff9ae0, #c07aff);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    margin-bottom: 0.3rem;
-}
-
-.contact-card h3 {
-    font-size: 1.2rem;
-    font-weight: 600;
-    color: white;
-    margin: 0;
-}
-
-.contact-card span {
-    font-size: 0.9rem;
-    color: #ffb0e6;
-    background: transparent;
-    border: none;
-    padding: 0;
-    word-break: break-word;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    max-width: 100%;
-}
-
-/* ===== MODAL - DIPERBAIKI UNTUK RESPONSIF ===== */
-.modal {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0,0,0,0.8);
-    backdrop-filter: blur(8px);
-    z-index: 2000;
-    align-items: center;
-    justify-content: center;
-    padding: 1rem; /* Padding untuk menjaga jarak dari tepi layar */
-}
-
-.modal.active { 
-    display: flex; 
-}
-
-.modal-content {
-    background: #1e1230;
-    border: 2px solid #ff98dc;
-    border-radius: 40px;
-    padding: 2rem 1.8rem;
-    max-width: 500px; /* Diperbesar untuk desktop */
-    width: 100%; /* Menggunakan persentase agar fleksibel */
-    text-align: center;
-    position: relative;
-    box-shadow: 0 25px 40px -10px #b57aed;
-    margin: 0 auto; /* Center horizontal */
-    max-height: 90vh; /* Mencegah modal terlalu tinggi */
-    overflow-y: auto; /* Scroll jika konten terlalu panjang */
-}
-
-/* Styling scrollbar untuk modal-content agar tetap aesthetic */
-.modal-content::-webkit-scrollbar {
-    width: 4px;
-}
-
-.modal-content::-webkit-scrollbar-track {
-    background: #2a1a3a;
-    border-radius: 10px;
-}
-
-.modal-content::-webkit-scrollbar-thumb {
-    background: #ff8ad0;
-    border-radius: 10px;
-}
-
-.close-modal {
-    position: absolute;
-    top: 15px;
-    right: 20px;
-    font-size: 1.8rem;
-    color: #ffb0e6;
-    cursor: pointer;
-    transition: all 0.2s;
-    z-index: 10; /* Pastikan di atas konten lain */
-    width: 40px;
-    height: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
-    background: rgba(0,0,0,0.3);
-}
-
-.close-modal:hover {
-    transform: scale(1.2);
-    color: #ff69c2;
-    background: rgba(255,105,194,0.2);
-}
-
-.modal-avatar {
-    width: 150px; /* Diperbesar untuk desktop */
-    height: 150px;
-    background: var(--gradient-pink-purple);
-    border-radius: 24px; /* Sedikit lebih besar dari sebelumnya */
-    margin: 0.5rem auto 1.2rem;
-    overflow: hidden;
-    box-shadow: var(--shadow-avatar);
-    transition: all 0.2s;
-    border: 3px solid rgba(255,105,194,0.5);
-}
-
-.modal-avatar:hover {
-    transform: scale(1.03);
-    box-shadow: 0 20px 35px -5px #ff69c2;
-}
-
-.modal-avatar img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.modal h2 {
-    color: white;
-    margin-bottom: 0.5rem;
-    font-size: 2rem; /* Diperbesar */
-    font-weight: 700;
-}
-
-.modal-username {
-    color: #ffb0e6;
-    margin-bottom: 1.5rem;
-    font-size: 1.1rem;
-    background: rgba(255,105,194,0.1);
-    padding: 0.3rem 1rem;
-    border-radius: 30px;
-    display: inline-block;
-}
-
-.modal-quote {
-    margin: 1.8rem 0 2rem 0;
-    font-style: italic;
-    color: #ffdbff;
-    font-size: 1.3rem; /* Diperbesar */
-    line-height: 1.8;
-    word-break: break-word;
-    padding: 0.8rem 1rem;
-    background: rgba(255,255,255,0.05);
-    border-radius: 20px;
-    border: 1px dashed rgba(255,105,194,0.4);
-    text-shadow: 0 0 10px rgba(255, 105, 194, 0.3);
-}
-
-.modal-quote i {
-    color: #ff8ad0;
-    font-size: 1.1rem;
-    margin: 0 0.5rem;
-    opacity: 0.8;
-}
-
-.modal-quote span {
-    display: inline-block;
-    max-width: 90%;
-}
-
-.modal-tiktok {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.8rem;
-    background: linear-gradient(145deg, #2a153d, #1a0e28);
-    padding: 0.8rem 2rem;
-    border-radius: 40px;
-    color: #ffb0e6;
-    text-decoration: none;
-    border: 2px solid #ff8ad0;
-    transition: all 0.2s;
-    font-size: 1.1rem;
-    font-weight: 600;
-    margin-top: 0.5rem;
-}
-
-.modal-tiktok:hover {
-    transform: scale(1.05);
-    box-shadow: var(--shadow-pink-soft);
-    background: linear-gradient(145deg, #351d4d, #251335);
-    color: white;
-}
-
-/* Media Queries untuk Modal - Menyesuaikan dengan berbagai ukuran layar */
-
-/* Tablet (max-width: 768px) */
-@media (max-width: 768px) {
-    .modal-content {
-        max-width: 450px;
-        padding: 1.8rem 1.5rem;
-    }
+(function() {
+    const members = [
+        { name: 'Gery', username: '@gerysenwith_lapiskeju', tiktok: 'https://www.tiktok.com/@gerysenwith_lapiskeju', initial: 'G', photo: 'images/member1.jpg', quote: 'Kamu rimuru bukan?' },
+        { name: 'Rora', username: '@roraxml', tiktok: 'https://www.tiktok.com/@kasugano_sora87', initial: 'S', photo: 'images/member2.jpeg', quote: 'Aku mah raja' },
+        { name: 'Izabella', username: '@queen.izabellaz', tiktok: 'https://www.tiktok.com/@queen.izabellaz', initial: 'Q', photo: 'images/member3.jpeg', quote: 'Mending turu' },
+        { name: 'Erie', username: '@kasugano_erie', tiktok: 'https://www.tiktok.com/@kasugano_erie', initial: 'E', photo: 'images/member4.jpg', quote: 'Gw butuh uang!!!' },
+        { name: 'Fuyi', username: '@fuyii_npc', tiktok: 'https://www.tiktok.com/@fuyii_npc', initial: 'F', photo: 'images/member5.png', quote: 'Belajar untuk memahami diri kira sendiri, terkadang kita tidak harus memahami seseorang, bahkan juga orang belum bisa memahami kita sepenuhnya,maka belajar lah untuk menerima kenyataan' },
+        { name: 'Ezan', username: '@ezan_xd', tiktok: 'https://www.tiktok.com/@ezan_xd', initial: 'E', photo: 'images/member6.png', quote: 'Sederhana tapi berarti, itulah keluarga.' },
+        { name: 'V3iin', username: '@iyainirhmd', tiktok: 'https://www.tiktok.com/@iyainirhmd', initial: 'I', photo: 'images/member7.jpg', quote: 'bntr' },
+        { name: 'Shaglen', username: '@xmj.shaglen', tiktok: 'https://www.tiktok.com/@xmj.shaglen', initial: 'X', photo: 'images/member8.jpg', quote: 'Id have' },
+        { name: 'Valen', username: '@naineyuko', tiktok: 'https://www.tiktok.com/@naineyuko', initial: 'N', photo: 'images/member9.jpg', quote: 'Aduh kok aku jadi cewek siehh' },
+        { name: 'Yuuta', username: '@yuutaxml_', tiktok: 'https://www.tiktok.com/@yuutaxml_', initial: 'Y', photo: 'images/member10.jpg', quote: 'You never know until you try' },
+        { name: 'Jarzz', username: '@jarzz.dw.skuy', tiktok: 'https://www.tiktok.com/@jarzz.dw.skuy', initial: 'J', photo: 'images/member11.jpg', quote: 'Laparr' },
+        { name: 'Qwentty', username: '@qwentty.ft', tiktok: 'https://www.tiktok.com/@qwenty.ft', initial: 'Q', photo: 'images/member12.jpg', quote: 'Semua manusia hanyalah alat' },
+        { name: 'Akira', username: '@akira.imut', tiktok: 'https://www.tiktok.com/@akiraa.imut', initial: 'A', photo: 'images/member13.jpg', quote: 'Imut gini kalo bantai lu sabi kali' },
+        { name: 'Dree', username: '@daktau_256', tiktok: 'https://www.tiktok.com/@daktau_256', initial: 'D', photo: 'images/member14.jpg', quote: 'Jangan takut salah, karena dari salah kita belajar.' },
+        { name: 'Zunda', username: '@shaglenv02y', tiktok: 'https://www.tiktok.com/@shaglenv02y', initial: 'S', photo: 'images/member15.jpg', quote: 'Emel yok' },
+        { name: 'Yushaa Von Khaslana', username: '@kachusyaa', tiktok: 'https://www.tiktok.com/@kachusyaa?_r=1&_t=ZS-943UkIGrPbZ', initial: 'S', photo: 'images/member16.jpeg', quote: 'Jangan lupa makan' }
+    ];
+
+    const admins = [
+        { name: 'Shora', username: '@codename_shora.v02', role: 'Admin', tiktok: 'https://www.tiktok.com/@codename_shora.v02', initial: 'S', photo: 'images/admin1.webp' },
+        { name: 'Sora', username: '@kasugano_sora52', role: 'Pemilik & Pendiri', tiktok: 'https://www.tiktok.com/@kasugano.rora', initial: 'S', photo: 'images/admin2.jpg' },
+        { name: 'Haruka', username: '@kasugano_harukaa', role: 'Pemilik', tiktok: 'https://www.tiktok.com/@kasugano.harukaa', initial: 'H', photo: 'images/admin3.jpg' },
+        { name: 'Zero', username: '@zero.znzx', role: 'Admin', tiktok: 'https://www.tiktok.com/@zero.znzx', initial: 'Z', photo: 'images/admin4.jfif' },
+        { name: 'Serlina', username: '@diiputraa28_', role: 'Admin', tiktok: 'https://www.tiktok.com/@diiputraa28_?_r=1&_t=ZS-943fWknNM6m', initial: 'S', photo: 'images/admin5.jpeg' },
+        { name: '???', username: '@???', role: '???', tiktok: 'https://www.tiktok.com', initial: '?', photo: 'images/admin6.png' }
+    ];
+
+    const contacts = [
+        { platform: 'TikTok', username: '@kasugano.official', link: 'https://www.tiktok.com/@kasugano.official', icon: 'fab fa-tiktok' },
+        { platform: 'TikTok', username: '@kasugano.store', link: 'https://www.tiktok.com/@kasugano.store', icon: 'fab fa-tiktok' },
+        { platform: 'Instagram', username: '@kasugano.family', link: 'https://www.instagram.com/kasugano.family', icon: 'fab fa-instagram' },
+        { platform: 'Instagram', username: '@kasuganostore', link: 'https://www.instagram.com/kasuganostore', icon: 'fab fa-instagram' },
+        { platform: 'WhatsApp', username: '+62 852-3240-6495', link: 'https://wa.me/6285232406495', icon: 'fab fa-whatsapp' },
+        { platform: 'Email', username: 'kasuganofamilyy@gmail.com', link: 'mailto:kasuganofamilyy@gmail.com', icon: 'far fa-envelope' }
+    ];
+
+    const navbar = document.getElementById('navbar');
+    const navItems = document.querySelectorAll('.nav-item');
+    const navLinks = document.querySelectorAll('.nav-link');
+    const navToggle = document.getElementById('navToggle');
+    const navMenu = document.getElementById('navMenu');
     
-    .modal-avatar {
-        width: 130px;
-        height: 130px;
-    }
-    
-    .modal h2 {
-        font-size: 1.8rem;
-    }
-    
-    .modal-quote {
-        font-size: 1.2rem;
-        margin: 1.5rem 0;
-    }
-    
-    .modal-tiktok {
-        padding: 0.7rem 1.8rem;
-        font-size: 1rem;
-    }
-}
+    const sections = {
+        home: document.getElementById('home'),
+        about: document.getElementById('about'),
+        member: document.getElementById('member'),
+        admin: document.getElementById('admin'),
+        contact: document.getElementById('contact')
+    };
 
-/* Handphone besar (max-width: 600px) */
-@media (max-width: 600px) {
-    .modal-content {
-        max-width: 95%;
-        padding: 1.5rem 1.2rem;
-        border-radius: 30px;
-    }
+    const memberContainer = document.getElementById('memberContainer');
     
-    .modal-avatar {
-        width: 110px;
-        height: 110px;
-        border-radius: 20px;
-        margin-top: 0.8rem;
-    }
-    
-    .modal h2 {
-        font-size: 1.6rem;
-    }
-    
-    .modal-username {
-        font-size: 0.95rem;
-        padding: 0.2rem 0.8rem;
-    }
-    
-    .modal-quote {
-        font-size: 1.1rem;
-        line-height: 1.6;
-        padding: 0.6rem 0.8rem;
-        margin: 1.2rem 0;
-    }
-    
-    .modal-quote i {
-        font-size: 0.9rem;
-    }
-    
-    .modal-tiktok {
-        padding: 0.6rem 1.5rem;
-        font-size: 0.95rem;
-        gap: 0.5rem;
-    }
-    
-    .close-modal {
-        top: 10px;
-        right: 15px;
-        font-size: 1.5rem;
-        width: 35px;
-        height: 35px;
-    }
-}
-
-/* Handphone kecil (max-width: 400px) */
-@media (max-width: 400px) {
-    .modal-content {
-        padding: 1.2rem 1rem;
-    }
-    
-    .modal-avatar {
-        width: 90px;
-        height: 90px;
-        border-radius: 16px;
-    }
-    
-    .modal h2 {
-        font-size: 1.4rem;
-    }
-    
-    .modal-username {
-        font-size: 0.85rem;
-    }
-    
-    .modal-quote {
-        font-size: 1rem;
-        line-height: 1.5;
-        padding: 0.5rem 0.6rem;
-    }
-    
-    .modal-quote i {
-        font-size: 0.8rem;
-        margin: 0 0.3rem;
-    }
-    
-    .modal-tiktok {
-        padding: 0.5rem 1.2rem;
-        font-size: 0.85rem;
-        border-width: 1.5px;
-    }
-    
-    .close-modal {
-        top: 8px;
-        right: 12px;
-        font-size: 1.3rem;
-        width: 30px;
-        height: 30px;
-    }
-}
-
-/* Handphone sangat kecil (max-width: 320px) */
-@media (max-width: 320px) {
-    .modal-content {
-        padding: 1rem 0.8rem;
-    }
-    
-    .modal-avatar {
-        width: 75px;
-        height: 75px;
-    }
-    
-    .modal h2 {
-        font-size: 1.2rem;
-    }
-    
-    .modal-username {
-        font-size: 0.75rem;
-    }
-    
-    .modal-quote {
-        font-size: 0.9rem;
-        line-height: 1.4;
-    }
-    
-    .modal-tiktok {
-        padding: 0.4rem 1rem;
-        font-size: 0.75rem;
-    }
-}
-
-/* ===== LOADING SKELETON ===== */
-.skeleton {
-    background: linear-gradient(90deg, #2a1d3a 25%, #3f2b55 50%, #2a1d3a 75%);
-    background-size: 200% 100%;
-    animation: loading 1.5s infinite;
-    border-radius: 16px;
-    border: none !important;
-    pointer-events: none;
-}
-
-@keyframes loading {
-    0% { background-position: 200% 0; }
-    100% { background-position: -200% 0; }
-}
-
-.member-grid.skeleton .member-card {
-    background: transparent;
-    border-color: transparent;
-    pointer-events: none;
-}
-
-/* ===== FOOTER ===== */
-.footer {
-    text-align: center;
-    padding: 2rem 0;
-    color: #a588c0;
-    border-top: 1px solid rgba(255, 150, 210, 0.2);
-    margin-top: 3rem;
-}
-
-/* ===== MEDIA QUERIES - RESPONSIVE DESIGN (Non-Modal) ===== */
-@media (max-width: 1024px) {
-    .about-grid {
-        grid-template-columns: repeat(3, 1fr);
-    }
-    
-    .activity-grid {
-        grid-template-columns: repeat(4, 1fr);
-    }
-    
-    .member-card {
-        width: calc(25% - 0.7rem);
-    }
-}
-
-@media (max-width: 768px) {
-    .nav-menu {
-        position: absolute;
-        top: 100%;
-        left: 0;
-        right: 0;
-        background: rgba(20, 10, 35, 0.95);
-        backdrop-filter: blur(20px);
-        border: 1px solid rgba(255, 105, 194, 0.3);
-        border-radius: 30px;
-        margin-top: 10px;
-        padding: 1rem;
-        opacity: 0;
-        visibility: hidden;
-        transform: translateY(-20px);
-        transition: all 0.3s ease;
+    // Tampilkan skeleton loading
+    memberContainer.classList.add('skeleton');
+    for (let i = 0; i < 9; i++) {
+        const skeletonCard = document.createElement('div');
+        skeletonCard.className = 'member-card skeleton';
+        skeletonCard.style.height = '180px';
+        memberContainer.appendChild(skeletonCard);
     }
 
-    .nav-menu.active {
-        opacity: 1;
-        visibility: visible;
-        transform: translateY(0);
+    setTimeout(() => {
+        memberContainer.classList.remove('skeleton');
+        memberContainer.innerHTML = '';
+        renderMembers(members);
+    }, 800);
+
+    function renderMembers(filteredMembers = members) {
+        memberContainer.innerHTML = '';
+        
+        if (filteredMembers.length === 0) {
+            memberContainer.innerHTML = '<div class="member-not-found"><i class="fas fa-user-slash"></i><p>Anggota tidak ditemukan</p></div>';
+            return;
+        }
+        
+        filteredMembers.forEach(member => {
+            const card = document.createElement('div');
+            card.className = 'member-card';
+            card.innerHTML = `
+                <div class="member-avatar">
+                    <img src="${member.photo}" alt="${member.name}" onerror="this.style.display='none'; this.innerHTML='${member.initial}';">
+                </div>
+                <div class="member-info">
+                    <h4>${member.name}</h4>
+                    <div class="username">${member.username}</div>
+                </div>
+            `;
+            
+            card.addEventListener('click', () => {
+                // Set modal content
+                document.getElementById('modalAvatar').innerHTML = `<img src="${member.photo}" alt="${member.name}" onerror="this.style.display='none';">`;
+                document.getElementById('modalName').textContent = member.name;
+                document.getElementById('modalUsername').textContent = member.username;
+                document.getElementById('quoteText').textContent = member.quote || 'Bersama Kasugano, kita bersinar';
+                document.getElementById('modalTiktokLink').href = member.tiktok;
+                document.getElementById('modalTiktokText').textContent = member.username;
+                
+                // Tampilkan modal dan lock scroll
+                modal.classList.add('active');
+                document.body.classList.add('modal-open');
+            });
+            
+            memberContainer.appendChild(card);
+        });
     }
 
-    .nav-list {
-        flex-direction: column;
+    const adminTrack = document.getElementById('adminTrack');
+    adminTrack.innerHTML = '';
+    
+    admins.forEach(admin => {
+        const card = document.createElement('div');
+        card.className = 'admin-card';
+        card.innerHTML = `
+            <div class="admin-avatar">
+                <img src="${admin.photo}" alt="${admin.name}" onerror="this.style.display='none'; this.innerHTML='${admin.initial}';">
+            </div>
+            <div class="admin-info">
+                <h4>${admin.name}</h4>
+                <div class="admin-username">${admin.username}</div>
+                <div class="admin-role">${admin.role}</div>
+                <a href="${admin.tiktok}" target="_blank" class="admin-tiktok-link"><i class="fab fa-tiktok"></i> TikTok</a>
+            </div>
+        `;
+        adminTrack.appendChild(card);
+    });
+
+    const contactGrid = document.getElementById('contactGrid');
+    const contactTrack = document.getElementById('contactTrack');
+    
+    contactGrid.innerHTML = '';
+    contacts.forEach(contact => {
+        const card = document.createElement('a');
+        card.href = contact.link;
+        card.target = '_blank';
+        card.className = 'contact-card';
+        card.innerHTML = `
+            <i class="${contact.icon}"></i>
+            <h3>${contact.platform}</h3>
+            <span>${contact.username}</span>
+        `;
+        contactGrid.appendChild(card);
+    });
+
+    contactTrack.innerHTML = '';
+    contacts.forEach(contact => {
+        const card = document.createElement('a');
+        card.href = contact.link;
+        card.target = '_blank';
+        card.className = 'contact-card';
+        card.innerHTML = `
+            <i class="${contact.icon}"></i>
+            <h3>${contact.platform}</h3>
+            <span>${contact.username}</span>
+        `;
+        contactTrack.appendChild(card);
+    });
+
+    const adminCarousel = document.getElementById('adminCarousel');
+    document.getElementById('carouselPrev').addEventListener('click', () => {
+        adminCarousel.scrollBy({ left: -300, behavior: 'smooth' });
+    });
+    document.getElementById('carouselNext').addEventListener('click', () => {
+        adminCarousel.scrollBy({ left: 300, behavior: 'smooth' });
+    });
+
+    const contactCarousel = document.getElementById('contactCarousel');
+    document.getElementById('contactPrev').addEventListener('click', () => {
+        contactCarousel.scrollBy({ left: -300, behavior: 'smooth' });
+    });
+    document.getElementById('contactNext').addEventListener('click', () => {
+        contactCarousel.scrollBy({ left: 300, behavior: 'smooth' });
+    });
+
+    document.getElementById('searchMember').addEventListener('input', (e) => {
+        const keyword = e.target.value.toLowerCase().trim();
+        if (keyword === '') {
+            renderMembers(members);
+        } else {
+            const filtered = members.filter(m => 
+                m.name.toLowerCase().includes(keyword) || 
+                m.username.toLowerCase().includes(keyword)
+            );
+            renderMembers(filtered);
+        }
+    });
+
+    // MODAL HANDLING - FIXED SCROLL ISSUE
+    const modal = document.getElementById('memberModal');
+    const closeModal = document.getElementById('closeModal');
+
+    function closeModalHandler() {
+        modal.classList.remove('active');
+        document.body.classList.remove('modal-open');
     }
 
-    .nav-toggle {
-        display: flex;
-    }
+    closeModal.addEventListener('click', closeModalHandler);
     
-    .about-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 1rem;
-    }
-    
-    .activity-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 1rem;
-    }
-    
-    .member-card {
-        width: calc(33.333% - 0.7rem);
-    }
-    
-    .section-title {
-        font-size: 1.8rem;
-    }
-    
-    /* Hilangkan tombol navigasi carousel di HP */
-    .carousel-nav {
-        display: none;
-    }
-    
-    .carousel-wrapper {
-        padding: 0.5rem 0;
-    }
-    
-    /* Contact: Desktop Grid hilang, Mobile Carousel muncul */
-    .contact-grid-desktop {
-        display: none;
-    }
-    
-    .contact-carousel-mobile {
-        display: flex;
-    }
-    
-    /* Contact cards di HP */
-    .contact-card {
-        width: 160px;
-    }
-    
-    .contact-card i {
-        font-size: 2.2rem;
-    }
-    
-    .contact-card h3 {
-        font-size: 1rem;
-    }
-    
-    .contact-card span {
-        font-size: 0.8rem;
-    }
-}
+    window.addEventListener('click', (e) => {
+        if (e.target === modal) {
+            closeModalHandler();
+        }
+    });
 
-@media (max-width: 600px) {
-    .hero-profile-photo {
-        width: 180px;
-        height: 180px;
-    }
-    
-    .hero-content h1 {
-        font-size: 2rem;
-    }
-    
-    .hero-content p {
-        font-size: 1rem;
-        padding: 0.6rem 1rem;
-    }
-    
-    .main {
-        width: 95%;
-        padding: 1rem 0;
-    }
-    
-    .about-grid {
-        grid-template-columns: 1fr;
-        gap: 1rem;
-    }
-    
-    .activity-grid {
-        grid-template-columns: 1fr;
-        gap: 1rem;
-    }
-    
-    .member-card {
-        width: calc(50% - 0.5rem);
-    }
-    
-    .el-familia-text {
-        font-size: 1.5rem;
-    }
-    
-    .el-familia-symbol {
-        font-size: 1.5rem;
-    }
-    
-    .together-badge {
-        padding: 0.5rem 1.5rem;
-    }
-    
-    .together-text {
-        font-size: 1.2rem;
-    }
-    
-    .together-sub {
-        font-size: 0.9rem;
-    }
-    
-    .section-title {
-        font-size: 1.5rem;
-    }
-    
-    .section-title::after {
-        width: 120px;
-    }
-    
-    .admin-card {
-        width: 180px;
-        padding: 1rem 0.8rem;
-    }
-    
-    .admin-avatar {
-        width: 100px;
-        height: 100px;
-    }
-}
+    // Prevent modal from closing when clicking inside modal content
+    document.querySelector('.modal-content').addEventListener('click', (e) => {
+        e.stopPropagation();
+    });
 
-@media (max-width: 400px) {
-    .member-card {
-        width: 100%;
-        max-width: 160px;
+    // Handle escape key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modal.classList.contains('active')) {
+            closeModalHandler();
+        }
+    });
+
+    // Navbar functions
+    function getNavbarHeight() {
+        return navbar ? navbar.offsetHeight : 80;
     }
+
+    function updateScrollPadding() {
+        document.documentElement.style.scrollPaddingTop = (getNavbarHeight() + 20) + 'px';
+    }
+
+    function setActiveSection(sectionId) {
+        navItems.forEach(item => {
+            const link = item.querySelector('.nav-link');
+            if (link && link.dataset.target === sectionId) {
+                item.classList.add('active');
+            } else {
+                item.classList.remove('active');
+            }
+        });
+    }
+
+    function getSectionBoundaries() {
+        const navbarHeight = getNavbarHeight();
+        
+        return {
+            home: { start: 0, end: sections.about.offsetTop - navbarHeight - 20 },
+            about: { start: sections.about.offsetTop - navbarHeight - 20, end: sections.member.offsetTop - navbarHeight - 20 },
+            member: { start: sections.member.offsetTop - navbarHeight - 20, end: sections.admin.offsetTop - navbarHeight - 20 },
+            admin: { start: sections.admin.offsetTop - navbarHeight - 20, end: sections.contact.offsetTop - navbarHeight - 20 },
+            contact: { start: sections.contact.offsetTop - navbarHeight - 20, end: Infinity }
+        };
+    }
+
+    function checkActiveSection() {
+        // Skip scroll check if modal is open
+        if (modal.classList.contains('active')) {
+            return;
+        }
+        
+        const scrollY = window.scrollY;
+        const boundaries = getSectionBoundaries();
+        
+        if (scrollY < boundaries.about.start) {
+            setActiveSection('home');
+        } else if (scrollY < boundaries.member.start) {
+            setActiveSection('about');
+        } else if (scrollY < boundaries.admin.start) {
+            setActiveSection('member');
+        } else if (scrollY < boundaries.contact.start) {
+            setActiveSection('admin');
+        } else {
+            setActiveSection('contact');
+        }
+    }
+
+    if (navToggle) {
+        navToggle.addEventListener('click', (e) => {
+            e.stopPropagation();
+            navMenu.classList.toggle('active');
+            navToggle.innerHTML = navMenu.classList.contains('active') ? 
+                '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+        });
+    }
+
+    document.addEventListener('click', (e) => {
+        if (navMenu && navToggle && !navToggle.contains(e.target) && !navMenu.contains(e.target)) {
+            navMenu.classList.remove('active');
+            navToggle.innerHTML = '<i class="fas fa-bars"></i>';
+        }
+    });
+
+    navLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            
+            const targetId = link.dataset.target;
+            const navbarHeight = getNavbarHeight();
+            
+            if (navMenu) {
+                navMenu.classList.remove('active');
+                if (navToggle) navToggle.innerHTML = '<i class="fas fa-bars"></i>';
+            }
+            
+            if (targetId === 'home') {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            } else {
+                const targetElement = sections[targetId];
+                if (targetElement) {
+                    const targetPosition = targetElement.offsetTop - navbarHeight - 20;
+                    window.scrollTo({ top: targetPosition, behavior: 'smooth' });
+                }
+            }
+        });
+    });
+
+    const heroImg = document.getElementById('heroImg');
+    if (heroImg) {
+        window.addEventListener('scroll', () => {
+            // Skip parallax if modal is open
+            if (modal.classList.contains('active')) {
+                return;
+            }
+            
+            const scrollY = window.scrollY;
+            heroImg.style.transform = `translateY(${scrollY * 0.2}px)`;
+        });
+    }
+
+    const revealSections = document.querySelectorAll('section');
     
-    .hero-profile-photo {
-        width: 150px;
-        height: 150px;
-    }
+    const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('revealed');
+            } else {
+                entry.target.classList.remove('revealed');
+            }
+        });
+    }, { threshold: 0.15, rootMargin: '0px' });
+
+    revealSections.forEach(section => {
+        revealObserver.observe(section);
+    });
+
+    let scrollTimeout;
+    window.addEventListener('scroll', () => {
+        // Skip scroll check if modal is open
+        if (modal.classList.contains('active')) {
+            return;
+        }
+        
+        if (scrollTimeout) cancelAnimationFrame(scrollTimeout);
+        scrollTimeout = requestAnimationFrame(checkActiveSection);
+    });
+
+    let resizeTimeout;
+    window.addEventListener('resize', () => {
+        if (resizeTimeout) clearTimeout(resizeTimeout);
+        resizeTimeout = setTimeout(() => {
+            updateScrollPadding();
+            checkActiveSection();
+        }, 100);
+    });
+
+    window.scrollTo(0, 0);
+    updateScrollPadding();
     
-    .hero-content h1 {
-        font-size: 1.8rem;
-    }
-    
-    .logo-text {
-        font-size: 1.2rem;
-    }
-    
-    .contact-card {
-        width: 140px;
-    }
-}
+    window.addEventListener('load', () => {
+        setTimeout(() => {
+            updateScrollPadding();
+            checkActiveSection();
+            setActiveSection('home');
+        }, 200);
+    });
+
+})();
