@@ -18,7 +18,7 @@ body {
     min-height: 100vh;
 }
 
-/* Gradient Background + Pattern */
+/* Gradient Background */
 body::before {
     content: "";
     position: fixed;
@@ -54,27 +54,6 @@ body::after {
     z-index: -1;
 }
 
-/* Tablet */
-@media (min-width: 601px) {
-    body::after {
-        background-size: 60px 60px, 60px 60px, auto, auto, auto, auto, auto;
-    }
-}
-
-/* Desktop kecil */
-@media (min-width: 901px) {
-    body::after {
-        background-size: 80px 80px, 80px 80px, auto, auto, auto, auto, auto;
-    }
-}
-
-/* Desktop besar */
-@media (min-width: 1201px) {
-    body::after {
-        background-size: 100px 100px, 100px 100px, auto, auto, auto, auto, auto;
-    }
-}
-
 :root {
     --purple-deep: #7b2da8;
     --purple-soft: #b57aed;
@@ -94,7 +73,7 @@ body::after {
 ::-webkit-scrollbar-track { background: #1c1326; }
 ::-webkit-scrollbar-thumb { background: #c47af0; border-radius: 10px; }
 
-/* ===== NAVBAR - HAMBURGER UNTUK SEMUA UKURAN ===== */
+/* ===== NAVBAR ===== */
 .navbar-modern {
     position: fixed;
     top: 2%;
@@ -149,31 +128,13 @@ body::after {
 }
 
 .nav-menu {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    right: 0;
-    background: rgba(20, 10, 35, 0.95);
-    backdrop-filter: blur(20px);
-    border: 1px solid rgba(255, 105, 194, 0.3);
-    border-radius: 30px;
-    margin-top: 10px;
-    padding: 1rem;
-    opacity: 0;
-    visibility: hidden;
-    transform: translateY(-20px);
-    transition: all 0.3s ease;
-}
-
-.nav-menu.active {
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0);
+    flex: 1;
+    display: flex;
+    justify-content: center;
 }
 
 .nav-list {
     display: flex;
-    flex-direction: column;
     gap: 0.3rem;
     list-style: none;
 }
@@ -209,7 +170,7 @@ body::after {
 }
 
 .nav-toggle {
-    display: flex;
+    display: none;
     width: 40px;
     height: 40px;
     background: rgba(255, 105, 194, 0.2);
@@ -325,7 +286,7 @@ body::after {
     padding: 2rem 0;
 }
 
-/* SCROLL REVEAL ANIMATION */
+/* SCROLL REVEAL */
 section {
     margin-bottom: 5rem;
     opacity: 0;
@@ -336,11 +297,6 @@ section {
 section.revealed {
     opacity: 1;
     transform: translateY(0);
-}
-
-section:not(.revealed) {
-    opacity: 0;
-    transform: translateY(30px);
 }
 
 .section-title {
@@ -466,7 +422,7 @@ section:not(.revealed) {
     text-shadow: 0 0 10px #ff69c2;
 }
 
-/* ===== FLUID GRIDS ===== */
+/* ===== GRIDS ===== */
 .about-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -536,30 +492,13 @@ section:not(.revealed) {
     box-shadow: var(--shadow-avatar);
 }
 
-/* ===== MEMBER SECTION DENGAN SCROLL INVISIBLE ===== */
-.member-grid-container {
-    max-height: 600px;
-    overflow-y: auto;
-    overflow-x: hidden;
-    padding: 0.5rem;
-    margin: 1.5rem 0;
-    border-radius: 30px;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
-}
-
-.member-grid-container::-webkit-scrollbar {
-    display: none;
-    width: 0;
-    background: transparent;
-}
-
+/* ===== MEMBER SECTION ===== */
 .member-grid {
     display: flex;
     flex-wrap: wrap;
     gap: 1rem;
     justify-content: center;
-    margin: 0;
+    margin: 1.5rem 0;
 }
 
 .member-card {
@@ -617,20 +556,6 @@ section:not(.revealed) {
     text-overflow: ellipsis;
 }
 
-.member-not-found {
-    text-align: center;
-    padding: 3rem;
-    color: #ffb0e6;
-    font-size: 1.2rem;
-    width: 100%;
-}
-
-.member-not-found i {
-    font-size: 3rem;
-    margin-bottom: 1rem;
-    color: #ff69c2;
-}
-
 .search-wrapper {
     display: flex;
     justify-content: center;
@@ -665,11 +590,7 @@ section:not(.revealed) {
     outline: none;
 }
 
-.search-bar input::placeholder {
-    color: rgba(255, 176, 230, 0.6);
-}
-
-/* ===== CAROUSEL STYLES ===== */
+/* ===== CAROUSEL ===== */
 .carousel-container {
     position: relative;
     margin: 2rem 0;
@@ -754,12 +675,6 @@ section:not(.revealed) {
     object-fit: cover;
 }
 
-.admin-info {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-}
-
 .admin-info h4 {
     font-size: 1.3rem;
     color: white;
@@ -803,7 +718,7 @@ section:not(.revealed) {
     box-shadow: var(--shadow-pink-soft);
 }
 
-/* ===== CONTACT SECTION ===== */
+/* ===== CONTACT ===== */
 .contact-grid-desktop {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -826,9 +741,6 @@ section:not(.revealed) {
     gap: 0.5rem;
     padding: 1rem 0.5rem;
     transition: all 0.2s ease;
-    background: transparent;
-    border: none;
-    border-radius: 0;
 }
 
 .contact-card:hover {
@@ -842,7 +754,6 @@ section:not(.revealed) {
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
-    margin-bottom: 0.3rem;
 }
 
 .contact-card h3 {
@@ -855,14 +766,6 @@ section:not(.revealed) {
 .contact-card span {
     font-size: 0.9rem;
     color: #ffb0e6;
-    background: transparent;
-    border: none;
-    padding: 0;
-    word-break: break-word;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    max-width: 100%;
 }
 
 /* ===== MODAL DENGAN SCROLL ===== */
@@ -878,8 +781,8 @@ section:not(.revealed) {
     z-index: 2000;
     align-items: center;
     justify-content: center;
-    overflow-y: auto; /* Tambahkan scroll untuk modal */
-    padding: 20px; /* Padding agar tidak menempel tepi */
+    overflow-y: auto;
+    padding: 20px;
 }
 
 .modal.active { 
@@ -896,10 +799,10 @@ section:not(.revealed) {
     text-align: center;
     position: relative;
     box-shadow: 0 25px 40px -10px #b57aed;
-    margin: auto; /* Pusat vertikal */
-    max-height: 90vh; /* Batasi tinggi modal */
-    overflow-y: auto; /* Scroll internal jika konten panjang */
-    scrollbar-width: thin; /* Scroll tipis */
+    margin: auto;
+    max-height: 90vh;
+    overflow-y: auto;
+    scrollbar-width: thin;
     scrollbar-color: #c47af0 #1c1326;
 }
 
@@ -918,7 +821,7 @@ section:not(.revealed) {
 }
 
 .close-modal {
-    position: sticky; /* Ubah dari absolute ke sticky */
+    position: sticky;
     top: 0;
     float: right;
     font-size: 1.8rem;
@@ -926,7 +829,7 @@ section:not(.revealed) {
     cursor: pointer;
     transition: all 0.2s;
     z-index: 10;
-    background: #1e1230; /* Background agar tidak transparan saat scroll */
+    background: #1e1230;
     width: 30px;
     height: 30px;
     display: flex;
@@ -949,13 +852,7 @@ section:not(.revealed) {
     margin: 0 auto 1.2rem;
     overflow: hidden;
     box-shadow: var(--shadow-avatar);
-    transition: all 0.2s;
-    flex-shrink: 0; /* Mencegah avatar mengecil */
-}
-
-.modal-avatar:hover {
-    transform: scale(1.03);
-    box-shadow: 0 20px 35px -5px #ff69c2;
+    flex-shrink: 0;
 }
 
 .modal-avatar img {
@@ -986,11 +883,8 @@ section:not(.revealed) {
     line-height: 1.7;
     word-break: break-word;
     padding: 0 0.5rem;
-    background: transparent;
-    border: none;
-    text-shadow: 0 0 10px rgba(255, 105, 194, 0.3);
-    max-height: 200px; /* Batasi tinggi quote */
-    overflow-y: auto; /* Scroll untuk quote panjang */
+    max-height: 200px;
+    overflow-y: auto;
     scrollbar-width: thin;
 }
 
@@ -1023,34 +917,11 @@ section:not(.revealed) {
     text-decoration: none;
     border: 1px solid #ff8ad0;
     transition: all 0.2s;
-    margin-top: 0.5rem;
-    margin-bottom: 0.5rem;
 }
 
 .modal-tiktok:hover {
     transform: scale(1.05);
     box-shadow: var(--shadow-pink-soft);
-}
-
-/* ===== LOADING SKELETON ===== */
-.skeleton {
-    background: linear-gradient(90deg, #2a1d3a 25%, #3f2b55 50%, #2a1d3a 75%);
-    background-size: 200% 100%;
-    animation: loading 1.5s infinite;
-    border-radius: 16px;
-    border: none !important;
-    pointer-events: none;
-}
-
-@keyframes loading {
-    0% { background-position: 200% 0; }
-    100% { background-position: -200% 0; }
-}
-
-.member-grid.skeleton .member-card {
-    background: transparent;
-    border-color: transparent;
-    pointer-events: none;
 }
 
 /* ===== FOOTER ===== */
@@ -1063,45 +934,52 @@ section:not(.revealed) {
 }
 
 /* ===== MEDIA QUERIES ===== */
-@media (max-width: 1024px) {
-    .about-grid {
-        grid-template-columns: repeat(3, 1fr);
-    }
-    
-    .activity-grid {
-        grid-template-columns: repeat(4, 1fr);
-    }
-    
-    .member-card {
-        width: calc(25% - 0.7rem);
-    }
-}
-
 @media (max-width: 768px) {
+    .nav-menu {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: rgba(20, 10, 35, 0.95);
+        backdrop-filter: blur(20px);
+        border: 1px solid rgba(255, 105, 194, 0.3);
+        border-radius: 30px;
+        margin-top: 10px;
+        padding: 1rem;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-20px);
+        transition: all 0.3s ease;
+    }
+
+    .nav-menu.active {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+    }
+
+    .nav-list {
+        flex-direction: column;
+    }
+
+    .nav-toggle {
+        display: flex;
+    }
+    
     .about-grid {
         grid-template-columns: repeat(2, 1fr);
-        gap: 1rem;
     }
     
     .activity-grid {
         grid-template-columns: repeat(2, 1fr);
-        gap: 1rem;
     }
     
     .member-card {
         width: calc(33.333% - 0.7rem);
     }
     
-    .section-title {
-        font-size: 1.8rem;
-    }
-    
     .carousel-nav {
         display: none;
-    }
-    
-    .carousel-wrapper {
-        padding: 0.5rem 0;
     }
     
     .contact-grid-desktop {
@@ -1115,22 +993,6 @@ section:not(.revealed) {
     .contact-card {
         width: 160px;
     }
-    
-    .contact-card i {
-        font-size: 2.2rem;
-    }
-    
-    .contact-card h3 {
-        font-size: 1rem;
-    }
-    
-    .contact-card span {
-        font-size: 0.8rem;
-    }
-    
-    .member-grid-container {
-        max-height: 500px;
-    }
 }
 
 @media (max-width: 600px) {
@@ -1143,24 +1005,12 @@ section:not(.revealed) {
         font-size: 2rem;
     }
     
-    .hero-content p {
-        font-size: 1rem;
-        padding: 0.6rem 1rem;
-    }
-    
-    .main {
-        width: 95%;
-        padding: 1rem 0;
-    }
-    
     .about-grid {
         grid-template-columns: 1fr;
-        gap: 1rem;
     }
     
     .activity-grid {
         grid-template-columns: 1fr;
-        gap: 1rem;
     }
     
     .member-card {
@@ -1169,14 +1019,6 @@ section:not(.revealed) {
     
     .el-familia-text {
         font-size: 1.5rem;
-    }
-    
-    .el-familia-symbol {
-        font-size: 1.5rem;
-    }
-    
-    .together-badge {
-        padding: 0.5rem 1.5rem;
     }
     
     .together-text {
@@ -1190,64 +1032,4 @@ section:not(.revealed) {
     .section-title {
         font-size: 1.5rem;
     }
-    
-    .section-title::after {
-        width: 120px;
-    }
-    
-    .admin-card {
-        width: 180px;
-        padding: 1rem 0.8rem;
-    }
-    
-    .admin-avatar {
-        width: 100px;
-        height: 100px;
-    }
-    
-    .modal-content {
-        padding: 1.5rem 1.2rem;
-    }
-    
-    .modal-avatar {
-        width: 100px;
-        height: 100px;
-    }
-    
-    .modal-quote {
-        font-size: 1rem;
-    }
-    
-    .member-grid-container {
-        max-height: 450px;
-    }
 }
-
-@media (max-width: 400px) {
-    .member-card {
-        width: 100%;
-        max-width: 160px;
-    }
-    
-    .hero-profile-photo {
-        width: 150px;
-        height: 150px;
-    }
-    
-    .hero-content h1 {
-        font-size: 1.8rem;
-    }
-    
-    .logo-text {
-        font-size: 1.2rem;
-    }
-    
-    .contact-card {
-        width: 140px;
-    }
-    
-    .member-grid-container {
-        max-height: 400px;
-    }
-}
-
