@@ -1,11 +1,11 @@
 (function() {
-    // Data members, admins, contacts
+    // Data
     const members = [
         { name: 'Gery', username: '@gerysenwith_lapiskeju', tiktok: 'https://www.tiktok.com/@gerysenwith_lapiskeju', initial: 'G', photo: 'images/member1.jpg', quote: 'Kamu rimuru bukan?' },
         { name: 'Rora', username: '@roraxml', tiktok: 'https://www.tiktok.com/@kasugano_sora87', initial: 'S', photo: 'images/member2.jpeg', quote: 'Aku mah raja' },
         { name: 'Izabella', username: '@queen.izabellaz', tiktok: 'https://www.tiktok.com/@queen.izabellaz', initial: 'Q', photo: 'images/member3.jpeg', quote: 'Mending turu' },
         { name: 'Erie', username: '@kasugano_erie', tiktok: 'https://www.tiktok.com/@kasugano_erie', initial: 'E', photo: 'images/member4.jpg', quote: 'Gw butuh uang!!!' },
-        { name: 'Fuyi', username: '@fuyii_npc', tiktok: 'https://www.tiktok.com/@fuyii_npc', initial: 'F', photo: 'images/member5.png', quote: 'Belajar untuk memahami diri kita sendiri, terkadang kita tidak harus memahami seseorang, bahkan juga orang belum bisa memahami kita sepenuhnya, maka belajar lah untuk menerima kenyataan. Ini adalah quote yang sangat panjang untuk menguji fitur scroll pada modal. Semoga dengan adanya scroll, konten yang panjang bisa tetap terbaca dengan baik tanpa membuat modal terlalu besar.' },
+        { name: 'Fuyi', username: '@fuyii_npc', tiktok: 'https://www.tiktok.com/@fuyii_npc', initial: 'F', photo: 'images/member5.png', quote: 'Belajar untuk memahami diri kita sendiri.' },
         { name: 'Ezan', username: '@ezan_xd', tiktok: 'https://www.tiktok.com/@ezan_xd', initial: 'E', photo: 'images/member6.png', quote: 'Sederhana tapi berarti, itulah keluarga.' },
         { name: 'V3iin', username: '@iyainirhmd', tiktok: 'https://www.tiktok.com/@iyainirhmd', initial: 'I', photo: 'images/member7.jpg', quote: 'bntr' },
         { name: 'Shaglen', username: '@xmj.shaglen', tiktok: 'https://www.tiktok.com/@xmj.shaglen', initial: 'X', photo: 'images/member8.jpg', quote: 'Id have' },
@@ -34,7 +34,7 @@
         { platform: 'Instagram', username: '@kasugano.family', link: 'https://www.instagram.com/kasugano.family', icon: 'fab fa-instagram' },
         { platform: 'Instagram', username: '@kasuganostore', link: 'https://www.instagram.com/kasuganostore', icon: 'fab fa-instagram' },
         { platform: 'WhatsApp', username: '+62 852-3240-6495', link: 'https://wa.me/6285232406495', icon: 'fab fa-whatsapp' },
-        { platform: 'Email', username: 'kasuganofamilyy@gmail.com', link: 'kasuganofamilyy@gmail.com', icon: 'far fa-envelope' }
+        { platform: 'Email', username: 'kasuganofamilyy@gmail.com', link: 'mailto:kasuganofamilyy@gmail.com', icon: 'far fa-envelope' }
     ];
 
     // DOM Elements
@@ -54,7 +54,7 @@
 
     const memberContainer = document.getElementById('memberContainer');
     
-    // Render Members with Skeleton Loading
+    // Render Members with Skeleton
     memberContainer.classList.add('skeleton');
     for (let i = 0; i < 9; i++) {
         const skeletonCard = document.createElement('div');
@@ -73,7 +73,7 @@
         memberContainer.innerHTML = '';
         
         if (filteredMembers.length === 0) {
-            memberContainer.innerHTML = '<div class="member-not-found"><i class="fas fa-user-slash"></i><p>Anggota tidak ditemukan</p></div>';
+            memberContainer.innerHTML = '<div style="text-align: center; grid-column: 1/-1; padding: 2rem;"><i class="fas fa-user-slash" style="font-size: 2rem; color: #ffb0e6;"></i><p style="margin-top: 1rem;">Anggota tidak ditemukan</p></div>';
             return;
         }
         
@@ -82,7 +82,7 @@
             card.className = 'member-card';
             card.innerHTML = `
                 <div class="member-avatar">
-                    <img src="${member.photo}" alt="${member.name}" onerror="this.style.display='none'; this.innerHTML='${member.initial}';">
+                    <img src="${member.photo}" alt="${member.name}" loading="lazy" onerror="this.style.display='none'; this.parentElement.style.background='linear-gradient(135deg, #ff69c2, #b57aed)'; this.parentElement.innerHTML='${member.initial}';">
                 </div>
                 <div class="member-info">
                     <h4>${member.name}</h4>
@@ -91,7 +91,7 @@
             `;
             
             card.addEventListener('click', () => {
-                document.getElementById('modalAvatar').innerHTML = `<img src="${member.photo}" alt="${member.name}" onerror="this.style.display='none';">`;
+                document.getElementById('modalAvatar').innerHTML = `<img src="${member.photo}" alt="${member.name}" loading="lazy" onerror="this.style.display='none'; this.parentElement.style.background='linear-gradient(135deg, #ff69c2, #b57aed)'; this.parentElement.innerHTML='${member.initial}';">`;
                 document.getElementById('modalName').textContent = member.name;
                 document.getElementById('modalUsername').textContent = member.username;
                 document.getElementById('quoteText').textContent = member.quote || 'Bersama Kasugano, kita bersinar';
@@ -99,11 +99,8 @@
                 document.getElementById('modalTiktokText').textContent = member.username;
                 document.getElementById('memberModal').classList.add('active');
                 
-                // Reset scroll position modal ke atas
                 const modalContent = document.querySelector('.modal-content');
-                if (modalContent) {
-                    modalContent.scrollTop = 0;
-                }
+                if (modalContent) modalContent.scrollTop = 0;
             });
             
             memberContainer.appendChild(card);
@@ -119,13 +116,13 @@
         card.className = 'admin-card';
         card.innerHTML = `
             <div class="admin-avatar">
-                <img src="${admin.photo}" alt="${admin.name}" onerror="this.style.display='none'; this.innerHTML='${admin.initial}';">
+                <img src="${admin.photo}" alt="${admin.name}" loading="lazy" onerror="this.style.display='none'; this.parentElement.style.background='linear-gradient(135deg, #ff69c2, #b57aed)'; this.parentElement.innerHTML='${admin.initial}';">
             </div>
             <div class="admin-info">
                 <h4>${admin.name}</h4>
                 <div class="admin-username">${admin.username}</div>
                 <div class="admin-role">${admin.role}</div>
-                <a href="${admin.tiktok}" target="_blank" class="admin-tiktok-link"><i class="fab fa-tiktok"></i> TikTok</a>
+                <a href="${admin.tiktok}" target="_blank" rel="noopener" class="admin-tiktok-link"><i class="fab fa-tiktok"></i> TikTok</a>
             </div>
         `;
         adminTrack.appendChild(card);
@@ -140,6 +137,7 @@
         const card = document.createElement('a');
         card.href = contact.link;
         card.target = '_blank';
+        card.rel = 'noopener';
         card.className = 'contact-card';
         card.innerHTML = `
             <i class="${contact.icon}"></i>
@@ -154,6 +152,7 @@
         const card = document.createElement('a');
         card.href = contact.link;
         card.target = '_blank';
+        card.rel = 'noopener';
         card.className = 'contact-card';
         card.innerHTML = `
             <i class="${contact.icon}"></i>
@@ -239,20 +238,14 @@
         const scrollY = window.scrollY;
         const boundaries = getSectionBoundaries();
         
-        if (scrollY < boundaries.about.start) {
-            setActiveSection('home');
-        } else if (scrollY < boundaries.member.start) {
-            setActiveSection('about');
-        } else if (scrollY < boundaries.admin.start) {
-            setActiveSection('member');
-        } else if (scrollY < boundaries.contact.start) {
-            setActiveSection('admin');
-        } else {
-            setActiveSection('contact');
-        }
+        if (scrollY < boundaries.about.start) setActiveSection('home');
+        else if (scrollY < boundaries.member.start) setActiveSection('about');
+        else if (scrollY < boundaries.admin.start) setActiveSection('member');
+        else if (scrollY < boundaries.contact.start) setActiveSection('admin');
+        else setActiveSection('contact');
     }
 
-    // Navbar Toggle (hanya untuk mobile)
+    // Navbar Toggle
     if (navToggle) {
         navToggle.addEventListener('click', (e) => {
             e.stopPropagation();
@@ -262,7 +255,7 @@
         });
     }
 
-    // Close menu when clicking outside (hanya untuk mobile)
+    // Close menu on outside click (mobile only)
     document.addEventListener('click', (e) => {
         if (window.innerWidth <= 768) {
             if (navMenu && navToggle && !navToggle.contains(e.target) && !navMenu.contains(e.target)) {
@@ -272,7 +265,7 @@
         }
     });
 
-    // Navbar Links Click
+    // Navbar Links
     navLinks.forEach(link => {
         link.addEventListener('click', (e) => {
             e.preventDefault();
@@ -280,10 +273,9 @@
             const targetId = link.dataset.target;
             const navbarHeight = getNavbarHeight();
             
-            // Tutup menu mobile jika terbuka
             if (window.innerWidth <= 768 && navMenu) {
                 navMenu.classList.remove('active');
-                if (navToggle) navToggle.innerHTML = '<i class="fas fa-bars"></i>';
+                navToggle.innerHTML = '<i class="fas fa-bars"></i>';
             }
             
             if (targetId === 'home') {
@@ -298,24 +290,12 @@
         });
     });
 
-    // Parallax Effect
-    const heroImg = document.getElementById('heroImg');
-    if (heroImg) {
-        window.addEventListener('scroll', () => {
-            const scrollY = window.scrollY;
-            heroImg.style.transform = `translateY(${scrollY * 0.2}px)`;
-        });
-    }
-
-    // Scroll Reveal Animation
+    // Scroll Reveal
     const revealSections = document.querySelectorAll('section');
-    
     const revealObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('revealed');
-            } else {
-                entry.target.classList.remove('revealed');
             }
         });
     }, { threshold: 0.15, rootMargin: '0px' });
@@ -324,7 +304,7 @@
         revealObserver.observe(section);
     });
 
-    // Scroll Event for Active Section
+    // Scroll Event
     let scrollTimeout;
     window.addEventListener('scroll', () => {
         if (scrollTimeout) cancelAnimationFrame(scrollTimeout);
@@ -339,10 +319,9 @@
             updateScrollPadding();
             checkActiveSection();
             
-            // Reset menu mobile saat resize ke desktop
             if (window.innerWidth > 768 && navMenu) {
                 navMenu.classList.remove('active');
-                if (navToggle) navToggle.innerHTML = '<i class="fas fa-bars"></i>';
+                navToggle.innerHTML = '<i class="fas fa-bars"></i>';
             }
         }, 100);
     });
