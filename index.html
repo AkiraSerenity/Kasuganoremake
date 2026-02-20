@@ -2,7 +2,7 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
     <title>Kasugano Family · official</title>
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -15,8 +15,8 @@
     <!-- CSS External -->
     <link rel="stylesheet" href="style.css">
 </head>
-<body class="invisible-scrollbar">  <!-- Tambahkan class ini -->
-    <!-- NAVBAR -->
+<body>
+    <!-- NAVBAR MODERN - HAMBURGER MENU UNTUK SEMUA UKURAN -->
     <nav class="navbar-modern" id="navbar">
         <div class="nav-container">
             <div class="nav-logo">
@@ -77,7 +77,7 @@
                     <img src="images/hero-profile.jpg" alt="Kasugano Family" onerror="this.src='https://via.placeholder.com/220/ff69c2/ffffff?text=KF'">
                 </div>
                 <h1>Kasugano Family</h1>
-                <p>Kami adalah komunitas yang bergerak di TikTok dalam bidang Anime, Donghua, Game, Preset, GFX, dan lainnya.</p>
+                <p>Kami adalah komunitas yang bergerak di tikTok dalam bidang Anime, Donghua, Game, Preset, GFX, dan lainnya.</p>
             </div>
         </div>
     </section>
@@ -117,28 +117,28 @@
                     <div class="activity-card">
                         <div class="activity-icon"><i class="fas fa-film"></i></div>
                         <h3>Editing</h3>
-                        <p>Mengedit video anime, donghua, preset, gfx. (Pokoknya ngedit)</p>
+                        <p>Mengedit video anime, donghua, preset, gfx. (Pokoknya ngedit malas gw nji*g)</p>
                     </div>
                     <div class="activity-card">
                         <div class="activity-icon"><i class="fas fa-tv"></i></div>
                         <h3>Nonton</h3>
-                        <p>Nonton pokoknya nonton apa aja.</p>
+                        <p>Nonton pokok nya nonton apa aja terserah lu.</p>
                     </div>
                     <div class="activity-card">
                         <div class="activity-icon"><i class="fas fa-gamepad"></i></div>
                         <h3>Main Game</h3>
-                        <p>Mabar bareng kita.</p>
+                        <p>Mabar bareng kita coyyyy.</p>
                     </div>
                     <div class="activity-card">
                         <div class="activity-icon"><i class="fas fa-users"></i></div>
                         <h3>Sosialisasi</h3>
-                        <p>Ngobrol di Discord.</p>
+                        <p>Ngobrol discord</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- MEMBER SECTION -->
+        <!-- MEMBER SECTION - DENGAN SCROLL INVISIBLE -->
         <section id="member">
             <h2 class="section-title">Member</h2>
             <div class="search-wrapper">
@@ -147,20 +147,22 @@
                     <input type="text" id="searchMember" placeholder="Cari anggota" autocomplete="off">
                 </div>
             </div>
-            <div class="member-grid" id="memberContainer"></div>
+            <div class="member-grid-container">
+                <div class="member-grid" id="memberContainer"></div>
+            </div>
         </section>
 
         <!-- ADMIN SECTION -->
         <section id="admin">
             <h2 class="section-title">Admin</h2>
             <div class="carousel-container">
-                <button class="carousel-nav carousel-prev" id="carouselPrev" aria-label="Previous">
+                <button class="carousel-nav carousel-prev" id="carouselPrev">
                     <i class="fas fa-chevron-left"></i>
                 </button>
                 <div class="carousel-wrapper" id="adminCarousel">
                     <div class="carousel-track" id="adminTrack"></div>
                 </div>
-                <button class="carousel-nav carousel-next" id="carouselNext" aria-label="Next">
+                <button class="carousel-nav carousel-next" id="carouselNext">
                     <i class="fas fa-chevron-right"></i>
                 </button>
             </div>
@@ -183,13 +185,13 @@
             
             <!-- Mobile Carousel -->
             <div class="carousel-container contact-carousel-mobile" id="contactCarouselMobile">
-                <button class="carousel-nav carousel-prev" id="contactPrev" aria-label="Previous">
+                <button class="carousel-nav carousel-prev" id="contactPrev">
                     <i class="fas fa-chevron-left"></i>
                 </button>
                 <div class="carousel-wrapper" id="contactCarousel">
                     <div class="carousel-track" id="contactTrack"></div>
                 </div>
-                <button class="carousel-nav carousel-next" id="contactNext" aria-label="Next">
+                <button class="carousel-nav carousel-next" id="contactNext">
                     <i class="fas fa-chevron-right"></i>
                 </button>
             </div>
