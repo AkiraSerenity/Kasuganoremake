@@ -98,7 +98,10 @@
                 document.getElementById('quoteText').textContent = member.quote || 'Bersama Kasugano, kita bersinar';
                 document.getElementById('modalTiktokLink').href = member.tiktok;
                 document.getElementById('modalTiktokText').textContent = member.username;
-                document.getElementById('memberModal').classList.add('active');
+                
+                const modal = document.getElementById('memberModal');
+                modal.classList.add('active');
+                document.body.style.overflow = 'hidden';
             });
             
             memberContainer.appendChild(card);
@@ -126,7 +129,7 @@
         adminTrack.appendChild(card);
     });
 
-    // Render Contact Grid
+    // Render Contact
     const contactGrid = document.getElementById('contactGrid');
     const contactTrack = document.getElementById('contactTrack');
     
@@ -144,7 +147,6 @@
         contactGrid.appendChild(card);
     });
 
-    // Render Contact Carousel
     contactTrack.innerHTML = '';
     contacts.forEach(contact => {
         const card = document.createElement('a');
@@ -192,11 +194,21 @@
 
     // ===== MODAL =====
     const modal = document.getElementById('memberModal');
-    document.getElementById('closeModal').addEventListener('click', () => {
+    const closeModal = document.getElementById('closeModal');
+    
+    function closeModalHandler() {
         modal.classList.remove('active');
-    });
+        document.body.style.overflow = '';
+    }
+    
+    closeModal.addEventListener('click', closeModalHandler);
+    
     window.addEventListener('click', (e) => {
-        if (e.target === modal) modal.classList.remove('active');
+        if (e.target === modal) closeModalHandler();
+    });
+    
+    modal.addEventListener('wheel', (e) => {
+        e.stopPropagation();
     });
 
     // ===== NAVBAR FUNCTIONS =====
@@ -259,9 +271,11 @@
     }
 
     document.addEventListener('click', (e) => {
-        if (navMenu && navToggle && !navToggle.contains(e.target) && !navMenu.contains(e.target)) {
-            navMenu.classList.remove('active');
-            navToggle.innerHTML = '<i class="fas fa-bars"></i>';
+        if (window.innerWidth <= 768) {
+            if (navMenu && navToggle && !navToggle.contains(e.target) && !navMenu.contains(e.target)) {
+                navMenu.classList.remove('active');
+                navToggle.innerHTML = '<i class="fas fa-bars"></i>';
+            }
         }
     });
 
@@ -273,7 +287,7 @@
             const targetId = link.dataset.target;
             const navbarHeight = getNavbarHeight();
             
-            if (navMenu) {
+            if (window.innerWidth <= 768 && navMenu) {
                 navMenu.classList.remove('active');
                 if (navToggle) navToggle.innerHTML = '<i class="fas fa-bars"></i>';
             }
@@ -290,7 +304,7 @@
         });
     });
 
-    // ===== PARALLAX HERO =====
+    // ===== PARALLAX =====
     const heroImg = document.getElementById('heroImg');
     if (heroImg) {
         window.addEventListener('scroll', () => {
@@ -306,11 +320,9 @@
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('revealed');
-            } else {
-                entry.target.classList.remove('revealed');
             }
         });
-    }, { threshold: 0.15, rootMargin: '0px' });
+    }, { threshold: 0.15 });
 
     revealSections.forEach(section => {
         revealObserver.observe(section);
@@ -330,6 +342,11 @@
         resizeTimeout = setTimeout(() => {
             updateScrollPadding();
             checkActiveSection();
+            
+            if (window.innerWidth > 768 && navMenu) {
+                navMenu.classList.remove('active');
+                if (navToggle) navToggle.innerHTML = '<i class="fas fa-bars"></i>';
+            }
         }, 100);
     });
 
