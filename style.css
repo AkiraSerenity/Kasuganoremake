@@ -26,10 +26,17 @@ body::before {
     left: 0;
     width: 100%;
     height: 100%;
+    background: radial-gradient(circle at 20% 30%, rgba(147, 51, 234, 0.5) 0%, transparent 35%),
+                radial-gradient(circle at 80% 70%, rgba(236, 72, 153, 0.4) 0%, transparent 40%),
+                linear-gradient(145deg, #0a0a1a 0%, #1e1035 60%, #231042 100%);
+    z-index: -2;
+}
+
+/* ===== BACKGROUND GRADIENT UNTUK SEMUA UKURAN ===== */
+body::before {
     background: radial-gradient(circle at 20% 30%, rgba(147, 51, 234, 0.7) 0%, transparent 40%),
                 radial-gradient(circle at 80% 70%, rgba(236, 72, 153, 0.6) 0%, transparent 45%),
                 linear-gradient(145deg, #0a0a1a 0%, #1e1035 70%, #231042 100%);
-    z-index: -2;
 }
 
 /* ===== PATTERN GRID YANG SESUAI LEBAR LAYAR ===== */
@@ -90,9 +97,26 @@ body::after {
     --shadow-avatar: 0 10px 25px -3px rgba(255, 105, 194, 0.6);
 }
 
-::-webkit-scrollbar { width: 6px; }
-::-webkit-scrollbar-track { background: #1c1326; }
-::-webkit-scrollbar-thumb { background: #c47af0; border-radius: 10px; }
+::-webkit-scrollbar { 
+    width: 6px; 
+}
+
+::-webkit-scrollbar-track { 
+    background: #1c1326; 
+}
+
+::-webkit-scrollbar-thumb { 
+    background: #c47af0; 
+    border-radius: 10px; 
+}
+
+/* ===== MODAL SCROLL LOCK ===== */
+body.modal-open {
+    overflow: hidden;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+}
 
 /* ===== NAVBAR - TANPA INDICATOR AKTIF ===== */
 .navbar-modern {
@@ -519,18 +543,20 @@ section:not(.revealed) {
     box-shadow: var(--shadow-avatar);
 }
 
+/* ===== MEMBER GRID RESPONSIVE ===== */
 .member-grid {
     display: flex;
     flex-wrap: wrap;
     gap: 1rem;
     justify-content: center;
     margin: 1.5rem 0;
+    width: 100%;
 }
 
 .member-card {
-    width: calc(33.333% - 0.7rem);
-    max-width: 160px;
-    min-width: 130px;
+    width: calc(25% - 0.75rem); /* Default 4 kolom */
+    max-width: 180px;
+    min-width: 140px;
     background: rgba(28, 16, 45, 0.8);
     backdrop-filter: blur(4px);
     border: 1.5px solid #b161ee;
@@ -539,6 +565,7 @@ section:not(.revealed) {
     text-align: center;
     transition: all 0.2s ease;
     cursor: pointer;
+    box-sizing: border-box;
 }
 
 .member-card:hover {
@@ -572,6 +599,7 @@ section:not(.revealed) {
     font-size: 1.2rem;
     font-weight: 700;
     color: white;
+    margin-bottom: 0.3rem;
 }
 
 .member-info .username {
@@ -580,8 +608,65 @@ section:not(.revealed) {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    padding: 0 0.2rem;
 }
 
+/* Member not found styling */
+.member-not-found {
+    width: 100%;
+    text-align: center;
+    padding: 3rem 1rem;
+    color: #ffb0e6;
+    font-size: 1.2rem;
+}
+
+.member-not-found i {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    display: block;
+    color: #ff69c2;
+}
+
+/* Responsive breakpoints untuk member grid */
+@media (min-width: 1200px) {
+    .member-card {
+        width: calc(20% - 0.8rem); /* 5 kolom untuk layar besar */
+        min-width: 160px;
+    }
+}
+
+@media (max-width: 1024px) and (min-width: 769px) {
+    .member-card {
+        width: calc(25% - 0.75rem); /* 4 kolom untuk tablet landscape */
+    }
+}
+
+@media (max-width: 768px) {
+    .member-card {
+        width: calc(33.333% - 0.7rem); /* 3 kolom untuk tablet */
+    }
+}
+
+@media (max-width: 600px) {
+    .member-card {
+        width: calc(50% - 0.5rem); /* 2 kolom untuk mobile */
+        min-width: 130px;
+    }
+}
+
+@media (max-width: 400px) {
+    .member-card {
+        width: 100%; /* 1 kolom untuk mobile kecil */
+        max-width: 200px;
+    }
+    
+    .member-avatar {
+        width: 100px;
+        height: 100px;
+    }
+}
+
+/* ===== SEARCH BAR ===== */
 .search-wrapper {
     display: flex;
     justify-content: center;
@@ -614,6 +699,10 @@ section:not(.revealed) {
     font-size: 1rem;
     color: white;
     outline: none;
+}
+
+.search-bar input::placeholder {
+    color: rgba(255, 176, 230, 0.6);
 }
 
 /* ===== CAROUSEL STYLES (untuk admin) ===== */
@@ -815,7 +904,7 @@ section:not(.revealed) {
     max-width: 100%;
 }
 
-/* ===== MODAL - DIPERBAIKI UNTUK RESPONSIF ===== */
+/* ===== MODAL ===== */
 .modal {
     display: none;
     position: fixed;
@@ -828,7 +917,6 @@ section:not(.revealed) {
     z-index: 2000;
     align-items: center;
     justify-content: center;
-    padding: 1rem; /* Padding untuk menjaga jarak dari tepi layar */
 }
 
 .modal.active { 
@@ -840,29 +928,23 @@ section:not(.revealed) {
     border: 2px solid #ff98dc;
     border-radius: 40px;
     padding: 2rem 1.8rem;
-    max-width: 500px; /* Diperbesar untuk desktop */
-    width: 100%; /* Menggunakan persentase agar fleksibel */
+    max-width: 400px;
+    width: 90%;
     text-align: center;
     position: relative;
     box-shadow: 0 25px 40px -10px #b57aed;
-    margin: 0 auto; /* Center horizontal */
-    max-height: 90vh; /* Mencegah modal terlalu tinggi */
-    overflow-y: auto; /* Scroll jika konten terlalu panjang */
+    animation: modalPop 0.3s ease;
 }
 
-/* Styling scrollbar untuk modal-content agar tetap aesthetic */
-.modal-content::-webkit-scrollbar {
-    width: 4px;
-}
-
-.modal-content::-webkit-scrollbar-track {
-    background: #2a1a3a;
-    border-radius: 10px;
-}
-
-.modal-content::-webkit-scrollbar-thumb {
-    background: #ff8ad0;
-    border-radius: 10px;
+@keyframes modalPop {
+    0% {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
 }
 
 .close-modal {
@@ -873,32 +955,30 @@ section:not(.revealed) {
     color: #ffb0e6;
     cursor: pointer;
     transition: all 0.2s;
-    z-index: 10; /* Pastikan di atas konten lain */
-    width: 40px;
-    height: 40px;
+    line-height: 1;
+    width: 30px;
+    height: 30px;
     display: flex;
     align-items: center;
     justify-content: center;
     border-radius: 50%;
-    background: rgba(0,0,0,0.3);
 }
 
 .close-modal:hover {
     transform: scale(1.2);
     color: #ff69c2;
-    background: rgba(255,105,194,0.2);
+    background: rgba(255, 105, 194, 0.1);
 }
 
 .modal-avatar {
-    width: 150px; /* Diperbesar untuk desktop */
-    height: 150px;
+    width: 120px;
+    height: 120px;
     background: var(--gradient-pink-purple);
-    border-radius: 24px; /* Sedikit lebih besar dari sebelumnya */
-    margin: 0.5rem auto 1.2rem;
+    border-radius: 20px;
+    margin: 0 auto 1.2rem;
     overflow: hidden;
     box-shadow: var(--shadow-avatar);
     transition: all 0.2s;
-    border: 3px solid rgba(255,105,194,0.5);
 }
 
 .modal-avatar:hover {
@@ -915,39 +995,38 @@ section:not(.revealed) {
 .modal h2 {
     color: white;
     margin-bottom: 0.5rem;
-    font-size: 2rem; /* Diperbesar */
-    font-weight: 700;
+    font-size: 1.8rem;
 }
 
 .modal-username {
     color: #ffb0e6;
-    margin-bottom: 1.5rem;
-    font-size: 1.1rem;
-    background: rgba(255,105,194,0.1);
-    padding: 0.3rem 1rem;
-    border-radius: 30px;
-    display: inline-block;
+    margin-bottom: 1rem;
+    font-size: 1rem;
+    word-break: break-word;
 }
 
 .modal-quote {
-    margin: 1.8rem 0 2rem 0;
+    margin: 1.5rem 0 1.8rem 0;
     font-style: italic;
     color: #ffdbff;
-    font-size: 1.3rem; /* Diperbesar */
-    line-height: 1.8;
+    font-size: 1.2rem;
+    line-height: 1.7;
     word-break: break-word;
-    padding: 0.8rem 1rem;
-    background: rgba(255,255,255,0.05);
-    border-radius: 20px;
-    border: 1px dashed rgba(255,105,194,0.4);
+    padding: 0 0.5rem;
+    background: transparent;
+    border: none;
     text-shadow: 0 0 10px rgba(255, 105, 194, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
 }
 
 .modal-quote i {
     color: #ff8ad0;
-    font-size: 1.1rem;
-    margin: 0 0.5rem;
+    font-size: 1rem;
     opacity: 0.8;
+    flex-shrink: 0;
 }
 
 .modal-quote span {
@@ -958,179 +1037,21 @@ section:not(.revealed) {
 .modal-tiktok {
     display: inline-flex;
     align-items: center;
-    gap: 0.8rem;
-    background: linear-gradient(145deg, #2a153d, #1a0e28);
-    padding: 0.8rem 2rem;
-    border-radius: 40px;
+    gap: 0.5rem;
+    background: #2a153d;
+    padding: 0.6rem 1.5rem;
+    border-radius: 30px;
     color: #ffb0e6;
     text-decoration: none;
-    border: 2px solid #ff8ad0;
+    border: 1px solid #ff8ad0;
     transition: all 0.2s;
-    font-size: 1.1rem;
-    font-weight: 600;
     margin-top: 0.5rem;
 }
 
 .modal-tiktok:hover {
     transform: scale(1.05);
     box-shadow: var(--shadow-pink-soft);
-    background: linear-gradient(145deg, #351d4d, #251335);
-    color: white;
-}
-
-/* Media Queries untuk Modal - Menyesuaikan dengan berbagai ukuran layar */
-
-/* Tablet (max-width: 768px) */
-@media (max-width: 768px) {
-    .modal-content {
-        max-width: 450px;
-        padding: 1.8rem 1.5rem;
-    }
-    
-    .modal-avatar {
-        width: 130px;
-        height: 130px;
-    }
-    
-    .modal h2 {
-        font-size: 1.8rem;
-    }
-    
-    .modal-quote {
-        font-size: 1.2rem;
-        margin: 1.5rem 0;
-    }
-    
-    .modal-tiktok {
-        padding: 0.7rem 1.8rem;
-        font-size: 1rem;
-    }
-}
-
-/* Handphone besar (max-width: 600px) */
-@media (max-width: 600px) {
-    .modal-content {
-        max-width: 95%;
-        padding: 1.5rem 1.2rem;
-        border-radius: 30px;
-    }
-    
-    .modal-avatar {
-        width: 110px;
-        height: 110px;
-        border-radius: 20px;
-        margin-top: 0.8rem;
-    }
-    
-    .modal h2 {
-        font-size: 1.6rem;
-    }
-    
-    .modal-username {
-        font-size: 0.95rem;
-        padding: 0.2rem 0.8rem;
-    }
-    
-    .modal-quote {
-        font-size: 1.1rem;
-        line-height: 1.6;
-        padding: 0.6rem 0.8rem;
-        margin: 1.2rem 0;
-    }
-    
-    .modal-quote i {
-        font-size: 0.9rem;
-    }
-    
-    .modal-tiktok {
-        padding: 0.6rem 1.5rem;
-        font-size: 0.95rem;
-        gap: 0.5rem;
-    }
-    
-    .close-modal {
-        top: 10px;
-        right: 15px;
-        font-size: 1.5rem;
-        width: 35px;
-        height: 35px;
-    }
-}
-
-/* Handphone kecil (max-width: 400px) */
-@media (max-width: 400px) {
-    .modal-content {
-        padding: 1.2rem 1rem;
-    }
-    
-    .modal-avatar {
-        width: 90px;
-        height: 90px;
-        border-radius: 16px;
-    }
-    
-    .modal h2 {
-        font-size: 1.4rem;
-    }
-    
-    .modal-username {
-        font-size: 0.85rem;
-    }
-    
-    .modal-quote {
-        font-size: 1rem;
-        line-height: 1.5;
-        padding: 0.5rem 0.6rem;
-    }
-    
-    .modal-quote i {
-        font-size: 0.8rem;
-        margin: 0 0.3rem;
-    }
-    
-    .modal-tiktok {
-        padding: 0.5rem 1.2rem;
-        font-size: 0.85rem;
-        border-width: 1.5px;
-    }
-    
-    .close-modal {
-        top: 8px;
-        right: 12px;
-        font-size: 1.3rem;
-        width: 30px;
-        height: 30px;
-    }
-}
-
-/* Handphone sangat kecil (max-width: 320px) */
-@media (max-width: 320px) {
-    .modal-content {
-        padding: 1rem 0.8rem;
-    }
-    
-    .modal-avatar {
-        width: 75px;
-        height: 75px;
-    }
-    
-    .modal h2 {
-        font-size: 1.2rem;
-    }
-    
-    .modal-username {
-        font-size: 0.75rem;
-    }
-    
-    .modal-quote {
-        font-size: 0.9rem;
-        line-height: 1.4;
-    }
-    
-    .modal-tiktok {
-        padding: 0.4rem 1rem;
-        font-size: 0.75rem;
-    }
+    background: #3a1f55;
 }
 
 /* ===== LOADING SKELETON ===== */
@@ -1163,7 +1084,7 @@ section:not(.revealed) {
     margin-top: 3rem;
 }
 
-/* ===== MEDIA QUERIES - RESPONSIVE DESIGN (Non-Modal) ===== */
+/* ===== MEDIA QUERIES - RESPONSIVE DESIGN ===== */
 @media (max-width: 1024px) {
     .about-grid {
         grid-template-columns: repeat(3, 1fr);
@@ -1171,10 +1092,6 @@ section:not(.revealed) {
     
     .activity-grid {
         grid-template-columns: repeat(4, 1fr);
-    }
-    
-    .member-card {
-        width: calc(25% - 0.7rem);
     }
 }
 
@@ -1218,10 +1135,6 @@ section:not(.revealed) {
     .activity-grid {
         grid-template-columns: repeat(2, 1fr);
         gap: 1rem;
-    }
-    
-    .member-card {
-        width: calc(33.333% - 0.7rem);
     }
     
     .section-title {
@@ -1294,10 +1207,6 @@ section:not(.revealed) {
         gap: 1rem;
     }
     
-    .member-card {
-        width: calc(50% - 0.5rem);
-    }
-    
     .el-familia-text {
         font-size: 1.5rem;
     }
@@ -1335,14 +1244,27 @@ section:not(.revealed) {
         width: 100px;
         height: 100px;
     }
+    
+    .modal-content {
+        padding: 1.5rem 1.2rem;
+        margin: 1rem;
+    }
+    
+    .modal-avatar {
+        width: 100px;
+        height: 100px;
+    }
+    
+    .modal-quote {
+        font-size: 1rem;
+    }
+    
+    .modal h2 {
+        font-size: 1.5rem;
+    }
 }
 
 @media (max-width: 400px) {
-    .member-card {
-        width: 100%;
-        max-width: 160px;
-    }
-    
     .hero-profile-photo {
         width: 150px;
         height: 150px;
@@ -1358,5 +1280,14 @@ section:not(.revealed) {
     
     .contact-card {
         width: 140px;
+    }
+    
+    .modal-quote {
+        flex-direction: column;
+        gap: 0.3rem;
+    }
+    
+    .modal-quote i {
+        display: none;
     }
 }
