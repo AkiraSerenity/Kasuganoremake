@@ -16,9 +16,10 @@ body {
     line-height: 1.5;
     position: relative;
     min-height: 100vh;
+    overflow-x: hidden;
 }
 
-/* Gradient Background + Pattern */
+/* Gradient Background */
 body::before {
     content: "";
     position: fixed;
@@ -32,7 +33,7 @@ body::before {
     z-index: -2;
 }
 
-/* ===== PATTERN GRID YANG SESUAI LEBAR LAYAR ===== */
+/* Pattern Grid */
 body::after {
     content: "";
     position: fixed;
@@ -42,37 +43,10 @@ body::after {
     height: 100%;
     background-image: 
         linear-gradient(rgba(200, 130, 255, 0.05) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(200, 130, 255, 0.05) 1px, transparent 1px),
-        radial-gradient(2px 2px at 10% 20%, rgba(255, 255, 255, 0.5), transparent 3px),
-        radial-gradient(3px 3px at 30% 70%, #ffb0e6, transparent 4px),
-        radial-gradient(2px 2px at 50% 30%, #c47af0, transparent 3px),
-        radial-gradient(4px 4px at 80% 60%, #ff69c2, transparent 5px),
-        radial-gradient(2px 2px at 90% 15%, #b57aed, transparent 3px);
-    background-repeat: repeat, repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat;
-    background-size: 40px 40px, 40px 40px, auto, auto, auto, auto, auto;
+        linear-gradient(90deg, rgba(200, 130, 255, 0.05) 1px, transparent 1px);
+    background-size: 40px 40px, 40px 40px;
     pointer-events: none;
     z-index: -1;
-}
-
-/* Tablet (lebih besar dari 600px) */
-@media (min-width: 601px) {
-    body::after {
-        background-size: 60px 60px, 60px 60px, auto, auto, auto, auto, auto;
-    }
-}
-
-/* Desktop kecil (lebih besar dari 900px) */
-@media (min-width: 901px) {
-    body::after {
-        background-size: 80px 80px, 80px 80px, auto, auto, auto, auto, auto;
-    }
-}
-
-/* Desktop besar (lebih besar dari 1200px) */
-@media (min-width: 1201px) {
-    body::after {
-        background-size: 100px 100px, 100px 100px, auto, auto, auto, auto, auto;
-    }
 }
 
 :root {
@@ -80,9 +54,6 @@ body::after {
     --purple-soft: #b57aed;
     --pink-vibrant: #ff69c2;
     --pink-light: #ffb8f0;
-    --black-rich: #0a0a12;
-    --white-soft: #f7f0ff;
-    --glass-edge: rgba(255, 110, 210, 0.3);
     --gradient-pink-purple: linear-gradient(135deg, #ff69c2, #b57aed);
     --gradient-glow: linear-gradient(90deg, #ff69c2, #b57aed, #ff69c2);
     --shadow-pink-soft: 0 15px 30px -5px rgba(255, 105, 194, 0.5);
@@ -94,7 +65,7 @@ body::after {
 ::-webkit-scrollbar-track { background: #1c1326; }
 ::-webkit-scrollbar-thumb { background: #c47af0; border-radius: 10px; }
 
-/* ===== NAVBAR - HORIZONTAL DI DESKTOP, HAMBURGER DI MOBILE ===== */
+/* ===== NAVBAR ===== */
 .navbar-modern {
     position: fixed;
     top: 2%;
@@ -131,12 +102,14 @@ body::after {
     background: var(--gradient-pink-purple);
     overflow: hidden;
     box-shadow: var(--shadow-avatar);
+    flex-shrink: 0;
 }
 
 .logo-icon img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    display: block;
 }
 
 .logo-text {
@@ -146,19 +119,80 @@ body::after {
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
+    white-space: nowrap;
 }
 
-/* Desktop Navigation - Horizontal */
-.nav-menu {
-    flex: 1;
-    display: flex;
-    justify-content: center;
+/* Desktop Navigation */
+@media (min-width: 769px) {
+    .nav-menu {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+    }
+    
+    .nav-list {
+        display: flex;
+        gap: 0.3rem;
+        list-style: none;
+    }
+    
+    .nav-toggle {
+        display: none;
+    }
 }
 
-.nav-list {
-    display: flex;
-    gap: 0.3rem;
-    list-style: none;
+/* Mobile Navigation */
+@media (max-width: 768px) {
+    .nav-menu {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: rgba(20, 10, 35, 0.95);
+        backdrop-filter: blur(20px);
+        border: 1px solid rgba(255, 105, 194, 0.3);
+        border-radius: 30px;
+        margin-top: 10px;
+        padding: 1rem;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-20px);
+        transition: all 0.3s ease;
+    }
+    
+    .nav-menu.active {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+    }
+    
+    .nav-list {
+        display: flex;
+        flex-direction: column;
+        gap: 0.3rem;
+        list-style: none;
+    }
+    
+    .nav-toggle {
+        display: flex;
+        width: 40px;
+        height: 40px;
+        background: rgba(255, 105, 194, 0.2);
+        border: 1px solid rgba(255, 105, 194, 0.3);
+        border-radius: 50%;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 1.2rem;
+        cursor: pointer;
+        transition: all 0.2s;
+        flex-shrink: 0;
+    }
+    
+    .nav-toggle:hover {
+        transform: scale(1.1);
+        box-shadow: var(--shadow-pink-soft);
+    }
 }
 
 .nav-link {
@@ -172,6 +206,7 @@ body::after {
     font-size: 0.95rem;
     border-radius: 40px;
     transition: all 0.2s ease;
+    white-space: nowrap;
 }
 
 .nav-link i {
@@ -186,31 +221,9 @@ body::after {
     color: white;
 }
 
-/* ACTIVE STATE - HANYA WARNA TEKS, TANPA BACKGROUND/INDICATOR */
 .nav-item.active .nav-link {
     color: white;
     background: transparent;
-}
-
-/* Tombol Hamburger - Hanya muncul di mobile */
-.nav-toggle {
-    display: none;
-    width: 40px;
-    height: 40px;
-    background: rgba(255, 105, 194, 0.2);
-    border: 1px solid rgba(255, 105, 194, 0.3);
-    border-radius: 50%;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    font-size: 1.2rem;
-    cursor: pointer;
-    transition: all 0.2s;
-}
-
-.nav-toggle:hover {
-    transform: scale(1.1);
-    box-shadow: var(--shadow-pink-soft);
 }
 
 /* ===== HOME SECTION ===== */
@@ -241,7 +254,6 @@ body::after {
     object-fit: cover;
     filter: blur(3px) brightness(0.5);
     z-index: 1;
-    transition: transform 0.1s ease-out;
 }
 
 .hero-overlay {
@@ -260,17 +272,19 @@ body::after {
     text-align: center;
     color: white;
     padding: 4rem 1rem 3rem;
+    width: 100%;
 }
 
 .hero-profile-photo {
-    width: 220px;
-    height: 220px;
+    width: min(220px, 40vw);
+    height: min(220px, 40vw);
     border-radius: 24px;
     background: var(--gradient-pink-purple);
     margin: 50px auto 2rem;
     overflow: hidden;
     box-shadow: var(--shadow-avatar);
     transition: all 0.3s;
+    aspect-ratio: 1/1;
 }
 
 .hero-profile-photo:hover {
@@ -282,17 +296,18 @@ body::after {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    display: block;
 }
 
 .hero-content h1 {
-    font-size: 2.8rem;
+    font-size: clamp(1.8rem, 5vw, 2.8rem);
     font-weight: 800;
     text-shadow: 0 0 20px #ff6ac2;
     margin-bottom: 0.8rem;
 }
 
 .hero-content p {
-    font-size: 1.1rem;
+    font-size: clamp(0.9rem, 3vw, 1.1rem);
     max-width: 600px;
     margin: 0 auto;
     background: rgba(0,0,0,0.3);
@@ -300,6 +315,7 @@ body::after {
     padding: 0.8rem 1.5rem;
     border-radius: 50px;
     border: 1px solid #ff9ad0;
+    width: 90%;
 }
 
 /* ===== MAIN CONTAINER ===== */
@@ -310,7 +326,7 @@ body::after {
     padding: 2rem 0;
 }
 
-/* SCROLL REVEAL ANIMATION - BISA DIULANG */
+/* Scroll Reveal */
 section {
     margin-bottom: 5rem;
     opacity: 0;
@@ -323,13 +339,8 @@ section.revealed {
     transform: translateY(0);
 }
 
-section:not(.revealed) {
-    opacity: 0;
-    transform: translateY(30px);
-}
-
 .section-title {
-    font-size: 2rem;
+    font-size: clamp(1.5rem, 4vw, 2rem);
     font-weight: 700;
     background: linear-gradient(145deg, #ffffff, #e9c8ff);
     -webkit-background-clip: text;
@@ -347,7 +358,7 @@ section:not(.revealed) {
     bottom: 0;
     left: 50%;
     transform: translateX(-50%);
-    width: 150px;
+    width: min(150px, 40%);
     height: 4px;
     background: var(--gradient-glow);
     border-radius: 4px;
@@ -376,7 +387,7 @@ section:not(.revealed) {
 }
 
 .el-familia-text {
-    font-size: 2.4rem;
+    font-size: clamp(1.5rem, 4vw, 2.4rem);
     font-weight: 800;
     letter-spacing: 5px;
     background: linear-gradient(145deg, #ffc8f0, #e09eff, #ffb3d9);
@@ -387,7 +398,7 @@ section:not(.revealed) {
 
 .el-familia-symbol {
     color: #ffa7e6;
-    font-size: 2rem;
+    font-size: clamp(1.5rem, 4vw, 2rem);
     margin: 0 0.3rem;
 }
 
@@ -409,6 +420,7 @@ section:not(.revealed) {
     position: relative;
     overflow: hidden;
     transition: all 0.2s;
+    width: fit-content;
 }
 
 .together-badge:hover {
@@ -430,7 +442,7 @@ section:not(.revealed) {
 }
 
 .together-text {
-    font-size: 2rem;
+    font-size: clamp(1.2rem, 3vw, 2rem);
     font-weight: 700;
     letter-spacing: 2px;
     background: linear-gradient(135deg, #ffdbff, #d9b0ff, #ffb8f0);
@@ -442,7 +454,7 @@ section:not(.revealed) {
 }
 
 .together-sub {
-    font-size: 1.3rem;
+    font-size: clamp(0.9rem, 2.5vw, 1.3rem);
     font-weight: 500;
     color: #ffb0e6;
     display: block;
@@ -451,7 +463,7 @@ section:not(.revealed) {
     text-shadow: 0 0 10px #ff69c2;
 }
 
-/* ===== FLUID GRIDS ===== */
+/* ===== GRIDS ===== */
 .about-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -459,7 +471,14 @@ section:not(.revealed) {
     margin: 1.5rem 0;
 }
 
-.about-card {
+.activity-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    margin: 2rem 0;
+}
+
+.about-card, .activity-card {
     background: rgba(22, 12, 35, 0.7);
     backdrop-filter: blur(8px);
     border: 1px solid rgba(255, 130, 210, 0.3);
@@ -468,9 +487,10 @@ section:not(.revealed) {
     text-align: center;
     transition: all 0.2s ease;
     width: 100%;
+    height: 100%;
 }
 
-.about-card:hover {
+.about-card:hover, .activity-card:hover {
     transform: scale(1.05);
     box-shadow: var(--shadow-purple-soft);
 }
@@ -484,27 +504,8 @@ section:not(.revealed) {
     margin-bottom: 0.8rem;
 }
 
-.activity-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 1rem;
-    margin: 2rem 0;
-}
-
 .activity-card {
-    background: rgba(28, 16, 45, 0.8);
-    backdrop-filter: blur(8px);
     border: 1.5px solid #ff98dc;
-    border-radius: 24px;
-    padding: 1.5rem 1rem;
-    text-align: center;
-    transition: all 0.2s ease;
-    width: 100%;
-}
-
-.activity-card:hover {
-    transform: scale(1.05);
-    box-shadow: var(--shadow-pink-soft);
 }
 
 .activity-icon {
@@ -521,18 +522,15 @@ section:not(.revealed) {
     box-shadow: var(--shadow-avatar);
 }
 
+/* ===== MEMBER GRID ===== */
 .member-grid {
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
     gap: 1rem;
-    justify-content: center;
     margin: 1.5rem 0;
 }
 
 .member-card {
-    width: calc(33.333% - 0.7rem);
-    max-width: 160px;
-    min-width: 130px;
     background: rgba(28, 16, 45, 0.8);
     backdrop-filter: blur(4px);
     border: 1.5px solid #b161ee;
@@ -541,6 +539,10 @@ section:not(.revealed) {
     text-align: center;
     transition: all 0.2s ease;
     cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
 }
 
 .member-card:hover {
@@ -558,22 +560,25 @@ section:not(.revealed) {
     overflow: hidden;
     box-shadow: var(--shadow-avatar);
     transition: all 0.2s;
-}
-
-.member-card:hover .member-avatar {
-    box-shadow: 0 15px 30px -5px #ff69c2;
+    aspect-ratio: 1/1;
 }
 
 .member-avatar img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    display: block;
+}
+
+.member-info {
+    width: 100%;
 }
 
 .member-info h4 {
     font-size: 1.2rem;
     font-weight: 700;
     color: white;
+    margin-bottom: 0.2rem;
 }
 
 .member-info .username {
@@ -582,6 +587,7 @@ section:not(.revealed) {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    width: 100%;
 }
 
 .search-wrapper {
@@ -618,7 +624,11 @@ section:not(.revealed) {
     outline: none;
 }
 
-/* ===== CAROUSEL STYLES (untuk admin) ===== */
+.search-bar input::placeholder {
+    color: rgba(255, 176, 230, 0.5);
+}
+
+/* ===== CAROUSEL ===== */
 .carousel-container {
     position: relative;
     margin: 2rem 0;
@@ -667,6 +677,13 @@ section:not(.revealed) {
     box-shadow: var(--shadow-pink-soft);
 }
 
+/* Hide carousel nav on mobile */
+@media (max-width: 768px) {
+    .carousel-nav {
+        display: none;
+    }
+}
+
 /* Admin Cards */
 .admin-card {
     background: rgba(32, 16, 50, 0.9);
@@ -695,12 +712,14 @@ section:not(.revealed) {
     border-radius: 16px;
     overflow: hidden;
     box-shadow: var(--shadow-avatar);
+    aspect-ratio: 1/1;
 }
 
 .admin-avatar img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    display: block;
 }
 
 .admin-info {
@@ -752,8 +771,7 @@ section:not(.revealed) {
     box-shadow: var(--shadow-pink-soft);
 }
 
-/* ===== CONTACT SECTION ===== */
-/* Desktop Grid (muncul di layar >768px) */
+/* ===== CONTACT ===== */
 .contact-grid-desktop {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -761,12 +779,20 @@ section:not(.revealed) {
     margin: 2rem 0;
 }
 
-/* Mobile Carousel (muncul di layar ≤768px) */
 .contact-carousel-mobile {
     display: none;
 }
 
-/* Contact Cards (style yang sama untuk desktop & mobile) */
+@media (max-width: 768px) {
+    .contact-grid-desktop {
+        display: none;
+    }
+    
+    .contact-carousel-mobile {
+        display: flex;
+    }
+}
+
 .contact-card {
     width: 100%;
     text-align: center;
@@ -778,9 +804,6 @@ section:not(.revealed) {
     gap: 0.5rem;
     padding: 1rem 0.5rem;
     transition: all 0.2s ease;
-    background: transparent;
-    border: none;
-    border-radius: 0;
 }
 
 .contact-card:hover {
@@ -807,17 +830,11 @@ section:not(.revealed) {
 .contact-card span {
     font-size: 0.9rem;
     color: #ffb0e6;
-    background: transparent;
-    border: none;
-    padding: 0;
     word-break: break-word;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
     max-width: 100%;
 }
 
-/* ===== MODAL DENGAN SCROLL ===== */
+/* ===== MODAL ===== */
 .modal {
     display: none;
     position: fixed;
@@ -848,8 +865,6 @@ section:not(.revealed) {
     box-shadow: 0 25px 40px -10px #b57aed;
     max-height: 90vh;
     overflow-y: auto;
-    scrollbar-width: thin;
-    scrollbar-color: #c47af0 #1c1326;
 }
 
 .modal-content::-webkit-scrollbar {
@@ -898,19 +913,14 @@ section:not(.revealed) {
     margin: 0 auto 1.2rem;
     overflow: hidden;
     box-shadow: var(--shadow-avatar);
-    transition: all 0.2s;
-    flex-shrink: 0;
-}
-
-.modal-avatar:hover {
-    transform: scale(1.03);
-    box-shadow: 0 20px 35px -5px #ff69c2;
+    aspect-ratio: 1/1;
 }
 
 .modal-avatar img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    display: block;
 }
 
 .modal h2 {
@@ -933,9 +943,6 @@ section:not(.revealed) {
     line-height: 1.7;
     word-break: break-word;
     padding: 0 0.5rem;
-    background: transparent;
-    border: none;
-    text-shadow: 0 0 10px rgba(255, 105, 194, 0.3);
 }
 
 .modal-quote i {
@@ -943,11 +950,6 @@ section:not(.revealed) {
     font-size: 1rem;
     margin: 0 0.5rem;
     opacity: 0.8;
-}
-
-.modal-quote span {
-    display: inline-block;
-    max-width: 90%;
 }
 
 .modal-tiktok {
@@ -984,12 +986,6 @@ section:not(.revealed) {
     100% { background-position: -200% 0; }
 }
 
-.member-grid.skeleton .member-card {
-    background: transparent;
-    border-color: transparent;
-    pointer-events: none;
-}
-
 /* ===== FOOTER ===== */
 .footer {
     text-align: center;
@@ -999,101 +995,26 @@ section:not(.revealed) {
     margin-top: 3rem;
 }
 
-/* ===== MEDIA QUERIES - RESPONSIVE DESIGN ===== */
-@media (min-width: 769px) {
-    /* Desktop styles untuk navbar */
-    .nav-menu {
-        display: flex !important;
-        opacity: 1 !important;
-        visibility: visible !important;
-        transform: none !important;
-        position: static;
-        background: none;
-        backdrop-filter: none;
-        border: none;
-        padding: 0;
-        margin: 0;
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1024px) {
+    .about-grid {
+        grid-template-columns: repeat(3, 1fr);
     }
     
-    .nav-list {
-        flex-direction: row;
-    }
-    
-    .nav-toggle {
-        display: none !important;
+    .activity-grid {
+        grid-template-columns: repeat(4, 1fr);
     }
 }
 
 @media (max-width: 768px) {
-    /* Mobile styles untuk navbar */
-    .nav-menu {
-        position: absolute;
-        top: 100%;
-        left: 0;
-        right: 0;
-        background: rgba(20, 10, 35, 0.95);
-        backdrop-filter: blur(20px);
-        border: 1px solid rgba(255, 105, 194, 0.3);
-        border-radius: 30px;
-        margin-top: 10px;
-        padding: 1rem;
-        opacity: 0;
-        visibility: hidden;
-        transform: translateY(-20px);
-        transition: all 0.3s ease;
-    }
-    
-    .nav-menu.active {
-        opacity: 1;
-        visibility: visible;
-        transform: translateY(0);
-    }
-    
-    .nav-list {
-        flex-direction: column;
-    }
-    
-    .nav-toggle {
-        display: flex;
-    }
-    
     .about-grid {
         grid-template-columns: repeat(2, 1fr);
-        gap: 1rem;
     }
     
     .activity-grid {
         grid-template-columns: repeat(2, 1fr);
-        gap: 1rem;
     }
     
-    .member-card {
-        width: calc(33.333% - 0.7rem);
-    }
-    
-    .section-title {
-        font-size: 1.8rem;
-    }
-    
-    /* Hilangkan tombol navigasi carousel di HP */
-    .carousel-nav {
-        display: none;
-    }
-    
-    .carousel-wrapper {
-        padding: 0.5rem 0;
-    }
-    
-    /* Contact: Desktop Grid hilang, Mobile Carousel muncul */
-    .contact-grid-desktop {
-        display: none;
-    }
-    
-    .contact-carousel-mobile {
-        display: flex;
-    }
-    
-    /* Contact cards di HP */
     .contact-card {
         width: 160px;
     }
@@ -1112,75 +1033,20 @@ section:not(.revealed) {
 }
 
 @media (max-width: 600px) {
-    .hero-profile-photo {
-        width: 180px;
-        height: 180px;
-    }
-    
-    .hero-content h1 {
-        font-size: 2rem;
-    }
-    
-    .hero-content p {
-        font-size: 1rem;
-        padding: 0.6rem 1rem;
-    }
-    
     .main {
         width: 95%;
-        padding: 1rem 0;
     }
     
     .about-grid {
         grid-template-columns: 1fr;
-        gap: 1rem;
     }
     
     .activity-grid {
         grid-template-columns: 1fr;
-        gap: 1rem;
     }
     
-    .member-card {
-        width: calc(50% - 0.5rem);
-    }
-    
-    .el-familia-text {
-        font-size: 1.5rem;
-    }
-    
-    .el-familia-symbol {
-        font-size: 1.5rem;
-    }
-    
-    .together-badge {
-        padding: 0.5rem 1.5rem;
-    }
-    
-    .together-text {
-        font-size: 1.2rem;
-    }
-    
-    .together-sub {
-        font-size: 0.9rem;
-    }
-    
-    .section-title {
-        font-size: 1.5rem;
-    }
-    
-    .section-title::after {
-        width: 120px;
-    }
-    
-    .admin-card {
-        width: 180px;
-        padding: 1rem 0.8rem;
-    }
-    
-    .admin-avatar {
-        width: 100px;
-        height: 100px;
+    .member-grid {
+        grid-template-columns: repeat(2, 1fr);
     }
     
     .modal-content {
@@ -1198,18 +1064,8 @@ section:not(.revealed) {
 }
 
 @media (max-width: 400px) {
-    .member-card {
-        width: 100%;
-        max-width: 160px;
-    }
-    
-    .hero-profile-photo {
-        width: 150px;
-        height: 150px;
-    }
-    
-    .hero-content h1 {
-        font-size: 1.8rem;
+    .member-grid {
+        grid-template-columns: 1fr;
     }
     
     .logo-text {
@@ -1219,4 +1075,69 @@ section:not(.revealed) {
     .contact-card {
         width: 140px;
     }
+}
+/* ===== HIDE SCROLLBAR BUT MAKE IT FUNCTIONAL ===== */
+/* Untuk Chrome, Edge, Safari */
+.hide-scrollbar::-webkit-scrollbar {
+    width: 0px;
+    background: transparent;
+}
+
+.hide-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.hide-scrollbar::-webkit-scrollbar-thumb {
+    background: transparent;
+}
+
+/* Untuk Firefox */
+.hide-scrollbar {
+    scrollbar-width: none;  /* Untuk Firefox - ini akan menyembunyikan tapi tetap berfungsi */
+}
+
+/* Untuk IE/Edge lama */
+.hide-scrollbar {
+    -ms-overflow-style: none;  /* Untuk Internet Explorer dan Edge lama */
+}
+
+/* Atau jika ingin scrollbar tetap ada tapi transparan (invisible) */
+.invisible-scrollbar::-webkit-scrollbar {
+    width: 0px;
+    background: transparent;
+}
+
+.invisible-scrollbar {
+    scrollbar-width: none;  /* Untuk Firefox - scrollbar tetap berfungsi tapi tidak terlihat */
+    -ms-overflow-style: none;  /* Untuk IE/Edge */
+}
+
+/* Terapkan ke body jika ingin seluruh halaman */
+body {
+    scrollbar-width: none;  /* Firefox - scrollbar invisible tapi berfungsi */
+    -ms-overflow-style: none;  /* IE/Edge */
+}
+
+body::-webkit-scrollbar {
+    width: 0px;  /* Chrome/Safari - scrollbar invisible */
+    background: transparent;
+}
+
+/* ===== INVISIBLE SCROLLBAR UNTUK SEMUA ELEMEN ===== */
+/* Untuk seluruh elemen yang memiliki scroll */
+* {
+    scrollbar-width: none;  /* Firefox */
+    -ms-overflow-style: none;  /* IE/Edge */
+}
+
+*::-webkit-scrollbar {
+    width: 0px;
+    height: 0px;
+    background: transparent;
+}
+
+/* Pastikan konten tetap bisa di-scroll */
+body, .modal-content, .carousel-wrapper {
+    overflow-y: auto;
+    overflow-x: auto;
 }
