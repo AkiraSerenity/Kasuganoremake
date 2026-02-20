@@ -2,7 +2,7 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=2.0, user-scalable=yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
     <title>Kasugano Family · official</title>
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -16,12 +16,12 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- NAVBAR MODERN -->
+    <!-- NAVBAR MODERN - TOMBOL HAMBURGER UNTUK SEMUA UKURAN -->
     <nav class="navbar-modern" id="navbar">
         <div class="nav-container">
             <div class="nav-logo">
                 <div class="logo-icon">
-                    <img src="images/logo-profile.jpg" alt="K" onerror="this.src='https://via.placeholder.com/35/ff69c2/ffffff?text=K'">
+                    <img src="images/logo-profile.jpg" alt="K" onerror="this.src='https://via.placeholder.com/38/ff69c2/ffffff?text=K'">
                 </div>
                 <span class="logo-text">KSG Community</span>
             </div>
@@ -74,10 +74,10 @@
             <div class="hero-overlay"></div>
             <div class="hero-content">
                 <div class="hero-profile-photo">
-                    <img src="images/hero-profile.jpg" alt="Kasugano Family" onerror="this.src='https://via.placeholder.com/200/ff69c2/ffffff?text=KF'">
+                    <img src="images/hero-profile.jpg" alt="Kasugano Family" onerror="this.src='https://via.placeholder.com/220/ff69c2/ffffff?text=KF'">
                 </div>
                 <h1>Kasugano Family</h1>
-                <p>Kami adalah komunitas yang bergerak di TikTok dalam bidang Anime, Donghua, Game, Preset, GFX, dan lainnya.</p>
+                <p>Kami adalah komunitas yang bergerak di tikTok dalam bidang Anime, Donghua, Game, Preset, GFX, dan lainnya.</p>
             </div>
         </div>
     </section>
@@ -85,7 +85,7 @@
     <div class="main">
         <!-- ABOUT SECTION -->
         <section id="about">
-            <div class="el-familia-wrapper">
+            <div class="el-familia-wrapper" id="elFamilia">
                 <div class="el-familia-badge">
                     <span class="el-familia-symbol">✦</span>
                     <span class="el-familia-text">EL FAMILIA</span>
@@ -112,17 +112,17 @@
             </div>
 
             <div class="activity-wrapper">
-                <h2 class="section-title" style="margin-top: 2.5rem;">Aktivitas</h2>
+                <h2 class="section-title" style="margin-top: 3rem;">aktivitas</h2>
                 <div class="activity-grid">
                     <div class="activity-card">
                         <div class="activity-icon"><i class="fas fa-film"></i></div>
                         <h3>Editing</h3>
-                        <p>Mengedit video anime, donghua, preset, gfx.</p>
+                        <p>Mengedit video anime, donghua, preset, gfx. (Pokoknya ngedit malas gw nji*g)</p>
                     </div>
                     <div class="activity-card">
                         <div class="activity-icon"><i class="fas fa-tv"></i></div>
                         <h3>Nonton</h3>
-                        <p>Nonton pokoknya nonton apa aja terserah.</p>
+                        <p>Nonton pokok nya nonton apa aja terserah lu.</p>
                     </div>
                     <div class="activity-card">
                         <div class="activity-icon"><i class="fas fa-gamepad"></i></div>
@@ -132,7 +132,7 @@
                     <div class="activity-card">
                         <div class="activity-icon"><i class="fas fa-users"></i></div>
                         <h3>Sosialisasi</h3>
-                        <p>Ngobrol di Discord</p>
+                        <p>Ngobrol discord</p>
                     </div>
                 </div>
             </div>
@@ -144,7 +144,7 @@
             <div class="search-wrapper">
                 <div class="search-bar">
                     <i class="fas fa-search"></i>
-                    <input type="text" id="searchMember" placeholder="Cari anggota..." autocomplete="off">
+                    <input type="text" id="searchMember" placeholder="Cari anggota" autocomplete="off">
                 </div>
             </div>
             <div class="member-grid" id="memberContainer"></div>
@@ -174,14 +174,14 @@
             </div>
         </div>
 
-        <!-- CONTACT SECTION -->
+        <!-- CONTACT SECTION - GRID DI DESKTOP, CAROUSEL DI HP -->
         <section id="contact">
             <h2 class="section-title">Contact</h2>
             
-            <!-- Desktop Grid -->
+            <!-- Desktop Grid (muncul di layar >768px) -->
             <div class="contact-grid-desktop" id="contactGrid"></div>
             
-            <!-- Mobile Carousel -->
+            <!-- Mobile Carousel (muncul di layar ≤768px) -->
             <div class="carousel-container contact-carousel-mobile" id="contactCarouselMobile">
                 <button class="carousel-nav carousel-prev" id="contactPrev">
                     <i class="fas fa-chevron-left"></i>
@@ -200,28 +200,25 @@
         </footer>
     </div>
 
-    <!-- MODAL DENGAN SCROLL -->
+    <!-- MODAL dengan QUOTES menyatu background dan fitur SCROLL -->
     <div class="modal" id="memberModal">
         <div class="modal-content">
-            <div class="modal-header">
-                <span class="close-modal" id="closeModal">&times;</span>
-                <div class="modal-avatar" id="modalAvatar"></div>
-                <h2 id="modalName"></h2>
-                <div class="modal-username" id="modalUsername"></div>
+            <span class="close-modal" id="closeModal">&times;</span>
+            <div class="modal-avatar" id="modalAvatar"></div>
+            <h2 id="modalName"></h2>
+            <div class="modal-username" id="modalUsername"></div>
+            
+            <!-- QUOTES langsung menyatu tanpa card -->
+            <div class="modal-quote" id="modalQuote">
+                <i class="fas fa-quote-left"></i>
+                <span id="quoteText">Bersama kita bersinar</span>
+                <i class="fas fa-quote-right"></i>
             </div>
             
-            <div class="modal-body">
-                <div class="modal-quote" id="modalQuote">
-                    <i class="fas fa-quote-left"></i>
-                    <span id="quoteText">Bersama kita bersinar</span>
-                    <i class="fas fa-quote-right"></i>
-                </div>
-                
-                <a href="#" target="_blank" rel="noopener noreferrer" class="modal-tiktok" id="modalTiktokLink">
-                    <i class="fab fa-tiktok"></i> 
-                    <span id="modalTiktokText">@username</span>
-                </a>
-            </div>
+            <a href="#" target="_blank" class="modal-tiktok" id="modalTiktokLink">
+                <i class="fab fa-tiktok"></i> 
+                <span id="modalTiktokText">@username</span>
+            </a>
         </div>
     </div>
 
