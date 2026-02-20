@@ -1,22 +1,21 @@
 (function() {
-    // ===== DATA LENGKAP =====
     const members = [
         { name: 'Gery', username: '@gerysenwith_lapiskeju', tiktok: 'https://www.tiktok.com/@gerysenwith_lapiskeju', initial: 'G', photo: 'images/member1.jpg', quote: 'Kamu rimuru bukan?' },
         { name: 'Rora', username: '@roraxml', tiktok: 'https://www.tiktok.com/@kasugano_sora87', initial: 'S', photo: 'images/member2.jpeg', quote: 'Aku mah raja' },
         { name: 'Izabella', username: '@queen.izabellaz', tiktok: 'https://www.tiktok.com/@queen.izabellaz', initial: 'Q', photo: 'images/member3.jpeg', quote: 'Mending turu' },
         { name: 'Erie', username: '@kasugano_erie', tiktok: 'https://www.tiktok.com/@kasugano_erie', initial: 'E', photo: 'images/member4.jpg', quote: 'Gw butuh uang!!!' },
-        { name: 'Fuyi', username: '@fuyii_npc', tiktok: 'https://www.tiktok.com/@fuyii_npc', initial: 'F', photo: 'images/member5.png', quote: 'Ngapain tidur kalo bangun lagi?' },
+        { name: 'Fuyi', username: '@fuyii_npc', tiktok: 'https://www.tiktok.com/@fuyii_npc', initial: 'F', photo: 'images/member5.png', quote: 'Belajar untuk memahami diri kira sendiri, terkadang kita tidak harus memahami seseorang, bahkan juga orang belum bisa memahami kita sepenuhnya,maka belajar lah untuk menerima kenyataan' },
         { name: 'Ezan', username: '@ezan_xd', tiktok: 'https://www.tiktok.com/@ezan_xd', initial: 'E', photo: 'images/member6.png', quote: 'Sederhana tapi berarti, itulah keluarga.' },
-        { name: 'V3iin', username: '@iyainirhmd', tiktok: 'https://www.tiktok.com/@iyainirhmd', initial: 'I', photo: 'images/member7.jpg', quote: 'Tersenyumlah, karena senyuman adalah ibadah yang indah.' },
-        { name: 'Shaglen', username: '@xmj.shaglen', tiktok: 'https://www.tiktok.com/@xmj.shaglen', initial: 'X', photo: 'images/member8.jpg', quote: 'Loh heh? kok gitu' },
+        { name: 'V3iin', username: '@iyainirhmd', tiktok: 'https://www.tiktok.com/@iyainirhmd', initial: 'I', photo: 'images/member7.jpg', quote: 'bntr' },
+        { name: 'Shaglen', username: '@xmj.shaglen', tiktok: 'https://www.tiktok.com/@xmj.shaglen', initial: 'X', photo: 'images/member8.jpg', quote: 'Id have' },
         { name: 'Valen', username: '@naineyuko', tiktok: 'https://www.tiktok.com/@naineyuko', initial: 'N', photo: 'images/member9.jpg', quote: 'Aduh kok aku jadi cewek siehh' },
-        { name: 'Yuuta', username: '@yuutaxml_', tiktok: 'https://www.tiktok.com/@yuutaxml_', initial: 'Y', photo: 'images/member10.jpg', quote: 'Pahlawan selalu datang terlambat' },
-        { name: 'Jarzz', username: '@jarzz.dw.skuy', tiktok: 'https://www.tiktok.com/@jarzz.dw.skuy', initial: 'J', photo: 'images/member11.jpg', quote: 'Halah yapping doang' },
+        { name: 'Yuuta', username: '@yuutaxml_', tiktok: 'https://www.tiktok.com/@yuutaxml_', initial: 'Y', photo: 'images/member10.jpg', quote: 'You never know until you try' },
+        { name: 'Jarzz', username: '@jarzz.dw.skuy', tiktok: 'https://www.tiktok.com/@jarzz.dw.skuy', initial: 'J', photo: 'images/member11.jpg', quote: 'Laparr' },
         { name: 'Qwentty', username: '@qwentty.ft', tiktok: 'https://www.tiktok.com/@qwenty.ft', initial: 'Q', photo: 'images/member12.jpg', quote: 'Semua manusia hanyalah alat' },
         { name: 'Akira', username: '@akira.imut', tiktok: 'https://www.tiktok.com/@akiraa.imut', initial: 'A', photo: 'images/member13.jpg', quote: 'Imut gini kalo bantai lu sabi kali' },
         { name: 'Dree', username: '@daktau_256', tiktok: 'https://www.tiktok.com/@daktau_256', initial: 'D', photo: 'images/member14.jpg', quote: 'Jangan takut salah, karena dari salah kita belajar.' },
-        { name: 'Zunda', username: '@shaglenv02y', tiktok: 'https://www.tiktok.com/@shaglenv02y', initial: 'S', photo: 'images/member15.jpg', quote: 'Lahhhhhh gw salah apa' },
-        { name: 'Yushaa Von Khaslana', username: '@kachusyaa', tiktok: 'https://www.tiktok.com/@kachusyaa?_r=1&_t=ZS-943UkIGrPbZ', initial: 'S', photo: 'images/member16.jpeg', quote: 'Hidup seperti larry!' }
+        { name: 'Zunda', username: '@shaglenv02y', tiktok: 'https://www.tiktok.com/@shaglenv02y', initial: 'S', photo: 'images/member15.jpg', quote: 'Emel yok' },
+        { name: 'Yushaa Von Khaslana', username: '@kachusyaa', tiktok: 'https://www.tiktok.com/@kachusyaa?_r=1&_t=ZS-943UkIGrPbZ', initial: 'S', photo: 'images/member16.jpeg', quote: 'Jangan lupa makan' }
     ];
 
     const admins = [
@@ -37,7 +36,6 @@
         { platform: 'Email', username: 'kasuganofamilyy@gmail.com', link: 'kasuganofamilyy@gmail.com', icon: 'far fa-envelope' }
     ];
 
-    // ===== ELEMENTS =====
     const navbar = document.getElementById('navbar');
     const navItems = document.querySelectorAll('.nav-item');
     const navLinks = document.querySelectorAll('.nav-link');
@@ -52,10 +50,8 @@
         contact: document.getElementById('contact')
     };
 
-    // ===== RENDER MEMBERS dengan SKELETON =====
     const memberContainer = document.getElementById('memberContainer');
     
-    // Tampilkan skeleton loading
     memberContainer.classList.add('skeleton');
     for (let i = 0; i < 9; i++) {
         const skeletonCard = document.createElement('div');
@@ -64,7 +60,6 @@
         memberContainer.appendChild(skeletonCard);
     }
 
-    // Render members setelah delay
     setTimeout(() => {
         memberContainer.classList.remove('skeleton');
         memberContainer.innerHTML = '';
@@ -106,7 +101,6 @@
         });
     }
 
-    // ===== RENDER ADMINS =====
     const adminTrack = document.getElementById('adminTrack');
     adminTrack.innerHTML = '';
     
@@ -127,11 +121,9 @@
         adminTrack.appendChild(card);
     });
 
-    // ===== RENDER CONTACTS (DESKTOP GRID & MOBILE CAROUSEL) =====
     const contactGrid = document.getElementById('contactGrid');
     const contactTrack = document.getElementById('contactTrack');
     
-    // Render untuk desktop grid
     contactGrid.innerHTML = '';
     contacts.forEach(contact => {
         const card = document.createElement('a');
@@ -146,7 +138,6 @@
         contactGrid.appendChild(card);
     });
 
-    // Render untuk mobile carousel
     contactTrack.innerHTML = '';
     contacts.forEach(contact => {
         const card = document.createElement('a');
@@ -161,8 +152,6 @@
         contactTrack.appendChild(card);
     });
 
-    // ===== CAROUSEL NAVIGATION =====
-    // Admin carousel
     const adminCarousel = document.getElementById('adminCarousel');
     document.getElementById('carouselPrev').addEventListener('click', () => {
         adminCarousel.scrollBy({ left: -300, behavior: 'smooth' });
@@ -171,7 +160,6 @@
         adminCarousel.scrollBy({ left: 300, behavior: 'smooth' });
     });
 
-    // Contact carousel (mobile only)
     const contactCarousel = document.getElementById('contactCarousel');
     document.getElementById('contactPrev').addEventListener('click', () => {
         contactCarousel.scrollBy({ left: -300, behavior: 'smooth' });
@@ -180,7 +168,6 @@
         contactCarousel.scrollBy({ left: 300, behavior: 'smooth' });
     });
 
-    // ===== SEARCH =====
     document.getElementById('searchMember').addEventListener('input', (e) => {
         const keyword = e.target.value.toLowerCase().trim();
         if (keyword === '') {
@@ -194,7 +181,6 @@
         }
     });
 
-    // ===== MODAL =====
     const modal = document.getElementById('memberModal');
     document.getElementById('closeModal').addEventListener('click', () => {
         modal.classList.remove('active');
@@ -203,7 +189,6 @@
         if (e.target === modal) modal.classList.remove('active');
     });
 
-    // ===== FUNGSI NAVBAR =====
     function getNavbarHeight() {
         return navbar ? navbar.offsetHeight : 80;
     }
@@ -252,7 +237,6 @@
         }
     }
 
-    // ===== MOBILE MENU =====
     if (navToggle) {
         navToggle.addEventListener('click', (e) => {
             e.stopPropagation();
@@ -269,7 +253,6 @@
         }
     });
 
-    // ===== SMOOTH SCROLL =====
     navLinks.forEach(link => {
         link.addEventListener('click', (e) => {
             e.preventDefault();
@@ -294,7 +277,6 @@
         });
     });
 
-    // ===== PARALLAX EFFECT =====
     const heroImg = document.getElementById('heroImg');
     if (heroImg) {
         window.addEventListener('scroll', () => {
@@ -303,7 +285,6 @@
         });
     }
 
-    // ===== SCROLL REVEAL ANIMATION - BISA DIULANG =====
     const revealSections = document.querySelectorAll('section');
     
     const revealObserver = new IntersectionObserver((entries) => {
@@ -320,7 +301,6 @@
         revealObserver.observe(section);
     });
 
-    // ===== EVENT LISTENERS =====
     let scrollTimeout;
     window.addEventListener('scroll', () => {
         if (scrollTimeout) cancelAnimationFrame(scrollTimeout);
@@ -336,7 +316,6 @@
         }, 100);
     });
 
-    // ===== INITIALIZATION =====
     window.scrollTo(0, 0);
     updateScrollPadding();
     
