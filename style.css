@@ -7,8 +7,6 @@
 
 html {
     scroll-behavior: smooth;
-    width: 100%;
-    overflow-x: hidden;
 }
 
 body {
@@ -16,7 +14,6 @@ body {
     background: #0a0a1a;
     color: #f2eaff;
     line-height: 1.5;
-    width: 100%;
     min-height: 100vh;
     overflow-x: hidden;
 }
@@ -53,7 +50,7 @@ body.modal-open {
     left: 50%;
     transform: translateX(-50%);
     width: 95%;
-    max-width: 90%;
+    max-width: 1200px;
     z-index: 1000;
 }
 
@@ -65,14 +62,14 @@ body.modal-open {
     backdrop-filter: blur(16px);
     border: 1px solid rgba(255, 105, 194, 0.25);
     border-radius: 60px;
-    padding: 1% 2%;
+    padding: 0.5rem 1.2rem;
     box-shadow: 0 15px 40px -10px rgba(0, 0, 0, 0.6);
 }
 
 .nav-logo {
     display: flex;
     align-items: center;
-    gap: 5%;
+    gap: 8px;
 }
 
 .logo-icon {
@@ -81,7 +78,6 @@ body.modal-open {
     border-radius: 50%;
     background: var(--gradient-pink-purple);
     overflow: hidden;
-    flex-shrink: 0;
 }
 
 .logo-icon img {
@@ -91,13 +87,12 @@ body.modal-open {
 }
 
 .logo-text {
-    font-size: clamp(1rem, 2vw, 1.5rem);
+    font-size: 1.3rem;
     font-weight: 800;
     background: linear-gradient(135deg, #ffffff, #ffb8f0, #c47af0);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
-    white-space: nowrap;
 }
 
 .nav-menu {
@@ -108,26 +103,25 @@ body.modal-open {
 
 .nav-list {
     display: flex;
-    gap: 2%;
+    gap: 0.2rem;
     list-style: none;
 }
 
 .nav-link {
     display: flex;
     align-items: center;
-    gap: 5px;
-    padding: 8% 12%;
+    gap: 6px;
+    padding: 0.5rem 1rem;
     color: rgba(255, 255, 255, 0.7);
     text-decoration: none;
     font-weight: 600;
-    font-size: clamp(0.7rem, 1.2vw, 0.95rem);
+    font-size: 0.9rem;
     border-radius: 40px;
     transition: all 0.2s ease;
-    white-space: nowrap;
 }
 
 .nav-link i {
-    font-size: clamp(0.8rem, 1.3vw, 1.1rem);
+    font-size: 1rem;
     color: #ff9ad0;
 }
 
@@ -143,8 +137,8 @@ body.modal-open {
 
 .nav-toggle {
     display: none;
-    width: 35px;
-    height: 35px;
+    width: 38px;
+    height: 38px;
     background: rgba(255, 105, 194, 0.2);
     border: 1px solid rgba(255, 105, 194, 0.3);
     border-radius: 50%;
@@ -153,20 +147,19 @@ body.modal-open {
     color: white;
     font-size: 1.1rem;
     cursor: pointer;
-    flex-shrink: 0;
 }
 
 /* ===== HOME SECTION ===== */
 .hero-background {
     position: relative;
     width: 100%;
-    min-height: 90vh;
+    min-height: 450px;
     overflow: hidden;
     border-radius: 0 0 40px 40px;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding-top: 5%;
+    padding-top: 30px;
 }
 
 .hero-bg-img {
@@ -195,19 +188,17 @@ body.modal-open {
     z-index: 3;
     text-align: center;
     color: white;
-    padding: 5% 2%;
-    width: 90%;
+    padding: 3rem 1rem 2rem;
     max-width: 800px;
     margin: 0 auto;
 }
 
 .hero-profile-photo {
-    width: min(30%, 220px);
-    height: auto;
-    aspect-ratio: 1/1;
+    width: 180px;
+    height: 180px;
     border-radius: 20px;
     background: var(--gradient-pink-purple);
-    margin: 5% auto 3%;
+    margin: 30px auto 1.5rem;
     overflow: hidden;
     box-shadow: var(--shadow-avatar);
 }
@@ -219,20 +210,19 @@ body.modal-open {
 }
 
 .hero-content h1 {
-    font-size: clamp(1.8rem, 5vw, 2.8rem);
+    font-size: 2.2rem;
     font-weight: 800;
     text-shadow: 0 0 20px #ff6ac2;
-    margin-bottom: 2%;
+    margin-bottom: 0.8rem;
 }
 
 .hero-content p {
-    font-size: clamp(0.9rem, 2vw, 1.1rem);
-    width: 90%;
+    font-size: 1rem;
     max-width: 600px;
     margin: 0 auto;
     background: rgba(0,0,0,0.3);
     backdrop-filter: blur(4px);
-    padding: 2% 4%;
+    padding: 0.7rem 1.2rem;
     border-radius: 50px;
     border: 1px solid #ff9ad0;
 }
@@ -240,22 +230,22 @@ body.modal-open {
 /* ===== MAIN CONTAINER ===== */
 .main {
     width: 95%;
-    max-width: 1400px;
+    max-width: 1200px;
     margin: 0 auto;
-    padding: 2% 0;
+    padding: 1.5rem 0;
 }
 
 /* ===== SECTION TITLE ===== */
 .section-title {
-    font-size: clamp(1.5rem, 4vw, 2rem);
+    font-size: 1.8rem;
     font-weight: 700;
     background: linear-gradient(145deg, #ffffff, #e9c8ff);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
     text-align: center;
-    margin-bottom: 2%;
-    padding-bottom: 1%;
+    margin-bottom: 1.2rem;
+    padding-bottom: 0.6rem;
     position: relative;
 }
 
@@ -265,7 +255,7 @@ body.modal-open {
     bottom: 0;
     left: 50%;
     transform: translateX(-50%);
-    width: min(150px, 20%);
+    width: 120px;
     height: 3px;
     background: var(--gradient-glow);
     border-radius: 4px;
@@ -275,12 +265,12 @@ body.modal-open {
 .el-familia-wrapper {
     display: flex;
     justify-content: center;
-    margin-bottom: 2%;
+    margin-bottom: 1rem;
 }
 
 .el-familia-badge {
     background: linear-gradient(125deg, #2f1b4b, #190f28);
-    padding: 1% 4%;
+    padding: 0.4rem 1.5rem;
     border-radius: 50px;
     border: 2px solid #ff98dc;
     box-shadow: 0 0 15px #ff69c280;
@@ -288,7 +278,7 @@ body.modal-open {
 }
 
 .el-familia-text {
-    font-size: clamp(1.5rem, 4vw, 2.4rem);
+    font-size: 2rem;
     font-weight: 800;
     letter-spacing: 3px;
     background: linear-gradient(145deg, #ffc8f0, #e09eff, #ffb3d9);
@@ -299,29 +289,28 @@ body.modal-open {
 
 .el-familia-symbol {
     color: #ffa7e6;
-    font-size: clamp(1.3rem, 3.5vw, 2rem);
-    margin: 0 1%;
+    font-size: 1.8rem;
+    margin: 0 0.2rem;
 }
 
 /* ===== TOGETHER BANNER ===== */
 .together-banner {
     display: flex;
     justify-content: center;
-    margin: 4% 0 3%;
+    margin: 2.5rem 0 1.5rem;
 }
 
 .together-badge {
     background: linear-gradient(145deg, #281b44, #140e22);
-    padding: 2% 6%;
+    padding: 0.6rem 2rem;
     border-radius: 60px;
     border: 1.5px solid #ffa2e4;
     box-shadow: 0 0 20px #c47af0;
     text-align: center;
-    width: fit-content;
 }
 
 .together-text {
-    font-size: clamp(1.2rem, 3.5vw, 2rem);
+    font-size: 1.6rem;
     font-weight: 700;
     letter-spacing: 1px;
     background: linear-gradient(135deg, #ffdbff, #d9b0ff, #ffb8f0);
@@ -329,24 +318,23 @@ body.modal-open {
     background-clip: text;
     color: transparent;
     display: block;
-    white-space: nowrap;
 }
 
 .together-sub {
-    font-size: clamp(0.9rem, 2.5vw, 1.3rem);
+    font-size: 1.1rem;
     font-weight: 500;
     color: #ffb0e6;
     display: block;
     letter-spacing: 2px;
-    margin-top: 2%;
+    margin-top: 4px;
 }
 
 /* ===== ABOUT GRID ===== */
 .about-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 2%;
-    margin: 3% 0;
+    gap: 1rem;
+    margin: 1.2rem 0;
 }
 
 .about-card {
@@ -354,27 +342,27 @@ body.modal-open {
     backdrop-filter: blur(8px);
     border: 1px solid rgba(255, 130, 210, 0.3);
     border-radius: 20px;
-    padding: 8% 5%;
+    padding: 1.2rem 0.8rem;
     text-align: center;
 }
 
 .about-card i {
-    font-size: clamp(1.8rem, 4vw, 2.2rem);
+    font-size: 2rem;
     background: linear-gradient(145deg, #ffa4e9, #c07aff);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
-    margin-bottom: 5%;
+    margin-bottom: 0.6rem;
 }
 
 .about-card h3 {
-    font-size: clamp(1rem, 2.5vw, 1.3rem);
-    margin-bottom: 3%;
+    font-size: 1.2rem;
+    margin-bottom: 0.4rem;
     color: white;
 }
 
 .about-card p {
-    font-size: clamp(0.8rem, 1.8vw, 0.95rem);
+    font-size: 0.9rem;
     color: #e0c0ff;
 }
 
@@ -382,8 +370,8 @@ body.modal-open {
 .activity-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 2%;
-    margin: 3% 0;
+    gap: 1rem;
+    margin: 1.5rem 0;
 }
 
 .activity-card {
@@ -391,32 +379,31 @@ body.modal-open {
     backdrop-filter: blur(8px);
     border: 1.5px solid #ff98dc;
     border-radius: 20px;
-    padding: 8% 5%;
+    padding: 1.2rem 0.8rem;
     text-align: center;
 }
 
 .activity-icon {
-    width: 50%;
-    max-width: 70px;
-    aspect-ratio: 1/1;
-    margin: 0 auto 5%;
+    width: 60px;
+    height: 60px;
+    margin: 0 auto 0.8rem;
     background: linear-gradient(135deg, #ff69c2, #b57aed);
     border-radius: 16px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: clamp(1.2rem, 3vw, 1.8rem);
+    font-size: 1.6rem;
     color: white;
 }
 
 .activity-card h3 {
-    font-size: clamp(0.9rem, 2.2vw, 1.2rem);
-    margin-bottom: 3%;
+    font-size: 1.1rem;
+    margin-bottom: 0.4rem;
     color: white;
 }
 
 .activity-card p {
-    font-size: clamp(0.7rem, 1.6vw, 0.9rem);
+    font-size: 0.85rem;
     color: #e0c0ff;
 }
 
@@ -424,8 +411,8 @@ body.modal-open {
 .member-grid {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
-    gap: 1.5%;
-    margin: 3% 0;
+    gap: 0.8rem;
+    margin: 1.5rem 0;
 }
 
 .member-card {
@@ -433,7 +420,7 @@ body.modal-open {
     backdrop-filter: blur(4px);
     border: 1.5px solid #b161ee;
     border-radius: 16px;
-    padding: 8% 3%;
+    padding: 0.8rem 0.3rem;
     text-align: center;
     cursor: pointer;
     transition: all 0.2s ease;
@@ -446,10 +433,9 @@ body.modal-open {
 }
 
 .member-avatar {
-    width: 70%;
-    max-width: 80px;
-    aspect-ratio: 1/1;
-    margin: 0 auto 5%;
+    width: 70px;
+    height: 70px;
+    margin: 0 auto 0.6rem;
     background: var(--gradient-pink-purple);
     border-radius: 14px;
     overflow: hidden;
@@ -463,10 +449,10 @@ body.modal-open {
 }
 
 .member-info h4 {
-    font-size: clamp(0.8rem, 2vw, 1.1rem);
+    font-size: 1rem;
     font-weight: 700;
     color: white;
-    margin-bottom: 2%;
+    margin-bottom: 0.2rem;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -474,7 +460,7 @@ body.modal-open {
 
 .member-info .username {
     color: #ffb0e6;
-    font-size: clamp(0.6rem, 1.3vw, 0.7rem);
+    font-size: 0.65rem;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -504,7 +490,7 @@ body.modal-open {
         grid-template-columns: repeat(1, 1fr);
     }
     .member-card {
-        max-width: 80%;
+        max-width: 240px;
         margin: 0 auto;
     }
 }
@@ -513,14 +499,14 @@ body.modal-open {
 .member-not-found {
     grid-column: 1 / -1;
     text-align: center;
-    padding: 5% 2%;
+    padding: 2rem 1rem;
     color: #ffb0e6;
-    font-size: clamp(1rem, 2.5vw, 1.2rem);
+    font-size: 1.1rem;
 }
 
 .member-not-found i {
-    font-size: clamp(2rem, 5vw, 3rem);
-    margin-bottom: 2%;
+    font-size: 2.5rem;
+    margin-bottom: 0.8rem;
     display: block;
     color: #ff69c2;
 }
@@ -529,7 +515,7 @@ body.modal-open {
 .search-wrapper {
     display: flex;
     justify-content: center;
-    margin: 3% 0 4%;
+    margin: 1.2rem 0 1.5rem;
 }
 
 .search-bar {
@@ -537,24 +523,24 @@ body.modal-open {
     backdrop-filter: blur(8px);
     border: 1.5px solid #c97aff;
     border-radius: 50px;
-    padding: 1.5% 3%;
+    padding: 0.5rem 1.2rem;
     display: flex;
     align-items: center;
-    gap: 2%;
+    gap: 0.6rem;
     width: 100%;
     max-width: 400px;
 }
 
 .search-bar i {
     color: #ff9ad0;
-    font-size: clamp(0.9rem, 2vw, 1.1rem);
+    font-size: 1rem;
 }
 
 .search-bar input {
     background: transparent;
     border: none;
     width: 100%;
-    font-size: clamp(0.8rem, 2vw, 1rem);
+    font-size: 0.95rem;
     color: white;
     outline: none;
 }
@@ -566,10 +552,10 @@ body.modal-open {
 /* ===== CAROUSEL ===== */
 .carousel-container {
     position: relative;
-    margin: 3% 0;
+    margin: 1.5rem 0;
     display: flex;
     align-items: center;
-    gap: 1%;
+    gap: 0.5rem;
 }
 
 .carousel-wrapper {
@@ -577,7 +563,7 @@ body.modal-open {
     scroll-behavior: smooth;
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
-    padding: 2% 1%;
+    padding: 0.8rem 0.3rem;
     flex: 1;
 }
 
@@ -587,7 +573,7 @@ body.modal-open {
 
 .carousel-track {
     display: flex;
-    gap: 2%;
+    gap: 1rem;
     width: max-content;
 }
 
@@ -611,17 +597,16 @@ body.modal-open {
     background: rgba(32, 16, 50, 0.9);
     border: 1.5px solid #c97aff;
     border-radius: 16px;
-    padding: 8% 5%;
+    padding: 1.2rem 0.8rem;
     text-align: center;
     width: 180px;
     flex-shrink: 0;
 }
 
 .admin-avatar {
-    width: 70%;
-    max-width: 100px;
-    aspect-ratio: 1/1;
-    margin: 0 auto 5%;
+    width: 100px;
+    height: 100px;
+    margin: 0 auto;
     background: var(--gradient-pink-purple);
     border-radius: 14px;
     overflow: hidden;
@@ -634,22 +619,22 @@ body.modal-open {
 }
 
 .admin-info h4 {
-    font-size: clamp(0.9rem, 2.2vw, 1.2rem);
+    font-size: 1.1rem;
     color: white;
-    margin: 3% 0 1%;
+    margin: 0.5rem 0 0.2rem;
 }
 
 .admin-username {
     color: #ffb0e6;
-    font-size: clamp(0.65rem, 1.5vw, 0.8rem);
-    margin-bottom: 3%;
+    font-size: 0.75rem;
+    margin-bottom: 0.4rem;
 }
 
 .admin-role {
     background: #2d1b42;
-    padding: 2% 6%;
+    padding: 0.2rem 0.6rem;
     border-radius: 20px;
-    font-size: clamp(0.6rem, 1.4vw, 0.75rem);
+    font-size: 0.7rem;
     color: #ffb8f0;
     display: inline-block;
     border: 1px solid #ff8ad0;
@@ -660,21 +645,21 @@ body.modal-open {
     text-decoration: none;
     display: inline-flex;
     align-items: center;
-    gap: 3%;
-    font-size: clamp(0.65rem, 1.5vw, 0.8rem);
+    gap: 0.3rem;
+    font-size: 0.75rem;
     background: #2a153d;
-    padding: 2% 8%;
+    padding: 0.2rem 0.8rem;
     border-radius: 20px;
     border: 1px solid #ff8ad0;
-    margin-top: 4%;
+    margin-top: 0.4rem;
 }
 
 /* ===== CONTACT ===== */
 .contact-grid-desktop {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 2%;
-    margin: 3% 0;
+    gap: 1rem;
+    margin: 1.5rem 0;
 }
 
 .contact-carousel-mobile {
@@ -688,12 +673,12 @@ body.modal-open {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 3%;
-    padding: 3% 2%;
+    gap: 0.4rem;
+    padding: 0.8rem 0.3rem;
 }
 
 .contact-card i {
-    font-size: clamp(1.8rem, 4vw, 2.5rem);
+    font-size: 2rem;
     background: linear-gradient(145deg, #ff9ae0, #c07aff);
     -webkit-background-clip: text;
     background-clip: text;
@@ -701,14 +686,14 @@ body.modal-open {
 }
 
 .contact-card h3 {
-    font-size: clamp(0.9rem, 2.2vw, 1.2rem);
+    font-size: 1rem;
     font-weight: 600;
     color: white;
     margin: 0;
 }
 
 .contact-card span {
-    font-size: clamp(0.7rem, 1.8vw, 0.9rem);
+    font-size: 0.8rem;
     color: #ffb0e6;
     white-space: nowrap;
     overflow: hidden;
@@ -739,8 +724,8 @@ body.modal-open {
     background: #1e1230;
     border: 2px solid #ff98dc;
     border-radius: 30px;
-    padding: 4% 5%;
-    max-width: 400px;
+    padding: 1.5rem 1.2rem;
+    max-width: 350px;
     width: 90%;
     text-align: center;
     position: relative;
@@ -749,25 +734,24 @@ body.modal-open {
 
 .close-modal {
     position: absolute;
-    top: 3%;
-    right: 4%;
-    font-size: clamp(1.4rem, 3.5vw, 1.8rem);
+    top: 12px;
+    right: 15px;
+    font-size: 1.6rem;
     color: #ffb0e6;
     cursor: pointer;
-    width: 30px;
-    height: 30px;
+    width: 28px;
+    height: 28px;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
 .modal-avatar {
-    width: 40%;
-    max-width: 120px;
-    aspect-ratio: 1/1;
+    width: 100px;
+    height: 100px;
     background: var(--gradient-pink-purple);
     border-radius: 16px;
-    margin: 0 auto 4%;
+    margin: 0 auto 1rem;
     overflow: hidden;
 }
 
@@ -779,54 +763,54 @@ body.modal-open {
 
 .modal h2 {
     color: white;
-    margin-bottom: 1%;
-    font-size: clamp(1.3rem, 3.5vw, 1.8rem);
+    margin-bottom: 0.3rem;
+    font-size: 1.5rem;
 }
 
 .modal-username {
     color: #ffb0e6;
-    margin-bottom: 3%;
-    font-size: clamp(0.8rem, 2vw, 1rem);
+    margin-bottom: 0.8rem;
+    font-size: 0.9rem;
 }
 
 .modal-quote {
-    margin: 4% 0;
+    margin: 1.2rem 0;
     font-style: italic;
     color: #ffdbff;
-    font-size: clamp(0.9rem, 2.2vw, 1.2rem);
+    font-size: 1rem;
     line-height: 1.5;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 2%;
+    gap: 0.4rem;
 }
 
 .modal-quote i {
     color: #ff8ad0;
-    font-size: clamp(0.8rem, 2vw, 1rem);
+    font-size: 0.9rem;
 }
 
 .modal-tiktok {
     display: inline-flex;
     align-items: center;
-    gap: 3%;
+    gap: 0.4rem;
     background: #2a153d;
-    padding: 2% 6%;
+    padding: 0.5rem 1.2rem;
     border-radius: 25px;
     color: #ffb0e6;
     text-decoration: none;
     border: 1px solid #ff8ad0;
-    font-size: clamp(0.8rem, 2vw, 1rem);
+    font-size: 0.9rem;
 }
 
 /* ===== FOOTER ===== */
 .footer {
     text-align: center;
-    padding: 3% 0;
+    padding: 1.5rem 0;
     color: #a588c0;
     border-top: 1px solid rgba(255, 150, 210, 0.2);
-    margin-top: 4%;
-    font-size: clamp(0.8rem, 2vw, 0.95rem);
+    margin-top: 2rem;
+    font-size: 0.9rem;
 }
 
 /* ===== MEDIA QUERIES ===== */
@@ -850,11 +834,11 @@ body.modal-open {
         backdrop-filter: blur(20px);
         border: 1px solid rgba(255, 105, 194, 0.3);
         border-radius: 25px;
-        margin-top: 2%;
-        padding: 3%;
+        margin-top: 8px;
+        padding: 0.8rem;
         opacity: 0;
         visibility: hidden;
-        transform: translateY(-10px);
+        transform: translateY(-15px);
         transition: all 0.3s ease;
     }
 
@@ -866,7 +850,7 @@ body.modal-open {
 
     .nav-list {
         flex-direction: column;
-        gap: 2%;
+        gap: 0.2rem;
     }
 
     .nav-toggle {
@@ -899,6 +883,15 @@ body.modal-open {
 }
 
 @media (max-width: 600px) {
+    .hero-profile-photo {
+        width: 150px;
+        height: 150px;
+    }
+    
+    .hero-content h1 {
+        font-size: 1.8rem;
+    }
+    
     .about-grid {
         grid-template-columns: 1fr;
     }
@@ -907,26 +900,37 @@ body.modal-open {
         grid-template-columns: 1fr;
     }
     
-    .together-text {
-        white-space: normal;
+    .el-familia-text {
+        font-size: 1.3rem;
     }
     
-    .contact-card {
-        width: 120px;
+    .el-familia-symbol {
+        font-size: 1.3rem;
+    }
+    
+    .together-text {
+        font-size: 1.2rem;
+    }
+    
+    .together-sub {
+        font-size: 0.9rem;
+    }
+    
+    .section-title {
+        font-size: 1.5rem;
+    }
+    
+    .section-title::after {
+        width: 100px;
     }
 }
 
 @media (max-width: 400px) {
+    .logo-text {
+        font-size: 1.1rem;
+    }
+    
     .contact-card {
-        width: 100px;
-    }
-    
-    .modal-quote {
-        flex-direction: column;
-        gap: 1%;
-    }
-    
-    .modal-quote i {
-        display: none;
+        width: 120px;
     }
 }
