@@ -463,7 +463,7 @@ section.revealed {
     font-size: 0.9rem;
 }
 
-/* ========== MEMBER GRID - FLEXBOX CENTER ========== */
+/* ========== MEMBER GRID ========== */
 .member-grid {
     display: flex;
     flex-wrap: wrap;
@@ -522,38 +522,41 @@ section.revealed {
     align-items: center;
 }
 
-/* NAMA MEMBER - tanpa overflow, tanpa ellipsis, ukuran font mengecil */
-.member-info h4 {
-    font-weight: 700;
-    color: white;
-    margin-bottom: 4px;
+/* Nama dan Username - satu baris, tanpa overflow hidden */
+.member-info h4,
+.member-info .username {
     max-width: 100%;
     white-space: nowrap;
     width: 100%;
     line-height: 1.4;
+    overflow: visible;
+    text-overflow: clip;
 }
 
+/* NAMA */
+.member-info h4 {
+    font-weight: 700;
+    color: white;
+    margin-bottom: 4px;
+}
 .name-small    { font-size: 1.1rem; }
 .name-medium   { font-size: 1rem; }
 .name-long     { font-size: 0.9rem; }
 .name-very-long{ font-size: 0.8rem; }
 .name-extreme  { font-size: 0.7rem; }
 
-/* USERNAME - tanpa overflow, tanpa ellipsis, ukuran font mengecil */
+/* USERNAME */
 .member-info .username {
     color: #ffb0e6;
-    max-width: 100%;
-    white-space: nowrap;
-    width: 100%;
-    line-height: 1.4;
 }
-
 .username-small    { font-size: 0.75rem; }
 .username-medium   { font-size: 0.7rem; }
 .username-long     { font-size: 0.65rem; }
 .username-very-long{ font-size: 0.55rem; }
 .username-extreme  { font-size: 0.45rem; }
 .username-ultra    { font-size: 0.35rem; }
+.username-mega     { font-size: 0.25rem; }
+.username-giga     { font-size: 0.2rem; }
 
 /* Search Bar */
 .search-wrapper {
@@ -593,7 +596,7 @@ section.revealed {
     color: rgba(255, 176, 230, 0.5);
 }
 
-/* ========== CAROUSEL - FULL WIDTH DI HP ========== */
+/* ========== CAROUSEL ========== */
 .carousel-container {
     position: relative;
     margin: 30px 0;
@@ -700,7 +703,6 @@ section.revealed {
     gap: 6px;
 }
 
-/* NAMA ADMIN - juga mengecil */
 .admin-info h4 {
     color: white;
     margin: 0;
@@ -708,7 +710,7 @@ section.revealed {
     white-space: nowrap;
     width: 100%;
     line-height: 1.4;
-    font-size: 1.2rem; /* default */
+    font-size: 1.2rem;
 }
 .admin-info h4.name-medium   { font-size: 1.1rem; }
 .admin-info h4.name-long     { font-size: 1rem; }
@@ -726,6 +728,8 @@ section.revealed {
 .admin-username.username-very-long { font-size: 0.6rem; }
 .admin-username.username-extreme   { font-size: 0.5rem; }
 .admin-username.username-ultra     { font-size: 0.4rem; }
+.admin-username.username-mega      { font-size: 0.3rem; }
+.admin-username.username-giga      { font-size: 0.2rem; }
 
 .admin-role {
     background: #2d1b42;
@@ -1063,12 +1067,42 @@ section.revealed {
 }
 
 /* ========== MEDIA QUERIES ========== */
+/* Desktop: navbar normal, tombol carousel muncul, contact grid desktop */
 @media (min-width: 769px) {
+    .nav-menu {
+        display: flex !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+        position: static;
+        background: transparent;
+        border: none;
+        padding: 0;
+        margin: 0;
+        transform: none;
+    }
+    
+    .nav-list {
+        flex-direction: row;
+    }
+    
+    .nav-toggle {
+        display: none !important;
+    }
+    
     .carousel-nav {
-        display: flex;
+        display: flex !important;
+    }
+    
+    .contact-grid-desktop {
+        display: grid !important;
+    }
+    
+    .contact-carousel-mobile {
+        display: none !important;
     }
 }
 
+/* Mobile: navbar hamburger, tombol carousel hilang, contact pake carousel */
 @media (max-width: 768px) {
     .nav-container {
         padding: 8px 16px;
@@ -1133,27 +1167,37 @@ section.revealed {
         width: 130px;
     }
     
-    /* Ukuran font NAMA di HP */
     .name-small    { font-size: 1rem; }
     .name-medium   { font-size: 0.9rem; }
     .name-long     { font-size: 0.8rem; }
     .name-very-long{ font-size: 0.7rem; }
     .name-extreme  { font-size: 0.6rem; }
     
-    /* Ukuran font USERNAME di HP */
     .username-small    { font-size: 0.7rem; }
     .username-medium   { font-size: 0.65rem; }
     .username-long     { font-size: 0.6rem; }
     .username-very-long{ font-size: 0.5rem; }
     .username-extreme  { font-size: 0.4rem; }
     .username-ultra    { font-size: 0.3rem; }
+    .username-mega     { font-size: 0.2rem; }
+    .username-giga     { font-size: 0.15rem; }
     
-    /* HILANGKAN TOMBOL NAVIGASI DI HP */
+    /* Tombol carousel hilang di mobile */
     .carousel-nav {
         display: none !important;
     }
     
-    /* CAROUSEL FULL WIDTH DI HP (mengabaikan padding .main) */
+    /* Contact: mobile pake carousel */
+    .contact-grid-desktop {
+        display: none !important;
+    }
+    
+    .contact-carousel-mobile {
+        display: flex !important;
+        width: 100%;
+    }
+    
+    /* Carousel full width di mobile */
     .carousel-container {
         width: 100vw;
         position: relative;
@@ -1201,16 +1245,6 @@ section.revealed {
     
     .together-sub {
         font-size: 1rem;
-    }
-    
-    /* Contact section mobile - FULL WIDTH */
-    .contact-grid-desktop {
-        display: none;
-    }
-    
-    .contact-carousel-mobile {
-        display: flex;
-        width: 100%;
     }
     
     .contact-card {
@@ -1262,10 +1296,6 @@ section.revealed {
         width: 140px;
     }
     
-    .member-info h4 {
-        /* font-size already handled by classes */
-    }
-    
     .name-small    { font-size: 0.9rem; }
     .name-medium   { font-size: 0.8rem; }
     .name-long     { font-size: 0.7rem; }
@@ -1278,6 +1308,8 @@ section.revealed {
     .username-very-long{ font-size: 0.45rem; }
     .username-extreme  { font-size: 0.35rem; }
     .username-ultra    { font-size: 0.25rem; }
+    .username-mega     { font-size: 0.2rem; }
+    .username-giga     { font-size: 0.15rem; }
     
     .admin-card {
         width: 160px;
@@ -1323,6 +1355,8 @@ section.revealed {
     .username-very-long{ font-size: 0.4rem; }
     .username-extreme  { font-size: 0.3rem; }
     .username-ultra    { font-size: 0.2rem; }
+    .username-mega     { font-size: 0.15rem; }
+    .username-giga     { font-size: 0.1rem; }
     
     .admin-card {
         width: 140px;
