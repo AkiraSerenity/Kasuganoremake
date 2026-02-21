@@ -6,7 +6,7 @@
             username: '@gerysenwith_lapiskeju', 
             tiktok: 'https://www.tiktok.com/@gerysenwith_lapiskeju?_r=1&_t=ZS-9418k7vyLUi', 
             photo: 'images/member1.jpg', 
-            quote: 'Bahkan hal sederhana seperti azan magrib bisa menjadi sepesial hijau engkau menantikan nya '
+            quote: 'Bahkan hal sederhana seperti azan magrib bisa menjadi sepesial hijau engkau menantikan nya'
         },
         { 
             name: 'Rora', 
@@ -46,14 +46,14 @@
         { 
             name: 'V3iin', 
             username: '@iyainirhmd', 
-            tiktok: 'https://www.tiktok.com/@iyainirhmd?_r=1&_t=ZS-9417kmmsdHA'', 
+            tiktok: 'https://www.tiktok.com/@iyainirhmd?_r=1&_t=ZS-9417kmmsdHA', 
             photo: 'images/member7.jpg', 
             quote: 'bntr'
         },
         { 
             name: 'Shaglen', 
             username: '@xmj.shaglen', 
-            tiktok: 'https://www.tiktok.com/@naineyuko?_r=1&_t=ZS-9417icJsZ5I'', 
+            tiktok: 'https://www.tiktok.com/@naineyuko?_r=1&_t=ZS-9417icJsZ5I', 
             photo: 'images/member8.jpg', 
             quote: 'Id have'
         },
@@ -67,7 +67,7 @@
         { 
             name: 'Yuuta', 
             username: '@yuutaxml_', 
-            tiktok: 'https://www.tiktok.com/@yuutaxml_?_r=1&_t=ZS-9417ceeQYFw'', 
+            tiktok: 'https://www.tiktok.com/@yuutaxml_?_r=1&_t=ZS-9417ceeQYFw', 
             photo: 'images/member10.jpg', 
             quote: 'You never know until you try'
         },
@@ -81,7 +81,7 @@
         { 
             name: 'Qwenty', 
             username: '@qwenty.ft', 
-            tiktok: 'https://www.tiktok.com/@qwenty.ft?_r=1&_t=ZS-9417dPeBf4m'', 
+            tiktok: 'https://www.tiktok.com/@qwenty.ft?_r=1&_t=ZS-9417dPeBf4m', 
             photo: 'images/member12.jpg', 
             quote: 'Semua manusia hanyalah alat'
         },
@@ -102,7 +102,7 @@
         { 
             name: 'Zunda', 
             username: '@shaglenv02y', 
-            tiktok: 'https://www.tiktok.com/@shaglenv02y?_r=1&_t=ZS-9417etBXVki'', 
+            tiktok: 'https://www.tiktok.com/@shaglenv02y?_r=1&_t=ZS-9417etBXVki', 
             photo: 'images/member15.jpg', 
             quote: 'Kalo kamu lapar makan lah'
         },
@@ -505,4 +505,5 @@
     });
 
 })();
+
 
