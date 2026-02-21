@@ -522,26 +522,25 @@ section.revealed {
     max-width: 100%;
     white-space: nowrap;
     overflow: hidden;
-    text-overflow: clip; /* tanpa titik-titik */
+    text-overflow: ellipsis;
     width: 100%;
 }
 
-/* USERNAME - tanpa ellipsis, ukuran mengecil proporsional */
+/* USERNAME - tanpa overflow, ukuran font mengecil */
 .member-info .username {
     color: #ffb0e6;
     max-width: 100%;
     white-space: nowrap;
-    overflow: hidden;
-    text-overflow: clip; /* tanpa titik-titik */
     width: 100%;
     line-height: 1.4;
 }
 
-/* Kelas ukuran font - mengecil sesuai panjang teks */
-.username-small { font-size: 0.75rem; }
-.username-medium { font-size: 0.7rem; }
-.username-long { font-size: 0.65rem; }
-.username-very-long { font-size: 0.55rem; }
+/* Kelas ukuran font untuk username */
+.username-small { font-size: 0.75rem; }      /* < 15 karakter */
+.username-medium { font-size: 0.7rem; }       /* 15-20 karakter */
+.username-long { font-size: 0.65rem; }        /* 20-25 karakter */
+.username-very-long { font-size: 0.55rem; }   /* 25-30 karakter */
+.username-extreme { font-size: 0.45rem; }     /* > 30 karakter */
 
 /* Search Bar */
 .search-wrapper {
@@ -695,7 +694,7 @@ section.revealed {
     max-width: 100%;
     white-space: nowrap;
     overflow: hidden;
-    text-overflow: clip;
+    text-overflow: ellipsis;
     width: 100%;
 }
 
@@ -703,14 +702,13 @@ section.revealed {
     color: #ffb0e6;
     max-width: 100%;
     white-space: nowrap;
-    overflow: hidden;
-    text-overflow: clip;
     width: 100%;
     font-size: 0.8rem;
 }
 
 .admin-username.username-long { font-size: 0.7rem; }
 .admin-username.username-very-long { font-size: 0.6rem; }
+.admin-username.username-extreme { font-size: 0.5rem; }
 
 .admin-role {
     background: #2d1b42;
@@ -723,7 +721,7 @@ section.revealed {
     max-width: 100%;
     white-space: nowrap;
     overflow: hidden;
-    text-overflow: ellipsis; /* role boleh ellipsis karena biasanya pendek */
+    text-overflow: ellipsis;
     font-size: 0.75rem;
 }
 
@@ -744,7 +742,7 @@ section.revealed {
     max-width: 100%;
     white-space: nowrap;
     overflow: hidden;
-    text-overflow: ellipsis; /* link boleh ellipsis */
+    text-overflow: ellipsis;
 }
 
 .admin-tiktok-link:hover {
@@ -864,7 +862,7 @@ section.revealed {
     max-width: 100%;
     white-space: nowrap;
     overflow: hidden;
-    text-overflow: ellipsis; /* platform boleh ellipsis */
+    text-overflow: ellipsis;
     width: 100%;
 }
 
@@ -872,8 +870,6 @@ section.revealed {
     color: #ffb0e6;
     max-width: 100%;
     white-space: nowrap;
-    overflow: hidden;
-    text-overflow: clip; /* username tanpa titik-titik */
     width: 100%;
     font-size: 0.6rem;
 }
@@ -1124,11 +1120,13 @@ section.revealed {
     }
     
     .member-info .username {
-        font-size: 0.7rem;
+        font-size: 0.7rem; /* default untuk HP */
     }
+    .username-small { font-size: 0.7rem; }
     .username-medium { font-size: 0.65rem; }
     .username-long { font-size: 0.6rem; }
     .username-very-long { font-size: 0.5rem; }
+    .username-extreme { font-size: 0.4rem; }
     
     /* HILANGKAN TOMBOL NAVIGASI DI HP */
     .carousel-nav {
@@ -1251,9 +1249,11 @@ section.revealed {
     .member-info .username {
         font-size: 0.65rem;
     }
+    .username-small { font-size: 0.65rem; }
     .username-medium { font-size: 0.6rem; }
     .username-long { font-size: 0.55rem; }
     .username-very-long { font-size: 0.45rem; }
+    .username-extreme { font-size: 0.35rem; }
     
     .admin-card {
         width: 160px;
@@ -1294,9 +1294,11 @@ section.revealed {
     .member-info .username {
         font-size: 0.6rem;
     }
+    .username-small { font-size: 0.6rem; }
     .username-medium { font-size: 0.55rem; }
     .username-long { font-size: 0.5rem; }
     .username-very-long { font-size: 0.4rem; }
+    .username-extreme { font-size: 0.3rem; }
     
     .admin-card {
         width: 140px;
