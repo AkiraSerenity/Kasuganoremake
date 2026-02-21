@@ -6,176 +6,112 @@
             username: '@gerysenwith_lapiskeju', 
             tiktok: 'https://www.tiktok.com/@gerysenwith_lapiskeju', 
             photo: 'images/member1.jpg', 
-            quote: 'Kamu rimuru bukan?', 
-            bio: 'Editor handal yang suka anime isekai', 
-            joinDate: 'Maret 2023', 
-            interests: 'Anime Isekai, Editing, Gaming',
-            achievements: 'Top Editor 2023'
+            quote: 'Kamu rimuru bukan?'
         },
         { 
             name: 'Rora', 
             username: '@roraxml', 
             tiktok: 'https://www.tiktok.com/@kasugano_sora87', 
             photo: 'images/member2.jpeg', 
-            quote: 'Aku mah raja', 
-            bio: 'Pemain game profesional', 
-            joinDate: 'Januari 2023', 
-            interests: 'Gaming, Streaming',
-            achievements: 'Juara Tournament ML'
+            quote: 'Aku mah raja'
         },
         { 
             name: 'Izabella', 
             username: '@queen.izabellaz', 
             tiktok: 'https://www.tiktok.com/@queen.izabellaz', 
             photo: 'images/member3.jpeg', 
-            quote: 'Mending turu', 
-            bio: 'Suka tidur tapi jago edit', 
-            joinDate: 'Februari 2023', 
-            interests: 'Tidur, Editing',
-            achievements: 'Night Owl'
+            quote: 'Mending turu'
         },
         { 
             name: 'Erie', 
             username: '@kasugano_erie', 
             tiktok: 'https://www.tiktok.com/@kasugano_erie', 
             photo: 'images/member4.jpg', 
-            quote: 'Gw butuh uang!!!', 
-            bio: 'Freelance editor', 
-            joinDate: 'April 2023', 
-            interests: 'Editing, Freelance',
-            achievements: 'Client Puas'
+            quote: 'Gw butuh uang!!!'
         },
         { 
             name: 'Fuyi', 
             username: '@fuyii_npc', 
             tiktok: 'https://www.tiktok.com/@fuyii_npc', 
             photo: 'images/member5.png', 
-            quote: 'Belajar untuk memahami diri kita sendiri', 
-            bio: 'Filosof cilik', 
-            joinDate: 'Mei 2023', 
-            interests: 'Filsafat, Menulis',
-            achievements: 'Quote of the Month'
+            quote: 'Belajar untuk memahami diri kita sendiri, terkadang kita tidak harus memahami seseorang, bahkan juga orang belum bisa memahami kita sepenuhnya, maka belajar lah untuk menerima kenyataan'
         },
         { 
             name: 'Ezan', 
             username: '@ezan_xd', 
             tiktok: 'https://www.tiktok.com/@ezan_xd', 
             photo: 'images/member6.png', 
-            quote: 'Sederhana tapi berarti', 
-            bio: 'Penyuka hal sederhana', 
-            joinDate: 'Juni 2023', 
-            interests: 'Keluarga, Musik',
-            achievements: 'Most Simple Member'
+            quote: 'Sederhana tapi berarti, itulah keluarga.'
         },
         { 
             name: 'V3iin', 
             username: '@iyainirhmd', 
             tiktok: 'https://www.tiktok.com/@iyainirhmd', 
             photo: 'images/member7.jpg', 
-            quote: 'bntr', 
-            bio: 'Suka rebahan', 
-            joinDate: 'Juli 2023', 
-            interests: 'Rebahan, Scroll TikTok',
-            achievements: 'King of Late Reply'
+            quote: 'bntr'
         },
         { 
             name: 'Shaglen', 
             username: '@xmj.shaglen', 
             tiktok: 'https://www.tiktok.com/@xmj.shaglen', 
             photo: 'images/member8.jpg', 
-            quote: 'Id have', 
-            bio: 'Misterius', 
-            joinDate: 'Agustus 2023', 
-            interests: '???',
-            achievements: 'Mystery Member'
+            quote: 'Id have'
         },
         { 
             name: 'Valen', 
             username: '@naineyuko', 
             tiktok: 'https://www.tiktok.com/@naineyuko', 
             photo: 'images/member9.jpg', 
-            quote: 'Aduh kok aku jadi cewek siehh', 
-            bio: 'Suka kebalik gender', 
-            joinDate: 'September 2023', 
-            interests: 'Cosplay, Humor',
-            achievements: 'Best Cosplay'
+            quote: 'Aduh kok aku jadi cewek siehh'
         },
         { 
             name: 'Yuuta', 
             username: '@yuutaxml_', 
             tiktok: 'https://www.tiktok.com/@yuutaxml_', 
             photo: 'images/member10.jpg', 
-            quote: 'You never know until you try', 
-            bio: 'Petualang', 
-            joinDate: 'Oktober 2023', 
-            interests: 'Traveling, Mencoba hal baru',
-            achievements: 'Most Adventurous'
+            quote: 'You never know until you try'
         },
         { 
             name: 'Jarzz', 
             username: '@jarzz.dw.skuy', 
             tiktok: 'https://www.tiktok.com/@jarzz.dw.skuy', 
             photo: 'images/member11.jpg', 
-            quote: 'Laparr', 
-            bio: 'Food lover', 
-            joinDate: 'November 2023', 
-            interests: 'Makan, Makan, Makan',
-            achievements: 'Food Expert'
+            quote: 'Laparr'
         },
         { 
             name: 'Qwentty', 
             username: '@qwentty.ft', 
             tiktok: 'https://www.tiktok.com/@qwenty.ft', 
             photo: 'images/member12.jpg', 
-            quote: 'Semua manusia hanyalah alat', 
-            bio: 'Anti sosial', 
-            joinDate: 'Desember 2023', 
-            interests: 'Sendiri',
-            achievements: 'Solo Leveling'
+            quote: 'Semua manusia hanyalah alat'
         },
         { 
             name: 'Akira', 
             username: '@akira.imut', 
             tiktok: 'https://www.tiktok.com/@akiraa.imut', 
             photo: 'images/member13.jpg', 
-            quote: 'Imut gini kalo bantai lu sabi kali', 
-            bio: 'Imut tapi berbahaya', 
-            joinDate: 'Januari 2024', 
-            interests: 'Gaming, Berantem',
-            achievements: 'Small but Deadly'
+            quote: 'Imut gini kalo bantai lu sabi kali'
         },
         { 
             name: 'Dree', 
             username: '@daktau_256', 
             tiktok: 'https://www.tiktok.com/@daktau_256', 
             photo: 'images/member14.jpg', 
-            quote: 'Jangan takut salah', 
-            bio: 'Pembelajar sejati', 
-            joinDate: 'Februari 2024', 
-            interests: 'Belajar, Berbagi ilmu',
-            achievements: 'Most Wise'
+            quote: 'Jangan takut salah, karena dari salah kita belajar.'
         },
         { 
             name: 'Zunda', 
             username: '@shaglenv02y', 
             tiktok: 'https://www.tiktok.com/@shaglenv02y', 
             photo: 'images/member15.jpg', 
-            quote: 'Emel yok', 
-            bio: 'Suka ngemel', 
-            joinDate: 'Maret 2024', 
-            interests: 'Ngemel, Nonton',
-            achievements: 'Emel Master'
+            quote: 'Emel yok'
         },
         { 
             name: 'Yushaa Von Khaslana', 
             username: '@kachusyaa', 
             tiktok: 'https://www.tiktok.com/@kachusyaa', 
             photo: 'images/member16.jpeg', 
-            quote: 'Jangan lupa makan', 
-            bio: 'Health advisor', 
-            joinDate: 'April 2024', 
-            interests: 'Kesehatan, Makan sehat',
-            achievements: 'Most Healthy'
+            quote: 'Jangan lupa makan'
         }
     ];
 
@@ -199,7 +135,6 @@
 
     // DOM Elements
     const navbar = document.getElementById('navbar');
-    const navItems = document.querySelectorAll('.nav-item');
     const navLinks = document.querySelectorAll('.nav-link');
     const navToggle = document.getElementById('navToggle');
     const navMenu = document.getElementById('navMenu');
@@ -242,11 +177,6 @@
             const card = document.createElement('div');
             card.className = 'member-card';
             
-            const img = document.createElement('img');
-            img.src = member.photo;
-            img.alt = member.name;
-            img.onerror = function() { this.style.display = 'none'; };
-            
             card.innerHTML = `
                 <div class="member-avatar">
                     <img src="${member.photo}" alt="${member.name}" onerror="this.style.display='none'; this.parentElement.innerHTML += '<span style=\'font-size:2rem;color:white;\'>${member.name.charAt(0)}</span>';">
@@ -258,15 +188,11 @@
             `;
             
             card.addEventListener('click', () => {
-                // Set modal content
+                // Set modal content - hanya quotes dan tiktok
                 document.getElementById('modalAvatar').innerHTML = `<img src="${member.photo}" alt="${member.name}" onerror="this.style.display='none'; this.parentElement.innerHTML += '<span style=\'font-size:3rem;color:white;\'>${member.name.charAt(0)}</span>';">`;
                 document.getElementById('modalName').textContent = member.name;
                 document.getElementById('modalUsername').textContent = member.username;
                 document.getElementById('quoteText').textContent = member.quote || 'Bersama Kasugano, kita bersinar';
-                document.getElementById('modalBio').textContent = member.bio || 'Anggota keluarga besar Kasugano';
-                document.getElementById('modalJoinDate').textContent = member.joinDate || 'Januari 2024';
-                document.getElementById('modalInterests').textContent = member.interests || 'Anime, Editing, Gaming';
-                document.getElementById('modalAchievements').textContent = member.achievements || 'Member Aktif 2024';
                 document.getElementById('modalTiktokLink').href = member.tiktok;
                 document.getElementById('modalTiktokText').textContent = member.username;
                 
@@ -298,7 +224,7 @@
         adminTrack.appendChild(card);
     });
 
-    // Render Contacts Desktop
+    // Render Contacts
     const contactGrid = document.getElementById('contactGrid');
     contactGrid.innerHTML = '';
     contacts.forEach(contact => {
@@ -312,39 +238,6 @@
             <span>${contact.username}</span>
         `;
         contactGrid.appendChild(card);
-    });
-
-    // Render Contacts Mobile
-    const contactTrack = document.getElementById('contactTrack');
-    contactTrack.innerHTML = '';
-    contacts.forEach(contact => {
-        const card = document.createElement('a');
-        card.href = contact.link;
-        card.target = '_blank';
-        card.className = 'contact-card';
-        card.innerHTML = `
-            <i class="${contact.icon}"></i>
-            <h3>${contact.platform}</h3>
-            <span>${contact.username}</span>
-        `;
-        contactTrack.appendChild(card);
-    });
-
-    // Carousel Navigation
-    const adminCarousel = document.getElementById('adminCarousel');
-    document.getElementById('carouselPrev').addEventListener('click', () => {
-        adminCarousel.scrollBy({ left: -300, behavior: 'smooth' });
-    });
-    document.getElementById('carouselNext').addEventListener('click', () => {
-        adminCarousel.scrollBy({ left: 300, behavior: 'smooth' });
-    });
-
-    const contactCarousel = document.getElementById('contactCarousel');
-    document.getElementById('contactPrev').addEventListener('click', () => {
-        contactCarousel.scrollBy({ left: -300, behavior: 'smooth' });
-    });
-    document.getElementById('contactNext').addEventListener('click', () => {
-        contactCarousel.scrollBy({ left: 300, behavior: 'smooth' });
     });
 
     // Search Member
@@ -385,36 +278,6 @@
 
     function updateScrollPadding() {
         document.documentElement.style.scrollPaddingTop = (getNavbarHeight() + 30) + 'px';
-    }
-
-    function setActiveSection(sectionId) {
-        navItems.forEach(item => {
-            const link = item.querySelector('.nav-link');
-            if (link && link.dataset.target === sectionId) {
-                item.classList.add('active');
-            } else {
-                item.classList.remove('active');
-            }
-        });
-    }
-
-    function checkActiveSection() {
-        const scrollY = window.scrollY;
-        const navbarHeight = getNavbarHeight();
-        
-        if (!sections.about) return;
-        
-        if (scrollY < sections.about.offsetTop - navbarHeight - 50) {
-            setActiveSection('home');
-        } else if (scrollY < sections.member.offsetTop - navbarHeight - 50) {
-            setActiveSection('about');
-        } else if (scrollY < sections.admin.offsetTop - navbarHeight - 50) {
-            setActiveSection('member');
-        } else if (scrollY < sections.contact.offsetTop - navbarHeight - 50) {
-            setActiveSection('admin');
-        } else {
-            setActiveSection('contact');
-        }
     }
 
     // Navbar Toggle
@@ -482,20 +345,12 @@
         revealObserver.observe(section);
     });
 
-    // Scroll event
-    let scrollTimeout;
-    window.addEventListener('scroll', () => {
-        if (scrollTimeout) cancelAnimationFrame(scrollTimeout);
-        scrollTimeout = requestAnimationFrame(checkActiveSection);
-    });
-
     // Resize event
     let resizeTimeout;
     window.addEventListener('resize', () => {
         if (resizeTimeout) clearTimeout(resizeTimeout);
         resizeTimeout = setTimeout(() => {
             updateScrollPadding();
-            checkActiveSection();
         }, 100);
     });
 
@@ -506,8 +361,6 @@
     window.addEventListener('load', () => {
         setTimeout(() => {
             updateScrollPadding();
-            checkActiveSection();
-            setActiveSection('home');
         }, 200);
     });
 
