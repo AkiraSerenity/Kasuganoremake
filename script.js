@@ -224,7 +224,7 @@
         adminTrack.appendChild(card);
     });
 
-    // Render Contacts
+    // Render Contacts Desktop
     const contactGrid = document.getElementById('contactGrid');
     contactGrid.innerHTML = '';
     contacts.forEach(contact => {
@@ -238,6 +238,39 @@
             <span>${contact.username}</span>
         `;
         contactGrid.appendChild(card);
+    });
+
+    // Render Contacts Mobile
+    const contactTrack = document.getElementById('contactTrack');
+    contactTrack.innerHTML = '';
+    contacts.forEach(contact => {
+        const card = document.createElement('a');
+        card.href = contact.link;
+        card.target = '_blank';
+        card.className = 'contact-card';
+        card.innerHTML = `
+            <i class="${contact.icon}"></i>
+            <h3>${contact.platform}</h3>
+            <span>${contact.username}</span>
+        `;
+        contactTrack.appendChild(card);
+    });
+
+    // Carousel Navigation
+    const adminCarousel = document.getElementById('adminCarousel');
+    document.getElementById('carouselPrev').addEventListener('click', () => {
+        adminCarousel.scrollBy({ left: -300, behavior: 'smooth' });
+    });
+    document.getElementById('carouselNext').addEventListener('click', () => {
+        adminCarousel.scrollBy({ left: 300, behavior: 'smooth' });
+    });
+
+    const contactCarousel = document.getElementById('contactCarousel');
+    document.getElementById('contactPrev').addEventListener('click', () => {
+        contactCarousel.scrollBy({ left: -300, behavior: 'smooth' });
+    });
+    document.getElementById('contactNext').addEventListener('click', () => {
+        contactCarousel.scrollBy({ left: 300, behavior: 'smooth' });
     });
 
     // Search Member
@@ -298,7 +331,7 @@
         }
     });
 
-    // Nav links click
+    // Nav links click - tanpa active state
     navLinks.forEach(link => {
         link.addEventListener('click', (e) => {
             e.preventDefault();
