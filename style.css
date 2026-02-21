@@ -167,12 +167,6 @@ body::after {
     transform: translateY(-2px);
 }
 
-/* Hapus semua active state */
-.nav-item.active .nav-link {
-    color: rgba(255, 255, 255, 0.8);
-    background: transparent;
-}
-
 .nav-toggle {
     display: none;
     width: 40px;
@@ -289,6 +283,7 @@ body::after {
     max-width: 1100px;
     margin: 0 auto;
     padding: 40px 20px;
+    width: 100%;
 }
 
 section {
@@ -296,6 +291,7 @@ section {
     opacity: 0;
     transform: translateY(30px);
     transition: opacity 0.7s ease, transform 0.7s ease;
+    width: 100%;
 }
 
 section.revealed {
@@ -372,6 +368,7 @@ section.revealed {
     grid-template-columns: repeat(3, 1fr);
     gap: 20px;
     margin: 20px 0;
+    width: 100%;
 }
 
 .about-card {
@@ -415,6 +412,7 @@ section.revealed {
     grid-template-columns: repeat(4, 1fr);
     gap: 20px;
     margin: 30px 0;
+    width: 100%;
 }
 
 .activity-card {
@@ -457,12 +455,13 @@ section.revealed {
     font-size: 0.9rem;
 }
 
-/* Member Grid - Foto dimulai dari tengah untuk semua foto */
+/* MEMBER GRID - FOTO DI TENGAH UNTUK SEMUA MEMBER */
 .member-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
     gap: 16px;
     margin: 20px 0;
+    width: 100%;
 }
 
 .member-card {
@@ -503,7 +502,7 @@ section.revealed {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: center; /* Semua foto dimulai dari tengah */
+    object-position: center; /* SEMUA FOTO DARI TENGAH */
 }
 
 .member-info {
@@ -519,21 +518,35 @@ section.revealed {
     color: white;
     margin-bottom: 4px;
     max-width: 100%;
-    overflow: visible;
     white-space: normal;
     word-break: break-word;
     line-height: 1.3;
 }
 
+/* CLASS UNTUK USERNAME BERDASARKAN PANJANG TEKS */
 .member-info .username {
     color: #ffb0e6;
-    font-size: 0.75rem; /* Ukuran tetap lebih kecil */
     max-width: 100%;
-    overflow: visible;
     white-space: normal;
     word-break: break-word;
     line-height: 1.3;
     padding: 0 2px;
+}
+
+.username-short {
+    font-size: 0.75rem;
+}
+
+.username-medium {
+    font-size: 0.7rem;
+}
+
+.username-long {
+    font-size: 0.65rem;
+}
+
+.username-very-long {
+    font-size: 0.6rem;
 }
 
 /* Search Bar */
@@ -574,7 +587,7 @@ section.revealed {
     color: rgba(255, 176, 230, 0.5);
 }
 
-/* Carousel - Dengan tombol navigasi dan tanpa potongan di pinggir */
+/* CAROUSEL - TANPA GARIS POTONG, MENTOK KANAN KIRI */
 .carousel-container {
     position: relative;
     margin: 30px 0;
@@ -582,6 +595,7 @@ section.revealed {
     align-items: center;
     gap: 10px;
     width: 100%;
+    overflow: visible;
 }
 
 .carousel-wrapper {
@@ -589,9 +603,10 @@ section.revealed {
     scroll-behavior: smooth;
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
-    padding: 10px 1px;
     flex: 1;
     width: 100%;
+    margin: 0;
+    padding: 0;
 }
 
 .carousel-wrapper::-webkit-scrollbar {
@@ -602,7 +617,7 @@ section.revealed {
     display: flex;
     gap: 20px;
     width: max-content;
-    padding: 0 2px;
+    padding: 10px 0;
 }
 
 .carousel-nav {
@@ -630,7 +645,7 @@ section.revealed {
     box-shadow: 0 0 20px #ff69c2;
 }
 
-/* Admin Cards - Format yang benar */
+/* Admin Cards */
 .admin-card {
     background: rgba(32, 16, 50, 0.9);
     border: 1.5px solid #c97aff;
@@ -683,7 +698,6 @@ section.revealed {
     color: white;
     margin: 0;
     max-width: 100%;
-    overflow: visible;
     white-space: normal;
     word-break: break-word;
     line-height: 1.3;
@@ -691,29 +705,35 @@ section.revealed {
 
 .admin-username {
     color: #ffb0e6;
-    font-size: 0.8rem;
     max-width: 100%;
-    overflow: visible;
     white-space: normal;
     word-break: break-word;
     line-height: 1.3;
     margin: 0;
+    font-size: 0.8rem;
+}
+
+.admin-username.username-long {
+    font-size: 0.7rem;
+}
+
+.admin-username.username-very-long {
+    font-size: 0.65rem;
 }
 
 .admin-role {
     background: #2d1b42;
     padding: 4px 10px;
     border-radius: 30px;
-    font-size: 0.75rem;
     color: #ffb8f0;
     display: inline-block;
     border: 1px solid #ff8ad0;
     margin: 2px 0;
     max-width: 100%;
-    overflow: visible;
     white-space: normal;
     word-break: break-word;
     line-height: 1.3;
+    font-size: 0.75rem;
 }
 
 .admin-tiktok-link {
@@ -731,7 +751,6 @@ section.revealed {
     transition: all 0.2s;
     margin-top: 2px;
     max-width: 100%;
-    overflow: visible;
     white-space: normal;
     word-break: break-word;
 }
@@ -851,24 +870,22 @@ section.revealed {
     color: white;
     margin: 0;
     max-width: 100%;
-    overflow: visible;
     white-space: normal;
     word-break: break-word;
     line-height: 1.3;
 }
 
 .contact-card span {
-    font-size: 0.75rem;
     color: #ffb0e6;
     max-width: 100%;
-    overflow: visible;
     white-space: normal;
     word-break: break-word;
     line-height: 1.3;
     padding: 0 5px;
+    font-size: 0.75rem;
 }
 
-/* Modal - Hanya Quotes (tanpa card) dan TikTok */
+/* Modal */
 .modal {
     display: none;
     position: fixed;
@@ -950,7 +967,6 @@ section.revealed {
     margin-bottom: 5px;
     font-size: 1.6rem;
     max-width: 100%;
-    overflow: visible;
     white-space: normal;
     word-break: break-word;
     line-height: 1.3;
@@ -959,15 +975,13 @@ section.revealed {
 .modal-username {
     color: #ffb0e6;
     margin-bottom: 20px;
-    font-size: 0.9rem;
     max-width: 100%;
-    overflow: visible;
     white-space: normal;
     word-break: break-word;
     line-height: 1.3;
+    font-size: 0.9rem;
 }
 
-/* Quotes langsung dengan background modal, tanpa card terpisah */
 .modal-quote {
     margin: 10px 0 25px;
     font-style: italic;
@@ -1001,7 +1015,6 @@ section.revealed {
     font-size: 1rem;
     margin-top: 10px;
     max-width: 100%;
-    overflow: visible;
     white-space: normal;
     word-break: break-word;
 }
@@ -1131,8 +1144,20 @@ section.revealed {
         grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
     }
     
-    .member-info .username {
+    .username-short {
+        font-size: 0.7rem;
+    }
+    
+    .username-medium {
         font-size: 0.65rem;
+    }
+    
+    .username-long {
+        font-size: 0.6rem;
+    }
+    
+    .username-very-long {
+        font-size: 0.55rem;
     }
     
     /* Sembunyikan tombol navigasi di HP */
@@ -1232,8 +1257,20 @@ section.revealed {
         font-size: 1rem;
     }
     
-    .member-info .username {
+    .username-short {
+        font-size: 0.65rem;
+    }
+    
+    .username-medium {
         font-size: 0.6rem;
+    }
+    
+    .username-long {
+        font-size: 0.55rem;
+    }
+    
+    .username-very-long {
+        font-size: 0.5rem;
     }
     
     .modal-content {
@@ -1276,7 +1313,11 @@ section.revealed {
         font-size: 0.9rem;
     }
     
-    .member-info .username {
+    .username-short {
+        font-size: 0.6rem;
+    }
+    
+    .username-medium {
         font-size: 0.55rem;
     }
     
