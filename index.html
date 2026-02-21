@@ -2,15 +2,21 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
     <title>Kasugano Family · official</title>
-    <title>Kasugano Family</title>
-    <link rel="icon" href="icon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <!-- Font Awesome 6 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Google Font: Inter -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+    <!-- CSS External -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <!-- NAVBAR MODERN -->
     <nav class="navbar-modern" id="navbar">
         <div class="nav-container">
             <div class="nav-logo">
@@ -61,6 +67,7 @@
         </div>
     </nav>
 
+    <!-- HOME SECTION -->
     <section id="home" class="home-section">
         <div class="hero-background" id="heroBg">
             <img src="images/hero-background.jpg" alt="Background" class="hero-bg-img" id="heroImg" onerror="this.style.display='none'">
@@ -76,6 +83,7 @@
     </section>
 
     <div class="main">
+        <!-- ABOUT SECTION -->
         <section id="about">
             <div class="el-familia-wrapper" id="elFamilia">
                 <div class="el-familia-badge">
@@ -130,6 +138,7 @@
             </div>
         </section>
 
+        <!-- MEMBER SECTION -->
         <section id="member">
             <h2 class="section-title">Member</h2>
             <div class="search-wrapper">
@@ -141,6 +150,7 @@
             <div class="member-grid" id="memberContainer"></div>
         </section>
 
+        <!-- ADMIN SECTION -->
         <section id="admin">
             <h2 class="section-title">Admin</h2>
             <div class="carousel-container">
@@ -156,6 +166,7 @@
             </div>
         </section>
 
+        <!-- TOGETHER BANNER -->
         <div class="together-banner">
             <div class="together-badge">
                 <span class="together-text">Together We Grow,</span>
@@ -163,11 +174,14 @@
             </div>
         </div>
 
+        <!-- CONTACT SECTION -->
         <section id="contact">
             <h2 class="section-title">Contact</h2>
             
+            <!-- Desktop Grid -->
             <div class="contact-grid-desktop" id="contactGrid"></div>
             
+            <!-- Mobile Carousel -->
             <div class="carousel-container contact-carousel-mobile" id="contactCarouselMobile">
                 <button class="carousel-nav carousel-prev" id="contactPrev">
                     <i class="fas fa-chevron-left"></i>
@@ -186,6 +200,7 @@
         </footer>
     </div>
 
+    <!-- MODAL -->
     <div class="modal" id="memberModal">
         <div class="modal-content">
             <span class="close-modal" id="closeModal">&times;</span>
@@ -206,6 +221,7 @@
         </div>
     </div>
 
+    <!-- JavaScript External -->
     <script src="script.js"></script>
 </body>
 </html>
