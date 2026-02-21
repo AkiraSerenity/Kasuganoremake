@@ -478,5 +478,19 @@
             updateScrollPadding();
         }, 200);
     });
+    // Di dalam renderMembers, tambahkan kelas berdasarkan panjang username
+function getUsernameClass(username) {
+    const length = username.length;
+    if (length > 25) return 'username-very-long';
+    if (length > 20) return 'username-long';
+    if (length > 15) return 'username-medium';
+    return 'username-short';
+}
+
+// Saat membuat usernameDiv
+const usernameDiv = document.createElement('div');
+usernameDiv.className = 'username ' + getUsernameClass(member.username);
+usernameDiv.textContent = member.username;
 
 })();
+
