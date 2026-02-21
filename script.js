@@ -1,500 +1,1301 @@
-(function() {
-    // Data Members
-    const members = [
-        { 
-            name: 'Gery', 
-            username: '@gerysenwith_lapiskeju', 
-            tiktok: 'https://www.tiktok.com/@gerysenwith_lapiskeju', 
-            photo: 'images/member1.jpg', 
-            quote: 'Kamu rimuru bukan?'
-        },
-        { 
-            name: 'Rora', 
-            username: '@roraxml', 
-            tiktok: 'https://www.tiktok.com/@kasugano_sora87', 
-            photo: 'images/member2.jpeg', 
-            quote: 'Aku mah raja'
-        },
-        { 
-            name: 'Izabella', 
-            username: '@queen.izabellaz', 
-            tiktok: 'https://www.tiktok.com/@queen.izabellaz', 
-            photo: 'images/member3.jpeg', 
-            quote: 'Mending turu'
-        },
-        { 
-            name: 'Erie', 
-            username: '@kasugano_erie', 
-            tiktok: 'https://www.tiktok.com/@kasugano_erie', 
-            photo: 'images/member4.jpg', 
-            quote: 'Gw butuh uang!!!'
-        },
-        { 
-            name: 'Fuyi', 
-            username: '@fuyii_npc', 
-            tiktok: 'https://www.tiktok.com/@fuyii_npc', 
-            photo: 'images/member5.png', 
-            quote: 'Belajar untuk memahami diri kita sendiri, terkadang kita tidak harus memahami seseorang, bahkan juga orang belum bisa memahami kita sepenuhnya, maka belajar lah untuk menerima kenyataan'
-        },
-        { 
-            name: 'Ezan', 
-            username: '@ezan_xd', 
-            tiktok: 'https://www.tiktok.com/@ezan_xd', 
-            photo: 'images/member6.png', 
-            quote: 'Sederhana tapi berarti, itulah keluarga.'
-        },
-        { 
-            name: 'V3iin', 
-            username: '@iyainirhmd', 
-            tiktok: 'https://www.tiktok.com/@iyainirhmd', 
-            photo: 'images/member7.jpg', 
-            quote: 'bntr'
-        },
-        { 
-            name: 'Shaglen', 
-            username: '@xmj.shaglen', 
-            tiktok: 'https://www.tiktok.com/@xmj.shaglen', 
-            photo: 'images/member8.jpg', 
-            quote: 'Id have'
-        },
-        { 
-            name: 'Valen', 
-            username: '@naineyuko', 
-            tiktok: 'https://www.tiktok.com/@naineyuko', 
-            photo: 'images/member9.jpg', 
-            quote: 'Aduh kok aku jadi cewek siehh'
-        },
-        { 
-            name: 'Yuuta', 
-            username: '@yuutaxml_', 
-            tiktok: 'https://www.tiktok.com/@yuutaxml_', 
-            photo: 'images/member10.jpg', 
-            quote: 'You never know until you try'
-        },
-        { 
-            name: 'Jarzz', 
-            username: '@jarzz.dw.skuy', 
-            tiktok: 'https://www.tiktok.com/@jarzz.dw.skuy', 
-            photo: 'images/member11.jpg', 
-            quote: 'Laparr'
-        },
-        { 
-            name: 'Qwentty', 
-            username: '@qwentty.ft', 
-            tiktok: 'https://www.tiktok.com/@qwenty.ft', 
-            photo: 'images/member12.jpg', 
-            quote: 'Semua manusia hanyalah alat'
-        },
-        { 
-            name: 'Akira', 
-            username: '@akira.imut', 
-            tiktok: 'https://www.tiktok.com/@akiraa.imut', 
-            photo: 'images/member13.jpg', 
-            quote: 'Imut gini kalo bantai lu sabi kali'
-        },
-        { 
-            name: 'Dree', 
-            username: '@daktau_256', 
-            tiktok: 'https://www.tiktok.com/@daktau_256', 
-            photo: 'images/member14.jpg', 
-            quote: 'Jangan takut salah, karena dari salah kita belajar.'
-        },
-        { 
-            name: 'Zunda', 
-            username: '@shaglenv02y', 
-            tiktok: 'https://www.tiktok.com/@shaglenv02y', 
-            photo: 'images/member15.jpg', 
-            quote: 'Emel yok'
-        },
-        { 
-            name: 'Yushaa Von Khaslana', 
-            username: '@kachusyaa', 
-            tiktok: 'https://www.tiktok.com/@kachusyaa', 
-            photo: 'images/member16.jpeg', 
-            quote: 'Jangan lupa makan'
-        }
-    ];
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-    const admins = [
-        { name: 'Ryy Sensei', username: '@RyyKagenou NCA', role: 'Owner & Founder', tiktok: 'https://www.tiktok.com/@RyyKagenou', photo: 'images/admin1.webp' },
-        { name: 'Sora', username: '@kasugano_sora52', role: 'Pemilik & Pendiri', tiktok: 'https://www.tiktok.com/@kasugano.rora', photo: 'images/admin2.jpg' },
-        { name: 'Haruka', username: '@kasugano_harukaa', role: 'Pemilik', tiktok: 'https://www.tiktok.com/@kasugano.harukaa', photo: 'images/admin3.jpg' },
-        { name: 'Zero', username: '@zero.znzx', role: 'Admin', tiktok: 'https://www.tiktok.com/@zero.znzx', photo: 'images/admin4.jfif' },
-        { name: 'Serlina', username: '@diiputraa28_', role: 'Admin', tiktok: 'https://www.tiktok.com/@diiputraa28_', photo: 'images/admin5.jpeg' },
-        { name: 'Shora', username: '@codename_shora.v02', role: 'Admin', tiktok: 'https://www.tiktok.com/@codename_shora.v02', photo: 'images/admin6.png' }
-    ];
+html {
+    scroll-behavior: smooth;
+}
 
-    const contacts = [
-        { platform: 'TikTok', username: '@kasugano.official', link: 'https://www.tiktok.com/@kasugano.official', icon: 'fab fa-tiktok' },
-        { platform: 'TikTok', username: '@kasugano.store', link: 'https://www.tiktok.com/@kasugano.store', icon: 'fab fa-tiktok' },
-        { platform: 'Instagram', username: '@kasugano.family', link: 'https://www.instagram.com/kasugano.family', icon: 'fab fa-instagram' },
-        { platform: 'Instagram', username: '@kasuganostore', link: 'https://www.instagram.com/kasuganostore', icon: 'fab fa-instagram' },
-        { platform: 'WhatsApp', username: '+62 852-3240-6495', link: 'https://wa.me/6285232406495', icon: 'fab fa-whatsapp' },
-        { platform: 'Email', username: 'kasuganofamilyy@gmail.com', link: 'mailto:kasuganofamilyy@gmail.com', icon: 'far fa-envelope' }
-    ];
+body {
+    font-family: 'Inter', sans-serif;
+    background: #0a0a1a;
+    color: #f2eaff;
+    line-height: 1.5;
+    position: relative;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
 
-    // Fungsi untuk menentukan kelas berdasarkan panjang username
-    function getUsernameClass(username) {
-        const length = username.length;
-        if (length > 25) return 'username-very-long';
-        if (length > 20) return 'username-long';
-        if (length > 15) return 'username-medium';
-        return 'username-small';
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 20% 30%, rgba(147, 51, 234, 0.5) 0%, transparent 35%),
+                radial-gradient(circle at 80% 70%, rgba(236, 72, 153, 0.4) 0%, transparent 40%),
+                linear-gradient(145deg, #0a0a1a 0%, #1e1035 60%, #231042 100%);
+    z-index: -2;
+}
+
+body::after {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        linear-gradient(rgba(200, 130, 255, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(200, 130, 255, 0.05) 1px, transparent 1px);
+    background-size: 40px 40px, 40px 40px;
+    pointer-events: none;
+    z-index: -1;
+}
+
+:root {
+    --purple-deep: #7b2da8;
+    --purple-soft: #b57aed;
+    --pink-vibrant: #ff69c2;
+    --pink-light: #ffb8f0;
+    --black-rich: #0a0a12;
+    --white-soft: #f7f0ff;
+    --glass-edge: rgba(255, 110, 210, 0.3);
+    --gradient-pink-purple: linear-gradient(135deg, #ff69c2, #b57aed);
+    --gradient-glow: linear-gradient(90deg, #ff69c2, #b57aed, #ff69c2);
+    --shadow-pink-soft: 0 15px 30px -5px rgba(255, 105, 194, 0.5);
+    --shadow-purple-soft: 0 15px 30px -5px rgba(156, 86, 255, 0.5);
+    --shadow-avatar: 0 10px 25px -3px rgba(255, 105, 194, 0.6);
+}
+
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #1c1326; }
+::-webkit-scrollbar-thumb { background: #c47af0; border-radius: 10px; }
+
+/* Navbar */
+.navbar-modern {
+    position: fixed;
+    top: 20px;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    z-index: 1000;
+    width: 100%;
+    padding: 0 20px;
+}
+
+.nav-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: rgba(20, 10, 35, 0.9);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 105, 194, 0.25);
+    border-radius: 60px;
+    padding: 8px 24px;
+    box-shadow: 0 15px 40px -10px rgba(0, 0, 0, 0.6);
+    width: 100%;
+    max-width: 1100px;
+    gap: 20px;
+}
+
+.nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+}
+
+.logo-icon {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: var(--gradient-pink-purple);
+    overflow: hidden;
+    box-shadow: var(--shadow-avatar);
+    flex-shrink: 0;
+}
+
+.logo-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.logo-text {
+    font-size: 1.4rem;
+    font-weight: 800;
+    background: linear-gradient(135deg, #ffffff, #ffb8f0, #c47af0);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    white-space: nowrap;
+}
+
+.nav-menu {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.nav-list {
+    display: flex;
+    gap: 4px;
+    list-style: none;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.nav-link {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+    border-radius: 40px;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+}
+
+.nav-link i {
+    font-size: 1.1rem;
+    color: #ff9ad0;
+}
+
+.nav-link:hover {
+    background: rgba(255, 105, 194, 0.15);
+    color: white;
+    transform: translateY(-2px);
+}
+
+.nav-toggle {
+    display: none;
+    width: 40px;
+    height: 40px;
+    background: rgba(255, 105, 194, 0.2);
+    border: 1px solid rgba(255, 105, 194, 0.3);
+    border-radius: 50%;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    flex-shrink: 0;
+}
+
+.nav-toggle:hover {
+    background: rgba(255, 105, 194, 0.3);
+}
+
+/* Hero Section */
+.home-section {
+    scroll-margin-top: 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-background {
+    position: relative;
+    width: 100%;
+    min-height: 500px;
+    overflow: hidden;
+    border-radius: 0 0 40px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 80px;
+}
+
+.hero-bg-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: blur(3px) brightness(0.5);
+    z-index: 1;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(180deg, rgba(10,5,20,0.3) 0%, rgba(90,30,150,0.45) 40%, rgba(120,40,180,0.6) 70%, rgba(20,5,40,0.9) 100%);
+    z-index: 2;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 3;
+    text-align: center;
+    color: white;
+    padding: 40px 20px 30px;
+    width: 100%;
+    max-width: 800px;
+}
+
+.hero-profile-photo {
+    width: 200px;
+    height: 200px;
+    border-radius: 24px;
+    background: var(--gradient-pink-purple);
+    margin: 0 auto 20px;
+    overflow: hidden;
+    box-shadow: var(--shadow-avatar);
+    transition: all 0.3s;
+}
+
+.hero-profile-photo:hover {
+    transform: scale(1.03);
+    box-shadow: 0 20px 35px -5px #ff69c2;
+}
+
+.hero-profile-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.hero-content h1 {
+    font-size: 2.8rem;
+    font-weight: 800;
+    text-shadow: 0 0 20px #ff6ac2;
+    margin-bottom: 10px;
+}
+
+.hero-content p {
+    font-size: 1.1rem;
+    max-width: 600px;
+    margin: 0 auto;
+    background: rgba(0,0,0,0.3);
+    backdrop-filter: blur(4px);
+    padding: 12px 24px;
+    border-radius: 50px;
+    border: 1px solid #ff9ad0;
+}
+
+/* Main Content */
+.main {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    width: 100%;
+}
+
+section {
+    margin-bottom: 80px;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+    width: 100%;
+}
+
+section.revealed {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.section-title {
+    font-size: 2.2rem;
+    font-weight: 700;
+    background: linear-gradient(145deg, #ffffff, #e9c8ff);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-align: center;
+    margin-bottom: 30px;
+    padding-bottom: 10px;
+    position: relative;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 150px;
+    height: 4px;
+    background: var(--gradient-glow);
+    border-radius: 4px;
+}
+
+/* El Familia Badge */
+.el-familia-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.el-familia-badge {
+    background: linear-gradient(125deg, #2f1b4b, #190f28);
+    padding: 10px 30px;
+    border-radius: 60px;
+    border: 2px solid #ff98dc;
+    box-shadow: 0 0 20px #ff69c280;
+    display: inline-block;
+    transition: all 0.2s;
+}
+
+.el-familia-badge:hover {
+    transform: scale(1.02);
+    box-shadow: 0 0 30px #ff69c2;
+}
+
+.el-familia-text {
+    font-size: 2.2rem;
+    font-weight: 800;
+    letter-spacing: 4px;
+    background: linear-gradient(145deg, #ffc8f0, #e09eff, #ffb3d9);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.el-familia-symbol {
+    color: #ffa7e6;
+    font-size: 1.8rem;
+    margin: 0 5px;
+}
+
+/* About Grid */
+.about-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin: 20px 0;
+    width: 100%;
+}
+
+.about-card {
+    background: rgba(22, 12, 35, 0.7);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 130, 210, 0.3);
+    border-radius: 24px;
+    padding: 30px 20px;
+    text-align: center;
+    transition: all 0.2s ease;
+}
+
+.about-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-purple-soft);
+}
+
+.about-card i {
+    font-size: 2.5rem;
+    background: linear-gradient(145deg, #ffa4e9, #c07aff);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    margin-bottom: 15px;
+}
+
+.about-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: white;
+}
+
+.about-card p {
+    color: #d0b0ff;
+    font-size: 0.95rem;
+}
+
+/* Activity Grid */
+.activity-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    margin: 30px 0;
+    width: 100%;
+}
+
+.activity-card {
+    background: rgba(28, 16, 45, 0.8);
+    backdrop-filter: blur(8px);
+    border: 1.5px solid #ff98dc;
+    border-radius: 24px;
+    padding: 30px 20px;
+    text-align: center;
+    transition: all 0.2s ease;
+}
+
+.activity-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-pink-soft);
+}
+
+.activity-icon {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 20px;
+    background: linear-gradient(135deg, #ff69c2, #b57aed);
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.2rem;
+    color: white;
+    box-shadow: var(--shadow-avatar);
+}
+
+.activity-card h3 {
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+    color: white;
+}
+
+.activity-card p {
+    color: #d0b0ff;
+    font-size: 0.9rem;
+}
+
+/* ========== MEMBER GRID - CENTERED ========== */
+.member-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 16px;
+    margin: 20px 0;
+    width: 100%;
+    justify-content: center; /* Membuat grid berada di tengah */
+}
+
+.member-card {
+    background: rgba(28, 16, 45, 0.8);
+    backdrop-filter: blur(4px);
+    border: 1.5px solid #b161ee;
+    border-radius: 20px;
+    padding: 16px 8px;
+    text-align: center;
+    transition: all 0.2s ease;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 180px;
+    margin: 0 auto;
+}
+
+.member-avatar {
+    width: 90px;
+    height: 90px;
+    margin: 0 auto 12px;
+    background: var(--gradient-pink-purple);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: var(--shadow-avatar);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.member-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.member-info {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.member-info h4 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 4px;
+    max-width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 100%;
+}
+
+/* USERNAME - tanpa ellipsis, ukuran mengecil */
+.member-info .username {
+    color: #ffb0e6;
+    max-width: 100%;
+    white-space: nowrap;
+    overflow: hidden;      /* sembunyikan kelebihan tanpa ... */
+    text-overflow: clip;    /* tidak pakai ellipsis */
+    width: 100%;
+    font-size: 0.75rem;     /* default */
+    line-height: 1.4;
+}
+
+/* Kelas ukuran font */
+.username-small { font-size: 0.75rem; }
+.username-medium { font-size: 0.7rem; }
+.username-long { font-size: 0.65rem; }
+.username-very-long { font-size: 0.55rem; }
+
+/* Search Bar */
+.search-wrapper {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0 30px;
+}
+
+.search-bar {
+    background: rgba(20, 10, 32, 0.8);
+    backdrop-filter: blur(8px);
+    border: 1.5px solid #c97aff;
+    border-radius: 60px;
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+    max-width: 400px;
+    transition: all 0.2s;
+}
+
+.search-bar:hover {
+    box-shadow: var(--shadow-pink-soft);
+}
+
+.search-bar input {
+    background: transparent;
+    border: none;
+    width: 100%;
+    font-size: 1rem;
+    color: white;
+    outline: none;
+}
+
+.search-bar input::placeholder {
+    color: rgba(255, 176, 230, 0.5);
+}
+
+/* ========== CAROUSEL - FULL WIDTH DI HP ========== */
+.carousel-container {
+    position: relative;
+    margin: 30px 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    overflow: visible;
+}
+
+.carousel-wrapper {
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    flex: 1;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.carousel-wrapper::-webkit-scrollbar {
+    display: none;
+}
+
+.carousel-track {
+    display: flex;
+    gap: 20px;
+    width: max-content;
+    padding: 10px 0;
+    margin: 0;
+}
+
+.carousel-nav {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: rgba(255, 105, 194, 0.15);
+    border: 2px solid #ff98dc;
+    color: #ffb0e6;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    flex-shrink: 0;
+    transition: all 0.2s ease;
+    backdrop-filter: blur(4px);
+    z-index: 5;
+}
+
+.carousel-nav:hover {
+    background: rgba(255, 105, 194, 0.3);
+    color: #ff69c2;
+    transform: scale(1.1);
+    box-shadow: 0 0 20px #ff69c2;
+}
+
+/* Admin Cards */
+.admin-card {
+    background: rgba(32, 16, 50, 0.9);
+    border: 1.5px solid #c97aff;
+    border-radius: 20px;
+    padding: 20px 15px;
+    text-align: center;
+    width: 220px;
+    flex-shrink: 0;
+    transition: all 0.2s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    backdrop-filter: blur(8px);
+}
+
+.admin-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 18px 25px -8px #c47af0;
+    border-color: #ff69c2;
+}
+
+.admin-avatar {
+    width: 110px;
+    height: 110px;
+    margin: 0 auto 5px;
+    background: var(--gradient-pink-purple);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: var(--shadow-avatar);
+}
+
+.admin-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.admin-info {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+}
+
+.admin-info h4 {
+    font-size: 1.2rem;
+    color: white;
+    margin: 0;
+    max-width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 100%;
+}
+
+.admin-username {
+    color: #ffb0e6;
+    max-width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: clip;
+    width: 100%;
+    font-size: 0.8rem;
+}
+
+.admin-username.username-long { font-size: 0.7rem; }
+.admin-username.username-very-long { font-size: 0.6rem; }
+
+.admin-role {
+    background: #2d1b42;
+    padding: 4px 10px;
+    border-radius: 30px;
+    color: #ffb8f0;
+    display: inline-block;
+    border: 1px solid #ff8ad0;
+    margin: 2px 0;
+    max-width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 0.75rem;
+}
+
+.admin-tiktok-link {
+    color: #ffb0e6;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    font-size: 0.8rem;
+    background: #2a153d;
+    padding: 5px 12px;
+    border-radius: 30px;
+    border: 1px solid #ff8ad0;
+    transition: all 0.2s;
+    margin-top: 2px;
+    max-width: 100%;
+    white-space: nowrap;
+}
+
+.admin-tiktok-link:hover {
+    background: #3a1f55;
+    color: white;
+    box-shadow: 0 0 15px #ff69c2;
+}
+
+/* Together Banner */
+.together-banner {
+    display: flex;
+    justify-content: center;
+    margin: 40px 0;
+}
+
+.together-badge {
+    background: linear-gradient(145deg, #281b44, #140e22);
+    padding: 15px 40px;
+    border-radius: 80px;
+    border: 1.5px solid #ffa2e4;
+    box-shadow: 0 0 25px #c47af0;
+    text-align: center;
+    backdrop-filter: blur(4px);
+    position: relative;
+    overflow: hidden;
+    transition: all 0.2s;
+}
+
+.together-badge:hover {
+    transform: scale(1.02);
+    box-shadow: 0 0 35px #ff69c2;
+}
+
+.together-text {
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    background: linear-gradient(135deg, #ffdbff, #d9b0ff, #ffb8f0);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    display: block;
+    line-height: 1.3;
+}
+
+.together-sub {
+    font-size: 1.3rem;
+    font-weight: 500;
+    color: #ffb0e6;
+    display: block;
+    letter-spacing: 3px;
+    margin-top: 5px;
+    text-shadow: 0 0 10px #ff69c2;
+}
+
+/* Contact Section */
+.contact-grid-desktop {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin: 30px 0;
+    padding: 30px;
+    background: rgba(30, 15, 45, 0.5);
+    backdrop-filter: blur(10px);
+    border-radius: 50px;
+    border: 1px solid rgba(255, 105, 194, 0.3);
+    box-shadow: 0 0 30px rgba(255, 105, 194, 0.3);
+    transition: all 0.3s ease;
+    width: 100%;
+}
+
+.contact-grid-desktop:hover {
+    box-shadow: 0 0 50px rgba(255, 105, 194, 0.6);
+    border-color: rgba(255, 105, 194, 0.6);
+}
+
+.contact-carousel-mobile {
+    display: none;
+}
+
+.contact-card {
+    text-align: center;
+    color: white;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    padding: 12px 8px;
+    transition: all 0.2s ease;
+    border-radius: 30px;
+    width: 100%;
+    max-width: 200px;
+    margin: 0 auto;
+}
+
+.contact-card:hover {
+    transform: translateY(-5px);
+    background: rgba(255, 255, 255, 0.05);
+    text-shadow: 0 0 15px #ff69c2;
+}
+
+.contact-card i {
+    font-size: 2.2rem;
+    background: linear-gradient(145deg, #ff9ae0, #c07aff);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    margin-bottom: 3px;
+}
+
+.contact-card h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: white;
+    margin: 0;
+    max-width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 100%;
+}
+
+.contact-card span {
+    color: #ffb0e6;
+    max-width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: clip;
+    width: 100%;
+    font-size: 0.6rem;
+}
+
+/* Modal */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(8px);
+    z-index: 2000;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal.active {
+    display: flex;
+}
+
+.modal-content {
+    background: #1e1230;
+    border: 2px solid #ff98dc;
+    border-radius: 30px;
+    padding: 30px 24px;
+    max-width: 400px;
+    width: 90%;
+    text-align: center;
+    position: relative;
+    box-shadow: 0 25px 40px -10px #b57aed;
+    animation: modalPop 0.3s ease;
+}
+
+@keyframes modalPop {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
     }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
 
-    // DOM Elements
-    const navbar = document.getElementById('navbar');
-    const navLinks = document.querySelectorAll('.nav-link');
-    const navToggle = document.getElementById('navToggle');
-    const navMenu = document.getElementById('navMenu');
+.close-modal {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 2rem;
+    color: #ffb0e6;
+    cursor: pointer;
+    transition: all 0.2s;
+    line-height: 1;
+    z-index: 10;
+}
+
+.close-modal:hover {
+    color: #ff69c2;
+    transform: scale(1.2);
+}
+
+.modal-avatar {
+    width: 100px;
+    height: 100px;
+    background: var(--gradient-pink-purple);
+    border-radius: 16px;
+    margin: 0 auto 15px;
+    overflow: hidden;
+    box-shadow: var(--shadow-avatar);
+}
+
+.modal-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.modal h2 {
+    color: white;
+    margin-bottom: 5px;
+    font-size: 1.6rem;
+    max-width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.modal-username {
+    color: #ffb0e6;
+    margin-bottom: 20px;
+    max-width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 0.9rem;
+}
+
+.modal-quote {
+    margin: 10px 0 25px;
+    font-style: italic;
+    color: #ffdbff;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    padding: 5px 10px;
+    border-left: 2px solid #ff69c2;
+    border-right: 2px solid #ff69c2;
+    word-break: break-word;
+}
+
+.modal-quote i {
+    color: #ff8ad0;
+    font-size: 0.9rem;
+    margin: 0 8px;
+    opacity: 0.8;
+}
+
+.modal-tiktok {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: #2a153d;
+    padding: 12px 24px;
+    border-radius: 40px;
+    color: #ffb0e6;
+    text-decoration: none;
+    border: 1px solid #ff8ad0;
+    transition: all 0.2s;
+    font-size: 1rem;
+    margin-top: 10px;
+    max-width: 100%;
+    white-space: nowrap;
+}
+
+.modal-tiktok:hover {
+    background: #3a1f55;
+    color: white;
+    transform: scale(1.05);
+    box-shadow: 0 0 20px #ff69c2;
+}
+
+.modal-tiktok span {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 200px;
+}
+
+/* Skeleton Loading */
+.skeleton {
+    background: linear-gradient(90deg, #2a1d3a 25%, #3f2b55 50%, #2a1d3a 75%);
+    background-size: 200% 100%;
+    animation: loading 1.5s infinite;
+    border-radius: 16px;
+    border: none !important;
+    pointer-events: none;
+}
+
+@keyframes loading {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+}
+
+.member-grid.skeleton .member-card {
+    background: transparent;
+    border-color: transparent;
+}
+
+/* Footer */
+.footer {
+    text-align: center;
+    padding: 30px 0 20px;
+    color: #a588c0;
+    border-top: 1px solid rgba(255, 150, 210, 0.2);
+    margin-top: 40px;
+}
+
+/* ========== MEDIA QUERIES ========== */
+@media (min-width: 769px) {
+    .carousel-nav {
+        display: flex;
+    }
+}
+
+@media (max-width: 768px) {
+    /* Navbar Mobile */
+    .nav-container {
+        padding: 8px 16px;
+    }
     
-    const sections = {
-        home: document.getElementById('home'),
-        about: document.getElementById('about'),
-        member: document.getElementById('member'),
-        admin: document.getElementById('admin'),
-        contact: document.getElementById('contact')
-    };
+    .nav-menu {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: rgba(20, 10, 35, 0.95);
+        backdrop-filter: blur(20px);
+        border: 1px solid rgba(255, 105, 194, 0.3);
+        border-radius: 0 0 20px 20px;
+        margin-top: 10px;
+        padding: 16px;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-10px);
+        transition: all 0.3s ease;
+        z-index: 100;
+        width: 100%;
+    }
 
-    const memberContainer = document.getElementById('memberContainer');
+    .nav-menu.active {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+    }
+
+    .nav-list {
+        flex-direction: column;
+        gap: 8px;
+    }
     
-    // Skeleton loading
-    memberContainer.classList.add('skeleton');
-    for (let i = 0; i < 9; i++) {
-        const skeletonCard = document.createElement('div');
-        skeletonCard.className = 'member-card skeleton';
-        skeletonCard.style.height = '180px';
-        memberContainer.appendChild(skeletonCard);
+    .nav-link {
+        width: 100%;
+        justify-content: center;
+        padding: 12px;
+        font-size: 1rem;
     }
 
-    setTimeout(() => {
-        memberContainer.classList.remove('skeleton');
-        memberContainer.innerHTML = '';
-        renderMembers(members);
-    }, 800);
-
-    // Render Members
-    function renderMembers(filteredMembers = members) {
-        memberContainer.innerHTML = '';
-        
-        if (filteredMembers.length === 0) {
-            memberContainer.innerHTML = '<div style="text-align: center; padding: 40px; color: #ffb0e6;"><i class="fas fa-user-slash" style="font-size: 3rem; margin-bottom: 10px;"></i><p>Anggota tidak ditemukan</p></div>';
-            return;
-        }
-        
-        filteredMembers.forEach(member => {
-            const card = document.createElement('div');
-            card.className = 'member-card';
-            
-            const avatarDiv = document.createElement('div');
-            avatarDiv.className = 'member-avatar';
-            
-            const img = document.createElement('img');
-            img.src = member.photo;
-            img.alt = member.name;
-            img.style.objectPosition = 'center';
-            img.style.objectFit = 'cover';
-            img.onerror = function() { 
-                this.style.display = 'none'; 
-                const span = document.createElement('span');
-                span.style.cssText = 'font-size:2rem;color:white;';
-                span.textContent = member.name.charAt(0);
-                this.parentElement.appendChild(span);
-            };
-            
-            avatarDiv.appendChild(img);
-            
-            const infoDiv = document.createElement('div');
-            infoDiv.className = 'member-info';
-            
-            const nameH4 = document.createElement('h4');
-            nameH4.textContent = member.name;
-            
-            const usernameDiv = document.createElement('div');
-            usernameDiv.className = 'username ' + getUsernameClass(member.username);
-            usernameDiv.textContent = member.username;
-            
-            infoDiv.appendChild(nameH4);
-            infoDiv.appendChild(usernameDiv);
-            
-            card.appendChild(avatarDiv);
-            card.appendChild(infoDiv);
-            
-            card.addEventListener('click', () => {
-                document.getElementById('modalAvatar').innerHTML = '';
-                const modalImg = document.createElement('img');
-                modalImg.src = member.photo;
-                modalImg.alt = member.name;
-                modalImg.style.objectPosition = 'center';
-                modalImg.style.objectFit = 'cover';
-                modalImg.onerror = function() { 
-                    this.style.display = 'none'; 
-                    const span = document.createElement('span');
-                    span.style.cssText = 'font-size:3rem;color:white;';
-                    span.textContent = member.name.charAt(0);
-                    this.parentElement.appendChild(span);
-                };
-                document.getElementById('modalAvatar').appendChild(modalImg);
-                
-                document.getElementById('modalName').textContent = member.name;
-                document.getElementById('modalUsername').textContent = member.username;
-                document.getElementById('quoteText').textContent = member.quote || 'Bersama Kasugano, kita bersinar';
-                document.getElementById('modalTiktokLink').href = member.tiktok;
-                document.getElementById('modalTiktokText').textContent = member.username;
-                
-                document.getElementById('memberModal').classList.add('active');
-            });
-            
-            memberContainer.appendChild(card);
-        });
+    .nav-toggle {
+        display: flex;
     }
-
-    // Render Admins
-    const adminTrack = document.getElementById('adminTrack');
-    adminTrack.innerHTML = '';
     
-    admins.forEach(admin => {
-        const card = document.createElement('div');
-        card.className = 'admin-card';
-        
-        const avatarDiv = document.createElement('div');
-        avatarDiv.className = 'admin-avatar';
-        
-        const img = document.createElement('img');
-        img.src = admin.photo;
-        img.alt = admin.name;
-        img.style.objectPosition = 'center';
-        img.style.objectFit = 'cover';
-        img.onerror = function() { 
-            this.style.display = 'none'; 
-            const span = document.createElement('span');
-            span.style.cssText = 'font-size:3rem;color:white;';
-            span.textContent = admin.name.charAt(0);
-            this.parentElement.appendChild(span);
-        };
-        
-        avatarDiv.appendChild(img);
-        
-        const infoDiv = document.createElement('div');
-        infoDiv.className = 'admin-info';
-        
-        const nameH4 = document.createElement('h4');
-        nameH4.textContent = admin.name;
-        
-        const usernameDiv = document.createElement('div');
-        usernameDiv.className = 'admin-username ' + getUsernameClass(admin.username);
-        usernameDiv.textContent = admin.username;
-        
-        const roleDiv = document.createElement('div');
-        roleDiv.className = 'admin-role';
-        roleDiv.textContent = admin.role;
-        
-        const tiktokLink = document.createElement('a');
-        tiktokLink.href = admin.tiktok;
-        tiktokLink.target = '_blank';
-        tiktokLink.className = 'admin-tiktok-link';
-        tiktokLink.innerHTML = '<i class="fab fa-tiktok"></i> TikTok';
-        
-        infoDiv.appendChild(nameH4);
-        infoDiv.appendChild(usernameDiv);
-        infoDiv.appendChild(roleDiv);
-        infoDiv.appendChild(tiktokLink);
-        
-        card.appendChild(avatarDiv);
-        card.appendChild(infoDiv);
-        
-        adminTrack.appendChild(card);
-    });
-
-    // Render Contacts Desktop
-    const contactGrid = document.getElementById('contactGrid');
-    contactGrid.innerHTML = '';
-    contacts.forEach(contact => {
-        const card = document.createElement('a');
-        card.href = contact.link;
-        card.target = '_blank';
-        card.className = 'contact-card';
-        
-        const icon = document.createElement('i');
-        icon.className = contact.icon;
-        
-        const h3 = document.createElement('h3');
-        h3.textContent = contact.platform;
-        
-        const span = document.createElement('span');
-        span.textContent = contact.username;
-        
-        card.appendChild(icon);
-        card.appendChild(h3);
-        card.appendChild(span);
-        
-        contactGrid.appendChild(card);
-    });
-
-    // Render Contacts Mobile
-    const contactTrack = document.getElementById('contactTrack');
-    contactTrack.innerHTML = '';
-    contacts.forEach(contact => {
-        const card = document.createElement('a');
-        card.href = contact.link;
-        card.target = '_blank';
-        card.className = 'contact-card';
-        
-        const icon = document.createElement('i');
-        icon.className = contact.icon;
-        
-        const h3 = document.createElement('h3');
-        h3.textContent = contact.platform;
-        
-        const span = document.createElement('span');
-        span.textContent = contact.username;
-        
-        card.appendChild(icon);
-        card.appendChild(h3);
-        card.appendChild(span);
-        
-        contactTrack.appendChild(card);
-    });
-
-    // Carousel Navigation
-    const adminCarousel = document.getElementById('adminCarousel');
-    document.getElementById('carouselPrev').addEventListener('click', () => {
-        adminCarousel.scrollBy({ left: -300, behavior: 'smooth' });
-    });
-    document.getElementById('carouselNext').addEventListener('click', () => {
-        adminCarousel.scrollBy({ left: 300, behavior: 'smooth' });
-    });
-
-    const contactCarousel = document.getElementById('contactCarousel');
-    document.getElementById('contactPrev').addEventListener('click', () => {
-        contactCarousel.scrollBy({ left: -300, behavior: 'smooth' });
-    });
-    document.getElementById('contactNext').addEventListener('click', () => {
-        contactCarousel.scrollBy({ left: 300, behavior: 'smooth' });
-    });
-
-    // Search Member
-    const searchInput = document.getElementById('searchMember');
-    if (searchInput) {
-        searchInput.addEventListener('input', (e) => {
-            const keyword = e.target.value.toLowerCase().trim();
-            if (keyword === '') {
-                renderMembers(members);
-            } else {
-                const filtered = members.filter(m => 
-                    m.name.toLowerCase().includes(keyword) || 
-                    m.username.toLowerCase().includes(keyword)
-                );
-                renderMembers(filtered);
-            }
-        });
+    .logo-text {
+        font-size: 1.2rem;
     }
-
-    // Modal
-    const modal = document.getElementById('memberModal');
-    const closeModal = document.getElementById('closeModal');
     
-    closeModal.addEventListener('click', () => {
-        modal.classList.remove('active');
-    });
+    /* Grid adjustments */
+    .about-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
     
-    window.addEventListener('click', (e) => {
-        if (e.target === modal) {
-            modal.classList.remove('active');
-        }
-    });
-
-    // Navbar Functions
-    function getNavbarHeight() {
-        return navbar ? navbar.offsetHeight : 80;
+    .activity-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
     }
-
-    function updateScrollPadding() {
-        document.documentElement.style.scrollPaddingTop = (getNavbarHeight() + 30) + 'px';
-    }
-
-    // Navbar Toggle
-    if (navToggle) {
-        navToggle.addEventListener('click', (e) => {
-            e.stopPropagation();
-            navMenu.classList.toggle('active');
-            navToggle.innerHTML = navMenu.classList.contains('active') ? 
-                '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
-        });
-    }
-
-    // Close menu
-    document.addEventListener('click', (e) => {
-        if (navMenu && navToggle && !navToggle.contains(e.target) && !navMenu.contains(e.target)) {
-            navMenu.classList.remove('active');
-            navToggle.innerHTML = '<i class="fas fa-bars"></i>';
-        }
-    });
-
-    // Nav links click
-    navLinks.forEach(link => {
-        link.addEventListener('click', (e) => {
-            e.preventDefault();
-            
-            const targetId = link.dataset.target;
-            const navbarHeight = getNavbarHeight();
-            
-            navMenu.classList.remove('active');
-            if (navToggle) navToggle.innerHTML = '<i class="fas fa-bars"></i>';
-            
-            if (targetId === 'home') {
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            } else {
-                const targetElement = sections[targetId];
-                if (targetElement) {
-                    const targetPosition = targetElement.offsetTop - navbarHeight - 30;
-                    window.scrollTo({ top: targetPosition, behavior: 'smooth' });
-                }
-            }
-        });
-    });
-
-    // Hero parallax
-    const heroImg = document.getElementById('heroImg');
-    if (heroImg) {
-        window.addEventListener('scroll', () => {
-            const scrollY = window.scrollY;
-            heroImg.style.transform = `translateY(${scrollY * 0.2}px)`;
-        });
-    }
-
-    // Reveal sections
-    const revealSections = document.querySelectorAll('section');
     
-    const revealObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('revealed');
-            }
-        });
-    }, { threshold: 0.15 });
-
-    revealSections.forEach(section => {
-        revealObserver.observe(section);
-    });
-
-    // Resize event
-    let resizeTimeout;
-    window.addEventListener('resize', () => {
-        if (resizeTimeout) clearTimeout(resizeTimeout);
-        resizeTimeout = setTimeout(() => {
-            updateScrollPadding();
-        }, 100);
-    });
-
-    // Initial setup
-    window.scrollTo(0, 0);
-    updateScrollPadding();
+    .member-grid {
+        grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+    }
     
-    window.addEventListener('load', () => {
-        setTimeout(() => {
-            updateScrollPadding();
-        }, 200);
-    });
+    .member-info .username {
+        font-size: 0.7rem;
+    }
+    .username-medium { font-size: 0.65rem; }
+    .username-long { font-size: 0.6rem; }
+    .username-very-long { font-size: 0.5rem; }
+    
+    /* HILANGKAN TOMBOL NAVIGASI DI HP */
+    .carousel-nav {
+        display: none !important;
+    }
+    
+    /* CAROUSEL FULL WIDTH DI HP (mengabaikan padding .main) */
+    .carousel-container {
+        width: 100vw;
+        position: relative;
+        left: 50%;
+        transform: translateX(-50%);
+        margin: 30px 0;
+    }
+    
+    .carousel-wrapper {
+        padding: 0 !important;
+        margin: 0 !important;
+        width: 100%;
+    }
+    
+    .carousel-track {
+        padding: 10px 0 !important;
+        margin: 0 !important;
+        gap: 15px;
+    }
+    
+    .admin-card {
+        width: 180px;
+    }
+    
+    .hero-content h1 {
+        font-size: 2rem;
+    }
+    
+    .hero-profile-photo {
+        width: 160px;
+        height: 160px;
+    }
+    
+    .el-familia-text {
+        font-size: 1.6rem;
+    }
+    
+    .el-familia-symbol {
+        font-size: 1.4rem;
+    }
+    
+    .together-text {
+        font-size: 1.4rem;
+    }
+    
+    .together-sub {
+        font-size: 1rem;
+    }
+    
+    /* Contact section mobile - FULL WIDTH */
+    .contact-grid-desktop {
+        display: none;
+    }
+    
+    .contact-carousel-mobile {
+        display: flex;
+        width: 100%;
+    }
+    
+    .contact-card {
+        width: 160px;
+        background: rgba(32, 16, 50, 0.7);
+        backdrop-filter: blur(8px);
+        border: 1.5px solid #c97aff;
+        border-radius: 20px;
+        padding: 12px 8px;
+        gap: 4px;
+    }
+    
+    .contact-card:hover {
+        box-shadow: 0 0 25px #ff69c2;
+    }
+    
+    .contact-card i {
+        font-size: 1.8rem;
+    }
+    
+    .contact-card h3 {
+        font-size: 0.9rem;
+    }
+    
+    .contact-card span {
+        font-size: 0.55rem;
+    }
+}
 
-})();
+@media (max-width: 480px) {
+    .hero-content h1 {
+        font-size: 1.8rem;
+    }
+    
+    .hero-content p {
+        font-size: 0.95rem;
+        padding: 10px 16px;
+    }
+    
+    .section-title {
+        font-size: 1.8rem;
+    }
+    
+    .section-title::after {
+        width: 120px;
+    }
+    
+    .member-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .member-info h4 {
+        font-size: 1rem;
+    }
+    
+    .member-info .username {
+        font-size: 0.65rem;
+    }
+    .username-medium { font-size: 0.6rem; }
+    .username-long { font-size: 0.55rem; }
+    .username-very-long { font-size: 0.45rem; }
+    
+    .admin-card {
+        width: 160px;
+        padding: 15px 10px;
+    }
+    
+    .admin-avatar {
+        width: 90px;
+        height: 90px;
+    }
+    
+    .contact-card {
+        width: 140px;
+    }
+    
+    .contact-card i {
+        font-size: 1.6rem;
+    }
+    
+    .contact-card h3 {
+        font-size: 0.8rem;
+    }
+    
+    .contact-card span {
+        font-size: 0.5rem;
+    }
+}
+
+@media (max-width: 360px) {
+    .member-info h4 {
+        font-size: 0.9rem;
+    }
+    
+    .member-info .username {
+        font-size: 0.6rem;
+    }
+    .username-medium { font-size: 0.55rem; }
+    .username-long { font-size: 0.5rem; }
+    .username-very-long { font-size: 0.4rem; }
+    
+    .admin-card {
+        width: 140px;
+    }
+    
+    .contact-card {
+        width: 130px;
+    }
+}
