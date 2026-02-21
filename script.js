@@ -1,5 +1,4 @@
 (function() {
-    // Data Members
     const members = [
         { 
             name: 'Gery', 
@@ -123,12 +122,12 @@
     ];
 
     const admins = [
-        { name: 'Ryy Sensei', username: '@RyyKagenou NCA', role: 'Owner & Founder', tiktok: 'https://www.tiktok.com/@RyyKagenou', photo: 'images/admin1.webp' },
-        { name: 'Sora', username: '@kasugano_sora52', role: 'Pemilik & Pendiri', tiktok: 'https://www.tiktok.com/@kasugano.rora', photo: 'images/admin2.jpg' },
-        { name: 'Haruka', username: '@kasugano_harukaa', role: 'Pemilik', tiktok: 'https://www.tiktok.com/@kasugano.harukaa', photo: 'images/admin3.jpg' },
-        { name: 'Zero', username: '@zero.znzx', role: 'Admin', tiktok: 'https://www.tiktok.com/@zero.znzx', photo: 'images/admin4.jfif' },
-        { name: 'Serlina', username: '@diiputraa28_', role: 'Admin', tiktok: 'https://www.tiktok.com/@diiputraa28_', photo: 'images/admin5.jpeg' },
-        { name: 'Shora', username: '@codename_shora.v02', role: 'Admin', tiktok: 'https://www.tiktok.com/@codename_shora.v02', photo: 'images/admin6.png' }
+        { name: 'Shora', username: '@codename_shora.v02', role: 'Owner & Founder', tiktok: 'https://www.tiktok.com/@codename_shora.v02?_r=1&_t=ZS-946q06XFolJ', photo: 'images/admin1.webp' },
+        { name: 'Sora', username: '@kasugano_sora52', role: 'Owner', tiktok: 'https://www.tiktok.com/@kasugano.rora', photo: 'images/admin2.jpg' },
+        { name: 'Haruka', username: '@kasugano_harukaa', role: 'Pemilik', tiktok: 'https://www.tiktok.com/@kasugano.harukaa?_r=1&_t=ZS-946q12lu9W0', photo: 'images/admin3.jpg' },
+        { name: 'Zero', username: '@zero.znzx', role: 'Admin', tiktok: 'https://www.tiktok.com/@zero.znzx?_r=1&_t=ZS-946q2BqgvLA', photo: 'images/admin4.jfif' },
+        { name: 'Serlina', username: '@diiputraa28_', role: 'Admin', tiktok: 'https://www.tiktok.com/@diiputraa28_?_r=1&_t=ZS-946qIHmdaxI', photo: 'images/admin5.jpeg' },
+        { name: 'Anonim', username: '@???', role: 'Admin', tiktok: '???', photo: 'images/admin6.png' }
     ];
 
     const contacts = [
@@ -137,10 +136,9 @@
         { platform: 'Instagram', username: '@kasugano.family', link: 'https://www.instagram.com/kasugano.family', icon: 'fab fa-instagram' },
         { platform: 'Instagram', username: '@kasuganostore', link: 'https://www.instagram.com/kasuganostore', icon: 'fab fa-instagram' },
         { platform: 'WhatsApp', username: '+62 852-3240-6495', link: 'https://wa.me/6285232406495', icon: 'fab fa-whatsapp' },
-        { platform: 'Email', username: 'kasuganofamilyy@gmail.com', link: 'mailto:kasuganofamilyy@gmail.com', icon: 'far fa-envelope' }
+        { platform: 'Email', username: 'kasuganofamilyy@gmail.com', link: 'kasuganofamilyy@gmail.com', icon: 'far fa-envelope' }
     ];
 
-    // Fungsi untuk menentukan kelas berdasarkan panjang username
     function getUsernameClass(username) {
         const length = username.length;
         if (length > 25) return 'username-very-long';
@@ -149,7 +147,6 @@
         return 'username-small';
     }
 
-    // DOM Elements
     const navbar = document.getElementById('navbar');
     const navLinks = document.querySelectorAll('.nav-link');
     const navToggle = document.getElementById('navToggle');
@@ -164,8 +161,7 @@
     };
 
     const memberContainer = document.getElementById('memberContainer');
-    
-    // Skeleton loading
+
     memberContainer.classList.add('skeleton');
     for (let i = 0; i < 9; i++) {
         const skeletonCard = document.createElement('div');
@@ -180,7 +176,6 @@
         renderMembers(members);
     }, 800);
 
-    // Render Members
     function renderMembers(filteredMembers = members) {
         memberContainer.innerHTML = '';
         
@@ -256,7 +251,6 @@
         });
     }
 
-    // Render Admins
     const adminTrack = document.getElementById('adminTrack');
     adminTrack.innerHTML = '';
     
@@ -313,7 +307,6 @@
         adminTrack.appendChild(card);
     });
 
-    // Render Contacts Desktop
     const contactGrid = document.getElementById('contactGrid');
     contactGrid.innerHTML = '';
     contacts.forEach(contact => {
@@ -338,7 +331,6 @@
         contactGrid.appendChild(card);
     });
 
-    // Render Contacts Mobile
     const contactTrack = document.getElementById('contactTrack');
     contactTrack.innerHTML = '';
     contacts.forEach(contact => {
@@ -363,7 +355,6 @@
         contactTrack.appendChild(card);
     });
 
-    // Carousel Navigation
     const adminCarousel = document.getElementById('adminCarousel');
     document.getElementById('carouselPrev').addEventListener('click', () => {
         adminCarousel.scrollBy({ left: -300, behavior: 'smooth' });
@@ -380,7 +371,6 @@
         contactCarousel.scrollBy({ left: 300, behavior: 'smooth' });
     });
 
-    // Search Member
     const searchInput = document.getElementById('searchMember');
     if (searchInput) {
         searchInput.addEventListener('input', (e) => {
@@ -397,7 +387,6 @@
         });
     }
 
-    // Modal
     const modal = document.getElementById('memberModal');
     const closeModal = document.getElementById('closeModal');
     
@@ -420,7 +409,6 @@
         document.documentElement.style.scrollPaddingTop = (getNavbarHeight() + 30) + 'px';
     }
 
-    // Navbar Toggle
     if (navToggle) {
         navToggle.addEventListener('click', (e) => {
             e.stopPropagation();
@@ -430,7 +418,6 @@
         });
     }
 
-    // Close menu
     document.addEventListener('click', (e) => {
         if (navMenu && navToggle && !navToggle.contains(e.target) && !navMenu.contains(e.target)) {
             navMenu.classList.remove('active');
@@ -438,7 +425,6 @@
         }
     });
 
-    // Nav links click
     navLinks.forEach(link => {
         link.addEventListener('click', (e) => {
             e.preventDefault();
@@ -461,7 +447,6 @@
         });
     });
 
-    // Hero parallax
     const heroImg = document.getElementById('heroImg');
     if (heroImg) {
         window.addEventListener('scroll', () => {
@@ -470,7 +455,6 @@
         });
     }
 
-    // Reveal sections
     const revealSections = document.querySelectorAll('section');
     
     const revealObserver = new IntersectionObserver((entries) => {
@@ -485,7 +469,6 @@
         revealObserver.observe(section);
     });
 
-    // Resize event
     let resizeTimeout;
     window.addEventListener('resize', () => {
         if (resizeTimeout) clearTimeout(resizeTimeout);
@@ -494,7 +477,6 @@
         }, 100);
     });
 
-    // Initial setup
     window.scrollTo(0, 0);
     updateScrollPadding();
     
@@ -505,5 +487,6 @@
     });
 
 })();
+
 
 
