@@ -1318,3 +1318,30 @@ section.revealed {
         width: 130px;
     }
 }
+
+/* Breakpoint untuk carousel dan contact - tablet landscape/hp besar (≤ 600px) */
+@media (max-width: 600px) {
+    .about-grid {
+        grid-template-columns: 1fr; /* About jadi 1 kolom di mobile */
+    }
+    
+    .activity-grid {
+        grid-template-columns: 1fr; /* Aktivitas jadi 1 kolom di mobile */
+    }
+    
+    .carousel-nav {
+        display: none !important;
+    }
+    
+    .contact-grid-desktop {
+        display: none !important;
+    }
+    
+    .contact-carousel-mobile {
+        display: flex !important;
+        width: 100%;
+    }
+    
+    /* ... sisanya sama ... */
+}
+
