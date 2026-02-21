@@ -143,9 +143,15 @@
         <section id="admin">
             <h2 class="section-title">Admin</h2>
             <div class="carousel-container">
+                <button class="carousel-nav carousel-prev" id="carouselPrev">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
                 <div class="carousel-wrapper" id="adminCarousel">
                     <div class="carousel-track" id="adminTrack"></div>
                 </div>
+                <button class="carousel-nav carousel-next" id="carouselNext">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
             </div>
         </section>
 
@@ -159,7 +165,21 @@
         <section id="contact">
             <h2 class="section-title">Contact</h2>
             
-            <div class="contact-grid" id="contactGrid"></div>
+            <!-- Desktop Contact Grid -->
+            <div class="contact-grid-desktop" id="contactGrid"></div>
+            
+            <!-- Mobile Contact Carousel -->
+            <div class="carousel-container contact-carousel-mobile" id="contactCarouselMobile">
+                <button class="carousel-nav carousel-prev" id="contactPrev">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <div class="carousel-wrapper" id="contactCarousel">
+                    <div class="carousel-track" id="contactTrack"></div>
+                </div>
+                <button class="carousel-nav carousel-next" id="contactNext">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
         </section>
 
         <footer class="footer">
@@ -174,6 +194,7 @@
             <h2 id="modalName"></h2>
             <div class="modal-username" id="modalUsername"></div>
             
+            <!-- Quotes langsung dengan background modal, tanpa card -->
             <div class="modal-quote" id="modalQuote">
                 <i class="fas fa-quote-left"></i>
                 <span id="quoteText">Bersama kita bersinar</span>
