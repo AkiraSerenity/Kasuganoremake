@@ -455,17 +455,19 @@ section.revealed {
     font-size: 0.9rem;
 }
 
-/* ========== MEMBER GRID - CENTERED ========== */
+/* ========== MEMBER GRID - FLEXBOX CENTER ========== */
 .member-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     gap: 16px;
     margin: 20px 0;
     width: 100%;
-    justify-content: center; /* Membuat grid berada di tengah */
 }
 
 .member-card {
+    width: 150px;
+    flex: 0 0 auto;
     background: rgba(28, 16, 45, 0.8);
     backdrop-filter: blur(4px);
     border: 1.5px solid #b161ee;
@@ -477,9 +479,12 @@ section.revealed {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 100%;
-    max-width: 180px;
-    margin: 0 auto;
+}
+
+.member-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 18px 25px -8px #d59dff;
+    border-color: #ffaddc;
 }
 
 .member-avatar {
@@ -526,10 +531,10 @@ section.revealed {
     color: #ffb0e6;
     max-width: 100%;
     white-space: nowrap;
-    overflow: hidden;      /* sembunyikan kelebihan tanpa ... */
-    text-overflow: clip;    /* tidak pakai ellipsis */
+    overflow: hidden;
+    text-overflow: clip;
     width: 100%;
-    font-size: 0.75rem;     /* default */
+    font-size: 0.75rem;
     line-height: 1.4;
 }
 
@@ -1116,8 +1121,9 @@ section.revealed {
         gap: 16px;
     }
     
-    .member-grid {
-        grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+    /* Member grid di HP */
+    .member-card {
+        width: 130px;
     }
     
     .member-info .username {
@@ -1237,8 +1243,8 @@ section.revealed {
         width: 120px;
     }
     
-    .member-grid {
-        grid-template-columns: repeat(2, 1fr);
+    .member-card {
+        width: 140px;
     }
     
     .member-info h4 {
@@ -1280,6 +1286,10 @@ section.revealed {
 }
 
 @media (max-width: 360px) {
+    .member-card {
+        width: 130px;
+    }
+    
     .member-info h4 {
         font-size: 0.9rem;
     }
