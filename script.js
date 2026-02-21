@@ -114,10 +114,10 @@
             quote: 'Jangan lupa makan'
         }
         { 
-            name: 'Rora', 
-            username: '@roraxml', 
-            tiktok: 'https://www.tiktok.com/@kasugano_sora87', 
-            photo: 'images/member2.jpeg', 
+            name: 'Zakk', 
+            username: '@sb_prst', 
+            tiktok: 'https://www.tiktok.com/@sb_prst?_r=1&_t=ZS-946jrKwcwxo', 
+            photo: 'images/member17.jpeg', 
             quote: 'Jangan lupa main epep'
         },
     ];
@@ -505,6 +505,7 @@
     });
 
 })();
+
 
 
 
