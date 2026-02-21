@@ -40,8 +40,16 @@ body::after {
     height: 100%;
     background-image: 
         linear-gradient(rgba(200, 130, 255, 0.05) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(200, 130, 255, 0.05) 1px, transparent 1px);
-    background-size: 40px 40px, 40px 40px;
+        linear-gradient(90deg, rgba(200, 130, 255, 0.05) 1px, transparent 1px),
+        radial-gradient(2px 2px at 10% 20%, rgba(255, 255, 255, 0.5), transparent 3px),
+        radial-gradient(3px 3px at 30% 70%, #ffb0e6, transparent 4px),
+        radial-gradient(2px 2px at 50% 30%, #c47af0, transparent 3px),
+        radial-gradient(4px 4px at 80% 60%, #ff69c2, transparent 5px),
+        radial-gradient(2px 2px at 90% 15%, #b57aed, transparent 3px);
+    background-repeat: repeat, repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat;
+    background-size: clamp(30px, 5vw, 40px) clamp(30px, 5vw, 40px), 
+                     clamp(30px, 5vw, 40px) clamp(30px, 5vw, 40px), 
+                     auto, auto, auto, auto, auto;
     pointer-events: none;
     z-index: -1;
 }
@@ -514,19 +522,24 @@ section.revealed {
     align-items: center;
 }
 
+/* NAMA MEMBER - tanpa overflow, tanpa ellipsis, ukuran font mengecil */
 .member-info h4 {
-    font-size: 1.1rem;
     font-weight: 700;
     color: white;
     margin-bottom: 4px;
     max-width: 100%;
     white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
     width: 100%;
+    line-height: 1.4;
 }
 
-/* USERNAME - tanpa overflow, ukuran font mengecil */
+.name-small    { font-size: 1.1rem; }
+.name-medium   { font-size: 1rem; }
+.name-long     { font-size: 0.9rem; }
+.name-very-long{ font-size: 0.8rem; }
+.name-extreme  { font-size: 0.7rem; }
+
+/* USERNAME - tanpa overflow, tanpa ellipsis, ukuran font mengecil */
 .member-info .username {
     color: #ffb0e6;
     max-width: 100%;
@@ -535,12 +548,12 @@ section.revealed {
     line-height: 1.4;
 }
 
-/* Kelas ukuran font untuk username */
-.username-small { font-size: 0.75rem; }      /* < 15 karakter */
-.username-medium { font-size: 0.7rem; }       /* 15-20 karakter */
-.username-long { font-size: 0.65rem; }        /* 20-25 karakter */
-.username-very-long { font-size: 0.55rem; }   /* 25-30 karakter */
-.username-extreme { font-size: 0.45rem; }     /* > 30 karakter */
+.username-small    { font-size: 0.75rem; }
+.username-medium   { font-size: 0.7rem; }
+.username-long     { font-size: 0.65rem; }
+.username-very-long{ font-size: 0.55rem; }
+.username-extreme  { font-size: 0.45rem; }
+.username-ultra    { font-size: 0.35rem; }
 
 /* Search Bar */
 .search-wrapper {
@@ -687,16 +700,20 @@ section.revealed {
     gap: 6px;
 }
 
+/* NAMA ADMIN - juga mengecil */
 .admin-info h4 {
-    font-size: 1.2rem;
     color: white;
     margin: 0;
     max-width: 100%;
     white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
     width: 100%;
+    line-height: 1.4;
+    font-size: 1.2rem; /* default */
 }
+.admin-info h4.name-medium   { font-size: 1.1rem; }
+.admin-info h4.name-long     { font-size: 1rem; }
+.admin-info h4.name-very-long{ font-size: 0.9rem; }
+.admin-info h4.name-extreme  { font-size: 0.8rem; }
 
 .admin-username {
     color: #ffb0e6;
@@ -705,10 +722,10 @@ section.revealed {
     width: 100%;
     font-size: 0.8rem;
 }
-
-.admin-username.username-long { font-size: 0.7rem; }
+.admin-username.username-long      { font-size: 0.7rem; }
 .admin-username.username-very-long { font-size: 0.6rem; }
-.admin-username.username-extreme { font-size: 0.5rem; }
+.admin-username.username-extreme   { font-size: 0.5rem; }
+.admin-username.username-ultra     { font-size: 0.4rem; }
 
 .admin-role {
     background: #2d1b42;
@@ -1053,7 +1070,6 @@ section.revealed {
 }
 
 @media (max-width: 768px) {
-    /* Navbar Mobile */
     .nav-container {
         padding: 8px 16px;
     }
@@ -1103,7 +1119,6 @@ section.revealed {
         font-size: 1.2rem;
     }
     
-    /* Grid adjustments */
     .about-grid {
         grid-template-columns: 1fr;
         gap: 16px;
@@ -1114,19 +1129,24 @@ section.revealed {
         gap: 16px;
     }
     
-    /* Member grid di HP */
     .member-card {
         width: 130px;
     }
     
-    .member-info .username {
-        font-size: 0.7rem; /* default untuk HP */
-    }
-    .username-small { font-size: 0.7rem; }
-    .username-medium { font-size: 0.65rem; }
-    .username-long { font-size: 0.6rem; }
-    .username-very-long { font-size: 0.5rem; }
-    .username-extreme { font-size: 0.4rem; }
+    /* Ukuran font NAMA di HP */
+    .name-small    { font-size: 1rem; }
+    .name-medium   { font-size: 0.9rem; }
+    .name-long     { font-size: 0.8rem; }
+    .name-very-long{ font-size: 0.7rem; }
+    .name-extreme  { font-size: 0.6rem; }
+    
+    /* Ukuran font USERNAME di HP */
+    .username-small    { font-size: 0.7rem; }
+    .username-medium   { font-size: 0.65rem; }
+    .username-long     { font-size: 0.6rem; }
+    .username-very-long{ font-size: 0.5rem; }
+    .username-extreme  { font-size: 0.4rem; }
+    .username-ultra    { font-size: 0.3rem; }
     
     /* HILANGKAN TOMBOL NAVIGASI DI HP */
     .carousel-nav {
@@ -1243,17 +1263,21 @@ section.revealed {
     }
     
     .member-info h4 {
-        font-size: 1rem;
+        /* font-size already handled by classes */
     }
     
-    .member-info .username {
-        font-size: 0.65rem;
-    }
-    .username-small { font-size: 0.65rem; }
-    .username-medium { font-size: 0.6rem; }
-    .username-long { font-size: 0.55rem; }
-    .username-very-long { font-size: 0.45rem; }
-    .username-extreme { font-size: 0.35rem; }
+    .name-small    { font-size: 0.9rem; }
+    .name-medium   { font-size: 0.8rem; }
+    .name-long     { font-size: 0.7rem; }
+    .name-very-long{ font-size: 0.6rem; }
+    .name-extreme  { font-size: 0.5rem; }
+    
+    .username-small    { font-size: 0.65rem; }
+    .username-medium   { font-size: 0.6rem; }
+    .username-long     { font-size: 0.55rem; }
+    .username-very-long{ font-size: 0.45rem; }
+    .username-extreme  { font-size: 0.35rem; }
+    .username-ultra    { font-size: 0.25rem; }
     
     .admin-card {
         width: 160px;
@@ -1287,18 +1311,18 @@ section.revealed {
         width: 130px;
     }
     
-    .member-info h4 {
-        font-size: 0.9rem;
-    }
+    .name-small    { font-size: 0.8rem; }
+    .name-medium   { font-size: 0.7rem; }
+    .name-long     { font-size: 0.6rem; }
+    .name-very-long{ font-size: 0.5rem; }
+    .name-extreme  { font-size: 0.4rem; }
     
-    .member-info .username {
-        font-size: 0.6rem;
-    }
-    .username-small { font-size: 0.6rem; }
-    .username-medium { font-size: 0.55rem; }
-    .username-long { font-size: 0.5rem; }
-    .username-very-long { font-size: 0.4rem; }
-    .username-extreme { font-size: 0.3rem; }
+    .username-small    { font-size: 0.6rem; }
+    .username-medium   { font-size: 0.55rem; }
+    .username-long     { font-size: 0.5rem; }
+    .username-very-long{ font-size: 0.4rem; }
+    .username-extreme  { font-size: 0.3rem; }
+    .username-ultra    { font-size: 0.2rem; }
     
     .admin-card {
         width: 140px;
