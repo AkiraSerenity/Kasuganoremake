@@ -1,90 +1,18 @@
 (function() {
-    // ========== DATA ==========
+    // Data Members
     const members = [
-        { 
-            name: 'Gery', 
-            username: '@gerysenwith_lapiskeju', 
-            tiktok: 'https://www.tiktok.com/@gerysenwith_lapiskeju',
-            photo: 'images/member1.jpg',
-            quote: 'Kamu rimuru bukan?'
-        },
-        { 
-            name: 'Rora', 
-            username: '@roraxml', 
-            tiktok: 'https://www.tiktok.com/@kasugano_sora87',
-            photo: 'images/member2.jpeg',
-            quote: 'Aku mah raja'
-        },
-        { 
-            name: 'Izabella', 
-            username: '@queen.izabella', 
-            tiktok: 'https://www.tiktok.com/@queen.izabella',
-            photo: 'images/member3.jpeg',
-            quote: 'Mending turu'
-        },
-        { 
-            name: 'Erie', 
-            username: '@kasugano_erie', 
-            tiktok: 'https://www.tiktok.com/@kasugano_erie',
-            photo: 'images/member4.jpg',
-            quote: 'Gw butuh uang!!!'
-        },
-        { 
-            name: 'Fuyi', 
-            username: '@fuyi_npc', 
-            tiktok: 'https://www.tiktok.com/@fuyi_npc',
-            photo: 'images/member5.png',
-            quote: 'Belajar untuk memahami diri kita sendiri'
-        },
-        { 
-            name: 'V3iin', 
-            username: '@iyainirhmd', 
-            tiktok: 'https://www.tiktok.com/@iyainirhmd',
-            photo: 'images/member7.jpg',
-            quote: 'bntr'
-        },
-        { 
-            name: 'Yuta', 
-            username: '@yutaxml', 
-            tiktok: 'https://www.tiktok.com/@yutaxml',
-            photo: 'images/member10.jpg',
-            quote: 'You never know until you try'
-        },
-        { 
-            name: 'Jarzz', 
-            username: '@jarzz.dw.skuy', 
-            tiktok: 'https://www.tiktok.com/@jarzz.dw.skuy',
-            photo: 'images/member11.jpg',
-            quote: 'Laparr'
-        },
-        { 
-            name: 'Akira', 
-            username: '@akira.imut', 
-            tiktok: 'https://www.tiktok.com/@akiraa.imut',
-            photo: 'images/member13.jpg',
-            quote: 'Imut gini kalo bantai lu sabi kali'
-        },
-        { 
-            name: 'Dree', 
-            username: '@daktau_256', 
-            tiktok: 'https://www.tiktok.com/@daktau_256',
-            photo: 'images/member14.jpg',
-            quote: 'Jangan takut salah, karena dari salah kita belajar.'
-        },
-        { 
-            name: 'Zunda', 
-            username: '@shaglenv02y', 
-            tiktok: 'https://www.tiktok.com/@shaglenv02y',
-            photo: 'images/member15.jpg',
-            quote: 'Emel yok'
-        },
-        { 
-            name: 'Yushaa Von Khaslana', 
-            username: '@kachusyaa', 
-            tiktok: 'https://www.tiktok.com/@kachusyaa',
-            photo: 'images/member16.jpeg',
-            quote: 'Jangan lupa makan'
-        }
+        { name: 'Gery', username: '@gerysenwith_lapiskeju', tiktok: 'https://www.tiktok.com/@gerysenwith_lapiskeju', photo: 'images/member1.jpg', quote: 'Kamu rimuru bukan?' },
+        { name: 'Rora', username: '@roraxml', tiktok: 'https://www.tiktok.com/@kasugano_sora87', photo: 'images/member2.jpeg', quote: 'Aku mah raja' },
+        { name: 'Izabella', username: '@queen.izabella', tiktok: 'https://www.tiktok.com/@queen.izabella', photo: 'images/member3.jpeg', quote: 'Mending turu' },
+        { name: 'Erie', username: '@kasugano_erie', tiktok: 'https://www.tiktok.com/@kasugano_erie', photo: 'images/member4.jpg', quote: 'Gw butuh uang!!!' },
+        { name: 'Fuyi', username: '@fuyi_npc', tiktok: 'https://www.tiktok.com/@fuyi_npc', photo: 'images/member5.png', quote: 'Belajar untuk memahami diri kita sendiri' },
+        { name: 'V3iin', username: '@iyainirhmd', tiktok: 'https://www.tiktok.com/@iyainirhmd', photo: 'images/member7.jpg', quote: 'bntr' },
+        { name: 'Yuta', username: '@yutaxml', tiktok: 'https://www.tiktok.com/@yutaxml', photo: 'images/member10.jpg', quote: 'You never know until you try' },
+        { name: 'Jarzz', username: '@jarzz.dw.skuy', tiktok: 'https://www.tiktok.com/@jarzz.dw.skuy', photo: 'images/member11.jpg', quote: 'Laparr' },
+        { name: 'Akira', username: '@akira.imut', tiktok: 'https://www.tiktok.com/@akiraa.imut', photo: 'images/member13.jpg', quote: 'Imut gini kalo bantai lu sabi kali' },
+        { name: 'Dree', username: '@daktau_256', tiktok: 'https://www.tiktok.com/@daktau_256', photo: 'images/member14.jpg', quote: 'Jangan takut salah, karena dari salah kita belajar.' },
+        { name: 'Zunda', username: '@shaglenv02y', tiktok: 'https://www.tiktok.com/@shaglenv02y', photo: 'images/member15.jpg', quote: 'Emel yok' },
+        { name: 'Yushaa Von Khaslana', username: '@kachusyaa', tiktok: 'https://www.tiktok.com/@kachusyaa', photo: 'images/member16.jpeg', quote: 'Jangan lupa makan' }
     ];
 
     const admins = [
@@ -105,28 +33,7 @@
         { platform: 'Email', username: 'kasuganofamilyy@gmail.com', link: 'mailto:kasuganofamilyy@gmail.com', icon: 'far fa-envelope' }
     ];
 
-    // ========== FUNGSI UKURAN FONT ==========
-    function getNameClass(name) {
-        const length = name.length;
-        if (length >= 25) return 'name-extreme';
-        if (length >= 20) return 'name-very-long';
-        if (length >= 15) return 'name-long';
-        if (length >= 10) return 'name-medium';
-        return 'name-small';
-    }
-
-    function getUsernameClass(username) {
-        const length = username.length;
-        if (length >= 40) return 'username-mega';
-        if (length >= 35) return 'username-ultra';
-        if (length >= 30) return 'username-extreme';
-        if (length >= 25) return 'username-very-long';
-        if (length >= 20) return 'username-long';
-        if (length >= 15) return 'username-medium';
-        return 'username-small';
-    }
-
-    // ========== DOM ELEMENTS ==========
+    // DOM Elements
     const navbar = document.getElementById('navbar');
     const navLinks = document.querySelectorAll('.nav-link');
     const navToggle = document.getElementById('navToggle');
@@ -142,7 +49,7 @@
 
     const memberContainer = document.getElementById('memberContainer');
     
-    // ========== SKELETON LOADING ==========
+    // Skeleton loading
     memberContainer.classList.add('skeleton');
     for (let i = 0; i < 9; i++) {
         const skeletonCard = document.createElement('div');
@@ -157,12 +64,11 @@
         renderMembers(members);
     }, 800);
 
-    // ========== RENDER MEMBERS ==========
     function renderMembers(filteredMembers = members) {
         memberContainer.innerHTML = '';
         
         if (filteredMembers.length === 0) {
-            memberContainer.innerHTML = '<div style="text-align: center; padding: 40px; color: #ffb0e6;"><i class="fas fa-user-slash" style="font-size: 3rem; margin-bottom: 10px;"></i><p>Anggota tidak ditemukan</p></div>';
+            memberContainer.innerHTML = '<div style="text-align: center; padding: var(--space-xl); color: #ffb0e6;"><i class="fas fa-user-slash" style="font-size: 3rem; margin-bottom: var(--space-md);"></i><p>Anggota tidak ditemukan</p></div>';
             return;
         }
         
@@ -170,14 +76,11 @@
             const card = document.createElement('div');
             card.className = 'member-card';
             
-            // Avatar
             const avatarDiv = document.createElement('div');
             avatarDiv.className = 'member-avatar';
             const img = document.createElement('img');
             img.src = member.photo;
             img.alt = member.name;
-            img.style.objectPosition = 'center';
-            img.style.objectFit = 'cover';
             img.onerror = function() { 
                 this.style.display = 'none'; 
                 const span = document.createElement('span');
@@ -187,16 +90,14 @@
             };
             avatarDiv.appendChild(img);
             
-            // Info
             const infoDiv = document.createElement('div');
             infoDiv.className = 'member-info';
             
             const nameH4 = document.createElement('h4');
             nameH4.textContent = member.name;
-            nameH4.className = getNameClass(member.name);
             
             const usernameDiv = document.createElement('div');
-            usernameDiv.className = 'username ' + getUsernameClass(member.username);
+            usernameDiv.className = 'username';
             usernameDiv.textContent = member.username;
             
             infoDiv.appendChild(nameH4);
@@ -210,8 +111,6 @@
                 const modalImg = document.createElement('img');
                 modalImg.src = member.photo;
                 modalImg.alt = member.name;
-                modalImg.style.objectPosition = 'center';
-                modalImg.style.objectFit = 'cover';
                 modalImg.onerror = function() { 
                     this.style.display = 'none'; 
                     const span = document.createElement('span');
@@ -234,7 +133,7 @@
         });
     }
 
-    // ========== RENDER ADMINS ==========
+    // Render Admins
     const adminTrack = document.getElementById('adminTrack');
     adminTrack.innerHTML = '';
     
@@ -247,8 +146,6 @@
         const img = document.createElement('img');
         img.src = admin.photo;
         img.alt = admin.name;
-        img.style.objectPosition = 'center';
-        img.style.objectFit = 'cover';
         img.onerror = function() { 
             this.style.display = 'none'; 
             const span = document.createElement('span');
@@ -263,10 +160,9 @@
         
         const nameH4 = document.createElement('h4');
         nameH4.textContent = admin.name;
-        nameH4.className = getNameClass(admin.name);
         
         const usernameDiv = document.createElement('div');
-        usernameDiv.className = 'admin-username ' + getUsernameClass(admin.username);
+        usernameDiv.className = 'admin-username';
         usernameDiv.textContent = admin.username;
         
         const roleDiv = document.createElement('div');
@@ -290,7 +186,7 @@
         adminTrack.appendChild(card);
     });
 
-    // ========== RENDER CONTACTS (DESKTOP) ==========
+    // Render Contacts Desktop
     const contactGrid = document.getElementById('contactGrid');
     contactGrid.innerHTML = '';
     contacts.forEach(contact => {
@@ -315,7 +211,7 @@
         contactGrid.appendChild(card);
     });
 
-    // ========== RENDER CONTACTS MOBILE ==========
+    // Render Contacts Mobile
     const contactTrack = document.getElementById('contactTrack');
     contactTrack.innerHTML = '';
     contacts.forEach(contact => {
@@ -340,7 +236,7 @@
         contactTrack.appendChild(card);
     });
 
-    // ========== CAROUSEL NAVIGATION ==========
+    // Carousel Navigation
     const adminCarousel = document.getElementById('adminCarousel');
     document.getElementById('carouselPrev').addEventListener('click', () => {
         adminCarousel.scrollBy({ left: -300, behavior: 'smooth' });
@@ -357,7 +253,7 @@
         contactCarousel.scrollBy({ left: 300, behavior: 'smooth' });
     });
 
-    // ========== SEARCH MEMBER ==========
+    // Search Member
     const searchInput = document.getElementById('searchMember');
     if (searchInput) {
         searchInput.addEventListener('input', (e) => {
@@ -374,7 +270,7 @@
         });
     }
 
-    // ========== MODAL ==========
+    // Modal
     const modal = document.getElementById('memberModal');
     const closeModal = document.getElementById('closeModal');
     
@@ -388,7 +284,7 @@
         }
     });
 
-    // ========== NAVBAR FUNCTIONS ==========
+    // Navbar Functions
     function getNavbarHeight() {
         return navbar ? navbar.offsetHeight : 80;
     }
@@ -438,7 +334,7 @@
         });
     });
 
-    // ========== HERO PARALLAX ==========
+    // Hero parallax
     const heroImg = document.getElementById('heroImg');
     if (heroImg) {
         window.addEventListener('scroll', () => {
@@ -447,7 +343,7 @@
         });
     }
 
-    // ========== REVEAL SECTIONS ==========
+    // Reveal sections
     const revealSections = document.querySelectorAll('section');
     const revealObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
@@ -461,7 +357,7 @@
         revealObserver.observe(section);
     });
 
-    // ========== RESIZE EVENT ==========
+    // Resize event
     let resizeTimeout;
     window.addEventListener('resize', () => {
         if (resizeTimeout) clearTimeout(resizeTimeout);
@@ -470,7 +366,7 @@
         }, 100);
     });
 
-    // ========== INITIAL SETUP ==========
+    // Initial setup
     window.scrollTo(0, 0);
     updateScrollPadding();
     
