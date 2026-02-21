@@ -402,10 +402,9 @@ section {
 }
 
 .about-card {
-  flex: 1 1 280px;
+  flex: 0 0 280px; /* basis tetap, tidak memaksa tumbuh */
   min-width: 250px;
   max-width: 320px;
-  min-width: 0; /* Agar flex shrink bekerja dengan baik */
   background: rgba(22, 12, 35, 0.7);
   backdrop-filter: blur(8px);
   border: 1px solid rgba(255, 130, 210, 0.3);
@@ -436,6 +435,8 @@ section {
 
 .about-card p {
   color: #d0b0ff;
+  /* Biarkan teks wrap secara alami */
+  word-wrap: break-word;
 }
 
 /* ===== ACTIVITY GRID ===== */
@@ -449,10 +450,9 @@ section {
 }
 
 .activity-card {
-  flex: 1 1 230px;
+  flex: 0 0 230px;
   min-width: 200px;
   max-width: 280px;
-  min-width: 0;
   background: rgba(28, 16, 45, 0.8);
   backdrop-filter: blur(8px);
   border: 1.5px solid #ff98dc;
@@ -488,6 +488,7 @@ section {
 
 .activity-card p {
   color: #d0b0ff;
+  word-wrap: break-word;
 }
 
 /* ===== MEMBER GRID ===== */
@@ -501,10 +502,9 @@ section {
 }
 
 .member-card {
-  flex: 1 1 140px;
+  flex: 0 0 140px;
   min-width: 120px;
   max-width: 160px;
-  min-width: 0; /* Penting untuk flex item */
   background: rgba(28, 16, 45, 0.8);
   backdrop-filter: blur(4px);
   border: 1.5px solid #b161ee;
@@ -543,24 +543,22 @@ section {
 
 .member-info {
   width: 100%;
-  min-width: 0; /* Agar teks bisa shrink */
+  min-width: 0; /* Agar konten bisa shrink */
 }
 
 .member-info h4 {
   font-weight: 700;
   color: white;
   margin-bottom: 2px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  word-wrap: break-word;
+  white-space: normal; /* Teks bisa wrap */
   font-size: clamp(0.9rem, 2.5vw, 1.1rem);
 }
 
 .member-info .username {
   color: #ffb0e6;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  word-wrap: break-word;
+  white-space: normal;
   font-size: clamp(0.65rem, 2vw, 0.8rem);
 }
 
@@ -712,18 +710,16 @@ section {
 .admin-info h4 {
   color: white;
   margin: 0;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  word-wrap: break-word;
+  white-space: normal;
   width: 100%;
   font-size: clamp(1rem, 3vw, 1.3rem);
 }
 
 .admin-username {
   color: #ffb0e6;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  word-wrap: break-word;
+  white-space: normal;
   width: 100%;
   font-size: clamp(0.7rem, 2.2vw, 0.9rem);
 }
@@ -872,18 +868,16 @@ section {
   font-weight: 600;
   color: white;
   margin: 0;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  word-wrap: break-word;
+  white-space: normal;
   width: 100%;
   font-size: clamp(0.9rem, 2.5vw, 1.2rem);
 }
 
 .contact-card span {
   color: #ffb0e6;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  word-wrap: break-word;
+  white-space: normal;
   width: 100%;
   font-size: clamp(0.6rem, 1.8vw, 0.75rem);
 }
@@ -967,17 +961,15 @@ section {
 .modal h2 {
   color: white;
   margin-bottom: var(--space-xs);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  word-wrap: break-word;
+  white-space: normal;
 }
 
 .modal-username {
   color: #ffb0e6;
   margin-bottom: var(--space-lg);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  word-wrap: break-word;
+  white-space: normal;
   font-size: 0.9rem;
 }
 
@@ -1102,13 +1094,13 @@ section {
 /* Tablet (768px - 1023px) */
 @media (min-width: 768px) and (max-width: 1023px) {
   .about-card {
-    flex: 1 1 300px;
+    flex: 0 0 300px;
   }
   .activity-card {
-    flex: 1 1 250px;
+    flex: 0 0 250px;
   }
   .member-card {
-    flex: 1 1 150px;
+    flex: 0 0 150px;
   }
   .admin-card {
     width: 200px;
@@ -1119,7 +1111,7 @@ section {
 @media (max-width: 767px) {
   .about-card,
   .activity-card {
-    flex: 1 1 100%;
+    flex: 0 0 100%;
     max-width: 400px;
   }
 
@@ -1171,7 +1163,7 @@ section {
   }
 
   .member-card {
-    flex: 1 1 140px;
+    flex: 0 0 140px;
     min-width: 120px;
     max-width: 150px;
   }
@@ -1180,7 +1172,7 @@ section {
 /* Mobile kecil (≤ 480px) */
 @media (max-width: 480px) {
   .member-card {
-    flex: 1 1 130px;
+    flex: 0 0 130px;
     min-width: 110px;
     max-width: 140px;
   }
@@ -1200,7 +1192,7 @@ section {
 /* Mobile sangat kecil (≤ 360px) */
 @media (max-width: 360px) {
   .member-card {
-    flex: 1 1 120px;
+    flex: 0 0 120px;
     min-width: 100px;
     max-width: 130px;
   }
@@ -1210,4 +1202,4 @@ section {
   .contact-card {
     width: 110px;
   }
-}s
+}
