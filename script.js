@@ -1,4 +1,5 @@
 (function() {
+    // ===== DATA =====
     const members = [
         { name: 'Gery', username: '@gerysenwith_lapiskeju', tiktok: 'https://www.tiktok.com/@gerysenwith_lapiskeju', initial: 'G', photo: 'images/member1.jpg', quote: 'Kamu rimuru bukan?' },
         { name: 'Rora', username: '@roraxml', tiktok: 'https://www.tiktok.com/@kasugano_sora87', initial: 'S', photo: 'images/member2.jpeg', quote: 'Aku mah raja' },
@@ -33,9 +34,10 @@
         { platform: 'Instagram', username: '@kasugano.family', link: 'https://www.instagram.com/kasugano.family', icon: 'fab fa-instagram' },
         { platform: 'Instagram', username: '@kasuganostore', link: 'https://www.instagram.com/kasuganostore', icon: 'fab fa-instagram' },
         { platform: 'WhatsApp', username: '+62 852-3240-6495', link: 'https://wa.me/6285232406495', icon: 'fab fa-whatsapp' },
-        { platform: 'Email', username: 'kasuganofamilyy@gmail.com', link: 'kasuganofamilyy@gmail.com', icon: 'far fa-envelope' }
+        { platform: 'Email', username: 'kasuganofamilyy@gmail.com', link: 'mailto:kasuganofamilyy@gmail.com', icon: 'far fa-envelope' }
     ];
 
+    // ===== ELEMENTS =====
     const navbar = document.getElementById('navbar');
     const navItems = document.querySelectorAll('.nav-item');
     const navLinks = document.querySelectorAll('.nav-link');
@@ -52,6 +54,7 @@
 
     const memberContainer = document.getElementById('memberContainer');
     
+    // ===== SKELETON LOADING =====
     memberContainer.classList.add('skeleton');
     for (let i = 0; i < 9; i++) {
         const skeletonCard = document.createElement('div');
@@ -66,6 +69,7 @@
         renderMembers(members);
     }, 800);
 
+    // ===== RENDER FUNCTIONS =====
     function renderMembers(filteredMembers = members) {
         memberContainer.innerHTML = '';
         
@@ -94,13 +98,17 @@
                 document.getElementById('quoteText').textContent = member.quote || 'Bersama Kasugano, kita bersinar';
                 document.getElementById('modalTiktokLink').href = member.tiktok;
                 document.getElementById('modalTiktokText').textContent = member.username;
-                document.getElementById('memberModal').classList.add('active');
+                
+                const modal = document.getElementById('memberModal');
+                modal.classList.add('active');
+                document.body.style.overflow = 'hidden';
             });
             
             memberContainer.appendChild(card);
         });
     }
 
+    // Render Admin
     const adminTrack = document.getElementById('adminTrack');
     adminTrack.innerHTML = '';
     
@@ -121,6 +129,7 @@
         adminTrack.appendChild(card);
     });
 
+    // Render Contact
     const contactGrid = document.getElementById('contactGrid');
     const contactTrack = document.getElementById('contactTrack');
     
@@ -152,6 +161,7 @@
         contactTrack.appendChild(card);
     });
 
+    // ===== CAROUSEL NAVIGATION =====
     const adminCarousel = document.getElementById('adminCarousel');
     document.getElementById('carouselPrev').addEventListener('click', () => {
         adminCarousel.scrollBy({ left: -300, behavior: 'smooth' });
@@ -168,6 +178,7 @@
         contactCarousel.scrollBy({ left: 300, behavior: 'smooth' });
     });
 
+    // ===== SEARCH MEMBER =====
     document.getElementById('searchMember').addEventListener('input', (e) => {
         const keyword = e.target.value.toLowerCase().trim();
         if (keyword === '') {
@@ -181,14 +192,26 @@
         }
     });
 
+    // ===== MODAL =====
     const modal = document.getElementById('memberModal');
-    document.getElementById('closeModal').addEventListener('click', () => {
+    const closeModal = document.getElementById('closeModal');
+    
+    function closeModalHandler() {
         modal.classList.remove('active');
-    });
+        document.body.style.overflow = '';
+    }
+    
+    closeModal.addEventListener('click', closeModalHandler);
+    
     window.addEventListener('click', (e) => {
-        if (e.target === modal) modal.classList.remove('active');
+        if (e.target === modal) closeModalHandler();
+    });
+    
+    modal.addEventListener('wheel', (e) => {
+        e.stopPropagation();
     });
 
+    // ===== NAVBAR FUNCTIONS =====
     function getNavbarHeight() {
         return navbar ? navbar.offsetHeight : 80;
     }
@@ -237,6 +260,7 @@
         }
     }
 
+    // ===== NAVBAR TOGGLE =====
     if (navToggle) {
         navToggle.addEventListener('click', (e) => {
             e.stopPropagation();
@@ -247,12 +271,15 @@
     }
 
     document.addEventListener('click', (e) => {
-        if (navMenu && navToggle && !navToggle.contains(e.target) && !navMenu.contains(e.target)) {
-            navMenu.classList.remove('active');
-            navToggle.innerHTML = '<i class="fas fa-bars"></i>';
+        if (window.innerWidth <= 768) {
+            if (navMenu && navToggle && !navToggle.contains(e.target) && !navMenu.contains(e.target)) {
+                navMenu.classList.remove('active');
+                navToggle.innerHTML = '<i class="fas fa-bars"></i>';
+            }
         }
     });
 
+    // ===== NAVIGATION LINKS =====
     navLinks.forEach(link => {
         link.addEventListener('click', (e) => {
             e.preventDefault();
@@ -260,7 +287,7 @@
             const targetId = link.dataset.target;
             const navbarHeight = getNavbarHeight();
             
-            if (navMenu) {
+            if (window.innerWidth <= 768 && navMenu) {
                 navMenu.classList.remove('active');
                 if (navToggle) navToggle.innerHTML = '<i class="fas fa-bars"></i>';
             }
@@ -277,6 +304,7 @@
         });
     });
 
+    // ===== PARALLAX =====
     const heroImg = document.getElementById('heroImg');
     if (heroImg) {
         window.addEventListener('scroll', () => {
@@ -285,37 +313,44 @@
         });
     }
 
+    // ===== SCROLL REVEAL =====
     const revealSections = document.querySelectorAll('section');
     
     const revealObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('revealed');
-            } else {
-                entry.target.classList.remove('revealed');
             }
         });
-    }, { threshold: 0.15, rootMargin: '0px' });
+    }, { threshold: 0.15 });
 
     revealSections.forEach(section => {
         revealObserver.observe(section);
     });
 
+    // ===== SCROLL EVENT =====
     let scrollTimeout;
     window.addEventListener('scroll', () => {
         if (scrollTimeout) cancelAnimationFrame(scrollTimeout);
         scrollTimeout = requestAnimationFrame(checkActiveSection);
     });
 
+    // ===== RESIZE EVENT =====
     let resizeTimeout;
     window.addEventListener('resize', () => {
         if (resizeTimeout) clearTimeout(resizeTimeout);
         resizeTimeout = setTimeout(() => {
             updateScrollPadding();
             checkActiveSection();
+            
+            if (window.innerWidth > 768 && navMenu) {
+                navMenu.classList.remove('active');
+                if (navToggle) navToggle.innerHTML = '<i class="fas fa-bars"></i>';
+            }
         }, 100);
     });
 
+    // ===== INITIALIZATION =====
     window.scrollTo(0, 0);
     updateScrollPadding();
     
@@ -326,4 +361,5 @@
             setActiveSection('home');
         }, 200);
     });
+
 })();
