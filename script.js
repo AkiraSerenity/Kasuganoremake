@@ -6,21 +6,21 @@
             username: '@gerysenwith_lapiskeju', 
             tiktok: 'https://www.tiktok.com/@gerysenwith_lapiskeju', 
             photo: 'images/member1.jpg', 
-            quote: 'Bahkan hal sederhana seperti azan magrib bisa menjadi sepesial hijau engkau menantikan nya'
+            quote: 'Kamu rimuru bukan?'
         },
         { 
             name: 'Rora', 
             username: '@roraxml', 
             tiktok: 'https://www.tiktok.com/@kasugano_sora87', 
             photo: 'images/member2.jpeg', 
-            quote: 'Manusia memang tidak bisa mengubah waktu, tapi dengan berjalan nya waktu manusia bisa berubah'
+            quote: 'Aku mah raja'
         },
         { 
             name: 'Izabella', 
             username: '@queen.izabellaz', 
             tiktok: 'https://www.tiktok.com/@queen.izabellaz', 
             photo: 'images/member3.jpeg', 
-            quote: 'Manusia akan banyak berubah ketika hatinya terluka'
+            quote: 'Mending turu'
         },
         { 
             name: 'Erie', 
@@ -41,7 +41,7 @@
             username: '@ezan_xd', 
             tiktok: 'https://www.tiktok.com/@ezan_xd', 
             photo: 'images/member6.png', 
-            quote: 'Seorang pria dengan sebilah tombak adalah sebuah benteng'
+            quote: 'Sederhana tapi berarti, itulah keluarga.'
         },
         { 
             name: 'V3iin', 
@@ -62,7 +62,7 @@
             username: '@naineyuko', 
             tiktok: 'https://www.tiktok.com/@naineyuko', 
             photo: 'images/member9.jpg', 
-            quote: 'Hidup itu pilihan so just gambling bro'
+            quote: 'Aduh kok aku jadi cewek siehh'
         },
         { 
             name: 'Yuuta', 
@@ -79,8 +79,8 @@
             quote: 'Laparr'
         },
         { 
-            name: 'Qwenty', 
-            username: '@qwenty.ft', 
+            name: 'Qwentty', 
+            username: '@qwentty.ft', 
             tiktok: 'https://www.tiktok.com/@qwenty.ft', 
             photo: 'images/member12.jpg', 
             quote: 'Semua manusia hanyalah alat'
@@ -90,21 +90,21 @@
             username: '@akira.imut', 
             tiktok: 'https://www.tiktok.com/@akiraa.imut', 
             photo: 'images/member13.jpg', 
-            quote: 'Lahhh, gw mah jago'
+            quote: 'Imut gini kalo bantai lu sabi kali'
         },
         { 
             name: 'Dree', 
             username: '@daktau_256', 
             tiktok: 'https://www.tiktok.com/@daktau_256', 
             photo: 'images/member14.jpg', 
-            quote: 'AFK njirrr orang nya.'
+            quote: 'Jangan takut salah, karena dari salah kita belajar.'
         },
         { 
             name: 'Zunda', 
             username: '@shaglenv02y', 
             tiktok: 'https://www.tiktok.com/@shaglenv02y', 
             photo: 'images/member15.jpg', 
-            quote: 'Jika kamu lapar makan lah (walaupun belum buka mokel aja)'
+            quote: 'Emel yok'
         },
         { 
             name: 'Yushaa Von Khaslana', 
@@ -114,13 +114,12 @@
             quote: 'Jangan lupa makan'
         },
         { 
-            name: 'Zakk', 
-            username: '@sb_prst', 
-            tiktok: 'https://www.tiktok.com/@sb_prst?_r=1&_t=ZS-946jrKwcwxo', 
-            photo: 'images/member17.jpeg', 
-            quote: 'Jangan lupa main epep'
-        },
-        {
+            name: 'Yushaa Von Khaslana', 
+            username: '@kachusyaa', 
+            tiktok: 'https://www.tiktok.com/@kachusyaa', 
+            photo: 'images/member16.jpeg', 
+            quote: 'Jangan lupa makan'
+        }
     ];
 
     const admins = [
@@ -506,9 +505,3 @@
     });
 
 })();
-
-
-
-
-
-
