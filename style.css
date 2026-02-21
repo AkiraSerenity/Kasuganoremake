@@ -91,10 +91,11 @@ a:focus-visible {
 }
 
 /* ===== CONTAINER ===== */
-.container {
+.main {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 var(--space-lg);
+  padding: var(--space-xl) var(--space-lg);
+  width: 100%;
 }
 
 /* ===== NAVBAR ===== */
@@ -305,14 +306,7 @@ a:focus-visible {
   border: 1px solid #ff9ad0;
 }
 
-/* ===== MAIN ===== */
-.main {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: var(--space-xl) var(--space-lg);
-  width: 100%;
-}
-
+/* ===== SECTION ===== */
 section {
   margin-bottom: var(--space-2xl);
   animation: fadeUp 0.6s ease both;
@@ -361,12 +355,13 @@ section {
 
 .el-familia-badge {
   background: linear-gradient(125deg, #2f1b4b, #190f28);
-  padding: var(--space-sm) var(--space-xl);
+  padding: clamp(0.4rem, 2vw, 0.8rem) clamp(1.2rem, 5vw, 2.5rem);
   border-radius: 60px;
   border: 2px solid #ff98dc;
   box-shadow: 0 0 20px #ff69c280;
   display: inline-block;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
+  white-space: nowrap; /* agar tidak pecah jadi 2 baris */
 }
 
 .el-familia-badge:hover {
@@ -375,7 +370,7 @@ section {
 }
 
 .el-familia-text {
-  font-size: clamp(1.6rem, 5vw, 2.4rem);
+  font-size: clamp(1.3rem, 5vw, 2.2rem);
   font-weight: 800;
   letter-spacing: 2px;
   background: linear-gradient(145deg, #ffc8f0, #e09eff, #ffb3d9);
@@ -387,23 +382,22 @@ section {
 
 .el-familia-symbol {
   color: #ffa7e6;
-  font-size: clamp(1.4rem, 4vw, 2rem);
+  font-size: clamp(1.1rem, 4vw, 1.8rem);
   margin: 0 var(--space-xs);
 }
 
 /* ===== ABOUT GRID ===== */
 .about-grid {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: var(--space-lg);
   margin: var(--space-lg) 0;
   width: 100%;
+  place-items: center;
 }
 
 .about-card {
-  flex: 0 0 280px; /* basis tetap, tidak memaksa tumbuh */
-  min-width: 250px;
+  width: 100%;
   max-width: 320px;
   background: rgba(22, 12, 35, 0.7);
   backdrop-filter: blur(8px);
@@ -435,23 +429,21 @@ section {
 
 .about-card p {
   color: #d0b0ff;
-  /* Biarkan teks wrap secara alami */
   word-wrap: break-word;
 }
 
 /* ===== ACTIVITY GRID ===== */
 .activity-grid {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: var(--space-lg);
   margin: var(--space-xl) 0;
   width: 100%;
+  place-items: center;
 }
 
 .activity-card {
-  flex: 0 0 230px;
-  min-width: 200px;
+  width: 100%;
   max-width: 280px;
   background: rgba(28, 16, 45, 0.8);
   backdrop-filter: blur(8px);
@@ -493,17 +485,16 @@ section {
 
 /* ===== MEMBER GRID ===== */
 .member-grid {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
   gap: var(--space-md);
   margin: var(--space-lg) 0;
   width: 100%;
+  place-items: center;
 }
 
 .member-card {
-  flex: 0 0 140px;
-  min-width: 120px;
+  width: 100%;
   max-width: 160px;
   background: rgba(28, 16, 45, 0.8);
   backdrop-filter: blur(4px);
@@ -543,7 +534,6 @@ section {
 
 .member-info {
   width: 100%;
-  min-width: 0; /* Agar konten bisa shrink */
 }
 
 .member-info h4 {
@@ -551,15 +541,15 @@ section {
   color: white;
   margin-bottom: 2px;
   word-wrap: break-word;
-  white-space: normal; /* Teks bisa wrap */
-  font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+  white-space: normal;
+  font-size: clamp(0.9rem, 3vw, 1.1rem);
 }
 
 .member-info .username {
   color: #ffb0e6;
   word-wrap: break-word;
   white-space: normal;
-  font-size: clamp(0.65rem, 2vw, 0.8rem);
+  font-size: clamp(0.65rem, 2.5vw, 0.8rem);
 }
 
 /* ===== SEARCH BAR ===== */
@@ -713,7 +703,7 @@ section {
   word-wrap: break-word;
   white-space: normal;
   width: 100%;
-  font-size: clamp(1rem, 3vw, 1.3rem);
+  font-size: clamp(1rem, 3.5vw, 1.3rem);
 }
 
 .admin-username {
@@ -721,7 +711,7 @@ section {
   word-wrap: break-word;
   white-space: normal;
   width: 100%;
-  font-size: clamp(0.7rem, 2.2vw, 0.9rem);
+  font-size: clamp(0.7rem, 2.5vw, 0.9rem);
 }
 
 .admin-role {
@@ -746,7 +736,7 @@ section {
   align-items: center;
   justify-content: center;
   gap: var(--space-xs);
-  font-size: clamp(0.7rem, 2.2vw, 0.9rem);
+  font-size: clamp(0.7rem, 2.5vw, 0.9rem);
   background: #2a153d;
   padding: var(--space-xs) var(--space-sm);
   border-radius: 30px;
@@ -778,8 +768,6 @@ section {
   box-shadow: 0 0 25px #c47af0;
   text-align: center;
   backdrop-filter: blur(4px);
-  position: relative;
-  overflow: hidden;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
@@ -813,7 +801,7 @@ section {
 /* ===== CONTACT SECTION ===== */
 .contact-grid-desktop {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: var(--space-lg);
   margin: var(--space-xl) 0;
   padding: var(--space-xl);
@@ -824,6 +812,7 @@ section {
   box-shadow: 0 0 30px rgba(255, 105, 194, 0.3);
   transition: box-shadow 0.3s ease, border-color 0.3s ease;
   width: 100%;
+  place-items: center;
 }
 
 .contact-grid-desktop:hover {
@@ -847,6 +836,7 @@ section {
   transition: transform 0.2s ease, background 0.2s ease, text-shadow 0.2s ease;
   border-radius: 30px;
   width: 100%;
+  max-width: 220px;
 }
 
 .contact-card:hover {
@@ -871,7 +861,7 @@ section {
   word-wrap: break-word;
   white-space: normal;
   width: 100%;
-  font-size: clamp(0.9rem, 2.5vw, 1.2rem);
+  font-size: clamp(0.9rem, 3vw, 1.2rem);
 }
 
 .contact-card span {
@@ -879,7 +869,7 @@ section {
   word-wrap: break-word;
   white-space: normal;
   width: 100%;
-  font-size: clamp(0.6rem, 1.8vw, 0.75rem);
+  font-size: clamp(0.6rem, 2.2vw, 0.75rem);
 }
 
 /* ===== MODAL ===== */
@@ -1047,7 +1037,7 @@ section {
 
 /* ===== MEDIA QUERIES ===== */
 
-/* Navbar breakpoint: 1024px */
+/* Navbar breakpoint: ≤1024px - hamburger menu */
 @media (max-width: 1024px) {
   .nav-menu {
     position: absolute;
@@ -1094,31 +1084,42 @@ section {
 /* Tablet (768px - 1023px) */
 @media (min-width: 768px) and (max-width: 1023px) {
   .about-card {
-    flex: 0 0 300px;
+    max-width: 300px;
   }
   .activity-card {
-    flex: 0 0 250px;
+    max-width: 260px;
   }
   .member-card {
-    flex: 0 0 150px;
+    max-width: 150px;
   }
   .admin-card {
     width: 200px;
+  }
+  .contact-card {
+    max-width: 200px;
   }
 }
 
 /* Mobile (≤ 767px) */
 @media (max-width: 767px) {
+  /* About & Activity menjadi 1 kolom penuh */
+  .about-grid,
+  .activity-grid {
+    grid-template-columns: 1fr;
+    place-items: center;
+  }
+
   .about-card,
   .activity-card {
-    flex: 0 0 100%;
     max-width: 400px;
   }
 
+  /* Sembunyikan tombol carousel */
   .carousel-nav {
     display: none !important;
   }
 
+  /* Contact berubah menjadi carousel mobile */
   .contact-grid-desktop {
     display: none !important;
   }
@@ -1128,7 +1129,7 @@ section {
     width: 100%;
   }
 
-  /* Carousel full width tanpa 100vw trick */
+  /* Carousel full width */
   .carousel-container {
     margin-left: calc(-1 * var(--space-lg));
     margin-right: calc(-1 * var(--space-lg));
@@ -1163,8 +1164,6 @@ section {
   }
 
   .member-card {
-    flex: 0 0 140px;
-    min-width: 120px;
     max-width: 150px;
   }
 }
@@ -1172,8 +1171,6 @@ section {
 /* Mobile kecil (≤ 480px) */
 @media (max-width: 480px) {
   .member-card {
-    flex: 0 0 130px;
-    min-width: 110px;
     max-width: 140px;
   }
   .admin-card {
@@ -1192,8 +1189,6 @@ section {
 /* Mobile sangat kecil (≤ 360px) */
 @media (max-width: 360px) {
   .member-card {
-    flex: 0 0 120px;
-    min-width: 100px;
     max-width: 130px;
   }
   .admin-card {
