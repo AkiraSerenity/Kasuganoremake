@@ -522,23 +522,22 @@ section.revealed {
     max-width: 100%;
     white-space: nowrap;
     overflow: hidden;
-    text-overflow: ellipsis;
+    text-overflow: clip; /* tanpa titik-titik */
     width: 100%;
 }
 
-/* USERNAME - tanpa ellipsis, ukuran mengecil */
+/* USERNAME - tanpa ellipsis, ukuran mengecil proporsional */
 .member-info .username {
     color: #ffb0e6;
     max-width: 100%;
     white-space: nowrap;
     overflow: hidden;
-    text-overflow: clip;
+    text-overflow: clip; /* tanpa titik-titik */
     width: 100%;
-    font-size: 0.75rem;
     line-height: 1.4;
 }
 
-/* Kelas ukuran font */
+/* Kelas ukuran font - mengecil sesuai panjang teks */
 .username-small { font-size: 0.75rem; }
 .username-medium { font-size: 0.7rem; }
 .username-long { font-size: 0.65rem; }
@@ -696,7 +695,7 @@ section.revealed {
     max-width: 100%;
     white-space: nowrap;
     overflow: hidden;
-    text-overflow: ellipsis;
+    text-overflow: clip;
     width: 100%;
 }
 
@@ -724,7 +723,7 @@ section.revealed {
     max-width: 100%;
     white-space: nowrap;
     overflow: hidden;
-    text-overflow: ellipsis;
+    text-overflow: ellipsis; /* role boleh ellipsis karena biasanya pendek */
     font-size: 0.75rem;
 }
 
@@ -744,6 +743,8 @@ section.revealed {
     margin-top: 2px;
     max-width: 100%;
     white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis; /* link boleh ellipsis */
 }
 
 .admin-tiktok-link:hover {
@@ -863,7 +864,7 @@ section.revealed {
     max-width: 100%;
     white-space: nowrap;
     overflow: hidden;
-    text-overflow: ellipsis;
+    text-overflow: ellipsis; /* platform boleh ellipsis */
     width: 100%;
 }
 
@@ -872,7 +873,7 @@ section.revealed {
     max-width: 100%;
     white-space: nowrap;
     overflow: hidden;
-    text-overflow: clip;
+    text-overflow: clip; /* username tanpa titik-titik */
     width: 100%;
     font-size: 0.6rem;
 }
@@ -1008,6 +1009,8 @@ section.revealed {
     margin-top: 10px;
     max-width: 100%;
     white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .modal-tiktok:hover {
@@ -1015,12 +1018,6 @@ section.revealed {
     color: white;
     transform: scale(1.05);
     box-shadow: 0 0 20px #ff69c2;
-}
-
-.modal-tiktok span {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    max-width: 200px;
 }
 
 /* Skeleton Loading */
