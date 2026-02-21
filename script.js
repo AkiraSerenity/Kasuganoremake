@@ -4,7 +4,7 @@
         { 
             name: 'Gery', 
             username: '@gerysenwith_lapiskeju', 
-            tiktok: 'https://www.tiktok.com/@gerysenwith_lapiskeju?_r=1&_t=ZS-9418k7vyLUi'', 
+            tiktok: 'https://www.tiktok.com/@gerysenwith_lapiskeju?_r=1&_t=ZS-9418k7vyLUi', 
             photo: 'images/member1.jpg', 
             quote: 'Bahkan hal sederhana seperti azan magrib bisa menjadi sepesial hijau engkau menantikan nya'
         },
@@ -81,7 +81,7 @@
         { 
             name: 'Qwenty', 
             username: '@qwenty.ft', 
-            tiktok: 'https://www.tiktok.com/@qwenty.ft?_r=1&_t=ZS-9417dPeBf4m'', 
+            tiktok: 'https://www.tiktok.com/@qwenty.ft?_r=1&_t=ZS-9417dPeBf4m', 
             photo: 'images/member12.jpg', 
             quote: 'Semua manusia hanyalah alat'
         },
@@ -95,7 +95,7 @@
         { 
             name: 'Dree', 
             username: '@daktau_256', 
-            tiktok: 'https://www.tiktok.com/@daktau_256?_r=1&_t=ZS-9417gOvhoKy'', 
+            tiktok: 'https://www.tiktok.com/@daktau_256?_r=1&_t=ZS-9417gOvhoKy', 
             photo: 'images/member14.jpg', 
             quote: 'AFK njirrr orang nya.'
         },
@@ -505,4 +505,5 @@
     });
 
 })();
+
 
