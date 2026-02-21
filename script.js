@@ -1,460 +1,213 @@
-(function() {
-    // Data Members
-    const members = [
-        { 
-            name: 'Gery', 
-            username: '@gerysenwith_lapiskeju', 
-            tiktok: 'https://www.tiktok.com/@gerysenwith_lapiskeju', 
-            photo: 'images/member1.jpg', 
-            quote: 'Kamu rimuru bukan?'
-        },
-        { 
-            name: 'Rora', 
-            username: '@roraxml', 
-            tiktok: 'https://www.tiktok.com/@kasugano_sora87', 
-            photo: 'images/member2.jpeg', 
-            quote: 'Aku mah raja'
-        },
-        { 
-            name: 'Izabella', 
-            username: '@queen.izabellaz', 
-            tiktok: 'https://www.tiktok.com/@queen.izabellaz', 
-            photo: 'images/member3.jpeg', 
-            quote: 'Mending turu'
-        },
-        { 
-            name: 'Erie', 
-            username: '@kasugano_erie', 
-            tiktok: 'https://www.tiktok.com/@kasugano_erie', 
-            photo: 'images/member4.jpg', 
-            quote: 'Gw butuh uang!!!'
-        },
-        { 
-            name: 'Fuyi', 
-            username: '@fuyii_npc', 
-            tiktok: 'https://www.tiktok.com/@fuyii_npc', 
-            photo: 'images/member5.png', 
-            quote: 'Belajar untuk memahami diri kita sendiri, terkadang kita tidak harus memahami seseorang, bahkan juga orang belum bisa memahami kita sepenuhnya, maka belajar lah untuk menerima kenyataan'
-        },
-        { 
-            name: 'Ezan', 
-            username: '@ezan_xd', 
-            tiktok: 'https://www.tiktok.com/@ezan_xd', 
-            photo: 'images/member6.png', 
-            quote: 'Sederhana tapi berarti, itulah keluarga.'
-        },
-        { 
-            name: 'V3iin', 
-            username: '@iyainirhmd', 
-            tiktok: 'https://www.tiktok.com/@iyainirhmd', 
-            photo: 'images/member7.jpg', 
-            quote: 'bntr'
-        },
-        { 
-            name: 'Shaglen', 
-            username: '@xmj.shaglen', 
-            tiktok: 'https://www.tiktok.com/@xmj.shaglen', 
-            photo: 'images/member8.jpg', 
-            quote: 'Id have'
-        },
-        { 
-            name: 'Valen', 
-            username: '@naineyuko', 
-            tiktok: 'https://www.tiktok.com/@naineyuko', 
-            photo: 'images/member9.jpg', 
-            quote: 'Aduh kok aku jadi cewek siehh'
-        },
-        { 
-            name: 'Yuuta', 
-            username: '@yuutaxml_', 
-            tiktok: 'https://www.tiktok.com/@yuutaxml_', 
-            photo: 'images/member10.jpg', 
-            quote: 'You never know until you try'
-        },
-        { 
-            name: 'Jarzz', 
-            username: '@jarzz.dw.skuy', 
-            tiktok: 'https://www.tiktok.com/@jarzz.dw.skuy', 
-            photo: 'images/member11.jpg', 
-            quote: 'Laparr'
-        },
-        { 
-            name: 'Qwentty', 
-            username: '@qwentty.ft', 
-            tiktok: 'https://www.tiktok.com/@qwenty.ft', 
-            photo: 'images/member12.jpg', 
-            quote: 'Semua manusia hanyalah alat'
-        },
-        { 
-            name: 'Akira', 
-            username: '@akira.imut', 
-            tiktok: 'https://www.tiktok.com/@akiraa.imut', 
-            photo: 'images/member13.jpg', 
-            quote: 'Imut gini kalo bantai lu sabi kali'
-        },
-        { 
-            name: 'Dree', 
-            username: '@daktau_256', 
-            tiktok: 'https://www.tiktok.com/@daktau_256', 
-            photo: 'images/member14.jpg', 
-            quote: 'Jangan takut salah, karena dari salah kita belajar.'
-        },
-        { 
-            name: 'Zunda', 
-            username: '@shaglenv02y', 
-            tiktok: 'https://www.tiktok.com/@shaglenv02y', 
-            photo: 'images/member15.jpg', 
-            quote: 'Emel yok'
-        },
-        { 
-            name: 'Yushaa Von Khaslana', 
-            username: '@kachusyaa', 
-            tiktok: 'https://www.tiktok.com/@kachusyaa', 
-            photo: 'images/member16.jpeg', 
-            quote: 'Jangan lupa makan'
-        }
-    ];
-
-    const admins = [
-        { name: 'Shora', username: '@codename_shora.v02', role: 'Admin', tiktok: 'https://www.tiktok.com/@codename_shora.v02', photo: 'images/admin1.webp' },
-        { name: 'Sora', username: '@kasugano_sora52', role: 'Pemilik & Pendiri', tiktok: 'https://www.tiktok.com/@kasugano.rora', photo: 'images/admin2.jpg' },
-        { name: 'Haruka', username: '@kasugano_harukaa', role: 'Pemilik', tiktok: 'https://www.tiktok.com/@kasugano.harukaa', photo: 'images/admin3.jpg' },
-        { name: 'Zero', username: '@zero.znzx', role: 'Admin', tiktok: 'https://www.tiktok.com/@zero.znzx', photo: 'images/admin4.jfif' },
-        { name: 'Serlina', username: '@diiputraa28_', role: 'Admin', tiktok: 'https://www.tiktok.com/@diiputraa28_', photo: 'images/admin5.jpeg' },
-        { name: '???', username: '@???', role: '???', tiktok: 'https://www.tiktok.com', photo: 'images/admin6.png' }
-    ];
-
-    const contacts = [
-        { platform: 'TikTok', username: '@kasugano.official', link: 'https://www.tiktok.com/@kasugano.official', icon: 'fab fa-tiktok' },
-        { platform: 'TikTok', username: '@kasugano.store', link: 'https://www.tiktok.com/@kasugano.store', icon: 'fab fa-tiktok' },
-        { platform: 'Instagram', username: '@kasugano.family', link: 'https://www.instagram.com/kasugano.family', icon: 'fab fa-instagram' },
-        { platform: 'Instagram', username: '@kasuganostore', link: 'https://www.instagram.com/kasuganostore', icon: 'fab fa-instagram' },
-        { platform: 'WhatsApp', username: '+62 852-3240-6495', link: 'https://wa.me/6285232406495', icon: 'fab fa-whatsapp' },
-        { platform: 'Email', username: 'kasuganofamilyy@gmail.com', link: 'mailto:kasuganofamilyy@gmail.com', icon: 'far fa-envelope' }
-    ];
-
-    // Fungsi untuk menyesuaikan ukuran font berdasarkan panjang teks
-    function adjustFontSizeByLength(element, text, baseSize) {
-        if (!element) return;
-        
-        // Hapus kelas penyesuaian yang mungkin ada sebelumnya
-        element.classList.remove('username-short', 'username-medium', 'username-long', 'username-very-long');
-        
-        // Tambahkan kelas berdasarkan panjang teks
-        if (text.length > 25) {
-            element.classList.add('username-very-long');
-        } else if (text.length > 20) {
-            element.classList.add('username-long');
-        } else if (text.length > 15) {
-            element.classList.add('username-medium');
-        } else {
-            element.classList.add('username-short');
-        }
-    }
-
-    // DOM Elements
-    const navbar = document.getElementById('navbar');
-    const navLinks = document.querySelectorAll('.nav-link');
-    const navToggle = document.getElementById('navToggle');
-    const navMenu = document.getElementById('navMenu');
-    
-    const sections = {
-        home: document.getElementById('home'),
-        about: document.getElementById('about'),
-        member: document.getElementById('member'),
-        admin: document.getElementById('admin'),
-        contact: document.getElementById('contact')
-    };
-
-    const memberContainer = document.getElementById('memberContainer');
-    
-    // Skeleton loading
-    memberContainer.classList.add('skeleton');
-    for (let i = 0; i < 9; i++) {
-        const skeletonCard = document.createElement('div');
-        skeletonCard.className = 'member-card skeleton';
-        skeletonCard.style.height = '180px';
-        memberContainer.appendChild(skeletonCard);
-    }
-
-    setTimeout(() => {
-        memberContainer.classList.remove('skeleton');
-        memberContainer.innerHTML = '';
-        renderMembers(members);
-    }, 800);
-
-    // Render Members
-    function renderMembers(filteredMembers = members) {
-        memberContainer.innerHTML = '';
-        
-        if (filteredMembers.length === 0) {
-            memberContainer.innerHTML = '<div style="text-align: center; padding: 40px; color: #ffb0e6;"><i class="fas fa-user-slash" style="font-size: 3rem; margin-bottom: 10px;"></i><p>Anggota tidak ditemukan</p></div>';
-            return;
-        }
-        
-        filteredMembers.forEach(member => {
-            const card = document.createElement('div');
-            card.className = 'member-card';
-            
-            const usernameDiv = document.createElement('div');
-            usernameDiv.className = 'username';
-            usernameDiv.textContent = member.username;
-            
-            // Sesuaikan ukuran font berdasarkan panjang username
-            adjustFontSizeByLength(usernameDiv, member.username);
-            
-            card.innerHTML = `
-                <div class="member-avatar">
-                    <img src="${member.photo}" alt="${member.name}" onerror="this.style.display='none'; this.parentElement.innerHTML += '<span style=\'font-size:2rem;color:white;\'>${member.name.charAt(0)}</span>';">
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <title>Kasugano Family · official</title>
+    <link rel="icon" href="icon.ico">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="navbar-modern" id="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <div class="logo-icon">
+                    <img src="images/logo-profile.jpg" alt="K" onerror="this.src='https://via.placeholder.com/38/ff69c2/ffffff?text=K'">
                 </div>
-                <div class="member-info">
-                    <h4>${member.name}</h4>
+                <span class="logo-text">KSG Community</span>
+            </div>
+            
+            <div class="nav-menu" id="navMenu">
+                <ul class="nav-list">
+                    <li class="nav-item">
+                        <a href="#home" class="nav-link" data-target="home">
+                            <i class="fas fa-home"></i>
+                            <span>Home</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#about" class="nav-link" data-target="about">
+                            <i class="fas fa-info-circle"></i>
+                            <span>About</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#member" class="nav-link" data-target="member">
+                            <i class="fas fa-users"></i>
+                            <span>Member</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#admin" class="nav-link" data-target="admin">
+                            <i class="fas fa-crown"></i>
+                            <span>Admin</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#contact" class="nav-link" data-target="contact">
+                            <i class="fas fa-envelope"></i>
+                            <span>Contact</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            
+            <div class="nav-toggle" id="navToggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <section id="home" class="home-section">
+        <div class="hero-background" id="heroBg">
+            <img src="images/hero-background.jpg" alt="Background" class="hero-bg-img" id="heroImg" onerror="this.style.display='none'">
+            <div class="hero-overlay"></div>
+            <div class="hero-content">
+                <div class="hero-profile-photo">
+                    <img src="images/hero-profile.jpg" alt="Kasugano Family" onerror="this.src='https://via.placeholder.com/220/ff69c2/ffffff?text=KF'">
                 </div>
-            `;
-            
-            // Ganti username div yang sudah dibuat
-            const memberInfo = card.querySelector('.member-info');
-            memberInfo.appendChild(usernameDiv);
-            
-            card.addEventListener('click', () => {
-                // Set modal content - hanya quotes dan tiktok
-                document.getElementById('modalAvatar').innerHTML = `<img src="${member.photo}" alt="${member.name}" onerror="this.style.display='none'; this.parentElement.innerHTML += '<span style=\'font-size:3rem;color:white;\'>${member.name.charAt(0)}</span>';">`;
-                document.getElementById('modalName').textContent = member.name;
-                document.getElementById('modalUsername').textContent = member.username;
-                document.getElementById('quoteText').textContent = member.quote || 'Bersama Kasugano, kita bersinar';
-                document.getElementById('modalTiktokLink').href = member.tiktok;
-                document.getElementById('modalTiktokText').textContent = member.username;
-                
-                document.getElementById('memberModal').classList.add('active');
-            });
-            
-            memberContainer.appendChild(card);
-        });
-    }
-
-    // Render Admins
-    const adminTrack = document.getElementById('adminTrack');
-    adminTrack.innerHTML = '';
-    
-    admins.forEach(admin => {
-        const card = document.createElement('div');
-        card.className = 'admin-card';
-        
-        const usernameDiv = document.createElement('div');
-        usernameDiv.className = 'admin-username';
-        usernameDiv.textContent = admin.username;
-        
-        const roleDiv = document.createElement('div');
-        roleDiv.className = 'admin-role';
-        roleDiv.textContent = admin.role;
-        
-        // Sesuaikan ukuran font berdasarkan panjang teks
-        adjustFontSizeByLength(usernameDiv, admin.username);
-        
-        card.innerHTML = `
-            <div class="admin-avatar">
-                <img src="${admin.photo}" alt="${admin.name}" onerror="this.style.display='none'; this.innerHTML='${admin.name.charAt(0)}';">
+                <h1>Kasugano Family</h1>
+                <p>Kami adalah komunitas yang bergerak di TikTok dalam bidang Anime, Donghua, Game, Preset, GFX, dan lainnya.</p>
             </div>
-            <div class="admin-info">
-                <h4>${admin.name}</h4>
+        </div>
+    </section>
+
+    <main class="main">
+        <section id="about">
+            <div class="el-familia-wrapper">
+                <div class="el-familia-badge">
+                    <span class="el-familia-symbol">✦</span>
+                    <span class="el-familia-text">EL FAMILIA</span>
+                    <span class="el-familia-symbol">✦</span>
+                </div>
             </div>
-        `;
-        
-        const adminInfo = card.querySelector('.admin-info');
-        adminInfo.appendChild(usernameDiv);
-        adminInfo.appendChild(roleDiv);
-        
-        const tiktokLink = document.createElement('a');
-        tiktokLink.href = admin.tiktok;
-        tiktokLink.target = '_blank';
-        tiktokLink.className = 'admin-tiktok-link';
-        tiktokLink.innerHTML = '<i class="fab fa-tiktok"></i> TikTok';
-        adminInfo.appendChild(tiktokLink);
-        
-        adminTrack.appendChild(card);
-    });
+            <h2 class="section-title">About</h2>
+            <div class="about-grid">
+                <div class="about-card">
+                    <i class="fas fa-bullseye"></i>
+                    <h3>Visi</h3>
+                    <p>Membangun komunitas untuk mencari teman dan menambah wawasan.</p>
+                </div>
+                <div class="about-card">
+                    <i class="fas fa-rocket"></i>
+                    <h3>Misi</h3>
+                    <p>Mengembangkan skil editing dan bermain game.</p>
+                </div>
+                <div class="about-card">
+                    <i class="fas fa-paint-brush"></i>
+                    <h3>Fokus</h3>
+                    <p>Anime, Donghua, Game, Preset, GFX, Editing.</p>
+                </div>
+            </div>
 
-    // Render Contacts Desktop
-    const contactGrid = document.getElementById('contactGrid');
-    contactGrid.innerHTML = '';
-    contacts.forEach(contact => {
-        const card = document.createElement('a');
-        card.href = contact.link;
-        card.target = '_blank';
-        card.className = 'contact-card';
-        
-        const usernameSpan = document.createElement('span');
-        usernameSpan.textContent = contact.username;
-        
-        card.innerHTML = `
-            <i class="${contact.icon}"></i>
-            <h3>${contact.platform}</h3>
-        `;
-        card.appendChild(usernameSpan);
-        
-        contactGrid.appendChild(card);
-    });
+            <div class="activity-wrapper">
+                <h2 class="section-title">Aktivitas</h2>
+                <div class="activity-grid">
+                    <div class="activity-card">
+                        <div class="activity-icon"><i class="fas fa-film"></i></div>
+                        <h3>Editing</h3>
+                        <p>Mengedit video anime, donghua, preset, gfx.</p>
+                    </div>
+                    <div class="activity-card">
+                        <div class="activity-icon"><i class="fas fa-tv"></i></div>
+                        <h3>Nonton</h3>
+                        <p>Nonton anime, donghua, film bareng.</p>
+                    </div>
+                    <div class="activity-card">
+                        <div class="activity-icon"><i class="fas fa-gamepad"></i></div>
+                        <h3>Main Game</h3>
+                        <p>Mabar bareng ML, PUBG, Valorant.</p>
+                    </div>
+                    <div class="activity-card">
+                        <div class="activity-icon"><i class="fas fa-users"></i></div>
+                        <h3>Sosialisasi</h3>
+                        <p>Ngobrol dan sharing di Discord.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-    // Render Contacts Mobile
-    const contactTrack = document.getElementById('contactTrack');
-    contactTrack.innerHTML = '';
-    contacts.forEach(contact => {
-        const card = document.createElement('a');
-        card.href = contact.link;
-        card.target = '_blank';
-        card.className = 'contact-card';
-        
-        const usernameSpan = document.createElement('span');
-        usernameSpan.textContent = contact.username;
-        
-        card.innerHTML = `
-            <i class="${contact.icon}"></i>
-            <h3>${contact.platform}</h3>
-        `;
-        card.appendChild(usernameSpan);
-        
-        contactTrack.appendChild(card);
-    });
+        <section id="member">
+            <h2 class="section-title">Member</h2>
+            <div class="search-wrapper">
+                <div class="search-bar">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="searchMember" placeholder="Cari anggota..." autocomplete="off">
+                </div>
+            </div>
+            <div class="member-grid" id="memberContainer"></div>
+        </section>
 
-    // Carousel Navigation
-    const adminCarousel = document.getElementById('adminCarousel');
-    document.getElementById('carouselPrev').addEventListener('click', () => {
-        adminCarousel.scrollBy({ left: -300, behavior: 'smooth' });
-    });
-    document.getElementById('carouselNext').addEventListener('click', () => {
-        adminCarousel.scrollBy({ left: 300, behavior: 'smooth' });
-    });
+        <section id="admin">
+            <h2 class="section-title">Admin</h2>
+            <div class="carousel-container">
+                <button class="carousel-nav carousel-prev" id="carouselPrev">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <div class="carousel-wrapper" id="adminCarousel">
+                    <div class="carousel-track" id="adminTrack"></div>
+                </div>
+                <button class="carousel-nav carousel-next" id="carouselNext">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+        </section>
 
-    const contactCarousel = document.getElementById('contactCarousel');
-    document.getElementById('contactPrev').addEventListener('click', () => {
-        contactCarousel.scrollBy({ left: -300, behavior: 'smooth' });
-    });
-    document.getElementById('contactNext').addEventListener('click', () => {
-        contactCarousel.scrollBy({ left: 300, behavior: 'smooth' });
-    });
+        <div class="together-banner">
+            <div class="together-badge">
+                <span class="together-text">Together We Grow,</span>
+                <span class="together-sub">Together We Shine</span>
+            </div>
+        </div>
 
-    // Search Member
-    const searchInput = document.getElementById('searchMember');
-    if (searchInput) {
-        searchInput.addEventListener('input', (e) => {
-            const keyword = e.target.value.toLowerCase().trim();
-            if (keyword === '') {
-                renderMembers(members);
-            } else {
-                const filtered = members.filter(m => 
-                    m.name.toLowerCase().includes(keyword) || 
-                    m.username.toLowerCase().includes(keyword)
-                );
-                renderMembers(filtered);
-            }
-        });
-    }
-
-    // Modal
-    const modal = document.getElementById('memberModal');
-    const closeModal = document.getElementById('closeModal');
-    
-    closeModal.addEventListener('click', () => {
-        modal.classList.remove('active');
-    });
-    
-    window.addEventListener('click', (e) => {
-        if (e.target === modal) {
-            modal.classList.remove('active');
-        }
-    });
-
-    // Navbar Functions
-    function getNavbarHeight() {
-        return navbar ? navbar.offsetHeight : 80;
-    }
-
-    function updateScrollPadding() {
-        document.documentElement.style.scrollPaddingTop = (getNavbarHeight() + 30) + 'px';
-    }
-
-    // Navbar Toggle
-    if (navToggle) {
-        navToggle.addEventListener('click', (e) => {
-            e.stopPropagation();
-            navMenu.classList.toggle('active');
-            navToggle.innerHTML = navMenu.classList.contains('active') ? 
-                '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
-        });
-    }
-
-    // Close menu when clicking outside
-    document.addEventListener('click', (e) => {
-        if (navMenu && navToggle && !navToggle.contains(e.target) && !navMenu.contains(e.target)) {
-            navMenu.classList.remove('active');
-            navToggle.innerHTML = '<i class="fas fa-bars"></i>';
-        }
-    });
-
-    // Nav links click - tanpa active state
-    navLinks.forEach(link => {
-        link.addEventListener('click', (e) => {
-            e.preventDefault();
+        <section id="contact">
+            <h2 class="section-title">Contact</h2>
             
-            const targetId = link.dataset.target;
-            const navbarHeight = getNavbarHeight();
+            <!-- Desktop Contact Grid -->
+            <div class="contact-grid-desktop" id="contactGrid"></div>
             
-            navMenu.classList.remove('active');
-            if (navToggle) navToggle.innerHTML = '<i class="fas fa-bars"></i>';
+            <!-- Mobile Contact Carousel -->
+            <div class="carousel-container contact-carousel-mobile" id="contactCarouselMobile">
+                <button class="carousel-nav carousel-prev" id="contactPrev">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <div class="carousel-wrapper" id="contactCarousel">
+                    <div class="carousel-track" id="contactTrack"></div>
+                </div>
+                <button class="carousel-nav carousel-next" id="contactNext">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <p>© 2026 Kasugano Family. All Rights Reserved.</p>
+        </footer>
+    </main>
+
+    <div class="modal" id="memberModal">
+        <div class="modal-content">
+            <span class="close-modal" id="closeModal">&times;</span>
+            <div class="modal-avatar" id="modalAvatar"></div>
+            <h2 id="modalName"></h2>
+            <div class="modal-username" id="modalUsername"></div>
             
-            if (targetId === 'home') {
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            } else {
-                const targetElement = sections[targetId];
-                if (targetElement) {
-                    const targetPosition = targetElement.offsetTop - navbarHeight - 30;
-                    window.scrollTo({ top: targetPosition, behavior: 'smooth' });
-                }
-            }
-        });
-    });
+            <!-- Quotes langsung dengan background modal, tanpa card -->
+            <div class="modal-quote" id="modalQuote">
+                <i class="fas fa-quote-left"></i>
+                <span id="quoteText">Bersama kita bersinar</span>
+                <i class="fas fa-quote-right"></i>
+            </div>
+            
+            <a href="#" target="_blank" class="modal-tiktok" id="modalTiktokLink">
+                <i class="fab fa-tiktok"></i> 
+                <span id="modalTiktokText">@username</span>
+            </a>
+        </div>
+    </div>
 
-    // Hero parallax
-    const heroImg = document.getElementById('heroImg');
-    if (heroImg) {
-        window.addEventListener('scroll', () => {
-            const scrollY = window.scrollY;
-            heroImg.style.transform = `translateY(${scrollY * 0.2}px)`;
-        });
-    }
-
-    // Reveal sections
-    const revealSections = document.querySelectorAll('section');
-    
-    const revealObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('revealed');
-            }
-        });
-    }, { threshold: 0.15 });
-
-    revealSections.forEach(section => {
-        revealObserver.observe(section);
-    });
-
-    // Resize event
-    let resizeTimeout;
-    window.addEventListener('resize', () => {
-        if (resizeTimeout) clearTimeout(resizeTimeout);
-        resizeTimeout = setTimeout(() => {
-            updateScrollPadding();
-        }, 100);
-    });
-
-    // Initial setup
-    window.scrollTo(0, 0);
-    updateScrollPadding();
-    
-    window.addEventListener('load', () => {
-        setTimeout(() => {
-            updateScrollPadding();
-        }, 200);
-    });
-
-})();
+    <script src="script.js"></script>
+</body>
+</html>
