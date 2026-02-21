@@ -120,6 +120,7 @@
             photo: 'images/member17.jpeg', 
             quote: 'Jangan lupa main epep'
         },
+        {
     ];
 
     const admins = [
@@ -505,6 +506,7 @@
     });
 
 })();
+
 
 
 
