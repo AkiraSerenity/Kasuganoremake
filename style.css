@@ -455,13 +455,14 @@ section.revealed {
     font-size: 0.9rem;
 }
 
-/* ========== MEMBER GRID ========== */
+/* ========== MEMBER GRID - CENTERED ========== */
 .member-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
     gap: 16px;
     margin: 20px 0;
     width: 100%;
+    justify-content: center; /* Membuat grid berada di tengah */
 }
 
 .member-card {
@@ -477,6 +478,8 @@ section.revealed {
     flex-direction: column;
     align-items: center;
     width: 100%;
+    max-width: 180px;
+    margin: 0 auto;
 }
 
 .member-avatar {
@@ -518,19 +521,19 @@ section.revealed {
     width: 100%;
 }
 
-/* USERNAME - Ukuran mengecil sesuai panjang, tanpa ellipsis */
+/* USERNAME - tanpa ellipsis, ukuran mengecil */
 .member-info .username {
     color: #ffb0e6;
     max-width: 100%;
     white-space: nowrap;
-    overflow: visible; /* tidak disembunyikan */
-    text-overflow: clip; /* tidak pakai ... */
+    overflow: hidden;      /* sembunyikan kelebihan tanpa ... */
+    text-overflow: clip;    /* tidak pakai ellipsis */
     width: 100%;
-    font-size: 0.75rem; /* default */
+    font-size: 0.75rem;     /* default */
     line-height: 1.4;
 }
 
-/* Kelas untuk panjang teks (diatur JS) */
+/* Kelas ukuran font */
 .username-small { font-size: 0.75rem; }
 .username-medium { font-size: 0.7rem; }
 .username-long { font-size: 0.65rem; }
@@ -574,7 +577,7 @@ section.revealed {
     color: rgba(255, 176, 230, 0.5);
 }
 
-/* ========== CAROUSEL - FULL KANAN KIRI DI HP ========== */
+/* ========== CAROUSEL - FULL WIDTH DI HP ========== */
 .carousel-container {
     position: relative;
     margin: 30px 0;
@@ -593,7 +596,7 @@ section.revealed {
     flex: 1;
     width: 100%;
     margin: 0;
-    padding: 0; /* NO PADDING */
+    padding: 0;
 }
 
 .carousel-wrapper::-webkit-scrollbar {
@@ -604,7 +607,7 @@ section.revealed {
     display: flex;
     gap: 20px;
     width: max-content;
-    padding: 10px 0; /* PADDING ATAS BAWAH SAJA */
+    padding: 10px 0;
     margin: 0;
 }
 
@@ -696,7 +699,7 @@ section.revealed {
     color: #ffb0e6;
     max-width: 100%;
     white-space: nowrap;
-    overflow: visible;
+    overflow: hidden;
     text-overflow: clip;
     width: 100%;
     font-size: 0.8rem;
@@ -863,10 +866,10 @@ section.revealed {
     color: #ffb0e6;
     max-width: 100%;
     white-space: nowrap;
-    overflow: visible; /* tidak disembunyikan */
+    overflow: hidden;
     text-overflow: clip;
     width: 100%;
-    font-size: 0.6rem; /* ukuran kecil untuk email */
+    font-size: 0.6rem;
 }
 
 /* Modal */
@@ -1117,7 +1120,6 @@ section.revealed {
         grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
     }
     
-    /* Username di HP lebih kecil */
     .member-info .username {
         font-size: 0.7rem;
     }
@@ -1130,10 +1132,13 @@ section.revealed {
         display: none !important;
     }
     
-    /* CAROUSEL FULL KANAN-KIRI DI HP */
+    /* CAROUSEL FULL WIDTH DI HP (mengabaikan padding .main) */
     .carousel-container {
+        width: 100vw;
+        position: relative;
+        left: 50%;
+        transform: translateX(-50%);
         margin: 30px 0;
-        width: 100%;
     }
     
     .carousel-wrapper {
@@ -1177,7 +1182,7 @@ section.revealed {
         font-size: 1rem;
     }
     
-    /* Contact section mobile - FULL KANAN KIRI */
+    /* Contact section mobile - FULL WIDTH */
     .contact-grid-desktop {
         display: none;
     }
