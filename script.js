@@ -116,12 +116,12 @@
     ];
 
     const admins = [
-        { name: 'Shora', username: '@codename_shora.v02', role: 'Admin', tiktok: 'https://www.tiktok.com/@codename_shora.v02', photo: 'images/admin1.webp' },
+        { name: 'Ryy Sensei', username: '@RyyKagenou NCA', role: 'Owner & Founder', tiktok: 'https://www.tiktok.com/@RyyKagenou', photo: 'images/admin1.webp' },
         { name: 'Sora', username: '@kasugano_sora52', role: 'Pemilik & Pendiri', tiktok: 'https://www.tiktok.com/@kasugano.rora', photo: 'images/admin2.jpg' },
         { name: 'Haruka', username: '@kasugano_harukaa', role: 'Pemilik', tiktok: 'https://www.tiktok.com/@kasugano.harukaa', photo: 'images/admin3.jpg' },
         { name: 'Zero', username: '@zero.znzx', role: 'Admin', tiktok: 'https://www.tiktok.com/@zero.znzx', photo: 'images/admin4.jfif' },
         { name: 'Serlina', username: '@diiputraa28_', role: 'Admin', tiktok: 'https://www.tiktok.com/@diiputraa28_', photo: 'images/admin5.jpeg' },
-        { name: '???', username: '@???', role: '???', tiktok: 'https://www.tiktok.com', photo: 'images/admin6.png' }
+        { name: 'Shora', username: '@codename_shora.v02', role: 'Admin', tiktok: 'https://www.tiktok.com/@codename_shora.v02', photo: 'images/admin6.png' }
     ];
 
     const contacts = [
@@ -132,14 +132,6 @@
         { platform: 'WhatsApp', username: '+62 852-3240-6495', link: 'https://wa.me/6285232406495', icon: 'fab fa-whatsapp' },
         { platform: 'Email', username: 'kasuganofamilyy@gmail.com', link: 'mailto:kasuganofamilyy@gmail.com', icon: 'far fa-envelope' }
     ];
-
-    // Fungsi untuk menentukan kelas berdasarkan panjang teks
-    function getTextSizeClass(text) {
-        if (text.length > 25) return 'username-very-long';
-        if (text.length > 20) return 'username-long';
-        if (text.length > 15) return 'username-medium';
-        return 'username-short';
-    }
 
     // DOM Elements
     const navbar = document.getElementById('navbar');
@@ -185,24 +177,17 @@
             const card = document.createElement('div');
             card.className = 'member-card';
             
-            // Avatar dengan gambar dari tengah
             const avatarDiv = document.createElement('div');
             avatarDiv.className = 'member-avatar';
             
             const img = document.createElement('img');
             img.src = member.photo;
             img.alt = member.name;
-            img.onerror = function() { 
-                this.style.display = 'none'; 
-                const span = document.createElement('span');
-                span.style.cssText = 'font-size:2rem;color:white;';
-                span.textContent = member.name.charAt(0);
-                this.parentElement.appendChild(span);
-            };
+            img.style.objectPosition = 'center';
+            img.style.objectFit = 'cover';
             
             avatarDiv.appendChild(img);
             
-            // Info
             const infoDiv = document.createElement('div');
             infoDiv.className = 'member-info';
             
@@ -210,8 +195,11 @@
             nameH4.textContent = member.name;
             
             const usernameDiv = document.createElement('div');
-            usernameDiv.className = 'username ' + getTextSizeClass(member.username);
+            usernameDiv.className = 'username';
             usernameDiv.textContent = member.username;
+            usernameDiv.style.whiteSpace = 'nowrap';
+            usernameDiv.style.overflow = 'visible';
+            usernameDiv.style.textOverflow = 'clip';
             
             infoDiv.appendChild(nameH4);
             infoDiv.appendChild(usernameDiv);
@@ -224,13 +212,8 @@
                 const modalImg = document.createElement('img');
                 modalImg.src = member.photo;
                 modalImg.alt = member.name;
-                modalImg.onerror = function() { 
-                    this.style.display = 'none'; 
-                    const span = document.createElement('span');
-                    span.style.cssText = 'font-size:3rem;color:white;';
-                    span.textContent = member.name.charAt(0);
-                    this.parentElement.appendChild(span);
-                };
+                modalImg.style.objectPosition = 'center';
+                modalImg.style.objectFit = 'cover';
                 document.getElementById('modalAvatar').appendChild(modalImg);
                 
                 document.getElementById('modalName').textContent = member.name;
@@ -260,13 +243,8 @@
         const img = document.createElement('img');
         img.src = admin.photo;
         img.alt = admin.name;
-        img.onerror = function() { 
-            this.style.display = 'none'; 
-            const span = document.createElement('span');
-            span.style.cssText = 'font-size:3rem;color:white;';
-            span.textContent = admin.name.charAt(0);
-            this.parentElement.appendChild(span);
-        };
+        img.style.objectPosition = 'center';
+        img.style.objectFit = 'cover';
         
         avatarDiv.appendChild(img);
         
@@ -277,8 +255,11 @@
         nameH4.textContent = admin.name;
         
         const usernameDiv = document.createElement('div');
-        usernameDiv.className = 'admin-username ' + getTextSizeClass(admin.username);
+        usernameDiv.className = 'admin-username';
         usernameDiv.textContent = admin.username;
+        usernameDiv.style.whiteSpace = 'nowrap';
+        usernameDiv.style.overflow = 'visible';
+        usernameDiv.style.textOverflow = 'clip';
         
         const roleDiv = document.createElement('div');
         roleDiv.className = 'admin-role';
@@ -318,7 +299,9 @@
         
         const span = document.createElement('span');
         span.textContent = contact.username;
-        // Email dapat ukuran lebih kecil otomatis dari CSS
+        span.style.whiteSpace = 'nowrap';
+        span.style.overflow = 'visible';
+        span.style.textOverflow = 'clip';
         
         card.appendChild(icon);
         card.appendChild(h3);
@@ -344,6 +327,9 @@
         
         const span = document.createElement('span');
         span.textContent = contact.username;
+        span.style.whiteSpace = 'nowrap';
+        span.style.overflow = 'visible';
+        span.style.textOverflow = 'clip';
         
         card.appendChild(icon);
         card.appendChild(h3);
