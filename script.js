@@ -13,7 +13,7 @@
             username: '@roraxml', 
             tiktok: 'https://www.tiktok.com/@kasugano_sora87', 
             photo: 'images/member2.jpeg', 
-            quote: 'Aku mah raja'
+            quote: 'Manusia memang tidak bisa mengubah waktu, tapi dengan berjalan nya waktu manusia bisa berubah'
         },
         { 
             name: 'Izabella', 
@@ -41,7 +41,7 @@
             username: '@ezan_xd', 
             tiktok: 'https://www.tiktok.com/@ezan_xd', 
             photo: 'images/member6.png', 
-            quote: 'Seorang dengan sebilah tombak adalah sebuah benteng'
+            quote: 'Seorang pria dengan sebilah tombak adalah sebuah benteng'
         },
         { 
             name: 'V3iin', 
@@ -97,14 +97,14 @@
             username: '@daktau_256', 
             tiktok: 'https://www.tiktok.com/@daktau_256', 
             photo: 'images/member14.jpg', 
-            quote: 'Jangan takut salah, karena dari salah kita belajar.'
+            quote: 'AFK njirrr orang nya.'
         },
         { 
             name: 'Zunda', 
             username: '@shaglenv02y', 
             tiktok: 'https://www.tiktok.com/@shaglenv02y', 
             photo: 'images/member15.jpg', 
-            quote: 'Jika kamu lapar makan lah'
+            quote: 'Jika kamu lapar makan lah (walaupun belum buka mokel aja)'
         },
         { 
             name: 'Yushaa Von Khaslana', 
@@ -113,6 +113,13 @@
             photo: 'images/member16.jpeg', 
             quote: 'Jangan lupa makan'
         }
+        { 
+            name: 'Rora', 
+            username: '@roraxml', 
+            tiktok: 'https://www.tiktok.com/@kasugano_sora87', 
+            photo: 'images/member2.jpeg', 
+            quote: 'Jangan lupa main epep'
+        },
     ];
 
     const admins = [
@@ -498,5 +505,6 @@
     });
 
 })();
+
 
 
