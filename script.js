@@ -6,7 +6,7 @@
             username: '@gerysenwith_lapiskeju', 
             tiktok: 'https://www.tiktok.com/@gerysenwith_lapiskeju', 
             photo: 'images/member1.jpg', 
-            quote: 'Kamu rimuru bukan?'
+            quote: 'Bahkan hal sederhana seperti azan magrib bisa menjadi sepesial hijau engkau menantikan nya'
         },
         { 
             name: 'Rora', 
@@ -20,7 +20,7 @@
             username: '@queen.izabellaz', 
             tiktok: 'https://www.tiktok.com/@queen.izabellaz', 
             photo: 'images/member3.jpeg', 
-            quote: 'Mending turu'
+            quote: 'Manusia akan banyak berubah ketika hatinya terluka'
         },
         { 
             name: 'Erie', 
@@ -41,7 +41,7 @@
             username: '@ezan_xd', 
             tiktok: 'https://www.tiktok.com/@ezan_xd', 
             photo: 'images/member6.png', 
-            quote: 'Sederhana tapi berarti, itulah keluarga.'
+            quote: 'Seorang dengan sebilah tombak adalah sebuah benteng'
         },
         { 
             name: 'V3iin', 
@@ -62,7 +62,7 @@
             username: '@naineyuko', 
             tiktok: 'https://www.tiktok.com/@naineyuko', 
             photo: 'images/member9.jpg', 
-            quote: 'Aduh kok aku jadi cewek siehh'
+            quote: 'Njirr lah rusak'
         },
         { 
             name: 'Yuuta', 
@@ -498,3 +498,4 @@
     });
 
 })();
+
