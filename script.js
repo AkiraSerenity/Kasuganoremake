@@ -112,7 +112,7 @@
             tiktok: 'https://www.tiktok.com/@kachusyaa', 
             photo: 'images/member16.jpeg', 
             quote: 'Jangan lupa makan'
-        }
+        },
         { 
             name: 'Zakk', 
             username: '@sb_prst', 
@@ -506,6 +506,7 @@
     });
 
 })();
+
 
 
 
