@@ -455,14 +455,13 @@ section.revealed {
     font-size: 0.9rem;
 }
 
-/* ========== MEMBER GRID - DIMULAI DARI TENGAH! ========== */
+/* ========== MEMBER GRID ========== */
 .member-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
     gap: 16px;
-    margin: 20px auto; /* auto untuk kiri-kanan */
+    margin: 20px 0;
     width: 100%;
-    justify-content: center; /* MEMBUAT GRID DI TENGAH */
 }
 
 .member-card {
@@ -478,8 +477,6 @@ section.revealed {
     flex-direction: column;
     align-items: center;
     width: 100%;
-    max-width: 180px; /* BATAS MAKSIMAL LEBAR */
-    margin: 0 auto; /* SETIAP CARD DI TENGAH */
 }
 
 .member-avatar {
@@ -521,33 +518,23 @@ section.revealed {
     width: 100%;
 }
 
-/* USERNAME - MENYESUAIKAN PANJANG TEKS */
+/* USERNAME - Ukuran mengecil sesuai panjang, tanpa ellipsis */
 .member-info .username {
     color: #ffb0e6;
     max-width: 100%;
     white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    overflow: visible; /* tidak disembunyikan */
+    text-overflow: clip; /* tidak pakai ... */
     width: 100%;
-    font-size: 0.75rem;
+    font-size: 0.75rem; /* default */
+    line-height: 1.4;
 }
 
-/* KELAS UNTUK PANJANG TEKS */
-.username-small {
-    font-size: 0.75rem;
-}
-
-.username-medium {
-    font-size: 0.7rem;
-}
-
-.username-long {
-    font-size: 0.65rem;
-}
-
-.username-very-long {
-    font-size: 0.55rem;
-}
+/* Kelas untuk panjang teks (diatur JS) */
+.username-small { font-size: 0.75rem; }
+.username-medium { font-size: 0.7rem; }
+.username-long { font-size: 0.65rem; }
+.username-very-long { font-size: 0.55rem; }
 
 /* Search Bar */
 .search-wrapper {
@@ -587,7 +574,7 @@ section.revealed {
     color: rgba(255, 176, 230, 0.5);
 }
 
-/* ========== CAROUSEL - FULL KANAN KIRI ========== */
+/* ========== CAROUSEL - FULL KANAN KIRI DI HP ========== */
 .carousel-container {
     position: relative;
     margin: 30px 0;
@@ -606,7 +593,7 @@ section.revealed {
     flex: 1;
     width: 100%;
     margin: 0;
-    padding: 0;
+    padding: 0; /* NO PADDING */
 }
 
 .carousel-wrapper::-webkit-scrollbar {
@@ -617,7 +604,7 @@ section.revealed {
     display: flex;
     gap: 20px;
     width: max-content;
-    padding: 10px 0;
+    padding: 10px 0; /* PADDING ATAS BAWAH SAJA */
     margin: 0;
 }
 
@@ -709,11 +696,14 @@ section.revealed {
     color: #ffb0e6;
     max-width: 100%;
     white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    overflow: visible;
+    text-overflow: clip;
     width: 100%;
     font-size: 0.8rem;
 }
+
+.admin-username.username-long { font-size: 0.7rem; }
+.admin-username.username-very-long { font-size: 0.6rem; }
 
 .admin-role {
     background: #2d1b42;
@@ -873,10 +863,10 @@ section.revealed {
     color: #ffb0e6;
     max-width: 100%;
     white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    overflow: visible; /* tidak disembunyikan */
+    text-overflow: clip;
     width: 100%;
-    font-size: 0.6rem;
+    font-size: 0.6rem; /* ukuran kecil untuk email */
 }
 
 /* Modal */
@@ -1127,25 +1117,13 @@ section.revealed {
         grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
     }
     
-    .member-card {
-        max-width: 150px;
-    }
-    
+    /* Username di HP lebih kecil */
     .member-info .username {
         font-size: 0.7rem;
     }
-    
-    .username-medium {
-        font-size: 0.65rem;
-    }
-    
-    .username-long {
-        font-size: 0.6rem;
-    }
-    
-    .username-very-long {
-        font-size: 0.5rem;
-    }
+    .username-medium { font-size: 0.65rem; }
+    .username-long { font-size: 0.6rem; }
+    .username-very-long { font-size: 0.5rem; }
     
     /* HILANGKAN TOMBOL NAVIGASI DI HP */
     .carousel-nav {
@@ -1258,10 +1236,6 @@ section.revealed {
         grid-template-columns: repeat(2, 1fr);
     }
     
-    .member-card {
-        max-width: 140px;
-    }
-    
     .member-info h4 {
         font-size: 1rem;
     }
@@ -1269,18 +1243,9 @@ section.revealed {
     .member-info .username {
         font-size: 0.65rem;
     }
-    
-    .username-medium {
-        font-size: 0.6rem;
-    }
-    
-    .username-long {
-        font-size: 0.55rem;
-    }
-    
-    .username-very-long {
-        font-size: 0.45rem;
-    }
+    .username-medium { font-size: 0.6rem; }
+    .username-long { font-size: 0.55rem; }
+    .username-very-long { font-size: 0.45rem; }
     
     .admin-card {
         width: 160px;
@@ -1310,10 +1275,6 @@ section.revealed {
 }
 
 @media (max-width: 360px) {
-    .member-card {
-        max-width: 130px;
-    }
-    
     .member-info h4 {
         font-size: 0.9rem;
     }
@@ -1321,18 +1282,9 @@ section.revealed {
     .member-info .username {
         font-size: 0.6rem;
     }
-    
-    .username-medium {
-        font-size: 0.55rem;
-    }
-    
-    .username-long {
-        font-size: 0.5rem;
-    }
-    
-    .username-very-long {
-        font-size: 0.4rem;
-    }
+    .username-medium { font-size: 0.55rem; }
+    .username-long { font-size: 0.5rem; }
+    .username-very-long { font-size: 0.4rem; }
     
     .admin-card {
         width: 140px;
