@@ -115,6 +115,7 @@ body::after {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    object-position: center;
 }
 
 .logo-text {
@@ -476,6 +477,7 @@ section.revealed {
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 100%;
 }
 
 .member-card:hover {
@@ -506,6 +508,9 @@ section.revealed {
 
 .member-info {
     width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .member-info h4 {
@@ -513,19 +518,22 @@ section.revealed {
     font-weight: 700;
     color: white;
     margin-bottom: 4px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
     max-width: 100%;
+    overflow: visible;
+    white-space: normal;
+    word-break: break-word;
+    line-height: 1.3;
 }
 
 .member-info .username {
     color: #ffb0e6;
-    font-size: 0.7rem;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    font-size: 0.75rem; /* Ukuran tetap lebih kecil */
     max-width: 100%;
+    overflow: visible;
+    white-space: normal;
+    word-break: break-word;
+    line-height: 1.3;
+    padding: 0 2px;
 }
 
 /* Search Bar */
@@ -581,7 +589,7 @@ section.revealed {
     scroll-behavior: smooth;
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
-    padding: 10px 1px; /* Padding minimal agar tidak ada potongan */
+    padding: 10px 1px;
     flex: 1;
     width: 100%;
 }
@@ -594,7 +602,7 @@ section.revealed {
     display: flex;
     gap: 20px;
     width: max-content;
-    padding: 0 2px; /* Sedikit padding untuk keamanan */
+    padding: 0 2px;
 }
 
 .carousel-nav {
@@ -674,19 +682,21 @@ section.revealed {
     font-size: 1.2rem;
     color: white;
     margin: 0;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
     max-width: 100%;
+    overflow: visible;
+    white-space: normal;
+    word-break: break-word;
+    line-height: 1.3;
 }
 
 .admin-username {
     color: #ffb0e6;
     font-size: 0.8rem;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
     max-width: 100%;
+    overflow: visible;
+    white-space: normal;
+    word-break: break-word;
+    line-height: 1.3;
     margin: 0;
 }
 
@@ -699,10 +709,11 @@ section.revealed {
     display: inline-block;
     border: 1px solid #ff8ad0;
     margin: 2px 0;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
     max-width: 100%;
+    overflow: visible;
+    white-space: normal;
+    word-break: break-word;
+    line-height: 1.3;
 }
 
 .admin-tiktok-link {
@@ -719,7 +730,10 @@ section.revealed {
     border: 1px solid #ff8ad0;
     transition: all 0.2s;
     margin-top: 2px;
-    white-space: nowrap;
+    max-width: 100%;
+    overflow: visible;
+    white-space: normal;
+    word-break: break-word;
 }
 
 .admin-tiktok-link:hover {
@@ -836,19 +850,21 @@ section.revealed {
     font-weight: 600;
     color: white;
     margin: 0;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
     max-width: 100%;
+    overflow: visible;
+    white-space: normal;
+    word-break: break-word;
+    line-height: 1.3;
 }
 
 .contact-card span {
     font-size: 0.75rem;
     color: #ffb0e6;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
     max-width: 100%;
+    overflow: visible;
+    white-space: normal;
+    word-break: break-word;
+    line-height: 1.3;
     padding: 0 5px;
 }
 
@@ -933,20 +949,22 @@ section.revealed {
     color: white;
     margin-bottom: 5px;
     font-size: 1.6rem;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
     max-width: 100%;
+    overflow: visible;
+    white-space: normal;
+    word-break: break-word;
+    line-height: 1.3;
 }
 
 .modal-username {
     color: #ffb0e6;
     margin-bottom: 20px;
     font-size: 0.9rem;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
     max-width: 100%;
+    overflow: visible;
+    white-space: normal;
+    word-break: break-word;
+    line-height: 1.3;
 }
 
 /* Quotes langsung dengan background modal, tanpa card terpisah */
@@ -982,8 +1000,10 @@ section.revealed {
     transition: all 0.2s;
     font-size: 1rem;
     margin-top: 10px;
-    white-space: nowrap;
     max-width: 100%;
+    overflow: visible;
+    white-space: normal;
+    word-break: break-word;
 }
 
 .modal-tiktok:hover {
@@ -991,12 +1011,6 @@ section.revealed {
     color: white;
     transform: scale(1.05);
     box-shadow: 0 0 20px #ff69c2;
-}
-
-.modal-tiktok span {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    max-width: 200px;
 }
 
 /* Skeleton Loading */
@@ -1117,6 +1131,10 @@ section.revealed {
         grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
     }
     
+    .member-info .username {
+        font-size: 0.65rem;
+    }
+    
     /* Sembunyikan tombol navigasi di HP */
     .carousel-nav {
         display: none;
@@ -1210,6 +1228,14 @@ section.revealed {
         grid-template-columns: repeat(2, 1fr);
     }
     
+    .member-info h4 {
+        font-size: 1rem;
+    }
+    
+    .member-info .username {
+        font-size: 0.6rem;
+    }
+    
     .modal-content {
         padding: 25px 20px;
     }
@@ -1246,6 +1272,14 @@ section.revealed {
 
 /* Untuk layar sangat kecil */
 @media (max-width: 360px) {
+    .member-info h4 {
+        font-size: 0.9rem;
+    }
+    
+    .member-info .username {
+        font-size: 0.55rem;
+    }
+    
     .contact-card {
         width: 130px;
     }
