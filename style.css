@@ -65,7 +65,7 @@ body::after {
 ::-webkit-scrollbar-track { background: #1c1326; }
 ::-webkit-scrollbar-thumb { background: #c47af0; border-radius: 10px; }
 
-/* Navbar - Responsif untuk semua zoom level */
+/* Navbar - Tanpa active section indicator */
 .navbar-modern {
     position: fixed;
     top: 20px;
@@ -166,9 +166,10 @@ body::after {
     transform: translateY(-2px);
 }
 
+/* Hapus active state */
 .nav-item.active .nav-link {
-    color: white;
-    background: rgba(255, 105, 194, 0.2);
+    color: rgba(255, 255, 255, 0.8);
+    background: transparent;
 }
 
 .nav-toggle {
@@ -454,7 +455,7 @@ section.revealed {
     font-size: 0.9rem;
 }
 
-/* Member Grid */
+/* Member Grid - Foto dimulai dari tengah */
 .member-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
@@ -471,6 +472,9 @@ section.revealed {
     text-align: center;
     transition: all 0.2s ease;
     cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .member-card:hover {
@@ -487,12 +491,20 @@ section.revealed {
     border-radius: 16px;
     overflow: hidden;
     box-shadow: var(--shadow-avatar);
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .member-avatar img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    object-position: center; /* Foto dimulai dari tengah */
+}
+
+.member-info {
+    width: 100%;
 }
 
 .member-info h4 {
@@ -548,13 +560,10 @@ section.revealed {
     color: rgba(255, 176, 230, 0.5);
 }
 
-/* Carousel */
+/* Carousel - Tanpa tombol navigasi */
 .carousel-container {
     position: relative;
     margin: 30px 0;
-    display: flex;
-    align-items: center;
-    gap: 10px;
 }
 
 .carousel-wrapper {
@@ -563,7 +572,6 @@ section.revealed {
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
     padding: 10px 5px;
-    flex: 1;
 }
 
 .carousel-wrapper::-webkit-scrollbar {
@@ -574,28 +582,6 @@ section.revealed {
     display: flex;
     gap: 20px;
     width: max-content;
-}
-
-.carousel-nav {
-    width: 44px;
-    height: 44px;
-    border-radius: 50%;
-    background: linear-gradient(145deg, #2f1b4b, #190f28);
-    border: 2px solid #ff98dc;
-    color: #ffb0e6;
-    font-size: 1.2rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    flex-shrink: 0;
-    transition: all 0.2s ease;
-}
-
-.carousel-nav:hover {
-    background: #2f1b4b;
-    color: #ff69c2;
-    transform: scale(1.1);
 }
 
 /* Admin Cards */
@@ -725,16 +711,25 @@ section.revealed {
     text-shadow: 0 0 10px #ff69c2;
 }
 
-/* Contact Section */
-.contact-grid-desktop {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
+/* Contact Section - Satu background dengan efek bersinar */
+.contact-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
     margin: 30px 0;
+    padding: 40px 20px;
+    background: linear-gradient(145deg, rgba(40, 20, 60, 0.5), rgba(20, 10, 30, 0.7));
+    border-radius: 60px;
+    border: 1px solid rgba(255, 105, 194, 0.3);
+    box-shadow: 0 0 30px rgba(255, 105, 194, 0.3);
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
 }
 
-.contact-carousel-mobile {
-    display: none;
+.contact-grid:hover {
+    box-shadow: 0 0 50px rgba(255, 105, 194, 0.6);
+    border-color: rgba(255, 105, 194, 0.6);
 }
 
 .contact-card {
@@ -745,17 +740,16 @@ section.revealed {
     flex-direction: column;
     align-items: center;
     gap: 8px;
-    padding: 20px 10px;
+    padding: 15px 20px;
     transition: all 0.2s ease;
-    background: rgba(28, 16, 45, 0.5);
-    border-radius: 16px;
-    border: 1px solid rgba(255, 105, 194, 0.2);
+    border-radius: 30px;
+    min-width: 140px;
 }
 
 .contact-card:hover {
     transform: translateY(-5px);
-    background: rgba(40, 20, 60, 0.7);
-    border-color: #ff69c2;
+    background: rgba(255, 255, 255, 0.05);
+    text-shadow: 0 0 15px #ff69c2;
 }
 
 .contact-card i {
@@ -780,7 +774,7 @@ section.revealed {
     word-break: break-word;
 }
 
-/* Modal - Tanpa Scroll, Semakin Panjang Semakin Kecil */
+/* Modal - Hanya Quotes dan TikTok */
 .modal {
     display: none;
     position: fixed;
@@ -864,19 +858,21 @@ section.revealed {
 
 .modal-username {
     color: #ffb0e6;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
     font-size: 0.9rem;
 }
 
 .modal-quote {
-    margin: 15px 0;
+    margin: 15px 0 20px;
     font-style: italic;
     color: #ffdbff;
     font-size: 1rem;
     line-height: 1.5;
-    padding: 10px;
+    padding: 15px;
     background: rgba(255, 255, 255, 0.05);
     border-radius: 12px;
+    border-left: 3px solid #ff69c2;
+    border-right: 3px solid #ff69c2;
 }
 
 .modal-quote i {
@@ -884,38 +880,6 @@ section.revealed {
     font-size: 0.8rem;
     margin: 0 5px;
     opacity: 0.8;
-}
-
-/* Grid info di modal - tanpa scroll, otomatis mengecil */
-.modal-info-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-    margin: 15px 0;
-    font-size: 0.85rem;
-}
-
-.modal-info-item {
-    background: rgba(255, 255, 255, 0.05);
-    padding: 10px 5px;
-    border-radius: 10px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 5px;
-    border: 1px solid rgba(255, 105, 194, 0.2);
-}
-
-.modal-info-item i {
-    color: #ff69c2;
-    font-size: 1rem;
-}
-
-.modal-info-item span {
-    color: #e0d0ff;
-    font-size: 0.8rem;
-    line-height: 1.3;
-    text-align: center;
 }
 
 .modal-tiktok {
@@ -930,13 +894,14 @@ section.revealed {
     border: 1px solid #ff8ad0;
     transition: all 0.2s;
     font-size: 0.9rem;
-    margin-top: 5px;
+    margin-top: 10px;
 }
 
 .modal-tiktok:hover {
     background: #3a1f55;
     color: white;
     transform: scale(1.05);
+    box-shadow: 0 0 20px #ff69c2;
 }
 
 /* Skeleton Loading */
@@ -1045,17 +1010,7 @@ section.revealed {
         grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
     }
     
-    .contact-grid-desktop {
-        display: none;
-    }
-    
-    .contact-carousel-mobile {
-        display: flex;
-    }
-    
-    .carousel-nav {
-        display: flex;
-    }
+    /* Tombol navigasi carousel sudah dihapus */
     
     .admin-card {
         width: 200px;
@@ -1085,6 +1040,17 @@ section.revealed {
     .together-sub {
         font-size: 1rem;
     }
+    
+    /* Contact grid */
+    .contact-grid {
+        gap: 15px;
+        padding: 30px 15px;
+    }
+    
+    .contact-card {
+        min-width: 120px;
+        padding: 10px 12px;
+    }
 }
 
 @media (max-width: 480px) {
@@ -1113,11 +1079,6 @@ section.revealed {
         padding: 20px 15px;
     }
     
-    .modal-info-grid {
-        grid-template-columns: 1fr;
-        gap: 8px;
-    }
-    
     .modal-avatar {
         width: 80px;
         height: 80px;
@@ -1125,5 +1086,16 @@ section.revealed {
     
     .modal h2 {
         font-size: 1.4rem;
+    }
+    
+    .contact-grid {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+    
+    .contact-card {
+        width: 100%;
+        max-width: 250px;
     }
 }
