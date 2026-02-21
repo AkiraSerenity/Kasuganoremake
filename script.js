@@ -62,7 +62,7 @@
             username: '@naineyuko', 
             tiktok: 'https://www.tiktok.com/@naineyuko', 
             photo: 'images/member9.jpg', 
-            quote: 'Njirr lah rusak'
+            quote: 'Hidup itu pilihan so just gambling bro'
         },
         { 
             name: 'Yuuta', 
@@ -79,8 +79,8 @@
             quote: 'Laparr'
         },
         { 
-            name: 'Qwentty', 
-            username: '@qwentty.ft', 
+            name: 'Qwenty', 
+            username: '@qwenty.ft', 
             tiktok: 'https://www.tiktok.com/@qwenty.ft', 
             photo: 'images/member12.jpg', 
             quote: 'Semua manusia hanyalah alat'
@@ -90,7 +90,7 @@
             username: '@akira.imut', 
             tiktok: 'https://www.tiktok.com/@akiraa.imut', 
             photo: 'images/member13.jpg', 
-            quote: 'Imut gini kalo bantai lu sabi kali'
+            quote: 'Lahhh, gw mah jago'
         },
         { 
             name: 'Dree', 
@@ -104,7 +104,7 @@
             username: '@shaglenv02y', 
             tiktok: 'https://www.tiktok.com/@shaglenv02y', 
             photo: 'images/member15.jpg', 
-            quote: 'Emel yok'
+            quote: 'Jika kamu lapar makan lah'
         },
         { 
             name: 'Yushaa Von Khaslana', 
@@ -498,4 +498,5 @@
     });
 
 })();
+
 
