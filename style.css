@@ -1133,6 +1133,14 @@ section.revealed {
 
 /* Breakpoint untuk carousel dan contact - tablet landscape/hp besar (≤ 600px) */
 @media (max-width: 600px) {
+    .about-grid {
+        grid-template-columns: 1fr; /* 1 kolom di mobile */
+    }
+    
+    .activity-grid {
+        grid-template-columns: 1fr; /* 1 kolom di mobile */
+    }
+    
     .carousel-nav {
         display: none !important;
     }
