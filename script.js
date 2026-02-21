@@ -100,6 +100,7 @@
         { platform: 'TikTok', username: '@kasugano.official', link: 'https://www.tiktok.com/@kasugano.official', icon: 'fab fa-tiktok' },
         { platform: 'TikTok', username: '@kasugano.store', link: 'https://www.tiktok.com/@kasugano.store', icon: 'fab fa-tiktok' },
         { platform: 'Instagram', username: '@kasugano.family', link: 'https://www.instagram.com/kasugano.family', icon: 'fab fa-instagram' },
+        { platform: 'Instagram', username: '@kasuganostore', link: 'https://www.instagram.com/kasuganostore', icon: 'fab fa-instagram' },
         { platform: 'WhatsApp', username: '+62 852-3240-6495', link: 'https://wa.me/6285232406495', icon: 'fab fa-whatsapp' },
         { platform: 'Email', username: 'kasuganofamilyy@gmail.com', link: 'mailto:kasuganofamilyy@gmail.com', icon: 'far fa-envelope' }
     ];
@@ -161,7 +162,7 @@
         memberContainer.innerHTML = '';
         
         if (filteredMembers.length === 0) {
-            memberContainer.innerHTML = '<div class="not-found"><i class="fas fa-user-slash"></i><p>Anggota tidak ditemukan</p></div>';
+            memberContainer.innerHTML = '<div style="text-align: center; padding: 40px; color: #ffb0e6;"><i class="fas fa-user-slash" style="font-size: 3rem; margin-bottom: 10px;"></i><p>Anggota tidak ditemukan</p></div>';
             return;
         }
         
@@ -169,11 +170,14 @@
             const card = document.createElement('div');
             card.className = 'member-card';
             
+            // Avatar
             const avatarDiv = document.createElement('div');
             avatarDiv.className = 'member-avatar';
             const img = document.createElement('img');
             img.src = member.photo;
             img.alt = member.name;
+            img.style.objectPosition = 'center';
+            img.style.objectFit = 'cover';
             img.onerror = function() { 
                 this.style.display = 'none'; 
                 const span = document.createElement('span');
@@ -183,6 +187,7 @@
             };
             avatarDiv.appendChild(img);
             
+            // Info
             const infoDiv = document.createElement('div');
             infoDiv.className = 'member-info';
             
@@ -205,6 +210,8 @@
                 const modalImg = document.createElement('img');
                 modalImg.src = member.photo;
                 modalImg.alt = member.name;
+                modalImg.style.objectPosition = 'center';
+                modalImg.style.objectFit = 'cover';
                 modalImg.onerror = function() { 
                     this.style.display = 'none'; 
                     const span = document.createElement('span');
@@ -240,6 +247,8 @@
         const img = document.createElement('img');
         img.src = admin.photo;
         img.alt = admin.name;
+        img.style.objectPosition = 'center';
+        img.style.objectFit = 'cover';
         img.onerror = function() { 
             this.style.display = 'none'; 
             const span = document.createElement('span');
