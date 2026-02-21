@@ -133,6 +133,25 @@
         { platform: 'Email', username: 'kasuganofamilyy@gmail.com', link: 'mailto:kasuganofamilyy@gmail.com', icon: 'far fa-envelope' }
     ];
 
+    // Fungsi untuk menyesuaikan ukuran font berdasarkan panjang teks
+    function adjustFontSizeByLength(element, text, baseSize) {
+        if (!element) return;
+        
+        // Hapus kelas penyesuaian yang mungkin ada sebelumnya
+        element.classList.remove('username-short', 'username-medium', 'username-long', 'username-very-long');
+        
+        // Tambahkan kelas berdasarkan panjang teks
+        if (text.length > 25) {
+            element.classList.add('username-very-long');
+        } else if (text.length > 20) {
+            element.classList.add('username-long');
+        } else if (text.length > 15) {
+            element.classList.add('username-medium');
+        } else {
+            element.classList.add('username-short');
+        }
+    }
+
     // DOM Elements
     const navbar = document.getElementById('navbar');
     const navLinks = document.querySelectorAll('.nav-link');
@@ -177,15 +196,25 @@
             const card = document.createElement('div');
             card.className = 'member-card';
             
+            const usernameDiv = document.createElement('div');
+            usernameDiv.className = 'username';
+            usernameDiv.textContent = member.username;
+            
+            // Sesuaikan ukuran font berdasarkan panjang username
+            adjustFontSizeByLength(usernameDiv, member.username);
+            
             card.innerHTML = `
                 <div class="member-avatar">
                     <img src="${member.photo}" alt="${member.name}" onerror="this.style.display='none'; this.parentElement.innerHTML += '<span style=\'font-size:2rem;color:white;\'>${member.name.charAt(0)}</span>';">
                 </div>
                 <div class="member-info">
                     <h4>${member.name}</h4>
-                    <div class="username">${member.username}</div>
                 </div>
             `;
+            
+            // Ganti username div yang sudah dibuat
+            const memberInfo = card.querySelector('.member-info');
+            memberInfo.appendChild(usernameDiv);
             
             card.addEventListener('click', () => {
                 // Set modal content - hanya quotes dan tiktok
@@ -210,17 +239,38 @@
     admins.forEach(admin => {
         const card = document.createElement('div');
         card.className = 'admin-card';
+        
+        const usernameDiv = document.createElement('div');
+        usernameDiv.className = 'admin-username';
+        usernameDiv.textContent = admin.username;
+        
+        const roleDiv = document.createElement('div');
+        roleDiv.className = 'admin-role';
+        roleDiv.textContent = admin.role;
+        
+        // Sesuaikan ukuran font berdasarkan panjang teks
+        adjustFontSizeByLength(usernameDiv, admin.username);
+        
         card.innerHTML = `
             <div class="admin-avatar">
                 <img src="${admin.photo}" alt="${admin.name}" onerror="this.style.display='none'; this.innerHTML='${admin.name.charAt(0)}';">
             </div>
             <div class="admin-info">
                 <h4>${admin.name}</h4>
-                <div class="admin-username">${admin.username}</div>
-                <div class="admin-role">${admin.role}</div>
-                <a href="${admin.tiktok}" target="_blank" class="admin-tiktok-link"><i class="fab fa-tiktok"></i> TikTok</a>
             </div>
         `;
+        
+        const adminInfo = card.querySelector('.admin-info');
+        adminInfo.appendChild(usernameDiv);
+        adminInfo.appendChild(roleDiv);
+        
+        const tiktokLink = document.createElement('a');
+        tiktokLink.href = admin.tiktok;
+        tiktokLink.target = '_blank';
+        tiktokLink.className = 'admin-tiktok-link';
+        tiktokLink.innerHTML = '<i class="fab fa-tiktok"></i> TikTok';
+        adminInfo.appendChild(tiktokLink);
+        
         adminTrack.appendChild(card);
     });
 
@@ -232,11 +282,16 @@
         card.href = contact.link;
         card.target = '_blank';
         card.className = 'contact-card';
+        
+        const usernameSpan = document.createElement('span');
+        usernameSpan.textContent = contact.username;
+        
         card.innerHTML = `
             <i class="${contact.icon}"></i>
             <h3>${contact.platform}</h3>
-            <span>${contact.username}</span>
         `;
+        card.appendChild(usernameSpan);
+        
         contactGrid.appendChild(card);
     });
 
@@ -248,11 +303,16 @@
         card.href = contact.link;
         card.target = '_blank';
         card.className = 'contact-card';
+        
+        const usernameSpan = document.createElement('span');
+        usernameSpan.textContent = contact.username;
+        
         card.innerHTML = `
             <i class="${contact.icon}"></i>
             <h3>${contact.platform}</h3>
-            <span>${contact.username}</span>
         `;
+        card.appendChild(usernameSpan);
+        
         contactTrack.appendChild(card);
     });
 
