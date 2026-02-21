@@ -133,6 +133,15 @@
         { platform: 'Email', username: 'kasuganofamilyy@gmail.com', link: 'mailto:kasuganofamilyy@gmail.com', icon: 'far fa-envelope' }
     ];
 
+    // Fungsi untuk menentukan kelas berdasarkan panjang username
+    function getUsernameClass(username) {
+        const length = username.length;
+        if (length > 25) return 'username-very-long';
+        if (length > 20) return 'username-long';
+        if (length > 15) return 'username-medium';
+        return 'username-small';
+    }
+
     // DOM Elements
     const navbar = document.getElementById('navbar');
     const navLinks = document.querySelectorAll('.nav-link');
@@ -185,6 +194,13 @@
             img.alt = member.name;
             img.style.objectPosition = 'center';
             img.style.objectFit = 'cover';
+            img.onerror = function() { 
+                this.style.display = 'none'; 
+                const span = document.createElement('span');
+                span.style.cssText = 'font-size:2rem;color:white;';
+                span.textContent = member.name.charAt(0);
+                this.parentElement.appendChild(span);
+            };
             
             avatarDiv.appendChild(img);
             
@@ -195,11 +211,8 @@
             nameH4.textContent = member.name;
             
             const usernameDiv = document.createElement('div');
-            usernameDiv.className = 'username';
+            usernameDiv.className = 'username ' + getUsernameClass(member.username);
             usernameDiv.textContent = member.username;
-            usernameDiv.style.whiteSpace = 'nowrap';
-            usernameDiv.style.overflow = 'visible';
-            usernameDiv.style.textOverflow = 'clip';
             
             infoDiv.appendChild(nameH4);
             infoDiv.appendChild(usernameDiv);
@@ -214,6 +227,13 @@
                 modalImg.alt = member.name;
                 modalImg.style.objectPosition = 'center';
                 modalImg.style.objectFit = 'cover';
+                modalImg.onerror = function() { 
+                    this.style.display = 'none'; 
+                    const span = document.createElement('span');
+                    span.style.cssText = 'font-size:3rem;color:white;';
+                    span.textContent = member.name.charAt(0);
+                    this.parentElement.appendChild(span);
+                };
                 document.getElementById('modalAvatar').appendChild(modalImg);
                 
                 document.getElementById('modalName').textContent = member.name;
@@ -245,6 +265,13 @@
         img.alt = admin.name;
         img.style.objectPosition = 'center';
         img.style.objectFit = 'cover';
+        img.onerror = function() { 
+            this.style.display = 'none'; 
+            const span = document.createElement('span');
+            span.style.cssText = 'font-size:3rem;color:white;';
+            span.textContent = admin.name.charAt(0);
+            this.parentElement.appendChild(span);
+        };
         
         avatarDiv.appendChild(img);
         
@@ -255,11 +282,8 @@
         nameH4.textContent = admin.name;
         
         const usernameDiv = document.createElement('div');
-        usernameDiv.className = 'admin-username';
+        usernameDiv.className = 'admin-username ' + getUsernameClass(admin.username);
         usernameDiv.textContent = admin.username;
-        usernameDiv.style.whiteSpace = 'nowrap';
-        usernameDiv.style.overflow = 'visible';
-        usernameDiv.style.textOverflow = 'clip';
         
         const roleDiv = document.createElement('div');
         roleDiv.className = 'admin-role';
@@ -299,9 +323,6 @@
         
         const span = document.createElement('span');
         span.textContent = contact.username;
-        span.style.whiteSpace = 'nowrap';
-        span.style.overflow = 'visible';
-        span.style.textOverflow = 'clip';
         
         card.appendChild(icon);
         card.appendChild(h3);
@@ -327,9 +348,6 @@
         
         const span = document.createElement('span');
         span.textContent = contact.username;
-        span.style.whiteSpace = 'nowrap';
-        span.style.overflow = 'visible';
-        span.style.textOverflow = 'clip';
         
         card.appendChild(icon);
         card.appendChild(h3);
@@ -478,19 +496,5 @@
             updateScrollPadding();
         }, 200);
     });
-    // Di dalam renderMembers, tambahkan kelas berdasarkan panjang username
-function getUsernameClass(username) {
-    const length = username.length;
-    if (length > 25) return 'username-very-long';
-    if (length > 20) return 'username-long';
-    if (length > 15) return 'username-medium';
-    return 'username-short';
-}
-
-// Saat membuat usernameDiv
-const usernameDiv = document.createElement('div');
-usernameDiv.className = 'username ' + getUsernameClass(member.username);
-usernameDiv.textContent = member.username;
 
 })();
-
