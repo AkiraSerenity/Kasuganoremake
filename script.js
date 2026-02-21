@@ -133,11 +133,11 @@
         { platform: 'Email', username: 'kasuganofamilyy@gmail.com', link: 'mailto:kasuganofamilyy@gmail.com', icon: 'far fa-envelope' }
     ];
 
-    // Fungsi untuk menyesuaikan ukuran font berdasarkan panjang teks
-    function adjustFontSizeByLength(element, text, baseSize) {
+    // Fungsi untuk menyesuaikan kelas berdasarkan panjang teks
+    function setTextSizeClass(element, text) {
         if (!element) return;
         
-        // Hapus kelas penyesuaian yang mungkin ada sebelumnya
+        // Hapus semua kelas yang mungkin ada
         element.classList.remove('username-short', 'username-medium', 'username-long', 'username-very-long');
         
         // Tambahkan kelas berdasarkan panjang teks
@@ -196,29 +196,59 @@
             const card = document.createElement('div');
             card.className = 'member-card';
             
+            // Buat avatar dengan gambar dari tengah
+            const avatarDiv = document.createElement('div');
+            avatarDiv.className = 'member-avatar';
+            
+            const img = document.createElement('img');
+            img.src = member.photo;
+            img.alt = member.name;
+            img.onerror = function() { 
+                this.style.display = 'none'; 
+                const span = document.createElement('span');
+                span.style.cssText = 'font-size:2rem;color:white;';
+                span.textContent = member.name.charAt(0);
+                this.parentElement.appendChild(span);
+            };
+            
+            avatarDiv.appendChild(img);
+            
+            // Buat info
+            const infoDiv = document.createElement('div');
+            infoDiv.className = 'member-info';
+            
+            const nameH4 = document.createElement('h4');
+            nameH4.textContent = member.name;
+            
             const usernameDiv = document.createElement('div');
             usernameDiv.className = 'username';
             usernameDiv.textContent = member.username;
             
-            // Sesuaikan ukuran font berdasarkan panjang username
-            adjustFontSizeByLength(usernameDiv, member.username);
+            // Set kelas berdasarkan panjang username
+            setTextSizeClass(usernameDiv, member.username);
             
-            card.innerHTML = `
-                <div class="member-avatar">
-                    <img src="${member.photo}" alt="${member.name}" onerror="this.style.display='none'; this.parentElement.innerHTML += '<span style=\'font-size:2rem;color:white;\'>${member.name.charAt(0)}</span>';">
-                </div>
-                <div class="member-info">
-                    <h4>${member.name}</h4>
-                </div>
-            `;
+            infoDiv.appendChild(nameH4);
+            infoDiv.appendChild(usernameDiv);
             
-            // Ganti username div yang sudah dibuat
-            const memberInfo = card.querySelector('.member-info');
-            memberInfo.appendChild(usernameDiv);
+            card.appendChild(avatarDiv);
+            card.appendChild(infoDiv);
             
             card.addEventListener('click', () => {
-                // Set modal content - hanya quotes dan tiktok
-                document.getElementById('modalAvatar').innerHTML = `<img src="${member.photo}" alt="${member.name}" onerror="this.style.display='none'; this.parentElement.innerHTML += '<span style=\'font-size:3rem;color:white;\'>${member.name.charAt(0)}</span>';">`;
+                // Set modal content
+                const modalAvatar = document.getElementById('modalAvatar');
+                modalAvatar.innerHTML = '';
+                const modalImg = document.createElement('img');
+                modalImg.src = member.photo;
+                modalImg.alt = member.name;
+                modalImg.onerror = function() { 
+                    this.style.display = 'none'; 
+                    const span = document.createElement('span');
+                    span.style.cssText = 'font-size:3rem;color:white;';
+                    span.textContent = member.name.charAt(0);
+                    this.parentElement.appendChild(span);
+                };
+                modalAvatar.appendChild(modalImg);
+                
                 document.getElementById('modalName').textContent = member.name;
                 document.getElementById('modalUsername').textContent = member.username;
                 document.getElementById('quoteText').textContent = member.quote || 'Bersama Kasugano, kita bersinar';
@@ -240,36 +270,52 @@
         const card = document.createElement('div');
         card.className = 'admin-card';
         
+        // Avatar
+        const avatarDiv = document.createElement('div');
+        avatarDiv.className = 'admin-avatar';
+        
+        const img = document.createElement('img');
+        img.src = admin.photo;
+        img.alt = admin.name;
+        img.onerror = function() { 
+            this.style.display = 'none'; 
+            const span = document.createElement('span');
+            span.style.cssText = 'font-size:3rem;color:white;';
+            span.textContent = admin.name.charAt(0);
+            this.parentElement.appendChild(span);
+        };
+        
+        avatarDiv.appendChild(img);
+        
+        // Info
+        const infoDiv = document.createElement('div');
+        infoDiv.className = 'admin-info';
+        
+        const nameH4 = document.createElement('h4');
+        nameH4.textContent = admin.name;
+        
         const usernameDiv = document.createElement('div');
         usernameDiv.className = 'admin-username';
         usernameDiv.textContent = admin.username;
+        setTextSizeClass(usernameDiv, admin.username);
         
         const roleDiv = document.createElement('div');
         roleDiv.className = 'admin-role';
         roleDiv.textContent = admin.role;
-        
-        // Sesuaikan ukuran font berdasarkan panjang teks
-        adjustFontSizeByLength(usernameDiv, admin.username);
-        
-        card.innerHTML = `
-            <div class="admin-avatar">
-                <img src="${admin.photo}" alt="${admin.name}" onerror="this.style.display='none'; this.innerHTML='${admin.name.charAt(0)}';">
-            </div>
-            <div class="admin-info">
-                <h4>${admin.name}</h4>
-            </div>
-        `;
-        
-        const adminInfo = card.querySelector('.admin-info');
-        adminInfo.appendChild(usernameDiv);
-        adminInfo.appendChild(roleDiv);
         
         const tiktokLink = document.createElement('a');
         tiktokLink.href = admin.tiktok;
         tiktokLink.target = '_blank';
         tiktokLink.className = 'admin-tiktok-link';
         tiktokLink.innerHTML = '<i class="fab fa-tiktok"></i> TikTok';
-        adminInfo.appendChild(tiktokLink);
+        
+        infoDiv.appendChild(nameH4);
+        infoDiv.appendChild(usernameDiv);
+        infoDiv.appendChild(roleDiv);
+        infoDiv.appendChild(tiktokLink);
+        
+        card.appendChild(avatarDiv);
+        card.appendChild(infoDiv);
         
         adminTrack.appendChild(card);
     });
@@ -283,14 +329,18 @@
         card.target = '_blank';
         card.className = 'contact-card';
         
-        const usernameSpan = document.createElement('span');
-        usernameSpan.textContent = contact.username;
+        const icon = document.createElement('i');
+        icon.className = contact.icon;
         
-        card.innerHTML = `
-            <i class="${contact.icon}"></i>
-            <h3>${contact.platform}</h3>
-        `;
-        card.appendChild(usernameSpan);
+        const h3 = document.createElement('h3');
+        h3.textContent = contact.platform;
+        
+        const span = document.createElement('span');
+        span.textContent = contact.username;
+        
+        card.appendChild(icon);
+        card.appendChild(h3);
+        card.appendChild(span);
         
         contactGrid.appendChild(card);
     });
@@ -304,14 +354,18 @@
         card.target = '_blank';
         card.className = 'contact-card';
         
-        const usernameSpan = document.createElement('span');
-        usernameSpan.textContent = contact.username;
+        const icon = document.createElement('i');
+        icon.className = contact.icon;
         
-        card.innerHTML = `
-            <i class="${contact.icon}"></i>
-            <h3>${contact.platform}</h3>
-        `;
-        card.appendChild(usernameSpan);
+        const h3 = document.createElement('h3');
+        h3.textContent = contact.platform;
+        
+        const span = document.createElement('span');
+        span.textContent = contact.username;
+        
+        card.appendChild(icon);
+        card.appendChild(h3);
+        card.appendChild(span);
         
         contactTrack.appendChild(card);
     });
@@ -391,7 +445,7 @@
         }
     });
 
-    // Nav links click - tanpa active state
+    // Nav links click
     navLinks.forEach(link => {
         link.addEventListener('click', (e) => {
             e.preventDefault();
