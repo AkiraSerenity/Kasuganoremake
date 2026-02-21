@@ -376,8 +376,9 @@ section.revealed {
 }
 
 .about-card {
-    width: min(300px, 90%);
     flex: 1 1 280px;
+    min-width: 250px;
+    max-width: 320px;
     background: rgba(22, 12, 35, 0.7);
     backdrop-filter: blur(8px);
     border: 1px solid rgba(255, 130, 210, 0.3);
@@ -425,8 +426,9 @@ section.revealed {
 }
 
 .activity-card {
-    width: min(250px, 90%);
     flex: 1 1 230px;
+    min-width: 200px;
+    max-width: 280px;
     background: rgba(28, 16, 45, 0.8);
     backdrop-filter: blur(8px);
     border: 1.5px solid #ff98dc;
@@ -479,8 +481,9 @@ section.revealed {
 }
 
 .member-card {
-    width: min(150px, 40%);
-    flex: 0 1 140px;
+    flex: 1 1 140px;
+    min-width: 120px;
+    max-width: 160px;
     background: rgba(28, 16, 45, 0.8);
     backdrop-filter: blur(4px);
     border: 1.5px solid #b161ee;
@@ -799,7 +802,7 @@ section.revealed {
 /* ========== CONTACT SECTION ========== */
 .contact-grid-desktop {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
     gap: clamp(1rem, 3vw, 2rem);
     margin: clamp(1.5rem, 4vh, 2.5rem) 0;
     padding: clamp(1.5rem, 4vh, 2.5rem);
@@ -833,7 +836,7 @@ section.revealed {
     transition: all 0.2s ease;
     border-radius: 30px;
     width: 100%;
-    max-width: 200px;
+    max-width: 100%;
     margin: 0 auto;
 }
 
@@ -1049,29 +1052,20 @@ section.revealed {
     .main {
         max-width: 1400px;
     }
-    
-    .about-card { width: 320px; }
-    .activity-card { width: 270px; }
-    .member-card { width: 160px; }
-    .admin-card { width: 240px; }
 }
 
 /* Tablet landscape (992px - 1199px) */
 @media (max-width: 1199px) and (min-width: 992px) {
-    .about-card { width: 280px; }
-    .activity-card { width: 230px; }
+    /* Tidak perlu mengubah width card karena sudah pakai flex basis */
 }
 
 /* Tablet (768px - 991px) */
 @media (max-width: 991px) {
-    .about-card { width: 260px; }
-    .activity-card { width: 210px; }
-    .member-card { width: 140px; }
-    .admin-card { width: 200px; }
+    /* Tidak perlu mengubah width card karena sudah pakai flex basis */
 }
 
-/* Navbar breakpoint (≤ 900px) - hamburger menu */
-@media (max-width: 900px) {
+/* Navbar breakpoint (≤ 1024px) - hamburger menu */
+@media (max-width: 1024px) {
     .nav-menu {
         position: absolute;
         top: 100%;
@@ -1116,10 +1110,6 @@ section.revealed {
 
 /* Mobile (≤ 768px) */
 @media (max-width: 768px) {
-    .about-card { width: 100%; max-width: 400px; }
-    .activity-card { width: 100%; max-width: 400px; }
-    .member-card { width: 140px; }
-    
     .carousel-nav {
         display: none !important;
     }
@@ -1162,7 +1152,7 @@ section.revealed {
     .hero-content h1 { font-size: 2rem; }
     .hero-content p { font-size: 0.9rem; padding: 0.6rem 1rem; }
     .section-title { font-size: 1.8rem; }
-    .member-card { width: 130px; }
+    .member-card { flex: 1 1 130px; min-width: 110px; max-width: 150px; }
     .admin-card { width: 140px; padding: 0.8rem 0.5rem; }
     .admin-avatar { width: 80px; height: 80px; }
     .contact-card { width: 120px; }
@@ -1173,7 +1163,7 @@ section.revealed {
 
 /* Mobile sangat kecil (≤ 360px) */
 @media (max-width: 360px) {
-    .member-card { width: 120px; }
+    .member-card { flex: 1 1 120px; min-width: 100px; max-width: 140px; }
     .admin-card { width: 130px; }
     .contact-card { width: 110px; }
     .contact-card i { font-size: 1.3rem; }
