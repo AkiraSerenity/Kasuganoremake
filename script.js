@@ -133,23 +133,12 @@
         { platform: 'Email', username: 'kasuganofamilyy@gmail.com', link: 'mailto:kasuganofamilyy@gmail.com', icon: 'far fa-envelope' }
     ];
 
-    // Fungsi untuk menyesuaikan kelas berdasarkan panjang teks
-    function setTextSizeClass(element, text) {
-        if (!element) return;
-        
-        // Hapus semua kelas yang mungkin ada
-        element.classList.remove('username-short', 'username-medium', 'username-long', 'username-very-long');
-        
-        // Tambahkan kelas berdasarkan panjang teks
-        if (text.length > 25) {
-            element.classList.add('username-very-long');
-        } else if (text.length > 20) {
-            element.classList.add('username-long');
-        } else if (text.length > 15) {
-            element.classList.add('username-medium');
-        } else {
-            element.classList.add('username-short');
-        }
+    // Fungsi untuk menentukan kelas berdasarkan panjang teks
+    function getTextSizeClass(text) {
+        if (text.length > 25) return 'username-very-long';
+        if (text.length > 20) return 'username-long';
+        if (text.length > 15) return 'username-medium';
+        return 'username-short';
     }
 
     // DOM Elements
@@ -196,7 +185,7 @@
             const card = document.createElement('div');
             card.className = 'member-card';
             
-            // Buat avatar dengan gambar dari tengah
+            // Avatar dengan gambar dari tengah
             const avatarDiv = document.createElement('div');
             avatarDiv.className = 'member-avatar';
             
@@ -213,7 +202,7 @@
             
             avatarDiv.appendChild(img);
             
-            // Buat info
+            // Info
             const infoDiv = document.createElement('div');
             infoDiv.className = 'member-info';
             
@@ -221,11 +210,8 @@
             nameH4.textContent = member.name;
             
             const usernameDiv = document.createElement('div');
-            usernameDiv.className = 'username';
+            usernameDiv.className = 'username ' + getTextSizeClass(member.username);
             usernameDiv.textContent = member.username;
-            
-            // Set kelas berdasarkan panjang username
-            setTextSizeClass(usernameDiv, member.username);
             
             infoDiv.appendChild(nameH4);
             infoDiv.appendChild(usernameDiv);
@@ -234,9 +220,7 @@
             card.appendChild(infoDiv);
             
             card.addEventListener('click', () => {
-                // Set modal content
-                const modalAvatar = document.getElementById('modalAvatar');
-                modalAvatar.innerHTML = '';
+                document.getElementById('modalAvatar').innerHTML = '';
                 const modalImg = document.createElement('img');
                 modalImg.src = member.photo;
                 modalImg.alt = member.name;
@@ -247,7 +231,7 @@
                     span.textContent = member.name.charAt(0);
                     this.parentElement.appendChild(span);
                 };
-                modalAvatar.appendChild(modalImg);
+                document.getElementById('modalAvatar').appendChild(modalImg);
                 
                 document.getElementById('modalName').textContent = member.name;
                 document.getElementById('modalUsername').textContent = member.username;
@@ -270,7 +254,6 @@
         const card = document.createElement('div');
         card.className = 'admin-card';
         
-        // Avatar
         const avatarDiv = document.createElement('div');
         avatarDiv.className = 'admin-avatar';
         
@@ -287,7 +270,6 @@
         
         avatarDiv.appendChild(img);
         
-        // Info
         const infoDiv = document.createElement('div');
         infoDiv.className = 'admin-info';
         
@@ -295,9 +277,8 @@
         nameH4.textContent = admin.name;
         
         const usernameDiv = document.createElement('div');
-        usernameDiv.className = 'admin-username';
+        usernameDiv.className = 'admin-username ' + getTextSizeClass(admin.username);
         usernameDiv.textContent = admin.username;
-        setTextSizeClass(usernameDiv, admin.username);
         
         const roleDiv = document.createElement('div');
         roleDiv.className = 'admin-role';
@@ -337,6 +318,7 @@
         
         const span = document.createElement('span');
         span.textContent = contact.username;
+        // Email dapat ukuran lebih kecil otomatis dari CSS
         
         card.appendChild(icon);
         card.appendChild(h3);
@@ -437,7 +419,7 @@
         });
     }
 
-    // Close menu when clicking outside
+    // Close menu
     document.addEventListener('click', (e) => {
         if (navMenu && navToggle && !navToggle.contains(e.target) && !navMenu.contains(e.target)) {
             navMenu.classList.remove('active');
