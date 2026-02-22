@@ -1,5 +1,4 @@
 (function() {
-    // ========== DATA ==========
     const members = [
         { name: 'Gery', username: '@gerysenwith_lapiskeju', tiktok: 'https://www.tiktok.com/@gerysenwith_lapiskeju', photo: 'images/member1.jpg', quote: 'Kamu rimuru bukan?' },
         { name: 'Rora', username: '@roraxml', tiktok: 'https://www.tiktok.com/@kasugano_sora87', photo: 'images/member2.jpeg', quote: 'Aku mah raja' },
@@ -12,16 +11,17 @@
         { name: 'Akira', username: '@akira.imut', tiktok: 'https://www.tiktok.com/@akiraa.imut', photo: 'images/member13.jpg', quote: 'Imut gini kalo bantai lu sabi kali' },
         { name: 'Dree', username: '@daktau_256', tiktok: 'https://www.tiktok.com/@daktau_256', photo: 'images/member14.jpg', quote: 'Jangan takut salah, karena dari salah kita belajar.' },
         { name: 'Zunda', username: '@shaglenv02y', tiktok: 'https://www.tiktok.com/@shaglenv02y', photo: 'images/member15.jpg', quote: 'Emel yok' },
-        { name: 'Yushaa Von Khaslana', username: '@kachusyaa', tiktok: 'https://www.tiktok.com/@kachusyaa', photo: 'images/member16.jpeg', quote: 'Jangan lupa makan' }
+        { name: 'Yushaa Von Khaslana', username: '@kachusyaa', tiktok: 'https://www.tiktok.com/@kachusyaa?_r=1&_t=ZS-943UkIGrPbZ', photo: 'images/member16.jpeg', quote: 'Jangan lupa makan' },
+        { name: 'Zakk', username: '@sb_prst', tiktok: 'https://www.tiktok.com/@sb_prst?_r=1&_t=ZS-948PdFDTDAj', photo: 'images/member17.jpeg', quote: 'Jangan lupa main epep' }
     ];
 
     const admins = [
-        { name: 'Ryy Sensei', username: '@RyyKagenou NCA', role: 'Owner & Founder', tiktok: 'https://www.tiktok.com/@RyyKagenou', photo: 'images/admin1.webp' },
-        { name: 'Sora', username: '@kasugano_sora52', role: 'Pemilik & Pendiri', tiktok: 'https://www.tiktok.com/@kasugano.rora', photo: 'images/admin2.jpg' },
-        { name: 'Haruka', username: '@kasugano_harukaa', role: 'Pemilik', tiktok: 'https://www.tiktok.com/@kasugano.harukaa', photo: 'images/admin3.jpg' },
-        { name: 'Zero', username: '@zero.znzx', role: 'Admin', tiktok: 'https://www.tiktok.com/@zero.znzx', photo: 'images/admin4.jfif' },
-        { name: 'Serlina', username: '@diiputraa28_', role: 'Admin', tiktok: 'https://www.tiktok.com/@diiputraa28_', photo: 'images/admin5.jpeg' },
-        { name: 'Shora', username: '@codename_shora.v02', role: 'Admin', tiktok: 'https://www.tiktok.com/@codename_shora.v02', photo: 'images/admin6.png' }
+        { name: 'Shora', username: '@RyyKagenou NCA', role: 'Admin', tiktok: 'https://www.tiktok.com/@codename_shora.v02?_r=1&_t=ZS-948PqiZV63B', photo: 'images/admin1.webp' },
+        { name: 'Sora', username: '@kasugano_sora52', role: 'Owner & Founder', tiktok: 'https://www.tiktok.com/@kasugano.rora?_r=1&_t=ZS-948PrdIiVzo', photo: 'images/admin2.jpg' },
+        { name: 'Haruka', username: '@kasugano_harukaa', role: 'Owner', tiktok: 'https://www.tiktok.com/@kasugano.harukaa?_r=1&_t=ZS-948PsNjH5dc', photo: 'images/admin3.jpg' },
+        { name: 'Zero', username: '@zero.znzx', role: 'Admin', tiktok: 'https://www.tiktok.com/@zero.znzx?_r=1&_t=ZS-948PtGhVMma', photo: 'images/admin4.jfif' },
+        { name: 'Serlina', username: '@diiputraa28_', role: 'Admin', tiktok: 'https://www.tiktok.com/@diiputraa28_?_r=1&_t=ZS-948Pv2hKYvk', photo: 'images/admin5.jpeg' },
+        { name: 'Anonim', username: '@???', role: 'Admin', tiktok: '???', photo: 'images/admin6.png' }
     ];
 
     const contacts = [
@@ -33,7 +33,6 @@
         { platform: 'Email', username: 'kasuganofamilyy@gmail.com', link: 'mailto:kasuganofamilyy@gmail.com', icon: 'far fa-envelope' }
     ];
 
-    // ========== DOM ELEMENTS ==========
     const navbar = document.getElementById('navbar');
     const navLinks = document.querySelectorAll('.nav-link');
     const navToggle = document.getElementById('navToggle');
@@ -46,8 +45,9 @@
         contact: document.getElementById('contact')
     };
     const memberContainer = document.getElementById('memberContainer');
+    const modal = document.getElementById('memberModal');
+    const closeModal = document.getElementById('closeModal');
 
-    // ========== SKELETON ==========
     memberContainer.classList.add('skeleton');
     for (let i = 0; i < 9; i++) {
         const s = document.createElement('div');
@@ -61,7 +61,6 @@
         renderMembers(members);
     }, 800);
 
-    // ========== RENDER MEMBERS ==========
     function renderMembers(filtered = members) {
         memberContainer.innerHTML = '';
         if (filtered.length === 0) {
@@ -120,14 +119,15 @@
                 document.getElementById('quoteText').textContent = m.quote || 'Bersama Kasugano, kita bersinar';
                 document.getElementById('modalTiktokLink').href = m.tiktok;
                 document.getElementById('modalTiktokText').textContent = m.username;
+
                 document.getElementById('memberModal').classList.add('active');
+                document.body.style.overflow = 'hidden';
             });
 
             memberContainer.appendChild(card);
         });
     }
 
-    // ========== RENDER ADMINS ==========
     const adminTrack = document.getElementById('adminTrack');
     adminTrack.innerHTML = '';
     admins.forEach(a => {
@@ -178,7 +178,6 @@
         adminTrack.appendChild(card);
     });
 
-    // ========== RENDER CONTACTS ==========
     const contactGrid = document.getElementById('contactGrid');
     const contactTrack = document.getElementById('contactTrack');
     [contactGrid, contactTrack].forEach(container => {
@@ -202,7 +201,6 @@
         });
     });
 
-    // ========== CAROUSEL NAV ==========
     const adminCarousel = document.getElementById('adminCarousel');
     document.getElementById('carouselPrev')?.addEventListener('click', () => adminCarousel.scrollBy({ left: -300, behavior: 'smooth' }));
     document.getElementById('carouselNext')?.addEventListener('click', () => adminCarousel.scrollBy({ left: 300, behavior: 'smooth' }));
@@ -211,7 +209,6 @@
     document.getElementById('contactPrev')?.addEventListener('click', () => contactCarousel.scrollBy({ left: -300, behavior: 'smooth' }));
     document.getElementById('contactNext')?.addEventListener('click', () => contactCarousel.scrollBy({ left: 300, behavior: 'smooth' }));
 
-    // ========== SEARCH ==========
     const searchInput = document.getElementById('searchMember');
     if (searchInput) {
         searchInput.addEventListener('input', (e) => {
@@ -221,13 +218,17 @@
         });
     }
 
-    // ========== MODAL ==========
-    const modal = document.getElementById('memberModal');
-    const closeModal = document.getElementById('closeModal');
-    closeModal.addEventListener('click', () => modal.classList.remove('active'));
-    window.addEventListener('click', e => { if (e.target === modal) modal.classList.remove('active'); });
+    closeModal.addEventListener('click', () => {
+        modal.classList.remove('active');
+        document.body.style.overflow = '';
+    });
+    window.addEventListener('click', (e) => {
+        if (e.target === modal) {
+            modal.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+    });
 
-    // ========== NAVBAR ==========
     function getNavbarHeight() { return navbar ? navbar.offsetHeight : 80; }
     function updateScrollPadding() { document.documentElement.style.scrollPaddingTop = (getNavbarHeight() + 30) + 'px'; }
 
@@ -260,25 +261,21 @@
         });
     });
 
-    // ========== PARALLAX ==========
     const heroImg = document.getElementById('heroImg');
     if (heroImg) window.addEventListener('scroll', () => { heroImg.style.transform = `translateY(${window.scrollY * 0.2}px)`; });
 
-    // ========== REVEAL SECTIONS ==========
     const revealSections = document.querySelectorAll('section');
     const revealObserver = new IntersectionObserver((entries) => {
         entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('revealed'); });
     }, { threshold: 0.15 });
     revealSections.forEach(s => revealObserver.observe(s));
 
-    // ========== RESIZE ==========
     let resizeTimer;
     window.addEventListener('resize', () => {
         clearTimeout(resizeTimer);
         resizeTimer = setTimeout(updateScrollPadding, 100);
     });
 
-    // ========== INIT ==========
     window.scrollTo(0, 0);
     updateScrollPadding();
     window.addEventListener('load', () => setTimeout(updateScrollPadding, 200));
