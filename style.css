@@ -942,11 +942,10 @@ section {
   font-size: clamp(0.8rem,2vw,1rem);
 }
 
-/* ===== RESPONSIVE DESIGN ===== */
+/* ===== MEDIA QUERIES ===== */
 
 /* Tablet (768px - 1024px) */
 @media (max-width: 1024px) {
-  /* Navbar menjadi hamburger */
   .nav-menu {
     position: absolute;
     top: 100%; left: 0; right: 0;
@@ -970,16 +969,16 @@ section {
   .nav-link { width: 100%; justify-content: center; padding: var(--space-sm); font-size: 1rem; }
   .nav-toggle { display: flex; }
 
-  /* Contact tetap grid, tidak berubah jadi carousel */
+  /* Contact tetap grid */
   .contact-grid-desktop {
-    display: grid; /* tetap tampil */
+    display: grid;
   }
   .contact-carousel-mobile {
-    display: none; /* pastikan tidak muncul */
+    display: none;
   }
 }
 
-/* Ukuran layar sedang (≤ 992px) - Activity berubah jadi 2 kolom */
+/* Ukuran layar sedang (≤ 992px) - Activity jadi 2 kolom */
 @media (max-width: 992px) {
   .activity-grid {
     grid-template-columns: repeat(2, 1fr);
@@ -1005,8 +1004,14 @@ section {
   }
 }
 
-/* Mobile (≤ 767px) - Contact berubah jadi carousel */
+/* Mobile (≤ 767px) - Admin & Contact carousel tanpa tombol, full width */
 @media (max-width: 767px) {
+  /* Hilangkan tombol navigasi */
+  .carousel-nav {
+    display: none !important;
+  }
+
+  /* Contact berubah jadi carousel */
   .contact-grid-desktop {
     display: none !important;
   }
@@ -1014,10 +1019,30 @@ section {
     display: flex !important;
     width: 100%;
   }
+
+  /* Carousel full width (abaikan padding .main) */
   .carousel-container {
     margin-left: calc(-1 * var(--space-lg));
     margin-right: calc(-1 * var(--space-lg));
     width: calc(100% + 2 * var(--space-lg));
+  }
+
+  /* Wrapper tanpa padding */
+  .carousel-wrapper {
+    padding: 0 !important;
+    margin: 0 !important;
+    width: 100%;
+  }
+
+  /* Track dengan gap yang pas */
+  .carousel-track {
+    padding: var(--space-sm) 0 !important;
+    gap: var(--space-md);
+  }
+
+  /* Ukuran kartu di mobile */
+  .admin-card {
+    width: 160px;
   }
   .contact-card {
     width: 140px;
@@ -1027,6 +1052,22 @@ section {
     border-radius: 20px;
     padding: var(--space-sm);
   }
+
+  /* Responsive teks di contact card - ukuran font mengecil otomatis */
+  .contact-card h3 {
+    font-size: clamp(0.8rem, 2.5vw, 1rem);
+    white-space: normal;
+    overflow: visible;
+    text-overflow: clip;
+    word-wrap: break-word;
+  }
+  .contact-card span {
+    font-size: clamp(0.5rem, 2vw, 0.65rem);
+    white-space: normal;
+    overflow: visible;
+    text-overflow: clip;
+    word-wrap: break-word;
+  }
 }
 
 /* Mobile kecil (≤ 480px) */
@@ -1035,7 +1076,7 @@ section {
     width: 130px;
   }
   .admin-card {
-    width: 160px;
+    width: 140px;
     padding: var(--space-sm);
   }
   .admin-avatar {
@@ -1043,13 +1084,19 @@ section {
     height: 80px;
   }
   .contact-card {
-    width: 120px;
+    width: 130px;
   }
   .member-info h4 {
     font-size: 0.8rem;
   }
   .member-info .username {
     font-size: 0.65rem;
+  }
+  .contact-card h3 {
+    font-size: 0.8rem;
+  }
+  .contact-card span {
+    font-size: 0.55rem;
   }
 }
 
@@ -1059,15 +1106,21 @@ section {
     width: 120px;
   }
   .admin-card {
-    width: 140px;
+    width: 130px;
   }
   .contact-card {
-    width: 110px;
+    width: 120px;
   }
   .member-info h4 {
     font-size: 0.7rem;
   }
   .member-info .username {
     font-size: 0.6rem;
+  }
+  .contact-card h3 {
+    font-size: 0.7rem;
+  }
+  .contact-card span {
+    font-size: 0.5rem;
   }
 }
