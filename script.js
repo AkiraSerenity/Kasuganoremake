@@ -16,7 +16,7 @@
     ];
 
     const admins = [
-        { name: 'Shora', username: '@RyyKagenou NCA', role: 'Admin', tiktok: 'https://www.tiktok.com/@codename_shora.v02?_r=1&_t=ZS-948PqiZV63B', photo: 'images/admin1.webp' },
+        { name: 'Shora', username: '@codename_shora.v02', role: 'Admin', tiktok: 'https://www.tiktok.com/@codename_shora.v02?_r=1&_t=ZS-948PqiZV63B', photo: 'images/admin1.webp' },
         { name: 'Sora', username: '@kasugano_sora52', role: 'Owner & Founder', tiktok: 'https://www.tiktok.com/@kasugano.rora?_r=1&_t=ZS-948PrdIiVzo', photo: 'images/admin2.jpg' },
         { name: 'Haruka', username: '@kasugano_harukaa', role: 'Owner', tiktok: 'https://www.tiktok.com/@kasugano.harukaa?_r=1&_t=ZS-948PsNjH5dc', photo: 'images/admin3.jpg' },
         { name: 'Zero', username: '@zero.znzx', role: 'Admin', tiktok: 'https://www.tiktok.com/@zero.znzx?_r=1&_t=ZS-948PtGhVMma', photo: 'images/admin4.jfif' },
@@ -279,4 +279,5 @@
     window.scrollTo(0, 0);
     updateScrollPadding();
     window.addEventListener('load', () => setTimeout(updateScrollPadding, 200));
+
 })();
