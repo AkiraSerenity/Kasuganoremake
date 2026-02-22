@@ -13,7 +13,7 @@
         { name: 'Zunda', username: '@shaglenv02y', tiktok: 'https://www.tiktok.com/@shaglenv02y', photo: 'images/member15.jpg', quote: 'Kalo kamu lapar makan lahh' },
         { name: 'Yushaa Von Khaslana', username: '@kachusyaa', tiktok: 'https://www.tiktok.com/@kachusyaa?_r=1&_t=ZS-943UkIGrPbZ', photo: 'images/member16.jpeg', quote: 'Jangan lupa makan' },
         { name: 'Zakk', username: '@sb_prst', tiktok: 'https://www.tiktok.com/@sb_prst?_r=1&_t=ZS-948PdFDTDAj', photo: 'images/member17.jpeg', quote: 'Jangan lupa main epep' },
-        { name: 'Shaglen', username: '@xmj.shaglen', tiktok: 'https://www.tiktok.com/@xmj.shaglen?_r=1&_t=ZS-948UjlCNgvs', photo: 'images/member8.jpeg', quote: 'Id have' }
+        { name: 'Shaglen', username: '@xmj.shaglen', tiktok: 'https://www.tiktok.com/@xmj.shaglen?_r=1&_t=ZS-948UjlCNgvs', photo: 'images/member8.jpg', quote: 'Id have' }
     ];
 
     const admins = [
@@ -282,4 +282,5 @@
     window.addEventListener('load', () => setTimeout(updateScrollPadding, 200));
 
 })();
+
 
