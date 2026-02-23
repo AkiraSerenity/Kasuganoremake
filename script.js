@@ -65,7 +65,7 @@
     function renderMembers(filtered = members) {
         memberContainer.innerHTML = '';
         if (filtered.length === 0) {
-            memberContainer.innerHTML = '<div style="text-align:center; padding:var(--space-xl); color:#ffb0e6;"><i class="fas fa-user-slash" style="font-size:3rem; margin-bottom:var(--space-md);"></i><p>Anggota tidak ditemukan</p></div>';
+            memberContainer.innerHTML = '<div style="text-align:center; padding:var(--space-xl); color:#ffb0e6;"><i class="fas fa-user-slash" style="font-size:3rem; margin-bottom:var(--space-md);"></i><p>Member not found</p></div>';
             return;
         }
         filtered.forEach(m => {
@@ -282,5 +282,6 @@
     window.addEventListener('load', () => setTimeout(updateScrollPadding, 200));
 
 })();
+
 
 
